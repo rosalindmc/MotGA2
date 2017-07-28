@@ -1,0 +1,3 @@
+#define ai
+
+#define aiInitialize

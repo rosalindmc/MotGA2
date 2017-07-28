@@ -1,0 +1,2 @@
+player = true
+controlScript = playerControl
