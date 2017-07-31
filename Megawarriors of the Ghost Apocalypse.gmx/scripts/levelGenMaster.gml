@@ -464,8 +464,6 @@ with(obj_tile){
     gridY = y
     isPath = false
     isRiver = false
-    hasPoi = false     
-    }       hasPoi = false   
-    
+    hasPoi = false   
     critPath = false  
     }   

@@ -145,6 +145,9 @@
     <scripts name="Particles">
       <script>scripts\particleTypes.gml</script>
     </scripts>
+    <scripts name="Threat">
+      <script>scripts\threatControl.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_dmg</font>
