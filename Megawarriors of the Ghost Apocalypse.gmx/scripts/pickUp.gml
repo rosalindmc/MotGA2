@@ -37,4 +37,3 @@ other.canRoll = false
 other.canInv = false
 
 instance_destroy()
-

@@ -11,4 +11,3 @@ isRiver = false
 hasPoi = false
 
 critPath = false
-WHWWYYWW
