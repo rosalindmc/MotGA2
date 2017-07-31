@@ -27,6 +27,10 @@
     
     critPods = global.currNode.critPods    //number of pods on the critical path
     podDensity = global.currNode.podDensity  //number of pods on the map
+    podPower = global.currNode.podPower
+    numPods = global.currNode.numPods
+    
+    podList[0] = noone
     
     itemDensity = global.currNode.itemDensity //number of item spawns on the map
     
@@ -76,9 +80,21 @@
     
     global.pc.x = critLength[j].start.gridX*16+8
     global.pc.y = critLength[j].start.gridY*16+8
-
     
-   
+    for(i = 0; i < array_length_1d(critLength)-1; i++){
+        with (critLength[i]){
+            instance_destroy()
+            }
+    }
+    
+    podGen()
+    
+    with(obj_pod){
+        podTypeSelect()
+        podSpawn()
+    }
+    
+
 
 
 #define roadMaker

@@ -188,6 +188,7 @@
       <object>objects\obj_poi</object>
       <object>objects\obj_world</object>
       <object>objects\obj_node</object>
+      <object>objects\obj_pod</object>
     </objects>
   </objects>
   <rooms name="rooms">

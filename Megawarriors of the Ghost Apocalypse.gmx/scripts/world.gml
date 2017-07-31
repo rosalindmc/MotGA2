@@ -71,7 +71,7 @@ switch(biomeType){
     break
     
     case 1:
-        poiDensity = choose(8,8,8,9,9,10,10)    //however you want to set this up
+        nodeGen()
         numEntrance = choose(1,2,2,2,3,4)
         numRivers = choose(0,1,2,2,3)
         

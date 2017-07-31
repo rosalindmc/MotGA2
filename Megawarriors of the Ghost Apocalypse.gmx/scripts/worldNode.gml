@@ -18,6 +18,9 @@
     
     critPods = 0    //number of pods on the critical path
     podDensity = 0  //number of pods on the map
+    podPower = 0    //average power of each pod
+    numPods = 0     //absolute number of pods on the map, should be aboue twice the number of crit pods
+    
     
     itemDensity = 0 //number of item spawns on the map
     
@@ -27,5 +30,9 @@
 
 #define nodeGen
 // set up critPods based on challenge
+podPower = choose (0,1,1,1,2,2,3)+challenge //1-7
+podDensity = floor(7/podPower)
+critPods = podDensity*2
+numPods = critPods*2
 // itemDensity
 // specialAreas

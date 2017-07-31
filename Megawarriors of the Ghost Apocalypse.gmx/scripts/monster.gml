@@ -27,4 +27,6 @@ responseStart = global.timer
 
 canRoll = false
 
+subordinate[0] = noone
+
 script_execute(behaviorType)

@@ -90,6 +90,8 @@ randomize()
 switch(biomeType){
 case 1:
     forestGen(id)
+default:
+    forestGen(id)
 
 }
 
@@ -102,12 +104,66 @@ riverGen()
 
 
 
+
+#define podGen
+
+critPathTiles = ds_list_create()
+openTiles = ds_list_create()
+
+with(obj_tile){
+   
+    if(critPath){
+        ds_list_add(other.critPathTiles, id)
+    }
+    else if (isPath){
+        ds_list_add(other.openTiles, id)
+    }
+    
+}
+
+
+k = 0
+podList[k] = noone
+
+for(i = 0; i<critPods;i++){
+    if !ds_list_empty(critPathTiles)
+    {
+    rando = irandom(ds_list_size(critPathTiles)-1);
+    podList[k] = instance_create(0,0,obj_pod)
+    idTemp = ds_list_find_value(critPathTiles, rando)
+    podList[k].gridX = idTemp.gridX
+    podList[k].gridY = idTemp.gridY
+    ds_list_delete(critPathTiles, rando);
+    k++
+    }
+}
+
+for(i = critPods; i<critPods+numPods;i++){
+    if !ds_list_empty(openTiles)
+    {
+    rando = irandom(ds_list_size(openTiles)-1);
+    podList[k] = instance_create(0,0,obj_pod)
+    idTemp = ds_list_find_value(openTiles, rando)
+    podList[k].gridX = idTemp.gridX;
+    podList[k].gridY = idTemp.gridY;
+    ds_list_delete(openTiles, rando);
+    k++
+    }
+}
+
+ds_list_destroy(critPathTiles)
+
+ds_list_destroy(openTiles)
+
+
+
 #define poiGen
 //set up the positions of points of interests
 var i = 0
 //critical at index 0
 for (i = i;i < array_length_1d(critPoi[]);i++){
     pois[i] = instance_create(0,0,obj_poi)
+    pois[i].critical = true;
     //poiImport(critPoi[i])
 }
 
@@ -409,4 +465,7 @@ with(obj_tile){
     isPath = false
     isRiver = false
     hasPoi = false     
+    }       hasPoi = false   
+    
+    critPath = false  
     }   

@@ -16,7 +16,7 @@ entrance = false
 
 critical = false    //whether or not this is the critical PoI
 
-podSpawn = 0    //whether or not this has a pod spawn
+hasPod = 0    //whether or not this has a pod spawn
 
 boss = 0        //whether or not this has a boss
 
@@ -39,7 +39,7 @@ buffer = argument0.buffer  //the amount of space this has around it before it sh
 
 critical = argument0.critical    //whether or not this is the critical PoI
 
-podSpawn = argument0.podspawn    //whether or not this has a pod spawn
+hasPod = argument0.podspawn    //whether or not this has a pod spawn
 
 boss = argument0.boss        //whether or not this has a boss
 
