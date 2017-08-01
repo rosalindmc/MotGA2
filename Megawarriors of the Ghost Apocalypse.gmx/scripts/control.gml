@@ -47,8 +47,11 @@ with (mainWorld){
 }
 
 //set up the threat list
-global.threat = ds_list_create();
-threatInitialize();
+
+global.owThreat = 0;
+global.locThreat = 0;
+global.locThreatTimer = 0;
+global.threatTimer = false;
 
 
 global.currLevel = instance_create(0,0,obj_level)
@@ -117,6 +120,20 @@ global.timer += 1/global.frameRate
 if (global.timer > 30){
     global.timer -= 30
 }
+
+//Threat Timer
+
+//if(global.currLevel != noone){
+
+    if(global.threatTimer && !global.isPaused){
+        global.locThreatTimer += 1/global.frameRate;
+    
+        if(global.locThreatTimer % 15 == 0){
+            threatUp();
+        }
+    }
+
+//}
 
 /*
 if global.pc.vis = true and global.win = false

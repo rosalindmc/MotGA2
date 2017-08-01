@@ -94,6 +94,8 @@
         podSpawn()
     }
     
+//start the threat timer for the level
+threatInitialize();
 
 
 
@@ -341,3 +343,9 @@ else{
 }*/
 break;
 };
+#define levelEnd
+//clear up that little global list
+
+global.threatTimer = false;
+
+ds_list_destroy(global.threatList);
