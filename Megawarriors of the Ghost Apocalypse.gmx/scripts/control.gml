@@ -17,6 +17,9 @@ window_set_cursor(cr_none)
 //Controls
 controls()
 
+//For pause functionality, or things that need to stop running when you're paused
+global.isPaused = false;
+
 //Create pc
 global.pc = instance_create(x,y,obj_char)
 //later add import stats script
@@ -42,6 +45,10 @@ mainWorld = instance_create(0,0,obj_world)
 with (mainWorld){
     worldGen()
 }
+
+//set up the threat list
+global.threat = ds_list_create();
+threatInitialize();
 
 
 global.currLevel = instance_create(0,0,obj_level)

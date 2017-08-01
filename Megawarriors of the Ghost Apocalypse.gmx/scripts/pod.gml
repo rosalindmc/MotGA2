@@ -22,4 +22,3 @@ for(i = 0; i < array_length_1d(members);i++){
         //set up leadership stuff
 }
 
-

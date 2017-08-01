@@ -17,4 +17,3 @@ script_execute(soloDarkSoldier)
 leader = 0
 members[0] = darkSoldier
 xpValue = 1
-
