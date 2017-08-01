@@ -19,7 +19,7 @@ switch(global.locThreat){
     var threatCount = 0;
     //figure out a more universal equation and maybe put some of this in its own script
     while(threatCount < global.locThreat + 1){ 
-        var rand = irandom(ds_list_size(global.threatList));
+        var rand = irandom(ds_list_size(global.threatList) - 1);
         threatCount += script_execute(ds_list_find_value(global.threatList,rand));
     }
     ds_list_add(global.threatList, newPodOne);
@@ -44,7 +44,7 @@ global.locThreat--;
 #define owThreatUp
 //Increase the threat level in the overworld
 
-show_message('NeRPs forces are spreading');
+show_message('NeRPs forces are spreading - OverWorld Threat++');
 global.owThreat++;
 
 return 1;

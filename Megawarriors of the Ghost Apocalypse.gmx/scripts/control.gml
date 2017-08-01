@@ -126,9 +126,9 @@ if (global.timer > 30){
 //if(global.currLevel != noone){
 
     if(global.threatTimer && !global.isPaused){
-        global.locThreatTimer += 1/global.frameRate;
-    
-        if(global.locThreatTimer % 15 == 0){
+        //global.locThreatTimer += 1/global.frameRate;
+        global.locThreatTimer++;
+        if((global.locThreatTimer/global.frameRate) % 15 == 0){
             threatUp();
         }
     }
