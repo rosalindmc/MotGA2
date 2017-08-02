@@ -136,11 +136,6 @@ handY[2] = 0
 //Body Variants
 gender = choose(0,1)
 
-if gender = 1
-{
-    clothingSprite = spr_none
-}
-
 switch(choose(0,1,2))
 {
 case 0:
@@ -177,6 +172,17 @@ headYAdjust = 4
 break
 }
 
+//Temp Clothes Randomize
+if gender = 0
+{
+    clothingSprite = spr_cDemonHunter
+    skirtSprite = spr_sDemonHunter
+}
+else
+{
+    clothingSprite = spr_cDemonHunterM
+    skirtSprite = spr_none
+}
 
 #define humanoidDraw
 //Establish bone information

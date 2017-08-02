@@ -40,5 +40,3 @@ instance_destroy()
 
 
 
-
-#define grappleEnd

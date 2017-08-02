@@ -26,11 +26,6 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_mask</sprite>
-    <sprite>sprites\spr_humanoidArms</sprite>
-    <sprite>sprites\spr_humanoidLegs</sprite>
-    <sprite>sprites\spr_humanoidHead</sprite>
-    <sprite>sprites\spr_humanoidChest</sprite>
-    <sprite>sprites\spr_humanoidBody</sprite>
     <sprite>sprites\spr_sword</sprite>
     <sprites name="HUD">
       <sprite>sprites\spr_reticle2</sprite>
@@ -54,11 +49,37 @@
     <sprite>sprites\spr_none</sprite>
     <sprite>sprites\spr_dust</sprite>
     <sprite>sprites\spr_blood</sprite>
+    <sprites name="Character">
+      <sprites name="Model">
+        <sprite>sprites\spr_humanoidArms</sprite>
+        <sprite>sprites\spr_humanoidChest</sprite>
+        <sprite>sprites\spr_humanoidHead</sprite>
+        <sprite>sprites\spr_humanoidBody</sprite>
+        <sprite>sprites\spr_humanoidLegs</sprite>
+      </sprites>
+      <sprites name="Costume">
+        <sprite>sprites\spr_cBarbarian</sprite>
+        <sprite>sprites\spr_cDemonHunter</sprite>
+        <sprite>sprites\spr_cDemonHunterM</sprite>
+        <sprite>sprites\spr_sDemonHunter</sprite>
+        <sprite>sprites\spr_cBerzerk</sprite>
+        <sprite>sprites\spr_sBarbarian</sprite>
+        <sprite>sprites\spr_cAssassin</sprite>
+        <sprite>sprites\spr_cBerzerkM</sprite>
+        <sprite>sprites\spr_cBurglar</sprite>
+        <sprite>sprites\spr_cDandy</sprite>
+        <sprite>sprites\spr_cDesperado</sprite>
+        <sprite>sprites\spr_cFighter</sprite>
+        <sprite>sprites\spr_cGhostHunter</sprite>
+        <sprite>sprites\spr_cScavenger</sprite>
+        <sprite>sprites\spr_cScoundrel</sprite>
+        <sprite>sprites\spr_cWarrior</sprite>
+        <sprite>sprites\spr_cWarriorM</sprite>
+        <sprite>sprites\spr_sFighter</sprite>
+      </sprites>
+    </sprites>
     <sprite>sprites\spr_bloodSplat</sprite>
-    <sprite>sprites\spr_sBarbarian</sprite>
     <sprite>sprites\spr_longHair</sprite>
-    <sprite>sprites\spr_cBarbarian</sprite>
-    <sprite>sprites\spr_cBerzerk</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\temp_bg</background>
