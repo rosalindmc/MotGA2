@@ -17,8 +17,31 @@ faction = noone
 
 
 for(i = 0; i < array_length_1d(members);i++){
-
-        createChar(gridX*16+8, gridY*16+8, members[i], noone)
+        switch(irandom(7)){
+            case 0:
+                createChar(gridX*16+8+(i*8), gridY*16+8, members[i], noone)
+                break
+            case 1:
+                createChar(gridX*16+8-(i*8), gridY*16+8, members[i], noone)
+                break
+            case 2:
+                createChar(gridX*16+8, gridY*16+8+(i*8), members[i], noone)
+                break
+            case 3:
+                createChar(gridX*16+8, gridY*16+8-(i*8), members[i], noone)
+                break
+            case 4:
+                createChar(gridX*16+8+(i*8), gridY*16+8+(i*8), members[i], noone)
+                break
+            case 5:
+                createChar(gridX*16+8+(i*8), gridY*16+8-(i*8), members[i], noone)
+                break
+            case 6:
+                createChar(gridX*16+8-(i*8), gridY*16+8-(i*8), members[i], noone)
+                break
+            case 7:
+                createChar(gridX*16+8-(i*8), gridY*16+8+(i*8), members[i], noone)
+                break
+        }
         //set up leadership stuff
 }
-

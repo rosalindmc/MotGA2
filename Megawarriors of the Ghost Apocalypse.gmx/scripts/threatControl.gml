@@ -16,24 +16,27 @@ global.threatTimer = true;
 
 switch(global.locThreat){
     case 0:
-    var threatCount = 0;
+    threatCount = 0;
     //figure out a more universal equation and maybe put some of this in its own script
-    while(threatCount < global.locThreat + 1){ 
-        var rand = irandom(ds_list_size(global.threatList) - 1);
-        threatCount += script_execute(ds_list_find_value(global.threatList,rand));
-    }
+    threshold = 1;
     ds_list_add(global.threatList, newPodOne);
     break;
 
 
 }
 
+while(threatCount < threshold){ 
+        var rand = irandom(ds_list_size(global.threatList) - 1);
+        threatCount += script_execute(ds_list_find_value(global.threatList,rand));
+    }
+
+
 if(global.locThreat % 3 == 1){
     global.owThreat++;
     show_message(global.owThreat);
 }
 
-//global.locThreat++;
+global.locThreat++;
 
 #define threatDown
 //Using a threat reducing ability runs this script
@@ -60,5 +63,6 @@ return 1;
 //speed up the time until the next threat
 
 show_message('NeRP knows about you.  Hurry up');
+global.threatSpeed--
 
 return 1;
