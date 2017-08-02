@@ -298,13 +298,13 @@ with(obj_poi){
                     tempX = 0.2
                     break
                 case 1:
-                    tempX = array_height_2d(other.poiPoints)+0.6
+                    tempX = array_height_2d(other.poiPoints)+0.8
                     break
                 case 2:
                     tempY = 0.2
                     break
                 case 3:
-                    tempY = array_length_2d(other.poiPoints,0)+0.6
+                    tempY = array_length_2d(other.poiPoints,0)+0.8
                     break
         
             }
