@@ -18,3 +18,13 @@ hasPod = true
 #define largeEmpty
 spaceX = 7
 spaceY = 7
+#define shrineTemp
+
+#define miniBossTemp
+
+#define specItemTemp
+
+#define specCharTemp
+
+#define dungeonTemp
+
