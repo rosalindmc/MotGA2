@@ -16,6 +16,13 @@ global.poiSpacing = 8
 //Screen Stuff (later handle in main menu)
 screenScale()
 window_set_cursor(cr_none)
+global.padOn = false;
+global.gp[0] = false;
+var gp_num = gamepad_get_device_count();
+for (var i = 0; i < gp_num; i++;)
+   {
+   if gamepad_is_connected(i) global.gp[i] = true else global.gp[i] = false;
+   }
 
 //Controls
 controls()
@@ -86,6 +93,15 @@ randomize()
 if keyboard_check_pressed(ord('R'))
 {
     game_restart()
+}
+
+if keyboard_check_pressed(ord('I')){
+    if(!global.padOn && global.gp[0] == true){
+        global.padOn = true;
+    }
+    else{
+        global.padOn = false;
+    }
 }
 
 //Adjust Camera Position
