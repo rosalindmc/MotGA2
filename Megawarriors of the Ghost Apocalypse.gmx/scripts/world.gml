@@ -35,8 +35,8 @@ for(i = 0; i <= global.numNodes; i++){
     ds_list_delete(qualiList, rando);
     
 //give it crit PoI
-    nodeArray[i].critPoi[0] = irandom(4)+9
-    nodeArray[i].critPoi[1] = irandom(3)-1
+    nodeArray[i].critPoi[0] = createPoi(irandom(3)+10)
+    nodeArray[i].critPoi[1] = createPoi(irandom(1))
 
 //give it a difficulty based on i + critPoi[0] + qualifier
     nodeArray[i].challenge = 1

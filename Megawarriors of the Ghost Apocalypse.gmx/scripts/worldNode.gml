@@ -7,7 +7,7 @@
     sizeX = 80
     sizeY = 80
     
-    critPoi [0] = 1     //the type of the critical point of interest
+    critPoi [0] = noone     //the type of the critical point of interest
     poiDensity = 10     //number of non-critical points of interest on the map
     numEntrance = 3
     pois[0]=0
