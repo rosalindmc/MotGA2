@@ -18,4 +18,3 @@ hasPod = true
 #define largeEmpty
 spaceX = 7
 spaceY = 7
-

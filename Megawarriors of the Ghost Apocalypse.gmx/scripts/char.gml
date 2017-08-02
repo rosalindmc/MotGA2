@@ -384,9 +384,9 @@ if (grappled = true){
     if instance_exists(grappler)
     {
         facing = grappler.facing+180
-        x = grappler.handX[2]+round(grappler.x)-(grappler.charSurfSize*.5)+lengthdir_x(max(metre*.75,handDist[2]),grappler.facing+grappler.handDir[2])
+        x = grappler.handX[2]+round(grappler.x)-(grappler.charSurfSize*.5)+lengthdir_x(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])
         z = (grappler.charSurfSize*.75)-round(grappler.bodyY+grappler.handHeight[2]+grappler.z)
-        y = grappler.handY[2]+round(grappler.y)-(grappler.charSurfSize*.5)+lengthdir_y(max(metre*.75,handDist[2]),grappler.facing+grappler.handDir[2])+z
+        y = grappler.handY[2]+round(grappler.y)-(grappler.charSurfSize*.5)+lengthdir_y(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])+z
     }
 }
 
