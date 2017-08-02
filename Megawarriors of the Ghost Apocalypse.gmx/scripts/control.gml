@@ -99,6 +99,7 @@ if keyboard_check_pressed(ord('R'))
 if keyboard_check_pressed(ord('I')){
     if(!global.padOn && global.gp[0] == true){
         global.padOn = true;
+        gamepad_set_axis_deadzone(0, 0.175);
     }
     else{
         global.padOn = false;

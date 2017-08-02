@@ -22,10 +22,34 @@ if(!global.padOn){
 }
 
 else{
-    upKey = keyboard_check(global.upKey)
-    leftKey = keyboard_check(global.leftKey)
-    downKey = keyboard_check(global.downKey)
-    rightKey = keyboard_check(global.rightKey)
+
+    if(gamepad_axis_value(0, gp_axislv) < 0  || gamepad_button_check(0, gp_padu)){
+        upKey = 1;
+    }
+    else{
+        upKey = 0
+    }
+    if(gamepad_axis_value(0, gp_axislv) > 0 || gamepad_button_check(0, gp_padd)){
+        downKey = 1;
+    }
+    else{
+        downKey = 0
+    }
+    if(gamepad_axis_value(0, gp_axislh) > 0 || gamepad_button_check(0, gp_padr)){
+        rightKey = 1;
+    }
+    else{
+        rightKey = 0
+    }
+    if(gamepad_axis_value(0, gp_axislh) < 0 || gamepad_button_check(0, gp_padl)){
+        leftKey = 1;
+    }
+    else{
+        leftKey = 0
+    }
+    /*
+    rightKey = gamepad_button_check(0, gp_padr);
+    */
     
     lftclickKey = mouse_check_button(mb_left)
     rgtclickKey = mouse_check_button(mb_right)
