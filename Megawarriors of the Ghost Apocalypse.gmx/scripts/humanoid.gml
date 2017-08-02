@@ -439,6 +439,101 @@ switch(argument0)
     break
 }
 
+#define humanoidSneakWalk
+animSpeed[argument1] = max(abs(moving),1)
+xAdj = 0
+yAdj = 0
+
+hipsRot = 0
+bodyRot = 0
+hairRot = 0
+headRot = 0
+
+switch(argument0)
+{
+    case 0:
+    humanoidSneakWalk(3,argument1)
+    animStep[argument1] = 3
+    break
+    
+    case 1:
+    hipsImage = 14
+    legLength = 2
+    animDelay[argument1] = 2
+    flow = 3
+    if moving < 0
+    {
+        flow = 2
+    }
+    flowTimer = .2
+    footStep(0)
+    break
+    
+    case 2:
+    hipsImage = 16
+    legLength = 3
+    bounce = 1
+    bounceTimer = .2
+    animDelay[argument1] = 1
+    flow = 1
+    flowTimer = .2
+    footStep(0)
+    break
+    
+    case 3:
+    hipsImage = 18
+    legLength = 3
+    bounce = 1
+    bounceTimer = .2
+    animDelay[argument1] = 1
+    flow = 3
+    if moving < 0
+    {
+        flow = 2
+    }
+    flowTimer = .2
+    break
+    
+    case 4:
+    humanoidSneakWalk(1,argument1)
+    animStep[argument1] = 1
+    break
+}
+
+#define humanoidSneakIdle
+animDelay[argument1] = .3
+animSpeed[argument1] = 1
+xAdj = 0
+yAdj = 0
+
+hipsRot = 0
+bodyRot = 0
+hairRot = 0
+headRot = 0
+
+switch(argument0)
+{
+    case 0:
+    hipsImage = 14
+    legLength = 4
+    break
+    
+    case 1:
+    hipsImage = 14
+    legLength = 4
+    break
+    
+    case 2:
+    hipsImage = 14
+    legLength = 4
+    break
+    
+    case 3:
+    humanoidSneakIdle(0,argument1)
+    animStep[argument1] = 0
+    break
+}
+
 #define humanoidShortDodge
 animSpeed[argument1] = max(abs(moving),1)
 
