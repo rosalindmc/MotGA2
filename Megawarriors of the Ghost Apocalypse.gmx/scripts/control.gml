@@ -52,6 +52,7 @@ global.owThreat = 0;
 global.locThreat = 0;
 global.locThreatTimer = 0;
 global.threatTimer = false;
+global.threatSpeed = 15
 
 
 global.currLevel = instance_create(0,0,obj_level)
