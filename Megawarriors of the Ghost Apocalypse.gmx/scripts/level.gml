@@ -80,6 +80,7 @@
     
     global.pc.x = critLength[j].start.gridX*16+8
     global.pc.y = critLength[j].start.gridY*16+8
+    critLength[j].start.critPath = false
     
     for(i = 0; i < array_length_1d(critLength)-1; i++){
         with (critLength[i]){

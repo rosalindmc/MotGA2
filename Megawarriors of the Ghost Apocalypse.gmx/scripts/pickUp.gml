@@ -29,7 +29,6 @@ other.grappleTarg = owner
 with(other){
 switchItem(-1,2);
 }
-other.handItem[2] = owner
 
 other.grappling = true
 
