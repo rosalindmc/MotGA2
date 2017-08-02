@@ -33,7 +33,7 @@ while(threatCount < threshold){
 
 if(global.locThreat % 3 == 1){
     global.owThreat++;
-    show_message(global.owThreat);
+    //show_message(global.owThreat);
 }
 
 global.locThreat++;
@@ -47,7 +47,7 @@ global.locThreat--;
 #define owThreatUp
 //Increase the threat level in the overworld
 
-show_message('NeRPs forces are spreading - OverWorld Threat++');
+//show_message('NeRPs forces are spreading - OverWorld Threat++');
 global.owThreat++;
 
 return 1;
@@ -55,14 +55,14 @@ return 1;
 #define newPodOne
 //create a new pod, level one
 
-show_message('Spawned a new pod nearby');
+//show_message('Spawned a new pod nearby');
 
 return 1;
 
 #define increaseTimer
 //speed up the time until the next threat
 
-show_message('NeRP knows about you.  Hurry up');
+//show_message('NeRP knows about you.  Hurry up');
 global.threatSpeed--
 
 return 1;

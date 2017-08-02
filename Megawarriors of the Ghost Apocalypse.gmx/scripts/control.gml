@@ -265,11 +265,21 @@ if global.pc.inventoryKey = true
 }
 
 //Draw Cursor
-draw_sprite(spr_reticle,0,mouse_x,mouse_y-8)
-draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y-8-kick,1,1,0,c_white,1)
-draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y-8+kick,1,1,90,c_white,1)
-draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y-8+kick,1,1,180,c_white,1)
-draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y-8-kick,1,1,270,c_white,1)
+
+if(!global.padOn){
+    draw_sprite(spr_reticle,0,mouse_x,mouse_y-8)
+    draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y-8-kick,1,1,0,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y-8+kick,1,1,90,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y-8+kick,1,1,180,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y-8-kick,1,1,270,c_white,1)
+}
+else{
+    draw_sprite(spr_reticle,0,global.pc.targetX,global.pc.targetY-8)
+    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8-kick,1,1,0,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8+kick,1,1,90,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8+kick,1,1,180,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8-kick,1,1,270,c_white,1)
+}
 
 /*
 draw_sprite(spr_reticle,0,mouse_x,mouse_y)

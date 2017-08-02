@@ -27,44 +27,47 @@ else{
         upKey = 1;
     }
     else{
-        upKey = 0
+        upKey = 0;
     }
     if(gamepad_axis_value(0, gp_axislv) > 0 || gamepad_button_check(0, gp_padd)){
         downKey = 1;
     }
     else{
-        downKey = 0
+        downKey = 0;
     }
     if(gamepad_axis_value(0, gp_axislh) > 0 || gamepad_button_check(0, gp_padr)){
         rightKey = 1;
     }
     else{
-        rightKey = 0
+        rightKey = 0;
     }
     if(gamepad_axis_value(0, gp_axislh) < 0 || gamepad_button_check(0, gp_padl)){
         leftKey = 1;
     }
     else{
-        leftKey = 0
+        leftKey = 0;
     }
     /*
     rightKey = gamepad_button_check(0, gp_padr);
     */
     
-    lftclickKey = mouse_check_button(mb_left)
-    rgtclickKey = mouse_check_button(mb_right)
-    lftclickedKey = mouse_check_button_pressed(mb_left)
-    rgtclickedKey = mouse_check_button_pressed(mb_right)
-    lftreleaseKey = mouse_check_button_released(mb_left)
-    rgtreleaseKey = mouse_check_button_released(mb_right)
-    interactKey = keyboard_check_pressed(global.interactKey)
+    //right and left click - bumpers by default - rebindable
+    lftclickKey = gamepad_button_check(0, gp_shoulderr)
+    rgtclickKey = gamepad_button_check(0, gp_shoulderl)
+    lftclickedKey = gamepad_button_check_pressed(0, gp_shoulderr)
+    rgtclickedKey = gamepad_button_check_pressed(0, gp_shoulderl)
+    lftreleaseKey = gamepad_button_check_released(0, gp_shoulderr)
+    rgtreleaseKey = gamepad_button_check_released(0, gp_shoulderl)
+    
+    
+    interactKey = gamepad_button_check(0, gp_stickr);
     castKey = keyboard_check_pressed(global.castKey)
     castReleasedKey = keyboard_check_released(global.castKey)
-    dodgeKey = keyboard_check_released(global.dodgeKey)
+    dodgeKey = gamepad_button_check(0, gp_shoulderrb);
     reloadKey = keyboard_check_pressed(global.reloadKey)
     throwKey = keyboard_check(global.throwKey)
-    sneakKey = keyboard_check_pressed(global.sneakKey)
-    inventoryKey = keyboard_check(global.inventoryKey)
+    sneakKey = gamepad_button_check(0, gp_stickl);
+    inventoryKey = gamepad_button_check(0, gp_face4);
 }
 
 //Movement
@@ -111,8 +114,14 @@ if rgtreleaseKey = true
 }
 
 //Targeting
-targetX = mouse_x
-targetY = mouse_y
+if(!global.padOn){
+    targetX = mouse_x
+    targetY = mouse_y
+}
+else{
+    targetX = x + (gamepad_axis_value(0, gp_axisrh) * 2 * metre);
+    targetY = y + (gamepad_axis_value(0, gp_axisrv) * 2 * metre);
+}
 
 /*
 lftclickKey = mouse_check_button(mb_left)
