@@ -16,11 +16,11 @@ entrance = false
 
 critical = false    //whether or not this is the critical PoI
 
-hasPod = 0    //whether or not this has a pod spawn
+hasPod = false   //whether or not this has a pod spawn
 
 boss = 0        //whether or not this has a boss
 
-loot = 0        //whether or not this has a special item
+loot = noone      //whether or not this has a special item
 
 roads = 0       //whether or not this has roads
 

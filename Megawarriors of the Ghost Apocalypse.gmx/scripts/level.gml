@@ -97,6 +97,11 @@
 //start the threat timer for the level
 threatInitialize();
 
+//replace later
+repeat(10)
+{
+    createItem(random(100),random(100),sword,noone)
+}
 
 
 #define roadMaker

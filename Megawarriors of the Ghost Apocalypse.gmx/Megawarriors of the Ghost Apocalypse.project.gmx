@@ -136,6 +136,7 @@
       <script>scripts\pod.gml</script>
       <script>scripts\podTypes.gml</script>
       <script>scripts\pointOfInterest.gml</script>
+      <script>scripts\poiTypes.gml</script>
       <script>scripts\world.gml</script>
       <script>scripts\worldNode.gml</script>
     </scripts>

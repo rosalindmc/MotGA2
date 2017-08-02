@@ -10,6 +10,9 @@ global.timeMult = 1
 enumerators();
 global.decalSurf = -1
 
+//The spacing of the poi stuff
+global.poiSpacing = 8
+
 //Screen Stuff (later handle in main menu)
 screenScale()
 window_set_cursor(cr_none)
@@ -26,10 +29,7 @@ global.pc = instance_create(x,y,obj_char)
 
 global.timer = 0
 
-repeat(10)
-{
-    createItem(random(100),random(100),sword,noone)
-}
+
 
 //temp node
 

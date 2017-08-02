@@ -174,6 +174,22 @@ for (i = i;i < array_length_1d(critPoi[]);i++){
 //others at index 1 to x
 for (i = i; i < array_length_1d(critPoi[]) + poiDensity;i++){
     pois[i] = instance_create(0,0,obj_poi)
+    with pois[i]{
+        switch(irandom(3)){
+            case 0:
+                
+            break
+            case 1:
+                largeEmpty()
+            break
+            case 2:
+                mediumPod()
+            break
+            case 3:
+                smallLoot()
+            break
+        }   
+    }
 }
 
 
@@ -200,9 +216,9 @@ for (i = i; i < numEntrance + array_length_1d(critPoi[]) + poiDensity; i++){
 }
 
 
-for(i =0;i <= ceil(sizeX/5)- 2;i++){
-        for(j = 0;j <= floor(sizeY/5) - 2;j++){ //create an array of points for POIs to generate on that is set to available
-            poiPoints[i,j] = floorLayout[(i*5)+5 ,(j*5)+5];
+for(i =0;i <= ceil(sizeX/global.poiSpacing)- 2;i++){
+        for(j = 0;j <= floor(sizeY/global.poiSpacing) - 2;j++){ //create an array of points for POIs to generate on that is set to available
+            poiPoints[i,j] = floorLayout[(i*global.poiSpacing)+global.poiSpacing ,(j*global.poiSpacing)+global.poiSpacing];
             poiPoints[i,j].available = true 
     }
 }
@@ -220,8 +236,8 @@ with(obj_poi){
             
             if(other.poiPoints[tempX,tempY].available = true){
                 
-                gridX = (tempX*5)+5
-                gridY = (tempY*5)+5
+                gridX = (tempX*global.poiSpacing)+global.poiSpacing
+                gridY = (tempY*global.poiSpacing)+global.poiSpacing
             
                 other.floorLayout[gridX,gridY].weight = 1
                 other.floorLayout[gridX,gridY].hasPoi = true
@@ -292,8 +308,8 @@ with(obj_poi){
                     break
         
             }
-            gridX = (tempX*5)
-            gridY = (tempY*5)
+            gridX = (tempX*global.poiSpacing)
+            gridY = (tempY*global.poiSpacing)
         
             other.floorLayout[gridX,gridY].weight = 1
             other.floorLayout[gridX,gridY].hasPoi = true
@@ -319,8 +335,8 @@ with(obj_poi){
                             tempX = i
                             tempY = j
                             
-                            gridX = (tempX*5)+5
-                            gridY = (tempY*5)+5
+                            gridX = (tempX*global.poiSpacing)+global.poiSpacing
+                            gridY = (tempY*global.poiSpacing)+global.poiSpacing
                         
                             other.floorLayout[gridX,gridY].weight = 1
                             other.floorLayout[gridX,gridY].hasPoi = true
@@ -344,8 +360,8 @@ with(obj_poi){
         }
     }
     if (genned != true){
-        gridX = irandom(other.sizeX-10)+5
-        gridY = irandom(other.sizeY-10)+5
+        gridX = irandom(other.sizeX-global.poiSpacing*2)+global.poiSpacing
+        gridY = irandom(other.sizeY-global.poiSpacing*2)+global.poiSpacing
         
         other.floorLayout[gridX,gridY].weight = 1
         other.floorLayout[gridX,gridY].hasPoi = true
@@ -362,6 +378,19 @@ with(obj_poi){
         }
         genned = true
     }
+    
+    if(hasPod = true){
+        i = instance_create(0,0,obj_pod)
+        i.gridX = gridX
+        i.gridY = gridY
+    }
+    
+    if (loot != noone){
+        createItem(gridX*16+8, gridY*16+8, loot, noone)
+    }
+    
+    
+    
 }
 
 /*with(obj_poi){
