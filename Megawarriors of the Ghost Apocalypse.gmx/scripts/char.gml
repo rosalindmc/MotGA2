@@ -1,5 +1,6 @@
 #define char
 
+
 #define createChar
 /*
 use as createChar(x,y,type, leader)
@@ -406,6 +407,12 @@ if animUpdate = true
 
 //Shadow
 draw_sprite(spr_shadow,0,round(x),round(y))
+
+if player = true
+{
+    draw_set_colour(c_yellow)
+    draw_ellipse(round(x-5),round(y-2),round(x+3),round(y+2),false)
+}
 
 //Draw Surface
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)

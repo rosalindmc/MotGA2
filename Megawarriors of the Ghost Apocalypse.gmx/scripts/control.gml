@@ -107,8 +107,8 @@ if instance_exists(global.pc)
     ix = round((global.pc.x))
     iy = round((global.pc.y))
     
-    x = floor((mouse_x+ix)/2)-shake+random(shake*2)
-    y = floor((mouse_y+iy)/2)-shake+random(shake*2)
+    x = floor((global.pc.targetX+(ix*3))/4)-shake+random(shake*2)
+    y = floor((global.pc.targetY+(iy*3))/4)-shake+random(shake*2)
     
     kick = global.pc.kick
 }
@@ -169,6 +169,7 @@ else
 
 
 #define controlDrawbegin
+/*
 with(global.currLevel){
     draw_set_halign(fa_center)
     draw_set_valign(fa_center)
@@ -216,6 +217,7 @@ with(global.currLevel){
         }
     }
 }
+*/
 
 //Decals
 if surface_exists(global.decalSurf )
