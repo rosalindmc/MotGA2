@@ -11,8 +11,8 @@ behaviorType = testBehavior
 life = 5
 lifeMax = 5
 
-stam = 2
-stamMax = 2
+stam = 4
+stamMax = 4
 stamRegen = 1.0
 
 

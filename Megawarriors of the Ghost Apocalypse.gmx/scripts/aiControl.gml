@@ -1,7 +1,9 @@
 #define aiControl
 if ((global.timer+responseStart) % (responseTime/responseMod) <= 1/global.frameRate){
-    aiMaster()
+    
     aiActionReset()
+    aiMaster()
+    
 }
 
 if (attackPattern = attackIdle){
@@ -57,3 +59,7 @@ sideVisionRange = 0
 ds_priority_destroy(alertness)
 #define aiActionReset
 hasDodged = false
+
+if (!instance_exists(actionTargetId)){
+    actionTargetId = noone
+}

@@ -76,6 +76,7 @@ case 0:
         actionTargetId = global.pc
         return 0;
     }
+    
     break;
     
 case 1:
@@ -174,6 +175,9 @@ case 2:
     
         break;
     }
+    else{
+        responseStart = global.timer + responseTime/4
+    }
 }
 
 #define actionChase
@@ -210,8 +214,8 @@ case 2:
     
     }
     
-    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 2*metre){
-        attackPattern =  attackPowerAttack
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 3*metre){
+        attackPattern =  choose(attackCombo,attackPowerAttack)
     }
 
     targetX = actionTargetId.x

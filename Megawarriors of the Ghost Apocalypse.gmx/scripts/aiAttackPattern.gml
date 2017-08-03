@@ -98,3 +98,49 @@ switch(argument0)
 }
 
 #define attackCombo
+throwKey = false
+
+switch(argument0)
+{
+    case 0:
+        useItem(1,0)
+        attackDelay = 0.6
+    break
+
+    case 1:
+        useItem(1,1)
+        attackDelay = 0.35
+    break
+    
+    case 2:
+        targetX = actionTargetId.x
+        targetY = actionTargetId.y
+        useItem(1,0)
+        attackDelay = 0.15
+    break
+    
+    case 3:
+        targetX = actionTargetId.x
+        targetY = actionTargetId.y
+        useItem(1,1)
+        attackDelay = 0.35
+    break
+    
+    case 4:
+        targetX = actionTargetId.x
+        targetY = actionTargetId.y
+        useItem(1,0)
+        attackDelay = 0.15
+    break
+    
+    case 5:
+        targetX = actionTargetId.x
+        targetY = actionTargetId.y
+        useItem(1,1)
+        attackDelay = 1
+    break
+    
+    case 6:
+        attackReset()
+    break
+}
