@@ -91,6 +91,7 @@ turnSpeed = 360     //Degrees/second
 //Control Script
 controlScript = playerControl       //Temp, replace with ai control
 player = true                       //Change to false in type script
+gpTarget = noone;                   //This is so that if a player is using a controller, they can select an enemy
 
 //Vitals
 life = 12

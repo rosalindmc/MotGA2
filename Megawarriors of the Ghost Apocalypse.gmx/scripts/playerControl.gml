@@ -1,3 +1,4 @@
+#define playerControl
 //Move Control
 if(!global.padOn){
     upKey = keyboard_check(global.upKey)
@@ -59,12 +60,13 @@ else{
     lftreleaseKey = gamepad_button_check_released(0, gp_shoulderr)
     rgtreleaseKey = gamepad_button_check_released(0, gp_shoulderl)
     
-    
-    interactKey = gamepad_button_check(0, gp_stickr);
-    castKey = keyboard_check_pressed(global.castKey)
-    castReleasedKey = keyboard_check_released(global.castKey)
-    dodgeKey = gamepad_button_check(0, gp_shoulderrb);
+    //face... 1 = A, 2 = B, 3 = X, 4 = Y
+    interactKey = gamepad_button_check(0, gp_face3);
+    castKey = gamepad_button_check(0, gp_face2);
+    castReleasedKey = gamepad_button_check_released(0, gp_face2);
+    dodgeKey = gamepad_button_check(0, gp_face1);
     reloadKey = keyboard_check_pressed(global.reloadKey)
+    //throw has to be seperated for each hand
     throwKey = keyboard_check(global.throwKey)
     sneakKey = gamepad_button_check(0, gp_stickl);
     inventoryKey = gamepad_button_check(0, gp_face4);
@@ -119,8 +121,36 @@ if(!global.padOn){
     targetY = mouse_y
 }
 else{
-    targetX = x + (gamepad_axis_value(0, gp_axisrh) * 2 * metre);
-    targetY = y + (gamepad_axis_value(0, gp_axisrv) * 2 * metre);
+    if(gpTarget == noone){
+        targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
+        targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
+        
+        if(gamepad_button_check(0, gp_stickr)){
+            selectGPTarget();
+        }
+    }
+    else{
+        if (gamepad_axis_value(0, gp_axisrh)>0.5 || gamepad_axis_value(0, gp_axisrh) < -0.5){
+            targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
+            targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
+            
+            if(gamepad_button_check(0, gp_stickr)){
+                selectGPTarget();
+            }
+        }
+        else if (gamepad_axis_value(0, gp_axisrv)>0.5 || gamepad_axis_value(0, gp_axisrv) < -0.5){
+            targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
+            targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
+            
+            if(gamepad_button_check(0, gp_stickr)){
+                selectGPTarget();
+            }
+        }
+        else{
+            targetX = gpTarget.x;
+            targetY = gpTarget.y;
+        }
+    }
 }
 
 /*
@@ -262,3 +292,16 @@ if canAttack = true and canAct = true
 obj_camera.kick = kick
 obj_camera.h = targetH
 
+
+#define selectGPTarget
+var closest = 3 * metre;
+
+with(obj_char){
+    if(!player){
+        var dist = point_distance(other.x, other.y, x, y);
+        if (dist < closest){
+            closest = dist;
+            other.gpTarget = id;
+        }
+    }
+}
