@@ -26,6 +26,7 @@ if argument3 = noone
 }
 
 #define itemInitialize
+itemSurf = surface_create(40,40)
 hand = 0            //0 = inInventory, 1/2 equal corresponding hand, 3 is held in both hands
 owner = noone       //Who currently owns/wields this item
 
@@ -70,6 +71,37 @@ else
 #define itemDraw
 if owner = noone or hand != 0
 {
-    draw_sprite_ext(sprite_index,image_index,round(x),round(y),1,1,image_angle,c_black,.3)
-    draw_sprite_ext(sprite_index,image_index,round(x),round(y-z),1,1,image_angle,c_white,1)  
+    if surface_exists(itemSurf)  
+    {        
+        surface_set_target(itemSurf)
+        draw_clear_alpha(c_white,0)
+            
+        draw_sprite_ext(sprite_index,image_index,20,20,1,1,image_angle,c_black,.3)
+        draw_sprite_ext(sprite_index,image_index,20,20,1,1,image_angle,c_white,1)  
+        surface_reset_target()
+    }
+    else
+    {
+        itemSurf = surface_create(40,40)
+    }
+    draw_surface_ext(itemSurf,round(x-20),round(y-20-z),1,1,0,c_white,1)
+    
+    if global.surfX2 != 0
+    {
+        //Draw Block
+        if surface_exists(global.blockSurf)
+        {
+            surface_set_target(global.blockSurf)
+            draw_surface(itemSurf,round(x)-20-global.surfX1,round(y-z)-20-global.surfY1)      
+            surface_reset_target()
+        }
+        
+        //Draw Reflection
+        if surface_exists(global.reflectSurf)
+        {
+            surface_set_target(global.reflectSurf)
+            draw_surface_ext(itemSurf,round(x)-20-global.surfX1,round(y+z)-20-global.surfY1,1,1,0,c_white,1)
+            surface_reset_target()
+        }
+    }
 }

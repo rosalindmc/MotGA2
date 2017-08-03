@@ -12,6 +12,10 @@
     
     room_height = sizeY*metre
     room_width = sizeX*metre
+    global.surfX1 = room_width
+    global.surfY1 = room_height
+    global.surfX2 = 0
+    global.surfY2 = 0
     
     challenge = global.currNode.challenge
     
@@ -230,6 +234,10 @@ while(current.pathParent != noone)
     current.pathParent.rWeight = 0.5
 
     current.pathParent.isRiver = true
+    global.surfX1 = min(global.surfX1,current.pathParent.x-8)
+    global.surfY1 = min(global.surfY1,current.pathParent.y-8)
+    global.surfX2 = max(global.surfX2,current.pathParent.x+8)
+    global.surfY2 = max(global.surfY2,current.pathParent.y+8)
     current = current.pathParent
 }
 

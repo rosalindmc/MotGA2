@@ -41,6 +41,8 @@
       <sprite>sprites\spr_road</sprite>
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_grass</sprite>
+      <sprite>sprites\spr_sun</sprite>
+      <sprite>sprites\spr_clouds</sprite>
     </sprites>
     <sprite>sprites\spr_slash</sprite>
     <sprite>sprites\spr_stab</sprite>
@@ -171,6 +173,9 @@
       <script>scripts\threatControl.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shd_ripple.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_dmg</font>
     <font>fonts\fnt_dmgHuge</font>

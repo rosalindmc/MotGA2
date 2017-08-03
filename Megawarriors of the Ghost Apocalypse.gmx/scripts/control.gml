@@ -10,6 +10,14 @@ global.timeMult = 1
 enumerators();
 global.decalSurf = -1
 
+//Shaders and Surfaces
+uTime = shader_get_uniform(shd_ripple,"Time")
+shader_set_uniform_f(uTime,current_time/1000)
+global.reflectSurf = -4
+global.finalReflectSurf = -4
+global.blockSurf = -4
+global.maskSurf = -4
+
 //The spacing of the poi stuff
 global.poiSpacing = 8
 
@@ -232,6 +240,59 @@ else
     surface_reset_target()
 }
 
+//Water Reflections
+if global.surfX2 != 0
+{
+  
+    //Reflect Surface
+    if surface_exists(global.reflectSurf)
+    {
+        surface_set_target(global.reflectSurf)
+        
+        //Draw sky
+        draw_clear_alpha(make_colour_rgb(150,240,255),0)
+        draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.surfX1,view_yview+(view_hview*.75)-global.surfY1)
+        draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.surfX1,view_yview+(view_hview/2)-global.surfY1)
+        surface_reset_target()
+    }
+    else
+    {
+        global.reflectSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
+    }
+    
+    //Block Surface
+    if surface_exists(global.blockSurf)
+    {
+        surface_set_target(global.blockSurf)
+        draw_clear_alpha(c_white,0)
+        surface_reset_target()
+    }
+    else
+    {
+        global.blockSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
+    }
+    
+    //Mask Surface
+    if !surface_exists(global.maskSurf)
+    {
+        global.maskSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
+        
+        surface_set_target(global.maskSurf)
+        draw_clear_alpha(c_white,1)
+        draw_set_blend_mode(bm_subtract)
+        with(obj_tile)
+        {
+            if isRiver = true
+            {
+                draw_sprite(spr_tile,0,x-global.surfX1,y-global.surfY1)
+            }
+        }
+        surface_reset_target()
+        draw_set_blend_mode(bm_normal)
+    }
+}
+
+
 
     
 /*Draw Backdrops
@@ -239,6 +300,41 @@ draw_sprite(spr_backdrop,0,
 view_xview[]+(view_wview[]/2)+(480*(.5-(x/room_width))),
 view_yview[]+(view_hview[]/2)+(270*(.5-(y/room_height))))
 
+
+#define controlDraw
+//Combine the surfaces    
+if surface_exists(global.reflectSurf)
+{
+    if !surface_exists(global.finalReflectSurf)
+    {
+        global.finalReflectSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)     
+    }
+    shader_set(shd_ripple)
+    shader_set_uniform_f(uTime,current_time/1000)
+    surface_set_target(global.finalReflectSurf)
+    draw_clear_alpha(make_colour_rgb(150,240,255),0)
+    draw_surface(global.reflectSurf,0,0)
+    shader_reset()
+    
+    draw_set_colour_write_enable(false,false,false,true)
+    draw_set_blend_mode(bm_subtract)
+    if surface_exists(global.maskSurf)
+    {
+        draw_surface(global.maskSurf,0,0)
+    }
+    
+    if surface_exists(global.blockSurf)
+    {
+        draw_surface(global.blockSurf,0,0)   
+    }
+    draw_set_blend_mode(bm_normal)
+    draw_set_colour_write_enable(true,true,true,true)
+    surface_reset_target()
+    
+    draw_set_alpha(.5)
+    draw_surface(global.finalReflectSurf,global.surfX1,global.surfY1)
+    draw_set_alpha(1)
+}
 
 #define controlDrawHUD
 //Draw Interact Tooltip

@@ -418,6 +418,26 @@ if player = true
 //Draw Surface
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)
 
+if global.surfX2 != 0
+{
+    //Draw Block
+    if surface_exists(global.blockSurf)
+    {
+        surface_set_target(global.blockSurf)
+        draw_surface(charSurf,round(x-(charSurfSize*.5))-global.surfX1,round(y-(charSurfSize*.75))-global.surfY1-z)   
+        draw_sprite(spr_shadow,0,round(x)-global.surfX1,round(y)-global.surfY1)     
+        surface_reset_target()
+    }
+    
+    //Draw Reflection
+    if surface_exists(global.reflectSurf)
+    {
+        surface_set_target(global.reflectSurf)
+        draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.surfX1,round(y+(charSurfSize*.75))-global.surfY1-z,1,-1,0,c_white,1)
+        surface_reset_target()
+    }
+}
+
 smallHealthBar()
 
 //draw_text(x,y+10,string(floor(hspd))+string('m'))
