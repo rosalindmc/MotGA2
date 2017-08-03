@@ -489,8 +489,6 @@ with(obj_tile){
     weight = choose(2,2,2,2,2,2,3,3,6,7,8,8)
     rWeight = choose(1,1,2,2,3,3,4)
     g = 0
-    gridX = x
-    gridY = y
     isPath = false
     isRiver = false
     hasPoi = false   
