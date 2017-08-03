@@ -302,11 +302,11 @@ obj_camera.h = targetH
 
 
 #define selectGPTarget
-var closest = 3 * metre;
+var closest = 2 * metre;
 
 with(obj_char){
     if(!player && !grappled){
-        var dist = point_distance(other.x, other.y, x, y);
+        var dist = point_distance(other.targetX, other.targetY, x, y);
         if (dist < closest){
             closest = dist;
             other.gpTarget = id;
