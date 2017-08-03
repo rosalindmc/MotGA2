@@ -19,6 +19,8 @@ draw_sprite_ext(sprite_index,image_index,round(x),round(y-z),image_xscale,image_
 x = owner.x+lengthdir_x(dist,image_angle)
 y = owner.y+lengthdir_y(dist,image_angle)
 
+isoDepth(-25)
+
 danger -= 1
 animDelay -= 1/global.frameRate
 

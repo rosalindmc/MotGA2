@@ -386,9 +386,15 @@ if (grappled = true){
     if instance_exists(grappler)
     {
         facing = grappler.facing+180
-        x = grappler.handX[2]+round(grappler.x)-(grappler.charSurfSize*.5)+lengthdir_x(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])
+        if x != grappler.handX[2]+round(grappler.x)-(grappler.charSurfSize*.5)+lengthdir_x(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])
+        {
+            hspd = grappler.handX[2]+round(grappler.x)-(grappler.charSurfSize*.5)+lengthdir_x(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])-x
+        }
+        if y != grappler.handY[2]+round(grappler.y)-(grappler.charSurfSize*.5)+lengthdir_y(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])+z
+        {
+            vspd = grappler.handY[2]+round(grappler.y)-(grappler.charSurfSize*.5)+lengthdir_y(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])-y+z
+        }
         z = (grappler.charSurfSize*.75)-round(grappler.bodyY+grappler.handHeight[2]+grappler.z)
-        y = grappler.handY[2]+round(grappler.y)-(grappler.charSurfSize*.5)+lengthdir_y(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])+z
     }
 }
 
@@ -433,7 +439,7 @@ if global.surfX2 != 0
     if surface_exists(global.reflectSurf)
     {
         surface_set_target(global.reflectSurf)
-        draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.surfX1,round(y+(charSurfSize*.75))-global.surfY1-z,1,-1,0,c_white,1)
+        draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.surfX1,round(y+(charSurfSize*.75))-global.surfY1+z,1,-1,0,c_white,1)
         surface_reset_target()
     }
 }

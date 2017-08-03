@@ -26,8 +26,6 @@ if owner != other
 #define hitColliderCollisionTerrain
 
 #define hitColliderDraw
+draw_self()
 
-
-
-//draw this collider
 #define hitColliderStep
