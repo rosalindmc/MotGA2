@@ -27,4 +27,3 @@ spaceY = 7
 #define specCharTemp
 
 #define dungeonTemp
-

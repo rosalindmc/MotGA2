@@ -38,4 +38,3 @@ other.canInv = false
 
 instance_destroy()
 
-

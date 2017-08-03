@@ -9,6 +9,10 @@
     element = global.currNode.element
     sizeX = global.currNode.sizeX
     sizeY = global.currNode.sizeY
+    
+    room_height = sizeY*metre
+    room_width = sizeX*metre
+    
     challenge = global.currNode.challenge
     
     critPoi[] = global.currNode.critPoi     //the type of the critical point of interest

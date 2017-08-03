@@ -152,33 +152,29 @@ case 1:
     
 case 2:
 //go to the pickupable thing
-    targetX = actionTargetId.x;
-    targetY = actionTargetId.y;
-
-    if (point_distance(x,y,actionTargetId.x,actionTargetId.y) < 2*metre){
-        pointInteract = actionTargetId;
-        interact();
-        pointInteract = noone;
-        actionTargetId = noone;
+    if(inventory[0] == noone && instance_exists(actionTargetId)){
+        targetX = actionTargetId.x;
+        targetY = actionTargetId.y;
+    
+        if (point_distance(x,y,actionTargetId.x,actionTargetId.y) < 2*metre){
+            pointInteract = actionTargetId;
+            interact();
+            pointInteract = noone;
+            actionTargetId = noone;
+        }
+        
+        else if (canMove){
+        
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        }
+    
+        break;
     }
-    
-    else if (canMove){
-    
-    var moveT = (movement*moveMult)
-    moveT = moveT/(1+moveDT)
-    
-    hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
-    vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
-    }
-
-    break;
 }
-
-#define actionAttack
-
-#define actionAttackTarget
-
-#define actionPatrol
 
 #define actionChase
 /*
@@ -205,13 +201,17 @@ case 1:
     
 case 2:
 
-    if (canMove){
-    var moveT = (movement*moveMult)
-    moveT = moveT/(1+moveDT)
+    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 1*metre){
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
     
-    hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
-    vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+    }
     
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 2*metre){
+        attackPattern =  attackPowerAttack
     }
 
     targetX = actionTargetId.x
@@ -219,6 +219,12 @@ case 2:
     
     break;
 }
+
+#define actionAttack
+
+#define actionAttackTarget
+
+#define actionPatrol
 
 #define actionChaseAlert
 

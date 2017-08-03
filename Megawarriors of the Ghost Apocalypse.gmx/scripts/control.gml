@@ -68,11 +68,6 @@ with (global.currLevel){
 
     levelInitialize()
     
-    room_height = sizeY*metre
-    room_width = sizeX*metre
-    
-    createChar(500,500,darkSoldier,noone)
-    
 }
 
 

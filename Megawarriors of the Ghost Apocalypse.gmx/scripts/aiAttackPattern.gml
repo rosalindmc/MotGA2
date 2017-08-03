@@ -84,7 +84,7 @@ switch(argument0)
 {
     case 0:
         useItem(1,0)
-        attackDelay = 1.1
+        attackDelay = 1.25
     break
 
     case 1:
@@ -96,3 +96,5 @@ switch(argument0)
         attackReset()
     break
 }
+
+#define attackCombo
