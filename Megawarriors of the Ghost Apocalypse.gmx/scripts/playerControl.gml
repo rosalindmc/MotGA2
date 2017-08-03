@@ -121,15 +121,18 @@ if(!global.padOn){
     targetY = mouse_y
 }
 else{
+    
+    //check if there's an autolocked target
     if(gpTarget == noone){
         targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
         targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
-        
+        //R3 selects an autolock target
         if(gamepad_button_check(0, gp_stickr)){
             selectGPTarget();
         }
     }
     else{
+    
         if (gamepad_axis_value(0, gp_axisrh)>0.5 || gamepad_axis_value(0, gp_axisrh) < -0.5){
             targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
             targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
@@ -149,6 +152,11 @@ else{
         else{
             targetX = gpTarget.x;
             targetY = gpTarget.y;
+        }
+        
+        //check how far away the target is
+        if(point_distance(gpTarget.x, gpTarget.y, x, y) > 10 * metre){
+            gpTarget = noone;
         }
     }
 }
@@ -297,7 +305,7 @@ obj_camera.h = targetH
 var closest = 3 * metre;
 
 with(obj_char){
-    if(!player){
+    if(!player && !grappled){
         var dist = point_distance(other.x, other.y, x, y);
         if (dist < closest){
             closest = dist;
