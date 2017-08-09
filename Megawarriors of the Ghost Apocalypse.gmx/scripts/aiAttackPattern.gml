@@ -145,3 +145,24 @@ if (instance_exists(actionTargetId)){
         break
     }
 }
+#define attackBasic
+throwKey = false
+
+if (instance_exists(actionTargetId)){
+    switch(argument0)
+    {
+        case 0:
+            useItem(1,0)
+            attackDelay = 0.6
+        break
+    
+        case 1:
+            useItem(1,1)
+            attackDelay = 0.35
+        break
+        
+        case 2:
+            attackReset()
+        break
+    }
+}

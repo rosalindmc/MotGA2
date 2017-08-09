@@ -278,9 +278,14 @@ case 2:
     if (actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 3*metre 
                 && ((actionTargetId.stam <= actionTargetId.stamMax-1) 
                 || (actionTargetId.handItem[1] == noone && actionTargetId.handItem[2] == noone))
-                || actionTargetId.staggered){
+                /*|| actionTargetId.staggered*/){
                 
         attackPattern =  choose(attackCombo,attackPowerAttack)
+        lastAttack = global.timer
+    }
+    else if(global.timer >= (lastAttack+10)%30){
+        attackPattern =  attackBasic
+        lastAttack = global.timer
     }
     
     targetX = actionTargetId.x
