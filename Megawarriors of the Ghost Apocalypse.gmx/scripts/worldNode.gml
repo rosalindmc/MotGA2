@@ -31,7 +31,7 @@
 #define nodeGen
 // set up critPods based on challenge
 podPower = choose (0,1,1,1,2,2,3)+challenge //1-7
-podDensity = floor(7/podPower)
+podDensity = random(2)+1
 critPods = podDensity*2
 numPods = critPods*2
 // itemDensity

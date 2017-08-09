@@ -46,6 +46,8 @@ case 'red':
 }
 
 
+
+
 /*
 runs for every npc every x frames based on some AI thought speed variable AND 
         whenever they finish an order

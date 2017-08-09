@@ -67,7 +67,7 @@ case 2:
 //argument0 is the check/set order/run switch
 switch (argument0){
 case 0:
-    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 4*metre /*&& (life < lifeMax/2 || stam < stamMax/2)*/){
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 6*metre /*&& (life < lifeMax/2 || stam < stamMax/2)*/){
         //pathFind to the spot and check if you can get there
         
         return 1;
@@ -90,18 +90,27 @@ case 2:
             attackPattern = attackDodgeStep
             hasDodged = true
         }
-        else if (actionTargetId.stam < actionTargetId.stamMax/2) {
-            attackPattern =  attackPowerAttack
-            
-        }
-        else{
+        else if (point_distance(x,y,actionTargetId.x,actionTargetId.y) < 4*metre){
             var moveT = (movement*moveMult)
             moveT = moveT/(1+moveDT)
+            moveT = moveT/2
             
             if (point_distance(x,y,actionTargetId.x,actionTargetId.y)<3*metre){
             
             hspd = -lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
             vspd = -lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+            
+            }
+        }
+        else{
+            var moveT = (movement*moveMult)
+            moveT = moveT/(1+moveDT)
+            moveT = moveT
+            
+            if (point_distance(x,y,actionTargetId.x,actionTargetId.y)>3*metre){
+            
+            hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+            vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
             
             }
         }
@@ -187,12 +196,12 @@ argument0 is the check/set order/run switch
 */
 switch (argument0){
 case 0:
-    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 10*metre){
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 8*metre){
         //pathFind to the spot and check if you can get there
         return 1;
     }
     else{
-        actionTargetId = global.pc
+        //actionTargetId = global.pc
         
         return 0;           
     }
@@ -205,17 +214,13 @@ case 1:
     
 case 2:
 
-    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 1*metre){
+    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
         var moveT = (movement*moveMult)
         moveT = moveT/(1+moveDT)
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
     
-    }
-    
-    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 3*metre){
-        attackPattern =  choose(attackCombo,attackPowerAttack)
     }
 
     targetX = actionTargetId.x
@@ -224,7 +229,65 @@ case 2:
     break;
 }
 
-#define actionAttack
+#define actionAttackCareful
+/*
+argument0 is the check/set order/run switch
+
+*/
+switch (argument0){
+case 0:
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 5*metre && stam == stamMax && staggered != true){
+        //pathFind to the spot and check if you can get there
+        return 1;
+    }
+    else if (point_distance(x,y,global.pc.x,global.pc.y)<10*metre){
+        actionTargetId = global.pc
+        return 0;
+    }
+    else{        
+        return 0;           
+    }
+    
+    break;
+    
+case 1:
+    currentAction = actionAttackCareful
+    break;
+    
+case 2:
+
+    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+    
+    }
+    else if (point_distance(x,y,actionTargetId.x,actionTargetId.y)<2.5*metre){
+            
+            var moveT = (movement*moveMult)
+            moveT = moveT/(1+moveDT)      
+            
+            
+            hspd = -lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+            vspd = -lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+            
+    }
+    
+    if (actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 3*metre 
+                && ((actionTargetId.stam <= actionTargetId.stamMax-1) 
+                || (actionTargetId.handItem[1] == noone && actionTargetId.handItem[2] == noone))
+                || actionTargetId.staggered){
+                
+        attackPattern =  choose(attackCombo,attackPowerAttack)
+    }
+    
+    targetX = actionTargetId.x
+    targetY = actionTargetId.y   
+    
+    break;
+}
 
 #define actionAttackTarget
 

@@ -24,6 +24,14 @@ if argument3 = noone
     ii.useType = pickUp
     i.interactId = ii
 }
+else{
+    ii = instance_create(i.x,i.y,obj_interactable)
+    ii.name = i.name
+    ii.owner = i
+    with(ii){
+        pickUp(other.argument3)
+    }
+}
 
 #define itemInitialize
 itemSurf = surface_create(40,40)
