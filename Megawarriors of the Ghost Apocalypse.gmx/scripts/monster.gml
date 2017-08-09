@@ -6,7 +6,7 @@ controlScript = aiControl
 player = false
 controlScript = aiControl
 
-behaviorType = testBehavior
+behaviorType = carefulSoldier
 
 life = 5
 lifeMax = 5
@@ -28,5 +28,7 @@ responseStart = global.timer
 canRoll = false
 
 subordinate[0] = noone
+
+i = createItem(x,y,sword,id)
 
 script_execute(behaviorType)
