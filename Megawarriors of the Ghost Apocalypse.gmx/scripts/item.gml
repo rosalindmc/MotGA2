@@ -76,15 +76,15 @@ if owner = noone or hand != 0
         surface_set_target(itemSurf)
         draw_clear_alpha(c_white,0)
             
-        draw_sprite_ext(sprite_index,image_index,20,20,1,1,image_angle,c_black,.3)
-        draw_sprite_ext(sprite_index,image_index,20,20,1,1,image_angle,c_white,1)  
+        draw_sprite_ext(sprite_index,image_index,30,30,1,1,image_angle,c_black,.3)
+        draw_sprite_ext(sprite_index,image_index,30,30,1,1,image_angle,c_white,1)  
         surface_reset_target()
     }
     else
     {
-        itemSurf = surface_create(40,40)
+        itemSurf = surface_create(60,60)
     }
-    draw_surface_ext(itemSurf,round(x-20),round(y-20-z),1,1,0,c_white,1)
+    draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)
     
     if global.surfX2 != 0
     {
@@ -92,7 +92,7 @@ if owner = noone or hand != 0
         if surface_exists(global.blockSurf)
         {
             surface_set_target(global.blockSurf)
-            draw_surface(itemSurf,round(x)-20-global.surfX1,round(y-z)-20-global.surfY1)      
+            draw_surface(itemSurf,round(x)-30-global.surfX1,round(y-z)-30-global.surfY1)      
             surface_reset_target()
         }
         
@@ -100,7 +100,7 @@ if owner = noone or hand != 0
         if surface_exists(global.reflectSurf)
         {
             surface_set_target(global.reflectSurf)
-            draw_surface_ext(itemSurf,round(x)-20-global.surfX1,round(y+z)-20-global.surfY1,1,1,0,c_white,1)
+            draw_surface_ext(itemSurf,round(x)-30-global.surfX1,round(y+z)-30-global.surfY1,1,1,0,c_white,1)
             surface_reset_target()
         }
     }

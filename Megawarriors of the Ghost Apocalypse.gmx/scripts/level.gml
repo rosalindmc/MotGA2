@@ -106,10 +106,12 @@
 //start the threat timer for the level
 threatInitialize();
 
-//replace later
-repeat(10)
+//replace later -> weapon spawn center
+repeat(4)
 {
-    createItem(random(100),random(100),sword,noone)
+    createItem(random(room_width),random(room_height),sword,noone)
+    createItem(random(room_width),random(room_height),khopesh,noone)
+    createItem(random(room_width),random(room_height),pike,noone)
 }
 
 //Temp assign tile information

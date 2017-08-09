@@ -83,6 +83,7 @@
       <sprites name="Weapons">
         <sprite>sprites\spr_sword</sprite>
         <sprite>sprites\spr_khopesh</sprite>
+        <sprite>sprites\spr_pike</sprite>
       </sprites>
     </sprites>
     <sprites name="Particles">
