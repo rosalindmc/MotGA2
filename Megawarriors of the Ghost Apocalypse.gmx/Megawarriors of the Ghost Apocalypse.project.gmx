@@ -79,6 +79,7 @@
     <sprites name="Items">
       <sprites name="Weapons">
         <sprite>sprites\spr_sword</sprite>
+        <sprite>sprites\spr_khopesh</sprite>
       </sprites>
     </sprites>
     <sprites name="Particles">
