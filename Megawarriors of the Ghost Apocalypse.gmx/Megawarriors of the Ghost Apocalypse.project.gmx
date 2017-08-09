@@ -34,6 +34,9 @@
       <sprite>sprites\spr_health</sprite>
     </sprites>
     <sprites name="Environment">
+      <sprite>sprites\spr_shore</sprite>
+      <sprite>sprites\spr_edge</sprite>
+      <sprite>sprites\spr_wave</sprite>
       <sprite>sprites\spr_water</sprite>
       <sprite>sprites\spr_tile</sprite>
       <sprite>sprites\spr_bridge</sprite>

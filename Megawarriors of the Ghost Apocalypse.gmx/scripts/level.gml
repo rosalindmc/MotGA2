@@ -119,12 +119,48 @@ with(obj_tile)
     {
         sprite_index = spr_water
         depth -= 2
+        z = -4
+        
+        //Check adjacency
+        if gridY > 0
+        {
+            if other.floorLayout[gridX,gridY-1].isRiver = false
+            {
+            wNBorder = true
+            }
+        }
+
+        if gridY < other.sizeY-1
+        {
+            if other.floorLayout[gridX,gridY+1].isRiver = false
+            {
+            wSBorder = true
+            }
+        }
+        
+        if gridX > 0
+        {
+            if other.floorLayout[gridX-1,gridY].isRiver = false
+            {
+            wWBorder = true
+            }
+        }
+        
+        if gridX < other.sizeX-1
+        {
+            if other.floorLayout[gridX+1,gridY].isRiver = false
+            {
+            wEBorder = true
+            }
+        }        
+        
     }
     else if isPath = true
     {
         sprite_index = spr_road
-        xScatter = choose(-1,0,0,1)
-        yScatter = choose(-1,0,0,1)
+        xScatter = 0
+        yScatter = 0
+        image_index = 1+irandom(2)
         image_xscale = choose(-1,1)
         image_yscale = choose(-1,1)
         image_angle = choose(0,90,180,270)

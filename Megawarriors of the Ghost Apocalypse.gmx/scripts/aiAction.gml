@@ -243,5 +243,3 @@ case 2:
 #define actionOrderAttack
 
 #define actionOrderFormation
-
-#define actionOrderGuard

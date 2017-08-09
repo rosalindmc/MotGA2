@@ -284,7 +284,13 @@ if global.surfX2 != 0
         {
             if isRiver = true
             {
-                draw_sprite(spr_tile,0,x-global.surfX1,y-global.surfY1)
+                draw_sprite(spr_tile,0,x-global.surfX1,y-z-global.surfY1)
+                if wSBorder = true
+                {
+                    draw_set_blend_mode(bm_add)
+                    draw_sprite(spr_tile,0,x-global.surfX1,y+metre-global.surfY1)
+                    draw_set_blend_mode(bm_subtract)
+                }
             }
         }
         surface_reset_target()
