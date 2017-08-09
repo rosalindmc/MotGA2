@@ -25,8 +25,7 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_mask</sprite>
-    <sprite>sprites\spr_sword</sprite>
+    <sprite>sprites\spr_none</sprite>
     <sprites name="HUD">
       <sprite>sprites\spr_reticle2</sprite>
       <sprite>sprites\spr_reticle</sprite>
@@ -44,15 +43,9 @@
       <sprite>sprites\spr_sun</sprite>
       <sprite>sprites\spr_clouds</sprite>
     </sprites>
-    <sprite>sprites\spr_slash</sprite>
-    <sprite>sprites\spr_stab</sprite>
-    <sprite>sprites\spr_shadow</sprite>
-    <sprite>sprites\spr_sheen</sprite>
-    <sprite>sprites\spr_none</sprite>
-    <sprite>sprites\spr_dust</sprite>
-    <sprite>sprites\spr_blood</sprite>
     <sprites name="Character">
       <sprites name="Model">
+        <sprite>sprites\spr_shadow</sprite>
         <sprite>sprites\spr_humanoidArms</sprite>
         <sprite>sprites\spr_humanoidChest</sprite>
         <sprite>sprites\spr_humanoidHead</sprite>
@@ -79,9 +72,28 @@
         <sprite>sprites\spr_cWarriorM</sprite>
         <sprite>sprites\spr_sFighter</sprite>
       </sprites>
+      <sprites name="Hair">
+        <sprite>sprites\spr_longHair</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\spr_bloodSplat</sprite>
-    <sprite>sprites\spr_longHair</sprite>
+    <sprites name="Items">
+      <sprites name="Weapons">
+        <sprite>sprites\spr_sword</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Particles">
+      <sprite>sprites\spr_dust</sprite>
+      <sprite>sprites\spr_blood</sprite>
+      <sprite>sprites\spr_sheen</sprite>
+      <sprite>sprites\spr_bloodSplat</sprite>
+    </sprites>
+    <sprites name="Mask">
+      <sprite>sprites\spr_mask</sprite>
+    </sprites>
+    <sprites name="Hitbox">
+      <sprite>sprites\spr_slash</sprite>
+      <sprite>sprites\spr_stab</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\temp_bg</background>
