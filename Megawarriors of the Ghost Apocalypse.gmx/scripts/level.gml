@@ -112,6 +112,30 @@ repeat(10)
     createItem(random(100),random(100),sword,noone)
 }
 
+//Temp assign tile information
+with(obj_tile)
+{
+    if isRiver = true
+    {
+        sprite_index = spr_water
+        depth -= 2
+    }
+    else if isPath = true
+    {
+        sprite_index = spr_road
+        xScatter = choose(-1,0,0,1)
+        yScatter = choose(-1,0,0,1)
+        image_xscale = choose(-1,1)
+        image_yscale = choose(-1,1)
+        image_angle = choose(0,90,180,270)
+        depth -= 1
+    }
+    else
+    {
+        sprite_index = spr_tile   
+    }
+}  
+
 
 #define roadMaker
 wipeTiles()

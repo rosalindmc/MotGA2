@@ -102,9 +102,6 @@ riverGen()
 
 
 
-
-
-
 #define podGen
 
 critPathTiles = ds_list_create()
