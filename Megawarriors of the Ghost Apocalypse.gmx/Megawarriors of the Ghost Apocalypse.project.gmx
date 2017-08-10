@@ -91,7 +91,8 @@
         <sprite>sprites\spr_khopesh</sprite>
         <sprite>sprites\spr_pike</sprite>
       </sprites>
-      <sprite>sprites\spr_potion</sprite>
+      <sprite>sprites\spr_potionBlue</sprite>
+      <sprite>sprites\spr_potionRed</sprite>
     </sprites>
     <sprites name="Particles">
       <sprite>sprites\spr_dust</sprite>

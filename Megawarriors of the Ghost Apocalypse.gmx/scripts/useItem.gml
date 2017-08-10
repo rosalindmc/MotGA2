@@ -163,3 +163,4 @@ if fumble = false
         createParticle(owner.x+lengthdir_x(length+owner.handDist[argument0],image_angle),owner.y+lengthdir_y(length+owner.handDist[argument0],image_angle),z,1,partSheen,0)
     }
 }
+#define drinkPotion
