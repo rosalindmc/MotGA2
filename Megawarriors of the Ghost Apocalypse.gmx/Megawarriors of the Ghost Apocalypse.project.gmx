@@ -45,6 +45,7 @@
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_sun</sprite>
       <sprite>sprites\spr_clouds</sprite>
+      <sprite>sprites\spr_blueGrass</sprite>
     </sprites>
     <sprites name="Character">
       <sprites name="Model">

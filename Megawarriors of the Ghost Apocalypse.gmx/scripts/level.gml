@@ -113,6 +113,12 @@ repeat(4)
     createItem(random(room_width),random(room_height),khopesh,noone)
     createItem(random(room_width),random(room_height),pike,noone)
 }
+/*replace later -> grass spawn
+repeat(50)
+{
+    
+}
+*/
 
 //Temp assign tile information
 with(obj_tile)
