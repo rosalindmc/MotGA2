@@ -530,8 +530,8 @@ case 2:
         actionTargetY = y + tempY
         
         tempHold = tempX
-        tempX = 1*metre * tempY
-        tempY = -1*metre * tempHold
+        tempX = 1.5*metre * tempY
+        tempY = -1.5*metre * tempHold
         
         
         
