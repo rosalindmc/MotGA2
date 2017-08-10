@@ -41,6 +41,7 @@
       <sprite>sprites\spr_tile</sprite>
       <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_road</sprite>
+      <sprite>sprites\spr_roadOld</sprite>
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_sun</sprite>

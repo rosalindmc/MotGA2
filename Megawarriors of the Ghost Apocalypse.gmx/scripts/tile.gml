@@ -14,6 +14,7 @@ x = (gridX*metre)+(metre/2)
 y = (gridY*metre)+(metre/2)
 isPath = false
 isRiver = false
+isWater = false
 hasPoi = false
 wNBorder = false
 wEBorder = false
@@ -27,9 +28,10 @@ image_speed = 0
 image_index = irandom(20)
 
 #define tileDraw
-if isRiver = true
+if isWater = true
 {
-    draw_sprite_part(sprite_index,0,0,0,16,16+(wz*wSBorder),x-8,y-8-wz)
+    draw_sprite_part(spr_tile,image_index,0,0,16,16+(z*wSBorder),x-8,y-8-z)
+    draw_sprite_part(sprite_index,image_index+floor(global.timer*5),0,0,16,16+(wz*wSBorder),x-8,y-8-wz)
     
     if wNBorder = true
     {
