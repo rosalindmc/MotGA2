@@ -171,7 +171,7 @@ switch(argument0)
     meleePow = 1
     meleeRate = 1.2
     meleeImpact = 7
-    meleeLunge = 4
+    meleeLunge = 2
     meleeSlow = .5
     meleeSize = 1
     meleeCost = 1

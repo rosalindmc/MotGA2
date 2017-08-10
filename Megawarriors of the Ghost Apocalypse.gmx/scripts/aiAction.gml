@@ -229,6 +229,76 @@ case 2:
     break;
 }
 
+#define actionAttackCorral
+/*
+argument0 is the check/set order/run switch
+
+*/
+switch (argument0){
+case 0:
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 5*metre && stam == stamMax && staggered != true){
+        //pathFind to the spot and check if you can get there
+        return 1;
+    }
+    else if (point_distance(x,y,global.pc.x,global.pc.y)<10*metre){
+        actionTargetId = global.pc
+        return 0;
+    }
+    else{        
+        return 0;           
+    }
+    
+    break;
+    
+case 1:
+    currentAction = actionAttackCareful
+    break;
+    
+case 2:
+
+    if(global.timer <= (lastAttack+5)%30){
+        
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        moveT = moveT/4
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+    }
+    else if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+    
+    }
+    else if (point_distance(x,y,actionTargetId.x,actionTargetId.y)<2.5*metre){
+            
+        attackPattern =  attackJab
+        lastAttack = global.timer
+        
+    }
+    
+    if (actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 3*metre 
+                && ((actionTargetId.stam <= actionTargetId.stamMax-1) 
+                || (actionTargetId.handItem[1] == noone && actionTargetId.handItem[2] == noone))
+                /*|| actionTargetId.staggered*/){
+                
+        attackPattern =  choose(attackCombo,attackPowerAttack)
+        lastAttack = global.timer
+    }
+    else if(global.timer >= (lastAttack+10)%30){
+        attackPattern =  attackBasic
+        lastAttack = global.timer
+    }
+    
+    targetX = actionTargetId.x
+    targetY = actionTargetId.y   
+    
+    break;
+}
+
 #define actionAttackCareful
 /*
 argument0 is the check/set order/run switch
@@ -306,7 +376,7 @@ case 2:
 
 #define actionSearch
 
-#define actionFollowOrders
+#define actionFollowOrder
 
 #define actionOrderAttack
 

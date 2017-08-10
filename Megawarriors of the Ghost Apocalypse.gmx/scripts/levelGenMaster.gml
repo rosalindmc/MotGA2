@@ -138,13 +138,13 @@ for(i = 0; i<critPods;i++){
 for(i = critPods; i<critPods+numPods;i++){
     if !ds_list_empty(openTiles)
     {
-    rando = irandom(ds_list_size(openTiles)-1);
-    podList[k] = instance_create(0,0,obj_pod)
-    idTemp = ds_list_find_value(openTiles, rando)
-    podList[k].gridX = idTemp.gridX;
-    podList[k].gridY = idTemp.gridY;
-    ds_list_delete(openTiles, rando);
-    k++
+        rando = irandom(ds_list_size(openTiles)-1);
+        podList[k] = instance_create(0,0,obj_pod)
+        idTemp = ds_list_find_value(openTiles, rando)
+        podList[k].gridX = idTemp.gridX;
+        podList[k].gridY = idTemp.gridY;
+        ds_list_delete(openTiles, rando);
+        k++
     }
 }
 
