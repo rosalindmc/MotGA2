@@ -121,6 +121,7 @@ with(obj_tile)
     {
         sprite_index = spr_water
         depth -= 2
+        wz = -2
         z = -4
         
         //Check adjacency

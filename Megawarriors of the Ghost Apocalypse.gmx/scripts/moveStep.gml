@@ -1,4 +1,7 @@
 #define moveStep
+floorID = obj_level.floorLayout[median(0,floor(x/metre),obj_level.sizeX-1),median(0,floor(y/metre),obj_level.sizeY-1)]
+floorZ = floorID.z
+
 //Gravity
 if z+max(0,zspd) > floorZ
 {
@@ -52,6 +55,9 @@ else
     moving = false
 }
 
+//Bound to map
+x = median(0,x,room_width)
+y = median(0,y,room_height)
 
 #define moveStepObject
 //Gravity
