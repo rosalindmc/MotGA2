@@ -16,7 +16,7 @@ case 2:
     break;
 }
 
-#define actionMove
+#define actionMoveRand
 /*
 argument0 is the check/set order/run switch
 
@@ -41,7 +41,7 @@ case 0:
     break;
     
 case 1:
-    currentAction = actionMove
+    currentAction = actionMoveRand
     break;
     
 case 2:
@@ -251,21 +251,12 @@ case 0:
     break;
     
 case 1:
-    currentAction = actionAttackCareful
+    currentAction = actionAttackCorral
     break;
     
 case 2:
 
-    if(global.timer <= (lastAttack+5)%30){
-        
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
-        moveT = moveT/4
-        
-        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
-        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
-    }
-    else if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
+    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
         var moveT = (movement*moveMult)
         moveT = moveT/(1+moveDT)
         
@@ -278,6 +269,15 @@ case 2:
         attackPattern =  attackJab
         lastAttack = global.timer
         
+    }
+    else{
+        
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        moveT = moveT/4
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
     }
     
     if (actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 3*metre 
@@ -381,3 +381,200 @@ case 2:
 #define actionOrderAttack
 
 #define actionOrderFormation
+
+#define actionAttackRanged
+/*
+argument0 is the check/set order/run switch
+
+*/
+switch (argument0){
+case 0:
+    
+    actionTargetId = global.pc
+    
+    if(stam == stamMax && staggered != true && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 5*metre){
+        //pathFind to the spot and check if you can get there
+        return 1;
+    }
+    else{        
+        return 0;           
+    }
+    
+    break;
+    
+case 1:
+    currentAction = actionAttackRanged
+    break;
+    
+case 2:
+
+    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 5*metre){
+        moveMult = 0.5
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        moveMult = 1.0
+        
+        hspd = -lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = -lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+    
+    }
+    
+    if(global.timer >= (lastAttack+10)%30){
+        attackPattern =  attackPowerAttack
+        lastAttack = global.timer
+    }
+    
+    targetX = actionTargetId.x
+    targetY = actionTargetId.y   
+    
+    break;
+}
+
+#define actionFlee
+/*
+argument0 is the check/set order/run switch
+
+*/
+switch (argument0){
+case 0:
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 5*metre){
+        //pathFind to the spot and check if you can get there
+        return 1;
+    }
+    else{        
+        return 0;           
+    }
+    
+    break;
+    
+case 1:
+    currentAction = actionFlee
+    break;
+    
+case 2:
+
+    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 10*metre){
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        
+        hspd = -lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+        vspd = -lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
+    }
+    
+    targetX = x+(actionTargetId.x-x)
+    targetY = y+(actionTargetId.y-y)   
+    
+    break;
+}
+
+#define actionJoinFormation
+/*
+argument0 is the check/set order/run switch
+
+*/
+switch (argument0){
+case 0:
+
+
+    if (inFormation == true){
+        inFormation = false
+        return 0;        
+    }
+    else if (leader != noone){
+        return 1;
+    }
+    else if (leader == noone){
+    
+        with(obj_char){
+            if (joinsFormation == true/* && point_distance(x,y,other.x,other.y) < 10*metre*/){
+                if (leader == noone){
+                    other.leader = id
+                    if (subordinate [0] == noone){
+                        subordinate[0] = other
+                    }
+                    else{
+                        subordinate[array_length_1d(subordinate)] = other
+                    }
+                    return 0;
+                }
+                else{
+                    other.leader = leader
+                    leader.subordinate[array_length_1d(leader.subordinate)] = other
+                    return 0;
+                }
+            }
+        }
+        
+        
+    }
+    else{        
+        return 0;           
+    }
+    
+    break;
+    
+case 1:
+    currentAction = actionJoinFormation
+    
+    actionTargetId = global.pc
+    
+    break;
+    
+case 2:
+    if (subordinate[0] != noone){
+        var tempX = actionTargetId.x - x
+        var tempY = actionTargetId.y - y
+        var tempHold
+        
+        tempX = tempX/point_distance(x,y,actionTargetId.x,actionTargetId.y)
+        tempY = tempY/point_distance(x,y,actionTargetId.x,actionTargetId.y)
+        
+        tempHold = tempX
+        tempX = 2 * tempY
+        tempY = -2 * tempHold
+        
+        actionTargetX = x
+        actionTargetY = y
+        
+        for (i = 0; i< array_length_1d(subordinate); i++){
+            
+            if (i = 0){
+                subordinate[i].actionTargetX = x + tempX
+                subordinate[i].actionTargetY = y + tempY        
+            }
+            else if (i = 1){
+                subordinate[i].actionTargetX = x - tempX
+                subordinate[i].actionTargetY = y - tempY 
+            }
+            else if (i % 2 = 0){
+                subordinate[i].actionTargetX = subordinate[i-2].actionTargetX + tempX
+                subordinate[i].actionTargetY = subordinate[i-2].actionTargetY + tempY
+            }
+            else if (i % 2 = 1){
+                subordinate[i].actionTargetX = subordinate[i-2].actionTargetX - tempX
+                subordinate[i].actionTargetY = subordinate[i-2].actionTargetY - tempY
+            }
+        
+        }
+        
+    }
+    
+    if (canMove && point_distance(x,y,actionTargetX,actionTargetY) > 0.5*metre){
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetX,actionTargetY))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetX,actionTargetY))
+    }
+    else{
+        inFormation = true
+        
+        aiMaster()
+    }
+    
+    
+    targetX = actionTargetId.x
+    targetY = actionTargetId.y   
+    
+    break;
+}
