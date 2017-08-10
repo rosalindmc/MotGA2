@@ -237,7 +237,7 @@ switch(argument0)
     case 0:     //Initialize 
     //Core
     name = choose('Sword','Item','Steve','Harvy','Todd','Howard')
-    sprite_index = spr_khopesh
+    sprite_index = spr_largeCrate
     useScript[1] = melee
     useScript[2] = melee
     
@@ -309,6 +309,7 @@ switch(argument0)
     meleeLungeMult[4] = 0
     break
 }
+
 #define potionTO_BE_MOVED
 switch(argument0)
 {
