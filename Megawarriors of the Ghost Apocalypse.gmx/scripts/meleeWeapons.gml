@@ -315,7 +315,7 @@ switch(argument0)
     case 0:     //Initialize 
     //Core
     name = 'Best Potion Ever'
-    sprite_index = spr_potionBlue
+    sprite_index = choose(spr_potionBlue, spr_potionRed)
     useScript[1] = drinkPotion
     useScript[2] = drinkPotion
     

@@ -164,3 +164,16 @@ if fumble = false
     }
 }
 #define drinkPotion
+switch(argument1){
+case 0:
+    //make a gulping noise
+break;
+
+case 1:
+    global.pc.life += 3;
+    with(handItem[argument0]){
+        instance_destroy();
+    }
+    handItem[argument0] = noone;
+break;
+}
