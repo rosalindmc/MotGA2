@@ -379,5 +379,3 @@ case 2:
 #define actionFollowOrder
 
 #define actionOrderAttack
-
-#define actionOrderFormation
