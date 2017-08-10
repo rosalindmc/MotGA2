@@ -167,9 +167,8 @@ with(obj_tile)
     else if isPath = true
     {
         sprite_index = spr_road
-        xScatter = 0
-        yScatter = 0
-        image_index = 1+irandom(2)
+        xScatter = choose(0,0,0,-1,1)
+        yScatter = choose(0,0,0,-1,1)
         image_xscale = choose(-1,1)
         image_yscale = choose(-1,1)
         image_angle = choose(0,90,180,270)
