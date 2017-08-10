@@ -164,7 +164,7 @@ switch(argument0)
     
     //Item Stats
     length = 49
-    holdPoint = 19
+    holdPoint = 0
     gwPoint = 4
     
     //Weapon Stats

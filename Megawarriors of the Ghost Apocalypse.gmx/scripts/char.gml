@@ -405,6 +405,7 @@ if (grappled = true){
 #define charDestroy
 //Clear the drawing surface
 surface_free(charSurf)
+aiDestroy()
 
 #define charDraw
 //Draw Character
