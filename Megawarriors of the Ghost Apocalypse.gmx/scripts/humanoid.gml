@@ -334,7 +334,9 @@ if surface_exists(charSurf)
     //draw_line(shldrX[1+shldrSwap],shldrY[1+shldrSwap],handX[1+shldrSwap],handY[1+shldrSwap])
     //draw_point(shldrX[1+shldrSwap],shldrY[1+shldrSwap])
     
-    
+    draw_set_blend_mode(bm_subtract)
+    draw_rectangle(0,round(charSurfSize*.75)+floorID.wz+1,charSurfSize,round(charSurfSize*.75)+1,false)
+    draw_set_blend_mode(bm_normal)
     surface_reset_target()
 }
 else
@@ -818,7 +820,15 @@ switch(argument0)
 #define footStep
 //Check floor and make relvent sound+particles
 
-createParticle(x,y,z,1,partDust,hFacing)
+//Temp replace later
+if floorID.isRiver = false
+{
+    createParticle(x,y,z,1,partDust,hFacing)
+}
+else
+{
+    createParticle(x,y-1,floorID.wz+5,5+irandom(5),partSplash,0)
+}
 
 if player = true
 {

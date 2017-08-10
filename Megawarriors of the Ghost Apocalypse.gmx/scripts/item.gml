@@ -34,7 +34,7 @@ else{
 }
 
 #define itemInitialize
-itemSurf = surface_create(40,40)
+itemSurf = surface_create(60,60)
 hand = 0            //0 = inInventory, 1/2 equal corresponding hand, 3 is held in both hands
 owner = noone       //Who currently owns/wields this item
 
@@ -61,7 +61,7 @@ if owner != noone
         {
             image_angle = (round(owner.facing/15)*15)+owner.itemRot[hand]+owner.bodyRot
             x = owner.handX[hand]+round(owner.x)-(owner.charSurfSize*.5)+lengthdir_x(holdPoint,image_angle)
-            z = (owner.charSurfSize*.75)-round(owner.bodyY+owner.handHeight[hand]+owner.z)
+            z = (owner.charSurfSize*.75)-round(owner.bodyY+owner.handHeight[hand])+owner.z
             y = owner.handY[hand]+round(owner.y)-(owner.charSurfSize*.75)+lengthdir_y(holdPoint,image_angle)+z
             image_index = 0
             isoDepth(0)
@@ -113,3 +113,6 @@ if owner = noone or hand != 0
         }
     }
 }
+
+#define itemDestroy
+surface_free(itemSurf)
