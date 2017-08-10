@@ -50,6 +50,7 @@
       <sprite>sprites\spr_standingLamp</sprite>
       <sprite>sprites\spr_standingDecorativeLamp</sprite>
       <sprite>sprites\spr_standingEvilLamp</sprite>
+      <sprite>sprites\spr_justianAltar</sprite>
     </sprites>
     <sprites name="Character">
       <sprites name="Model">
