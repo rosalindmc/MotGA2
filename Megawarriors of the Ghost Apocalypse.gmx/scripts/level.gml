@@ -112,6 +112,7 @@ repeat(4)
     createItem(random(room_width),random(room_height),sword,noone)
     createItem(random(room_width),random(room_height),khopesh,noone)
     createItem(random(room_width),random(room_height),pike,noone)
+    createItem(random(room_width),random(room_height),potionTO_BE_MOVED,noone)//potion is in melee weapon, so move it soon
 }
 /*replace later -> grass spawn
 repeat(50)
@@ -126,14 +127,20 @@ with(obj_tile)
     if isRiver = true
     {
         sprite_index = spr_water
-        depth -= 2
+        depth = -2
         wz = -2
-        z = -4
+        z = -5
+        
+        if isPath = true
+        {
+            sprite_index = spr_bridge
+            z = -3
+        }
         
         //Check adjacency
         if gridY > 0
         {
-            if other.floorLayout[gridX,gridY-1].isRiver = false
+            if other.floorLayout[gridX,gridY-1].isWater = false
             {
             wNBorder = true
             }
@@ -141,7 +148,7 @@ with(obj_tile)
 
         if gridY < other.sizeY-1
         {
-            if other.floorLayout[gridX,gridY+1].isRiver = false
+            if other.floorLayout[gridX,gridY+1].isWater = false
             {
             wSBorder = true
             }
@@ -149,7 +156,7 @@ with(obj_tile)
         
         if gridX > 0
         {
-            if other.floorLayout[gridX-1,gridY].isRiver = false
+            if other.floorLayout[gridX-1,gridY].isWater = false
             {
             wWBorder = true
             }
@@ -157,7 +164,7 @@ with(obj_tile)
         
         if gridX < other.sizeX-1
         {
-            if other.floorLayout[gridX+1,gridY].isRiver = false
+            if other.floorLayout[gridX+1,gridY].isWater = false
             {
             wEBorder = true
             }
@@ -167,15 +174,16 @@ with(obj_tile)
     else if isPath = true
     {
         sprite_index = spr_road
-        xScatter = 0
-        yScatter = 0
-        image_index = 1+irandom(2)
-        image_xscale = choose(-1,1)
-        image_yscale = choose(-1,1)
-        image_angle = choose(0,90,180,270)
-        depth -= 1
+        xScatter = choose(0,0,0,-1,1)
+        yScatter = choose(0,0,0,-1,1)
+        image_xscale = choose(-1.3,1.3)
+        image_yscale = choose(-1.3,1.3)
+        image_angle = random(360)//choose(0,90,180,270)
+        depth = -1
+        wz = 0
+        z = 0
     }
-    else
+    else if isRiver = false
     {
         sprite_index = spr_tile   
     }
@@ -303,6 +311,7 @@ while(current.pathParent != noone)
     current.pathParent.rWeight = 0.5
 
     current.pathParent.isRiver = true
+    current.pathParent.isWater = true
     global.surfX1 = min(global.surfX1,current.pathParent.x-8)
     global.surfY1 = min(global.surfY1,current.pathParent.y-8)
     global.surfX2 = max(global.surfX2,current.pathParent.x+8)

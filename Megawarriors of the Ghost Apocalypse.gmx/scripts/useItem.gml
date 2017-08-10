@@ -163,3 +163,17 @@ if fumble = false
         createParticle(owner.x+lengthdir_x(length+owner.handDist[argument0],image_angle),owner.y+lengthdir_y(length+owner.handDist[argument0],image_angle),z,1,partSheen,0)
     }
 }
+#define drinkPotion
+switch(argument1){
+case 0:
+    //make a gulping noise
+break;
+
+case 1:
+    global.pc.life += 3;
+    with(handItem[argument0]){
+        instance_destroy();
+    }
+    handItem[argument0] = noone;
+break;
+}

@@ -60,9 +60,10 @@ if owner != noone
         if hand != 0
         {
             image_angle = (round(owner.facing/15)*15)+owner.itemRot[hand]+owner.bodyRot
-            x = owner.handX[hand]+round(owner.x)-(owner.charSurfSize*.5)+lengthdir_x(holdPoint,image_angle)
+            image_yscale = owner.meleeSwing[hand]
+            x = owner.x+lengthdir_x(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_x(holdPoint,image_angle)//owner.handX[hand]+round(owner.x)-(owner.charSurfSize*.5)+lengthdir_x(holdPoint,image_angle)
             z = (owner.charSurfSize*.75)-round(owner.bodyY+owner.handHeight[hand])+owner.z
-            y = owner.handY[hand]+round(owner.y)-(owner.charSurfSize*.75)+lengthdir_y(holdPoint,image_angle)+z
+            y = owner.y+lengthdir_y(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_y(holdPoint,image_angle)//owner.handY[hand]+round(owner.y)-(owner.charSurfSize*.75)+lengthdir_y(holdPoint,image_angle)
             image_index = 0
             isoDepth(0)
         }
@@ -84,8 +85,8 @@ if owner = noone or hand != 0
         surface_set_target(itemSurf)
         draw_clear_alpha(c_white,0)
             
-        draw_sprite_ext(sprite_index,image_index,30,30,1,1,image_angle,c_black,.3)
-        draw_sprite_ext(sprite_index,image_index,30,30,1,1,image_angle,c_white,1)  
+        draw_sprite_ext(sprite_index,image_index,30,30,1,image_yscale,image_angle,c_black,.3)
+        draw_sprite_ext(sprite_index,image_index,30,30,1,image_yscale,image_angle,c_white,1)  
         surface_reset_target()
     }
     else

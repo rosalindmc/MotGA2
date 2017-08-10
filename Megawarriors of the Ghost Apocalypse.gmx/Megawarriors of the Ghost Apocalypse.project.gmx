@@ -41,11 +41,16 @@
       <sprite>sprites\spr_tile</sprite>
       <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_road</sprite>
+      <sprite>sprites\spr_roadOld</sprite>
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_sun</sprite>
       <sprite>sprites\spr_clouds</sprite>
       <sprite>sprites\spr_blueGrass</sprite>
+      <sprite>sprites\spr_standingLamp</sprite>
+      <sprite>sprites\spr_standingDecorativeLamp</sprite>
+      <sprite>sprites\spr_standingEvilLamp</sprite>
+      <sprite>sprites\spr_justianAltar</sprite>
     </sprites>
     <sprites name="Character">
       <sprites name="Model">
@@ -86,6 +91,8 @@
         <sprite>sprites\spr_khopesh</sprite>
         <sprite>sprites\spr_pike</sprite>
       </sprites>
+      <sprite>sprites\spr_potionBlue</sprite>
+      <sprite>sprites\spr_potionRed</sprite>
     </sprites>
     <sprites name="Particles">
       <sprite>sprites\spr_dust</sprite>
