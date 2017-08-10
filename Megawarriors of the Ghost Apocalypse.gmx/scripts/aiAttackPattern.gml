@@ -104,7 +104,7 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.6
+            attackDelay = 0.7
         break
     
         case 1:
@@ -145,6 +145,7 @@ if (instance_exists(actionTargetId)){
         break
     }
 }
+
 #define attackBasic
 throwKey = false
 
@@ -166,6 +167,7 @@ if (instance_exists(actionTargetId)){
         break
     }
 }
+
 #define attackJab
 throwKey = false
 

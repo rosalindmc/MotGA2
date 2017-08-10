@@ -558,6 +558,7 @@ case 2:
         
     }
     
+
     if (canMove && point_distance(x,y,actionTargetX,actionTargetY) > 0.5*metre){
         var moveT = (movement*moveMult)
         moveT = moveT/(1+moveDT)
@@ -567,6 +568,24 @@ case 2:
     }
     else if(point_distance(x,y,actionTargetId.x,actionTargetId.y) < 5*metre){        
         currentAction = actionAttackCorral
+    }
+    else if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 5*metre && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 10*metre){
+        var moveT = (movement*moveMult)
+        moveT = moveT/(1+moveDT)
+        moveT = moveT/5
+        
+        var tempX = actionTargetId.x - x
+        var tempY = actionTargetId.y - y
+        var tempHold
+        
+        tempX = tempX/point_distance(x,y,actionTargetId.x,actionTargetId.y)
+        tempY = tempY/point_distance(x,y,actionTargetId.x,actionTargetId.y)
+        
+        actionTargetX = x + tempX
+        actionTargetY = y + tempY
+        
+        hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetX,actionTargetY))
+        vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetX,actionTargetY))
     }
     
     targetX = actionTargetId.x
