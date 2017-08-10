@@ -34,17 +34,17 @@ if isRiver = true
     {
         draw_sprite(spr_shore,image_index,x,y-6)
         draw_sprite_ext(spr_wave,image_index+floor(global.timer*5),x,y-7-z,1,1,0,c_white,image_alpha)
-        draw_sprite_ext(spr_edge,image_index,x,y-8,1,1,0,c_white,image_alpha)
+        draw_sprite_ext(spr_edge,image_index,x,y-9,1,1,0,c_white,image_alpha)
     }
     if wEBorder = true
     {
         draw_sprite_ext(spr_wave,image_index+floor(global.timer*5),x+7,y-z,1,1,270,c_white,image_alpha)
-        draw_sprite_ext(spr_edge,image_index,x+8,y,1,1,270,c_white,image_alpha)
+        draw_sprite_ext(spr_edge,image_index,x+9,y,1,1,270,c_white,image_alpha)
     }
     if wWBorder = true
     {
         draw_sprite_ext(spr_wave,image_index+floor(global.timer*5),x-7,y-z,1,1,90,c_white,image_alpha)
-        draw_sprite_ext(spr_edge,image_index,x-8,y,1,1,90,c_white,image_alpha)
+        draw_sprite_ext(spr_edge,image_index,x-9,y,1,1,90,c_white,image_alpha)
     }   
     if wSBorder = true
     {
