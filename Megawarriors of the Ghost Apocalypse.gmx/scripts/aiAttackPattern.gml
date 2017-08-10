@@ -174,7 +174,7 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.5
+            attackDelay = 0.45
         break
     
         case 1:

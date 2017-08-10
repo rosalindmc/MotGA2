@@ -256,7 +256,7 @@ case 1:
     
 case 2:
 
-    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
+    if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4.5*metre){
         var moveT = (movement*moveMult)
         moveT = moveT/(1+moveDT)
         
@@ -264,7 +264,7 @@ case 2:
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
     
     }
-    else if (point_distance(x,y,actionTargetId.x,actionTargetId.y)<2.5*metre){
+    else if (point_distance(x,y,actionTargetId.x,actionTargetId.y)<1.5*metre){
             
         attackPattern =  attackJab
         lastAttack = global.timer
@@ -280,7 +280,7 @@ case 2:
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
     }
     
-    if (actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 3*metre 
+    if (actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 4*metre 
                 && ((actionTargetId.stam <= actionTargetId.stamMax-1) 
                 || (actionTargetId.handItem[1] == noone && actionTargetId.handItem[2] == noone))
                 /*|| actionTargetId.staggered*/){
