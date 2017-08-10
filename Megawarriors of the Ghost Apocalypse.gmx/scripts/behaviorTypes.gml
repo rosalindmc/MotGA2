@@ -22,4 +22,3 @@ aiMasterListGreen[1] = actionAttackCorral
 aiMasterListGreen[2] = actionDistance
 aiMasterListGreen[3] = actionMove
 aiMasterListGreen[4] = actionIdle
-

@@ -46,6 +46,9 @@
       <sprite>sprites\spr_sun</sprite>
       <sprite>sprites\spr_clouds</sprite>
       <sprite>sprites\spr_blueGrass</sprite>
+      <sprite>sprites\spr_standingLamp</sprite>
+      <sprite>sprites\spr_standingDecorativeLamp</sprite>
+      <sprite>sprites\spr_standingEvilLamp</sprite>
     </sprites>
     <sprites name="Character">
       <sprites name="Model">
