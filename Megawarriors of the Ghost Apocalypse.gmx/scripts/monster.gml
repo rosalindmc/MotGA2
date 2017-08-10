@@ -23,7 +23,7 @@ centerVisionRange = 10
 sideVisionRange = 5
 
 responseTime = 2
-responseStart = global.timer
+responseStart = global.timer + random(responseTime)
 
 canRoll = false
 
@@ -54,7 +54,7 @@ centerVisionRange = 10
 sideVisionRange = 5
 
 responseTime = 2
-responseStart = global.timer
+responseStart = global.timer + random(responseTime)
 
 canRoll = false
 
@@ -86,7 +86,7 @@ centerVisionRange = 10
 sideVisionRange = 5
 
 responseTime = 2
-responseStart = global.timer
+responseStart = global.timer + random(responseTime)
 
 canRoll = false
 

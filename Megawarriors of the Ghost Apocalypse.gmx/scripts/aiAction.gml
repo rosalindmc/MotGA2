@@ -476,19 +476,16 @@ switch (argument0){
 case 0:
 
 
-    if (inFormation == true){
-        inFormation = false
-        return 0;        
-    }
-    else if (leader != noone){
+    if (leader != noone){
         return 1;
     }
     else if (leader == noone){
     
         with(obj_char){
-            if (joinsFormation == true/* && point_distance(x,y,other.x,other.y) < 10*metre*/){
-                if (leader == noone){
+            if (id != other.id && joinsFormation == true && point_distance(x,y,other.x,other.y) < 7*metre){
+                if (leader == noone || leader == id){
                     other.leader = id
+                    leader = id
                     if (subordinate [0] == noone){
                         subordinate[0] = other
                     }
@@ -529,12 +526,14 @@ case 2:
         tempX = tempX/point_distance(x,y,actionTargetId.x,actionTargetId.y)
         tempY = tempY/point_distance(x,y,actionTargetId.x,actionTargetId.y)
         
-        tempHold = tempX
-        tempX = 2 * tempY
-        tempY = -2 * tempHold
+        actionTargetX = x + tempX
+        actionTargetY = y + tempY
         
-        actionTargetX = x
-        actionTargetY = y
+        tempHold = tempX
+        tempX = 1*metre * tempY
+        tempY = -1*metre * tempHold
+        
+        
         
         for (i = 0; i< array_length_1d(subordinate); i++){
             
@@ -566,12 +565,9 @@ case 2:
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetX,actionTargetY))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetX,actionTargetY))
     }
-    else{
-        inFormation = true
-        
-        aiMaster()
+    else if(point_distance(x,y,actionTargetId.x,actionTargetId.y) < 5*metre){        
+        currentAction = actionAttackCorral
     }
-    
     
     targetX = actionTargetId.x
     targetY = actionTargetId.y   
