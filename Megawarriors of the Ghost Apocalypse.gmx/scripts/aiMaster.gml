@@ -1,12 +1,10 @@
 #define aiMaster
-aiMasterSearch()
-
-
-
-
-
-
-
+if (life>0){
+    aiMasterSearch()
+}
+else{
+    currentAction = actionIdle
+}
 
 
 

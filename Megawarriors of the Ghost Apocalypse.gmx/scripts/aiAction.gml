@@ -500,6 +500,21 @@ case 0:
                     return 0;
                 }
             }
+            else if (life < 0){
+                if (leader = id){
+                    for (i = 0; i< array_length_1d(subordinate); i++){
+                        subordinate[i].leader = noone
+                    }                    
+                }
+                else if (leader != noone){
+                    for (i = 0; i< array_length_1d(leader.subordinate); i++){
+                        if (leader.subordinate[i] = id){
+                            leader.subordinate[i] = subordinate[array_length_1d(leader.subordinate)]
+                            leader.subordinate[array_length_1d(leader.subordinate)] = 0
+                        }
+                    }
+                }           
+            }
         }
         
         
