@@ -244,13 +244,13 @@ if surface_exists(charSurf)
     
     //Hand Shenanigans
     //If using a great weapon, move second hand
-    if greatWeapon = true
+    if greatWeapon = true and handItem[1] != noone
     {
-        handX[2] = round(handX[1]+lengthdir_x(greatWeaponSize, (round(facing/15)*15)+(itemRot[1])))
-        handY[2] = round(handY[1]+lengthdir_y(greatWeaponSize, (round(facing/15)*15)+(itemRot[1])))
+        handX[2] = round(handX[1]+lengthdir_x(handItem[1].gwPoint, (round(facing/15)*15)+(itemRot[1])))
+        handY[2] = round(handY[1]+lengthdir_y(handItem[1].gwPoint, (round(facing/15)*15)+(itemRot[1])))
         
-        handX[1] = round(handX[1]+lengthdir_x(greatWeaponSize*-1, (round(facing/15)*15)+(itemRot[1])))
-        handY[1] = round(handY[1]+lengthdir_y(greatWeaponSize*-1, (round(facing/15)*15)+(itemRot[1])))
+        handX[1] = round(handX[1]+lengthdir_x(handItem[1].gwPoint*-1, (round(facing/15)*15)+(itemRot[1])))
+        handY[1] = round(handY[1]+lengthdir_y(handItem[1].gwPoint*-1, (round(facing/15)*15)+(itemRot[1])))
     }
     
     //Arm Directions
