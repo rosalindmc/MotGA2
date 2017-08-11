@@ -203,9 +203,15 @@
       <script>scripts\worldNode.gml</script>
     </scripts>
     <scripts name="Items">
-      <script>scripts\meleeWeapons.gml</script>
+      <script>scripts\swords.gml</script>
       <script>scripts\potions.gml</script>
       <script>scripts\bows.gml</script>
+      <script>scripts\axes.gml</script>
+      <script>scripts\spoons.gml</script>
+      <script>scripts\guns.gml</script>
+      <script>scripts\bludgeons.gml</script>
+      <script>scripts\polearms.gml</script>
+      <script>scripts\uniques.gml</script>
     </scripts>
     <scripts name="Particles">
       <script>scripts\particleTypes.gml</script>

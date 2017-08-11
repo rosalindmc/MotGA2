@@ -1,4 +1,4 @@
-#define meleeWeapons
+#define swords
 
 
 #define weaponEssentials
