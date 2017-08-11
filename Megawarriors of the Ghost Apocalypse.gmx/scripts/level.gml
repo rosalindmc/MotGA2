@@ -112,7 +112,7 @@ repeat(4)
     createItem(random(room_width),random(room_height),sword,noone)
     createItem(random(room_width),random(room_height),khopesh,noone)//currently crates
     createItem(random(room_width),random(room_height),pike,noone)
-    createItem(random(room_width),random(room_height),potionTO_BE_MOVED,noone)//potion is in melee weapon, so move it soon
+    createItem(random(room_width),random(room_height),genericPotion,noone)//potion is in melee weapon, so move it soon
 }
 /*replace later -> grass spawn
 repeat(50)
