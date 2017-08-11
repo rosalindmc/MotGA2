@@ -47,10 +47,15 @@
       <sprite>sprites\spr_sun</sprite>
       <sprite>sprites\spr_clouds</sprite>
       <sprite>sprites\spr_blueGrass</sprite>
-      <sprite>sprites\spr_standingLamp</sprite>
-      <sprite>sprites\spr_standingDecorativeLamp</sprite>
-      <sprite>sprites\spr_standingEvilLamp</sprite>
-      <sprite>sprites\spr_justianAltar</sprite>
+      <sprites name="PoI_Deco">
+        <sprite>sprites\spr_standingLamp</sprite>
+        <sprite>sprites\spr_justianAltar</sprite>
+        <sprite>sprites\spr_standingEvilLamp</sprite>
+        <sprite>sprites\spr_standingDecorativeLamp</sprite>
+      </sprites>
+      <sprite>sprites\spr_rockSmall</sprite>
+      <sprite>sprites\spr_rockLarge</sprite>
+      <sprite>sprites\spr_campfire</sprite>
     </sprites>
     <sprites name="Character">
       <sprites name="Model">
@@ -91,10 +96,15 @@
         <sprite>sprites\spr_khopesh</sprite>
         <sprite>sprites\spr_pike</sprite>
       </sprites>
-      <sprite>sprites\spr_potionBlue</sprite>
-      <sprite>sprites\spr_potionRed</sprite>
       <sprite>sprites\spr_smallCrate</sprite>
       <sprite>sprites\spr_largeCrate</sprite>
+      <sprites name="Potion">
+        <sprite>sprites\spr_potionBlue</sprite>
+        <sprite>sprites\spr_potionRed</sprite>
+        <sprite>sprites\spr_potionGreen</sprite>
+        <sprite>sprites\spr_potionPurp</sprite>
+        <sprite>sprites\spr_potionYellow</sprite>
+      </sprites>
     </sprites>
     <sprites name="Particles">
       <sprite>sprites\spr_dust</sprite>
@@ -194,6 +204,8 @@
     </scripts>
     <scripts name="Items">
       <script>scripts\meleeWeapons.gml</script>
+      <script>scripts\potions.gml</script>
+      <script>scripts\bows.gml</script>
     </scripts>
     <scripts name="Particles">
       <script>scripts\particleTypes.gml</script>
