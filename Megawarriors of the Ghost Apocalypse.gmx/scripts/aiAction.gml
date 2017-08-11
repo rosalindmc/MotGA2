@@ -504,20 +504,19 @@ case 0:
                 if (leader = id){
                     for (i = 0; i< array_length_1d(subordinate); i++){
                         subordinate[i].leader = noone
+                        subordinate[i] = 0
                     }                    
                 }
                 else if (leader != noone){
                     for (i = 0; i< array_length_1d(leader.subordinate); i++){
                         if (leader.subordinate[i] = id){
                             leader.subordinate[i] = subordinate[array_length_1d(leader.subordinate)]
-                            leader.subordinate[array_length_1d(leader.subordinate)] = 0
                         }
                     }
+                    leader.subordinate[array_length_1d(leader.subordinate)-1] = 0
                 }           
             }
         }
-        
-        
     }
     else{        
         return 0;           
