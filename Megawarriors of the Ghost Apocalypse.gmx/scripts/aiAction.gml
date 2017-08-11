@@ -550,24 +550,24 @@ case 2:
         
         
         for (i = 0; i< array_length_1d(subordinate); i++){
-            
-            if (i = 0){
-                subordinate[i].actionTargetX = x + tempX
-                subordinate[i].actionTargetY = y + tempY        
+            if(instance_exists(subordinate[i])){
+                if (i = 0){
+                    subordinate[i].actionTargetX = x + tempX
+                    subordinate[i].actionTargetY = y + tempY        
+                }
+                else if (i = 1){
+                    subordinate[i].actionTargetX = x - tempX
+                    subordinate[i].actionTargetY = y - tempY 
+                }
+                else if (i % 2 = 0){
+                    subordinate[i].actionTargetX = subordinate[i-2].actionTargetX + tempX
+                    subordinate[i].actionTargetY = subordinate[i-2].actionTargetY + tempY
+                }
+                else if (i % 2 = 1){
+                    subordinate[i].actionTargetX = subordinate[i-2].actionTargetX - tempX
+                    subordinate[i].actionTargetY = subordinate[i-2].actionTargetY - tempY
+                }
             }
-            else if (i = 1){
-                subordinate[i].actionTargetX = x - tempX
-                subordinate[i].actionTargetY = y - tempY 
-            }
-            else if (i % 2 = 0){
-                subordinate[i].actionTargetX = subordinate[i-2].actionTargetX + tempX
-                subordinate[i].actionTargetY = subordinate[i-2].actionTargetY + tempY
-            }
-            else if (i % 2 = 1){
-                subordinate[i].actionTargetX = subordinate[i-2].actionTargetX - tempX
-                subordinate[i].actionTargetY = subordinate[i-2].actionTargetY - tempY
-            }
-        
         }
         
     }
