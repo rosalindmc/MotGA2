@@ -21,8 +21,8 @@ aiMasterListGreen[0] = actionEquip
 //aiMasterListGreen[1] = actionFollowOrder
 aiMasterListGreen[1] = actionJoinFormation
 aiMasterListGreen[2] = actionAttackCorral
-aiMasterListGreen[4] = actionMoveRand
-aiMasterListGreen[5] = actionIdle
+aiMasterListGreen[3] = actionMoveRand
+aiMasterListGreen[4] = actionIdle
 
 #define testArcher
 aiMasterListGreen[0] = actionEquip

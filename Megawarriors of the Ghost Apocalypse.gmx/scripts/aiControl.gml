@@ -56,7 +56,25 @@ sideVisionRange = 0
 
 
 #define aiDestroy
+
+if (leader = id){
+    for (i = 0; i< array_length_1d(subordinate); i++){
+        subordinate[i].leader = noone
+        subordinate[i] = 0
+    }                    
+}
+else if (leader != noone && instance_exists(leader)){
+    for (i = 0; i< array_length_1d(leader.subordinate); i++){
+        if (leader.subordinate[i] = id && i != 0){
+            leader.subordinate[i] = leader.subordinate[array_length_1d(leader.subordinate)-1]
+        }
+    }
+    leader.subordinate[array_length_1d(leader.subordinate)-1] = 0
+}           
+
+
 ds_priority_destroy(alertness)
+
 #define aiActionReset
 hasDodged = false
 

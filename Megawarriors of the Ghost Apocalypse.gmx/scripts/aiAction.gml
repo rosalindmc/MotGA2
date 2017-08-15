@@ -12,7 +12,7 @@ case 1:
     currentAction = actionIdle
     break;
     
-case 2:
+case 2:    
     break;
 }
 
@@ -507,10 +507,10 @@ case 0:
                         subordinate[i] = 0
                     }                    
                 }
-                else if (leader != noone){
+                else if (leader != noone && instance_exists(leader)){
                     for (i = 0; i< array_length_1d(leader.subordinate); i++){
-                        if (leader.subordinate[i] = id){
-                            leader.subordinate[i] = subordinate[array_length_1d(leader.subordinate)]
+                        if (leader.subordinate[i] = id && i != 0){
+                            leader.subordinate[i] = leader.subordinate[array_length_1d(leader.subordinate)-1]
                         }
                     }
                     leader.subordinate[array_length_1d(leader.subordinate)-1] = 0
@@ -559,17 +559,16 @@ case 2:
                     subordinate[i].actionTargetX = x - tempX
                     subordinate[i].actionTargetY = y - tempY 
                 }
-                else if (i % 2 = 0){
+                else if (i % 2 = 0 && instance_exists(subordinate[i-2])){
                     subordinate[i].actionTargetX = subordinate[i-2].actionTargetX + tempX
                     subordinate[i].actionTargetY = subordinate[i-2].actionTargetY + tempY
                 }
-                else if (i % 2 = 1){
+                else if (i % 2 = 1 && instance_exists(subordinate[i-2])){
                     subordinate[i].actionTargetX = subordinate[i-2].actionTargetX - tempX
                     subordinate[i].actionTargetY = subordinate[i-2].actionTargetY - tempY
                 }
             }
         }
-        
     }
     
 

@@ -412,6 +412,21 @@ if (grappled = true){
 surface_free(charSurf)
 aiDestroy()
 
+for(i = 0; i < inventorySize; i++)
+{
+    if (inventory[i] != noone){
+        inventory[i].owner = noone
+        ii = instance_create(x,y,obj_interactable)
+        ii.owner = inventory[i]
+        ii.name = inventory[i].name
+        ii.useType = pickUp
+        inventory[i].interactId = ii
+        inventory[i] = noone    
+    }
+}
+
+
+
 #define charDraw
 //Draw Character
 if animUpdate = true
