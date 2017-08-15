@@ -9,6 +9,7 @@
     element = global.currNode.element
     sizeX = global.currNode.sizeX
     sizeY = global.currNode.sizeY
+    global.poiSpacing = floor(sizeX/10)
     
     room_height = sizeY*metre
     room_width = sizeX*metre
@@ -176,20 +177,27 @@ with(obj_tile)
         sprite_index = spr_road
         xScatter = choose(0,0,0,-1,1)
         yScatter = choose(0,0,0,-1,1)
-        image_xscale = choose(-1,1)
-        image_yscale = choose(-1,1)
+        image_xscale = choose(-1.5,1.5)
+        image_yscale = choose(-1.5,1.5)
         image_angle = random(360)
         depth = -1
         wz = 0
         z = 0
+        
+        if irandom(20) = 20
+        {
+            i = instance_create(x-2+irandom(4),y-2+irandom(4),obj_doodad)
+            i.sprite_index = spr_bones
+        }
     }
     else if isRiver = false
     {
         sprite_index = spr_tile   
-        if weight > 2
+        if weight > 3
         {
-            instance_create(x,y,obj_terrain)
-        } 
+            instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
+        }
+        
     }
 }  
 

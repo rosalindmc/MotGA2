@@ -55,6 +55,7 @@
       <sprite>sprites\spr_rockSmall</sprite>
       <sprite>sprites\spr_rockLarge</sprite>
       <sprite>sprites\spr_campfire</sprite>
+      <sprite>sprites\spr_bones</sprite>
     </sprites>
     <sprites name="Character">
       <sprites name="Model">
@@ -84,6 +85,11 @@
         <sprite>sprites\spr_cWarrior</sprite>
         <sprite>sprites\spr_cWarriorM</sprite>
         <sprite>sprites\spr_sFighter</sprite>
+        <sprite>sprites\spr_darkSoldier2</sprite>
+        <sprite>sprites\spr_darkSoldier</sprite>
+        <sprite>sprites\spr_dreadPike</sprite>
+        <sprite>sprites\spr_dreadPike2</sprite>
+        <sprite>sprites\spr_darkSergeant</sprite>
       </sprites>
       <sprites name="Hair">
         <sprite>sprites\spr_longHair</sprite>

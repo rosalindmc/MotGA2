@@ -15,12 +15,19 @@ stam = 4
 stamMax = 4
 stamRegen = 1.0
 
+<<<<<<< HEAD
 vitality = 2
 might = 3
 wit = 1
 endurance = 3
 magic = 1
 charisma = 1
+=======
+//Appearance Info
+clothingSprite = choose(spr_darkSoldier,spr_darkSoldier2)
+skirtSprite = spr_none
+hairSprite = spr_none
+>>>>>>> origin/master
 
 stealth = 0.5
 hearing = 1
@@ -52,12 +59,19 @@ stam = 4
 stamMax = 4
 stamRegen = 1.0
 
+<<<<<<< HEAD
 vitality = 3
 might = 2
 wit = 1
 endurance = 4
 magic = 1
 charisma = 1
+=======
+//Appearance Info
+clothingSprite = choose(spr_dreadPike,spr_dreadPike2)
+skirtSprite = spr_none
+hairSprite = spr_none
+>>>>>>> origin/master
 
 stealth = 0.5
 hearing = 1
