@@ -5,4 +5,3 @@
 #define doodadStep
 
 #define doodadDraw
-
