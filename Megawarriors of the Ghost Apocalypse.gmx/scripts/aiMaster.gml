@@ -27,7 +27,7 @@ do{
         ret = script_execute(aiMasterListRed[i], 0)   
         break 
     }
-}until (ret !=0)
+}until (ret !=0 || i > 10)
 
 
 
