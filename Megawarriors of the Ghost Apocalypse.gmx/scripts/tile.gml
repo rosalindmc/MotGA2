@@ -25,7 +25,7 @@ wWBorder = false
 critPath = false
 
 image_speed = 0
-image_index = irandom(20)
+image_index = irandom(40)
 
 #define tileDraw
 if isWater = true
@@ -56,6 +56,6 @@ if isWater = true
 }
 else
 {
-    draw_sprite(spr_tile,image_index,x,y-z)
+    //draw_sprite(spr_tile,image_index,x,y-z)
     draw_sprite_ext(sprite_index,image_index,x+xScatter,y+yScatter-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
 }

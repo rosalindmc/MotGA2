@@ -235,7 +235,7 @@ with(obj_poi){
                 
                 gridX = (tempX*global.poiSpacing)+global.poiSpacing
                 gridY = (tempY*global.poiSpacing)+global.poiSpacing
-            
+                
                 other.floorLayout[gridX,gridY].weight = 1
                 other.floorLayout[gridX,gridY].hasPoi = true
                 other.floorLayout[gridX,gridY].poi = id             //sets the point of this PoI to the earlier random poiPoint

@@ -488,7 +488,7 @@ if player = false
     i = 0
     repeat(ceil(life))
     {
-        draw_sprite_ext(spr_smallhealth,0,ix-10+(4*i),iy,1,1,0,c_white,global.pc.life-i)
+        draw_sprite_ext(spr_smallhealth,0,ix-10+(4*i),iy,1,1,0,c_white,life-i)
         i += 1
     }
     
@@ -509,6 +509,7 @@ if player = false
         i += 1
     }
 }   
+
 #define staggerStart
 
 moveMult = 0.25

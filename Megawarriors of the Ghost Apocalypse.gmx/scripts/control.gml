@@ -284,7 +284,7 @@ if global.surfX2 != 0
         {
             if isWater = true
             {
-                draw_sprite(spr_tile,0,x-global.surfX1,y-z-global.surfY1)
+                draw_sprite(spr_tile,0,x-global.surfX1,y-wz-global.surfY1)
                 if wSBorder = true
                 {
                     draw_set_blend_mode(bm_add)

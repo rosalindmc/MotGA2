@@ -176,9 +176,9 @@ with(obj_tile)
         sprite_index = spr_road
         xScatter = choose(0,0,0,-1,1)
         yScatter = choose(0,0,0,-1,1)
-        image_xscale = choose(-1.3,1.3)
-        image_yscale = choose(-1.3,1.3)
-        image_angle = random(360)//choose(0,90,180,270)
+        image_xscale = choose(-1,1)
+        image_yscale = choose(-1,1)
+        image_angle = random(360)
         depth = -1
         wz = 0
         z = 0
@@ -186,6 +186,10 @@ with(obj_tile)
     else if isRiver = false
     {
         sprite_index = spr_tile   
+        if weight > 2
+        {
+            instance_create(x,y,obj_terrain)
+        } 
     }
 }  
 

@@ -4,8 +4,8 @@
 #define nodeInit
     biomeType = 1
     element = 0
-    sizeX = 40
-    sizeY = 40
+    sizeX = 50
+    sizeY = 50
     
     critPoi [0] = noone     //the type of the critical point of interest
     poiDensity = 10     //number of non-critical points of interest on the map

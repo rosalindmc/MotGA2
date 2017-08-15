@@ -62,7 +62,7 @@ if owner != noone
             image_angle = (round(owner.facing/15)*15)+owner.itemRot[hand]+owner.bodyRot
             image_yscale = owner.meleeSwing[hand]
             x = owner.x+lengthdir_x(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_x(holdPoint,image_angle)//owner.handX[hand]+round(owner.x)-(owner.charSurfSize*.5)+lengthdir_x(holdPoint,image_angle)
-            z = (owner.charSurfSize*.75)-round(owner.bodyY+owner.handHeight[hand])+owner.z
+            z = (owner.charSurfSize*.75)-round(owner.bodyY-owner.handHeight[hand])+owner.z
             y = owner.y+lengthdir_y(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_y(holdPoint,image_angle)//owner.handY[hand]+round(owner.y)-(owner.charSurfSize*.75)+lengthdir_y(holdPoint,image_angle)
             image_index = 0
             isoDepth(0)

@@ -41,7 +41,6 @@
       <sprite>sprites\spr_tile</sprite>
       <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_road</sprite>
-      <sprite>sprites\spr_roadOld</sprite>
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_sun</sprite>
@@ -116,6 +115,7 @@
     </sprites>
     <sprites name="Mask">
       <sprite>sprites\spr_mask</sprite>
+      <sprite>sprites\spr_largeMask</sprite>
     </sprites>
     <sprites name="Hitbox">
       <sprite>sprites\spr_slash</sprite>
@@ -186,6 +186,8 @@
       <script>scripts\particle.gml</script>
       <script>scripts\meleeCollider.gml</script>
       <script>scripts\tile.gml</script>
+      <script>scripts\doodad.gml</script>
+      <script>scripts\terrain.gml</script>
     </scripts>
     <scripts name="Universal">
       <script>scripts\isoDepth.gml</script>
@@ -250,10 +252,10 @@
       <object>objects\obj_terrain</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_door</object>
+      <object>objects\obj_doodad</object>
       <object>objects\obj_flag</object>
     </objects>
     <objects name="Aesthetics">
-      <object>objects\obj_doodad</object>
       <object>objects\obj_particle</object>
     </objects>
     <objects name="Items">
