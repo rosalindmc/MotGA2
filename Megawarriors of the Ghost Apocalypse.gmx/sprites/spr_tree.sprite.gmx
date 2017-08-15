@@ -10,7 +10,7 @@
   <bbox_left>5</bbox_left>
   <bbox_right>47</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>55</bbox_bottom>
+  <bbox_bottom>56</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>60</width>
-  <height>56</height>
+  <height>57</height>
   <frames>
     <frame index="0">images\spr_tree_0.png</frame>
     <frame index="1">images\spr_tree_1.png</frame>

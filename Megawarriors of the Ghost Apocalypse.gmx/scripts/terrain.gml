@@ -29,9 +29,4 @@ if global.surfX2 != 0
         draw_sprite_ext(sprite_index,image_index,x-global.surfX1,y-global.surfY1,image_xscale,image_yscale,image_angle,c_white,image_alpha)
         surface_reset_target()
     }
-    
-            //with(obj_terrain)
-        //{
-        //    draw_sprite_ext(sprite_index,image_index,x-global.surfX1,y-global.surfY1,image_xscale,image_yscale,image_angle,c_white,image_alpha)
-        //}
 }

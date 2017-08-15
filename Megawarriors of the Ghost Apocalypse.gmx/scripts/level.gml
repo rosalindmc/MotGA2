@@ -183,14 +183,21 @@ with(obj_tile)
         depth = -1
         wz = 0
         z = 0
+        
+        if irandom(20) = 20
+        {
+            i = instance_create(x-2+irandom(4),y-2+irandom(4),obj_doodad)
+            i.sprite_index = spr_bones
+        }
     }
     else if isRiver = false
     {
         sprite_index = spr_tile   
         if weight > 3
         {
-            instance_create(x-5+irandom(10),y-5+irandom(10),obj_terrain)
-        } 
+            instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
+        }
+        
     }
 }  
 

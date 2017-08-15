@@ -15,6 +15,10 @@ stam = 4
 stamMax = 4
 stamRegen = 1.0
 
+//Appearance Info
+clothingSprite = choose(spr_darkSoldier,spr_darkSoldier2)
+skirtSprite = spr_none
+hairSprite = spr_none
 
 stealth = 0.5
 hearing = 1
@@ -46,6 +50,10 @@ stam = 4
 stamMax = 4
 stamRegen = 1.0
 
+//Appearance Info
+clothingSprite = choose(spr_dreadPike,spr_dreadPike2)
+skirtSprite = spr_none
+hairSprite = spr_none
 
 stealth = 0.5
 hearing = 1
