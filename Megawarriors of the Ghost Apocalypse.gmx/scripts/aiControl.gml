@@ -58,9 +58,11 @@ sideVisionRange = 0
 #define aiDestroy
 
 if (leader = id){
-    for (i = 0; i< array_length_1d(subordinate); i++){
-        subordinate[i].leader = noone
-        subordinate[i] = 0
+    for (i = 0; i < array_length_1d(subordinate); i++){
+        if(instance_exists(subordinate[i])){
+            subordinate[i].leader = noone
+            subordinate[i] = 0
+        }
     }                    
 }
 else if (leader != noone && instance_exists(leader)){

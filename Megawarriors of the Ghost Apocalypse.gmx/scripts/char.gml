@@ -21,9 +21,24 @@ with(i){
         leader = argument3
         leader.subordinate[array_length_1d(leader.subordinate[])] = id
     }
+    
+    //charSetup()
 }
 
 
+
+
+#define charSetup
+//Vitals
+
+lifeMax = 2*vitality+1
+life = lifeMax
+lifeRegen = 0.0 //per second
+
+stamMax = endurance    
+stam = stamMax
+stamRegen = 3.0   //per second
+stamDelay = 0.0
 
 
 #define charInitialize
@@ -100,6 +115,16 @@ inFormation = false                 //flag for being in a formation
 joinsFormation = false
 leader = noone
 
+//Character stats
+vitality = 1
+might = 1
+wit = 1
+endurance = 1
+magic = 1
+charisma = 1
+
+stealth = 1
+
 //Vitals
 life = 12
 lifeMax = 12
@@ -116,9 +141,6 @@ stabilityRegen = 3.0
 stabilityDelay = 0.0
 recovery = 5.0
 staggerRecovery = 0.0
-
-//Character stats
-stealth = 1
 
 //Fighting
 hold[1] = 0
