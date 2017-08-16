@@ -1,7 +1,7 @@
 #define tile
 
 #define tileInitialize
-weight = 0
+ weight = 0
 rWeight = 0
 g = 0
 z = 0
@@ -20,6 +20,10 @@ wNBorder = false
 wEBorder = false
 wSBorder = false
 wWBorder = false
+additDoodSpr[0] = spr_none
+additDoodImg[0] = 0
+additDoodX[0] = 0
+additDoodY[0] = 0
 
 
 critPath = false
@@ -58,4 +62,8 @@ else
 {
     //draw_sprite(spr_tile,image_index,x,y-z)
     draw_sprite_ext(sprite_index,image_index,x+xScatter,y+yScatter-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+    
+    for(var i = 0; i < array_length_1d(additDoodSpr); i++){
+        draw_sprite(additDoodSpr[i],additDoodImg[i],x+additDoodX[i],y+additDoodY[i]);
+    }
 }

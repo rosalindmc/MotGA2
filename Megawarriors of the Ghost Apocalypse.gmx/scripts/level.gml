@@ -193,7 +193,14 @@ with(obj_tile)
     }
     else if isRiver = false
     {
-        sprite_index = spr_tile   
+        sprite_index = spr_tile 
+        if (weight = 2){
+            additDoodSpr[0] = spr_blueGrass;
+            additDoodImg[0] = choose(0,1);
+            additDoodX[0] = irandom(8)-4;
+            additDoodY[0] = irandom(8)-4;
+        }
+          
         if weight > 3
         {
             instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
