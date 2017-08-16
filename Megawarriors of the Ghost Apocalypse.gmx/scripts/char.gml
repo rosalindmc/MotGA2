@@ -180,8 +180,8 @@ switch (type){
         stamMax = endurance    
         stam = stamMax
         
-        damageMod = floor(might/2)
-        impactMod = might
+        damageMod = 1 + (might-4)*0.05
+        impactMod = 1 + (might-4)*0.2
         
         break;
         
@@ -193,8 +193,8 @@ switch (type){
         stamMax = endurance    
         stam = stamMax
         
-        damageMod = floor(might*0.75)
-        impactMod = might
+        damageMod = 1 + (might-4)*0.1
+        impactMod = 1 + (might-4)*0.2
     
         break
     
@@ -206,8 +206,8 @@ switch (type){
         stamMax = endurance    
         stam = stamMax
         
-        damageMod = might
-        impactMod = might        
+        damageMod = 1 + (might-4)*0.15
+        impactMod = 1 + (might-4)*0.2  
     
         break
     

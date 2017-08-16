@@ -18,6 +18,7 @@ switch(argument0)
     
     //Weapon Stats
     meleePow = 1
+    meleeVariance = 1
     meleeRate = 1.2
     meleeImpact = 7
     meleeLunge = 4
@@ -34,6 +35,7 @@ switch(argument0)
     gwCostMult = 1.2
     
     throwPow = 1
+    throwVariance = 1
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
@@ -90,6 +92,7 @@ switch(argument0)
     
     //Weapon Stats
     meleePow = 1
+    meleeVariance = 1
     meleeRate = 1.2
     meleeImpact = 7
     meleeLunge = 4
@@ -106,6 +109,7 @@ switch(argument0)
     gwCostMult = 1.2
     
     throwPow = 1
+    throwVariance = 1
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
@@ -169,6 +173,7 @@ switch(argument0)
     
     //Weapon Stats
     meleePow = 1
+    meleeVariance = 1
     meleeRate = 1.2
     meleeImpact = 7
     meleeLunge = 4
@@ -185,6 +190,7 @@ switch(argument0)
     gwCostMult = 1.2
     
     throwPow = 1
+    throwVariance = 1
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
