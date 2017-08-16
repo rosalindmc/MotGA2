@@ -84,15 +84,21 @@ switch(argument0)
 {
     case 0:
         useItem(1,0)
-        attackDelay = 1.25
+        attackDelay = 0.75
     break
-
+    
     case 1:
+        targetX = actionTargetId.x
+        targetY = actionTargetId.y
+        attackDelay = 0.5
+    break
+    
+    case 2:
         useItem(1,1)
         attackDelay = 0.25
     break
     
-    case 2:
+    case 3:
         attackReset()
     break
 }
