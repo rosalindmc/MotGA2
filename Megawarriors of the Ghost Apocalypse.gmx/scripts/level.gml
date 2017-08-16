@@ -129,7 +129,7 @@ with(obj_tile)
     if isRiver = true
     {
         sprite_index = spr_water
-        depth = -2
+        depth = -300
         wz = -2
         z = -5
         
@@ -181,10 +181,8 @@ with(obj_tile)
         image_xscale = choose(-1.5,1.5)
         image_yscale = choose(-1.5,1.5)
         image_angle = random(360)
-        depth = -1
-        wz = 0
-        z = 0
-        
+        depth = -100
+                
         if irandom(20) = 20
         {
             additDoodSpr[0] = spr_bones;
@@ -196,20 +194,35 @@ with(obj_tile)
     else if isRiver = false
     {
         sprite_index = spr_tile   
+        if weight >= 3
+        {
+            sprite_index = spr_grass
+            xScatter = choose(0,0,0,-1,1)
+            yScatter = choose(0,0,0,-1,1)
+            image_xscale = choose(-1.5,1.5)
+            image_yscale = choose(-1.5,1.5)
+            image_angle = random(360)
+            depth = -200
+        }
+        
         if (weight = 2)
         {
-            additDoodSpr[0] = spr_blueGrass;
-            additDoodImg[0] = choose(0,1);
-            additDoodX[0] = irandom(8)-4;
-            additDoodY[0] = irandom(8)-4;
+            if irandom(4) = 0
+            {
+                additDoodSpr[0] = spr_blueGrass;
+                additDoodImg[0] = choose(0,1);
+                additDoodX[0] = irandom(8)-4;
+                additDoodY[0] = irandom(8)-4;
+            }
         }
-        else if weight = 3
+        else if weight = 4
         {
             i = instance_create(x-1+irandom(2),y-1+irandom(2),obj_terrain)
             i.sprite_index = spr_bush
         }
-        else if weight > 3
+        else if weight > 4
         {
+            
             instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
         }
         

@@ -122,8 +122,8 @@ if instance_exists(global.pc)
 }
 
 //Camera
-view_xview[0] = round(median(0,x-(view_wview[0]/2),room_width-view_wview[0]))
-view_yview[0] = round(median(0,y-(view_hview[0]/2),room_height-view_hview[0]))
+view_xview[0] = round(median(8,x-(view_wview[0]/2),room_width-view_wview[0]-8))
+view_yview[0] = round(median(8,y-(view_hview[0]/2),room_height-view_hview[0]-8))
 
 //Reduce Shake
 if shake > .1
