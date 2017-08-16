@@ -5,7 +5,10 @@
 //choose the type in here somehow
 var tempPod = noone
 
-tempPod = choose(soloDarkSoldier,soloDarkSoldier,soloDreadPike,soloDreadPike,soloDreadPike, soloBlackArrow)
+tempPod = choose(soloDarkSoldier,soloDarkSoldier,
+                soloDreadPike,soloDreadPike,soloDreadPike, 
+                //soloBlackArrow
+                )
 
 script_execute(tempPod)
 //script_execute(soloDreadPike)
