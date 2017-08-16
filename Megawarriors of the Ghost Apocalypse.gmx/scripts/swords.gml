@@ -236,9 +236,9 @@ switch(argument0)
 {
     case 0:     //Initialize 
     //Core
-    name = 'I am a crate'
-    sprite_index = spr_largeCrate
-    image_index = 0
+    name = 'I am a crate';
+    sprite_index = spr_largeCrate;
+    imgInd = 0;
     /*
     useScript[1] = drinkPotion
     useScript[2] = drinkPotion

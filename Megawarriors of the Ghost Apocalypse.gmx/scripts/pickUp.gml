@@ -45,9 +45,9 @@ if(argument0 = global.pc){
     createItem(x,y, crateLoot, noone);//might change noone to argument0
     
     //make the crate look opened
-    //owner.image_index = 1;
+    owner.imgInd = 1;
     
-    with(owner){//comment this out eventually
+    //with(owner){//comment this out eventually
     instance_destroy();
-    }
+    //}
 }

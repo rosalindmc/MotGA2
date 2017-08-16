@@ -76,6 +76,9 @@ if owner != noone
 else
 {
     //Resolve Unowned
+    if(type == crate){
+        image_index = imgInd;
+    }
     image_angle += spin/global.frameRate
     moveStepObject()
     isoDepth(10)
