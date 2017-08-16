@@ -174,6 +174,7 @@ interactId = noone
 //Vitals
 switch (type){
     case 'mook':
+        lifeMax = 2+vitality
         life = lifeMax
         
         stamMax = endurance    
@@ -186,6 +187,7 @@ switch (type){
         
     case 'strong':
         
+        lifeMax = 3+1.5*vitality
         life = lifeMax
         
         stamMax = endurance    
