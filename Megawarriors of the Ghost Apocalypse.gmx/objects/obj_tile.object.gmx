@@ -72,7 +72,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//do nothing
+            <string>tileDrawDoodads()
 </string>
           </argument>
         </arguments>

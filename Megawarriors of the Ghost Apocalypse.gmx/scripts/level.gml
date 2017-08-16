@@ -187,19 +187,28 @@ with(obj_tile)
         
         if irandom(20) = 20
         {
-            i = instance_create(x-2+irandom(4),y-2+irandom(4),obj_doodad)
-            i.sprite_index = spr_bones
+            additDoodSpr[0] = spr_bones;
+            additDoodImg[0] = irandom(4);
+            additDoodX[0] = irandom(4)-2;
+            additDoodY[0] = irandom(4)-2;
         }
     }
     else if isRiver = false
     {
         sprite_index = spr_tile   
-        if weight = 2
+        if (weight = 2)
+        {
+            additDoodSpr[0] = spr_blueGrass;
+            additDoodImg[0] = choose(0,1);
+            additDoodX[0] = irandom(8)-4;
+            additDoodY[0] = irandom(8)-4;
+        }
+        else if weight = 3
         {
             i = instance_create(x-1+irandom(2),y-1+irandom(2),obj_terrain)
             i.sprite_index = spr_bush
         }
-        else if weight > 2
+        else if weight > 3
         {
             instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
         }
