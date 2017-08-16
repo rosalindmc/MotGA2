@@ -194,7 +194,12 @@ with(obj_tile)
     else if isRiver = false
     {
         sprite_index = spr_tile   
-        if weight > 3
+        if weight = 2
+        {
+            i = instance_create(x-1+irandom(2),y-1+irandom(2),obj_terrain)
+            i.sprite_index = spr_bush
+        }
+        else if weight > 2
         {
             instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
         }
