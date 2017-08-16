@@ -39,6 +39,7 @@ controls()
 global.isPaused = false;
 
 //Create pc
+global.statPoints = 6
 global.pc = createChar(x,y,megawarrior,noone)
 //later add import stats script
 
