@@ -37,3 +37,17 @@ other.canRoll = false
 other.canInv = false
 
 instance_destroy()
+#define openUp
+if(argument0 = global.pc){
+    //run a switch for which kind of crate this is
+    var crateLoot = choose(sword,khopesh,genericPotion, genericPotion, pike);
+    
+    createItem(x,y, crateLoot, noone);//might change noone to argument0
+    
+    //make the crate look opened
+    //owner.image_index = 1;
+    
+    with(owner){//comment this out eventually
+    instance_destroy();
+    }
+}

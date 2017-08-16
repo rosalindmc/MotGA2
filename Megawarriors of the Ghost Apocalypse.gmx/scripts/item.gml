@@ -23,6 +23,10 @@ if argument3 = noone
     ii.owner = i
     ii.useType = pickUp
     i.interactId = ii
+    
+    if(argument2 = crate){//crate is currently in swords script
+    ii.useType = openUp;//in pickUp
+    }
 }
 else{
     ii = instance_create(i.x,i.y,obj_interactable)

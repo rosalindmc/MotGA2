@@ -111,9 +111,10 @@ threatInitialize();
 repeat(4)
 {
     createItem(random(room_width),random(room_height),sword,noone)
-    createItem(random(room_width),random(room_height),khopesh,noone)//currently crates
+    createItem(random(room_width),random(room_height),khopesh,noone)
     createItem(random(room_width),random(room_height),pike,noone)
-    createItem(random(room_width),random(room_height),genericPotion,noone)//potion is in melee weapon, so move it soon
+    createItem(random(room_width),random(room_height),crate,noone)
+    createItem(random(room_width),random(room_height),genericPotion,noone)
 }
 /*replace later -> grass spawn
 repeat(50)

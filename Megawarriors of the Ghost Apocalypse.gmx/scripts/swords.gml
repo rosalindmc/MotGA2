@@ -157,8 +157,8 @@ switch(argument0)
 {
     case 0:     //Initialize 
     //Core
-    name = choose('Sword','Item','Steve','Harvy','Todd','Howard')
-    sprite_index = spr_largeCrate
+    name = choose('Khopesh','Item','John','Greg','Jim','Fiona')
+    sprite_index = spr_khopesh
     useScript[1] = melee
     useScript[2] = melee
     
@@ -228,5 +228,25 @@ switch(argument0)
     meleeLungeMult[3] = 0
     meleeRateMult[4] = 2
     meleeLungeMult[4] = 0
+    break
+}
+
+#define crate
+switch(argument0)
+{
+    case 0:     //Initialize 
+    //Core
+    name = 'I am a crate'
+    sprite_index = spr_largeCrate
+    image_index = 0
+    /*
+    useScript[1] = drinkPotion
+    useScript[2] = drinkPotion
+    
+    //Item Stats
+    length = 7
+    holdPoint = 0
+    gwPoint = 1
+    */
     break
 }
