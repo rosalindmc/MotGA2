@@ -28,19 +28,6 @@ with(i){
 
 
 
-#define charSetup
-//Vitals
-
-lifeMax = 2*vitality+1
-life = lifeMax
-lifeRegen = 0.0 //per second
-
-stamMax = endurance    
-stam = stamMax
-stamRegen = 3.0   //per second
-stamDelay = 0.0
-
-
 #define charInitialize
 //Art Essentials
 animType = humanoid
@@ -182,6 +169,50 @@ interactId = noone
 
 
 
+
+#define charSetup
+//Vitals
+switch (type){
+    case 'mook':
+        life = lifeMax
+        
+        stamMax = endurance    
+        stam = stamMax
+        
+        damageMod = floor(might/2)
+        impactMod = might
+        
+        break;
+        
+    case 'strong':
+        
+        life = lifeMax
+        
+        stamMax = endurance    
+        stam = stamMax
+        
+        damageMod = floor(might*0.75)
+        impactMod = might
+    
+        break
+    
+    case 'megawarrior':
+        
+        lifeMax = 4+2*vitality
+        life = lifeMax
+        
+        stamMax = endurance    
+        stam = stamMax
+        
+        damageMod = might
+        impactMod = might        
+    
+        break
+    
+    default:
+        break
+    
+}
 
 #define charStep
 //MoveLimit

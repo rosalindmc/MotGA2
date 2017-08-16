@@ -39,7 +39,7 @@ controls()
 global.isPaused = false;
 
 //Create pc
-global.pc = instance_create(x,y,obj_char)
+global.pc = createChar(x,y,megawarrior,noone)
 //later add import stats script
 
 global.timer = 0
