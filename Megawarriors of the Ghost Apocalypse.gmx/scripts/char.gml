@@ -184,23 +184,23 @@ switch (type){
         impactMod = 1 + (might-4)*0.2
         
         break;
+    
+    case 'megawarrior':
         
-    case 'strong':
-        
-        lifeMax = 3+1.5*vitality
+        lifeMax = 4+2*vitality
         life = lifeMax
         
         stamMax = endurance    
         stam = stamMax
         
         damageMod = 1 + (might-4)*0.1
-        impactMod = 1 + (might-4)*0.2
+        impactMod = 1 + (might-4)*0.2  
     
         break
     
-    case 'megawarrior':
+    case 'boss':
         
-        lifeMax = 4+2*vitality
+        lifeMax = 6+4*vitality
         life = lifeMax
         
         stamMax = endurance    
