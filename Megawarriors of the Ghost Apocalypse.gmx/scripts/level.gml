@@ -17,6 +17,12 @@
     global.surfY1 = room_height
     global.surfX2 = 0
     global.surfY2 = 0
+    global.liveSurf = true
+    global.liveSurfX1 = 0
+    global.liveSurfY1 = 0
+    global.liveSurfX2 = 0
+    global.liveSurfY2 = 0
+    
     
     challenge = global.currNode.challenge
     
@@ -116,12 +122,6 @@ repeat(4)
     createItem(random(room_width),random(room_height),crate,noone)
     createItem(random(room_width),random(room_height),genericPotion,noone)
 }
-/*replace later -> grass spawn
-repeat(50)
-{
-    
-}
-*/
 
 //Temp assign tile information
 with(obj_tile)
@@ -131,12 +131,12 @@ with(obj_tile)
         sprite_index = spr_water
         depth = -300
         wz = -2
-        z = -5
+        z = -8
         
         if isPath = true
         {
             sprite_index = spr_bridge
-            z = -3
+            z = -4
         }
         
         //Check adjacency
@@ -203,19 +203,27 @@ with(obj_tile)
             image_yscale = choose(-1.5,1.5)
             image_angle = random(360)
             depth = -200
-        }
-        
-        if (weight = 2)
-        {
-            if irandom(4) = 0
+            
+            if irandom(2) = 0
             {
                 additDoodSpr[0] = spr_blueGrass;
-                additDoodImg[0] = choose(0,1);
+                additDoodImg[0] = 1
                 additDoodX[0] = irandom(8)-4;
                 additDoodY[0] = irandom(8)-4;
             }
         }
-        else if weight = 4
+        else
+        {
+            if irandom(10) = 0
+            {
+                additDoodSpr[0] = spr_blueGrass;
+                additDoodImg[0] = 0
+                additDoodX[0] = irandom(8)-4;
+                additDoodY[0] = irandom(8)-4;
+            }    
+        }
+        
+        if weight = 4
         {
             i = instance_create(x-1+irandom(2),y-1+irandom(2),obj_terrain)
             i.sprite_index = spr_bush

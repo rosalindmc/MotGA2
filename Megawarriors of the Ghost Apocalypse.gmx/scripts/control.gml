@@ -243,58 +243,76 @@ else
 //Water Reflections
 if global.surfX2 != 0
 {
-  
-    //Reflect Surface
-    if surface_exists(global.reflectSurf)
+    //Calculate the new liveSurfX and liveSurfY
+    global.liveSurfX1 = max(global.surfX1,view_xview)
+    global.liveSurfX2 = min(global.surfX2,view_xview+view_hview)
+    global.liveSurfY1 = max(global.surfY1,view_yview)
+    global.liveSurfY2 = min(global.surfY2,view_yview+view_hview)
+    
+    if global.liveSurfX1 < global.liveSurfX2 and global.liveSurfY1 < global.liveSurfY2
     {
-        surface_set_target(global.reflectSurf)
-        
-        //Draw sky
-        draw_clear_alpha(make_colour_rgb(150,240,255),0)
-        draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.surfX1,view_yview+(view_hview*.75)-global.surfY1)
-        draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.surfX1,view_yview+(view_hview/2)-global.surfY1)
-        surface_reset_target()
+        global.liveSurf = false
     }
     else
     {
-        global.reflectSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
+        global.liveSurf = false
     }
     
-    //Block Surface
-    if surface_exists(global.blockSurf)
+    if global.liveSurf = true
     {
-        surface_set_target(global.blockSurf)
-        draw_clear_alpha(c_white,0)
-        surface_reset_target()
-    }
-    else
-    {
-        global.blockSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
-    }
-    
-    //Mask Surface
-    if !surface_exists(global.maskSurf)
-    {
-        global.maskSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
-        
-        surface_set_target(global.maskSurf)
-        draw_clear_alpha(c_white,1)
-        draw_set_blend_mode(bm_subtract)
-        with(obj_tile)
+        //Reflect Surface
+        if surface_exists(global.reflectSurf)
         {
-            if isWater = true
+            surface_set_target(global.reflectSurf)
+            
+            //Draw sky
+            draw_clear_alpha(make_colour_rgb(150,240,255),0)
+            draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview*.75)-global.liveSurfY1)
+            draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview/2)-global.liveSurfY1)
+            surface_reset_target()
+        }
+        else
+        {
+            global.reflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
+        }
+        
+        //Block Surface
+        if surface_exists(global.blockSurf)
+        {
+            surface_set_target(global.blockSurf)
+            draw_clear_alpha(c_white,0)
+            surface_reset_target()
+        }
+        else
+        {
+            global.blockSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
+        }
+        
+        //Mask Surface
+        //The Mask Surface is baked and needs to only ever be drawn here.  Objects that seldom ever move should draw to mask surf
+        if !surface_exists(global.maskSurf)
+        {
+            global.maskSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
+            
+            surface_set_target(global.maskSurf)
+            draw_clear_alpha(c_white,1)
+            draw_set_blend_mode(bm_subtract)
+            with(obj_tile)
             {
-                draw_sprite(spr_tile,0,x-global.surfX1,y-wz-global.surfY1)
-                if wSBorder = true
+                if isWater = true
                 {
-                    draw_set_blend_mode(bm_add)
-                    draw_sprite(spr_tile,0,x-global.surfX1,y+metre-global.surfY1)
-                    draw_set_blend_mode(bm_subtract)
+                    draw_sprite(spr_tile,0,x-global.surfX1,y-wz-global.surfY1)
+                    if wSBorder = true
+                    {
+                        draw_set_blend_mode(bm_add)
+                        draw_sprite(spr_tile,0,x-global.surfX1,y+metre-global.surfY1)
+                        draw_set_blend_mode(bm_subtract)
+                    }
                 }
             }
+            surface_reset_target()
+            draw_set_blend_mode(bm_normal)
         }
-        surface_reset_target()
-        draw_set_blend_mode(bm_normal)
     }
 }
 
@@ -309,37 +327,41 @@ view_yview[]+(view_hview[]/2)+(270*(.5-(y/room_height))))
 
 #define controlDraw
 //Combine the surfaces    
-if surface_exists(global.reflectSurf)
+if global.liveSurf = true
 {
-    if !surface_exists(global.finalReflectSurf)
+    if surface_exists(global.reflectSurf)
     {
-        global.finalReflectSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)     
+        if !surface_exists(global.finalReflectSurf)
+        {
+            global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
+        }
+        shader_set(shd_ripple)
+        shader_set_uniform_f(uTime,current_time/1000)
+        surface_set_target(global.finalReflectSurf)
+        draw_clear_alpha(make_colour_rgb(150,240,255),0)
+        draw_surface(global.reflectSurf,0,0)
+        shader_reset()
+        
+        draw_set_colour_write_enable(false,false,false,true)
+        draw_set_blend_mode(bm_subtract)
+        if surface_exists(global.maskSurf)
+        {
+            draw_surface(global.maskSurf,-global.liveSurfX1,-global.liveSurfY1)
+        }
+        
+        if surface_exists(global.blockSurf)
+        {
+            draw_surface(global.blockSurf,0,0)   
+        }
+        draw_set_blend_mode(bm_normal)
+        draw_set_colour_write_enable(true,true,true,true)
+        draw_rectangle(0,0,global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1,true)
+        surface_reset_target()
+        
+        draw_set_alpha(.5)
+        draw_surface(global.finalReflectSurf,global.liveSurfX1,global.liveSurfY1)
+        draw_set_alpha(1)
     }
-    shader_set(shd_ripple)
-    shader_set_uniform_f(uTime,current_time/1000)
-    surface_set_target(global.finalReflectSurf)
-    draw_clear_alpha(make_colour_rgb(150,240,255),0)
-    draw_surface(global.reflectSurf,0,0)
-    shader_reset()
-    
-    draw_set_colour_write_enable(false,false,false,true)
-    draw_set_blend_mode(bm_subtract)
-    if surface_exists(global.maskSurf)
-    {
-        draw_surface(global.maskSurf,0,0)
-    }
-    
-    if surface_exists(global.blockSurf)
-    {
-        draw_surface(global.blockSurf,0,0)   
-    }
-    draw_set_blend_mode(bm_normal)
-    draw_set_colour_write_enable(true,true,true,true)
-    surface_reset_target()
-    
-    draw_set_alpha(.5)
-    draw_surface(global.finalReflectSurf,global.surfX1,global.surfY1)
-    draw_set_alpha(1)
 }
 
 #define controlDrawHUD

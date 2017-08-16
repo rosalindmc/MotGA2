@@ -324,9 +324,9 @@ if surface_exists(charSurf)
     draw_sprite_ext(clothingSprite,10+armLength[2]+armSpriteLength,shldrX[2-shldrSwap],shldrY[2-shldrSwap],armStretch[2],bodyHFacing,handPoint[2],c_white,1)
     }
             
-    draw_set_colour(c_red)
+    //draw_set_colour(c_red)
     //draw_line(shldrX[2-shldrSwap],shldrY[2-shldrSwap],shldrX[2-shldrSwap]+lengthdir_x(armStretch[2]*armSpriteLength,handPoint[2]),shldrY[2-shldrSwap]+lengthdir_y(armStretch[2]*armSpriteLength,handPoint[2]))
-    draw_set_colour(c_green)
+    //draw_set_colour(c_green)
     //draw_point(shldrX[2-shldrSwap],shldrY[2-shldrSwap])
     //draw_point(handX[2],handY[2])
     //draw_line(shldrX[2-shldrSwap],shldrY[2-shldrSwap],handX[2],handY[2])
@@ -335,7 +335,7 @@ if surface_exists(charSurf)
     //draw_point(shldrX[1+shldrSwap],shldrY[1+shldrSwap])
     
     draw_set_blend_mode(bm_subtract)
-    draw_rectangle(0,round(charSurfSize*.75)+floorID.wz+1,charSurfSize,round(charSurfSize*.75)+1,false)
+    draw_rectangle(0,round(charSurfSize*.75)+z-floorID.wz+1,charSurfSize,round(charSurfSize*.75)+1,false)
     draw_set_blend_mode(bm_normal)
     surface_reset_target()
 }

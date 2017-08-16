@@ -463,20 +463,20 @@ draw_sprite(spr_shadow,0,round(x),round(y)-floorID.wz)
 if player = true
 {
     draw_set_colour(c_yellow)
-    draw_ellipse(round(x-5),round(y-2)-floorID.wz,round(x+3),round(y+2)-floorID.wz,false)
+    //draw_ellipse(round(x-5),round(y-2)-floorID.wz,round(x+3),round(y+2)-floorID.wz,false)
 }
 
 //Draw Surface
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)
 
-if global.surfX2 != 0
+if global.liveSurf = true
 {
     //Draw Block
     if surface_exists(global.blockSurf)
     {
         surface_set_target(global.blockSurf)
-        draw_surface(charSurf,round(x-(charSurfSize*.5))-global.surfX1,round(y-(charSurfSize*.75))-global.surfY1-z)   
-        draw_sprite(spr_shadow,0,round(x)-global.surfX1,round(y)-global.surfY1)     
+        draw_surface(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y-(charSurfSize*.75))-global.liveSurfY1-z)   
+        draw_sprite(spr_shadow,0,round(x)-global.liveSurfX1,round(y)-global.liveSurfY1)     
         surface_reset_target()
     }
     
@@ -484,7 +484,7 @@ if global.surfX2 != 0
     if surface_exists(global.reflectSurf)
     {
         surface_set_target(global.reflectSurf)
-        draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.surfX1,round(y+(charSurfSize*.75))-global.surfY1+z,1,-1,0,c_white,1)
+        draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y+(charSurfSize*.75))-global.liveSurfY1+z,1,-1,0,c_white,1)
         surface_reset_target()
     }
 }
