@@ -108,7 +108,7 @@ if owner = noone or hand != 0
         if surface_exists(global.blockSurf)
         {
             surface_set_target(global.blockSurf)
-            draw_surface(itemSurf,round(x)-30-global.surfX1,round(y-z)-30-global.surfY1)      
+            draw_surface(itemSurf,round(x)-30-global.liveSurfX1,round(y-z)-30-global.liveSurfY1)      
             surface_reset_target()
         }
         
@@ -116,7 +116,7 @@ if owner = noone or hand != 0
         if surface_exists(global.reflectSurf)
         {
             surface_set_target(global.reflectSurf)
-            draw_surface_ext(itemSurf,round(x)-30-global.surfX1,round(y+z)-30-global.surfY1,1,1,0,c_white,1)
+            draw_surface_ext(itemSurf,round(x)-30-global.liveSurfX1,round(y+z)-30-global.liveSurfY1,1,1,0,c_white,1)
             surface_reset_target()
         }
     }

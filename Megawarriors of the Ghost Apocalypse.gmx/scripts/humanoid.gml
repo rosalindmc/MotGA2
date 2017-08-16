@@ -312,16 +312,16 @@ if surface_exists(charSurf)
     
     if handDir[1] >= 180
     {
-    //Right Arm
-    draw_sprite_ext(armSprite,armLength[1],shldrX[1+shldrSwap],shldrY[1+shldrSwap],armStretch[1],bodyHFacing,handPoint[1],skinTone,1)
-    draw_sprite_ext(clothingSprite,10+armLength[1],shldrX[1+shldrSwap],shldrY[1+shldrSwap],armStretch[1],bodyHFacing,handPoint[1],c_white,1)
+        //Right Arm
+        draw_sprite_ext(armSprite,armLength[1],shldrX[1+shldrSwap],shldrY[1+shldrSwap],armStretch[1],bodyHFacing,handPoint[1],skinTone,1)
+        draw_sprite_ext(clothingSprite,10+armLength[1],shldrX[1+shldrSwap],shldrY[1+shldrSwap],armStretch[1],bodyHFacing,handPoint[1],c_white,1)
     }
     
     if handDir[2] >= 180
     {
-    //Left Arm
-    draw_sprite_ext(armSprite,armLength[2]+armSpriteLength,shldrX[2-shldrSwap],shldrY[2-shldrSwap],armStretch[2],bodyHFacing,handPoint[2],skinTone,1)
-    draw_sprite_ext(clothingSprite,10+armLength[2]+armSpriteLength,shldrX[2-shldrSwap],shldrY[2-shldrSwap],armStretch[2],bodyHFacing,handPoint[2],c_white,1)
+        //Left Arm
+        draw_sprite_ext(armSprite,armLength[2]+armSpriteLength,shldrX[2-shldrSwap],shldrY[2-shldrSwap],armStretch[2],bodyHFacing,handPoint[2],skinTone,1)
+        draw_sprite_ext(clothingSprite,10+armLength[2]+armSpriteLength,shldrX[2-shldrSwap],shldrY[2-shldrSwap],armStretch[2],bodyHFacing,handPoint[2],c_white,1)
     }
             
     //draw_set_colour(c_red)

@@ -103,7 +103,7 @@
             }
     }
     
-    podGen()
+    //podGen()
     
     with(obj_pod){
         podTypeSelect()
@@ -129,7 +129,7 @@ with(obj_tile)
     if isRiver = true
     {
         sprite_index = spr_water
-        depth = -300
+        depth = -3
         wz = -2
         z = -8
         
@@ -181,7 +181,7 @@ with(obj_tile)
         image_xscale = choose(-1.5,1.5)
         image_yscale = choose(-1.5,1.5)
         image_angle = random(360)
-        depth = -100
+        depth = -1
                 
         if irandom(20) = 20
         {
@@ -202,7 +202,7 @@ with(obj_tile)
             image_xscale = choose(-1.5,1.5)
             image_yscale = choose(-1.5,1.5)
             image_angle = random(360)
-            depth = -200
+            depth = -2
             
             if irandom(2) = 0
             {

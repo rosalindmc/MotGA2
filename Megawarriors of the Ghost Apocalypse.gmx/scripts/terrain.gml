@@ -12,21 +12,13 @@ mask_index = spr_mask
 #define terrainDraw
 draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha)
 
-if global.surfX2 != 0
+if global.liveSurf = true
 {    
     //Draw Reflection
     if surface_exists(global.reflectSurf)
     {
         surface_set_target(global.reflectSurf)
-        draw_sprite_ext(sprite_index,image_index,x-global.surfX1,y-global.surfY1,image_xscale,image_yscale*-1,image_angle,c_white,image_alpha)
-        surface_reset_target()
-    }
-    
-    //Draw Block
-    if surface_exists(global.blockSurf)
-    {
-        surface_set_target(global.blockSurf)
-        draw_sprite_ext(sprite_index,image_index,x-global.surfX1,y-global.surfY1,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+        draw_sprite_ext(sprite_index,image_index,x-global.liveSurfX1,y-global.liveSurfY1,image_xscale,image_yscale*-1,image_angle,c_white,image_alpha)
         surface_reset_target()
     }
 }
