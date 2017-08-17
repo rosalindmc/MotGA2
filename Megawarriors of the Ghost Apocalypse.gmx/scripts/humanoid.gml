@@ -335,7 +335,7 @@ if surface_exists(charSurf)
     //draw_point(shldrX[1+shldrSwap],shldrY[1+shldrSwap])
     
     draw_set_blend_mode(bm_subtract)
-    draw_rectangle(0,round(charSurfSize*.75)+z-floorID.wz+1,charSurfSize,round(charSurfSize*.75)+1,false)
+    draw_rectangle(0,round(charSurfSize*.75)+min(z,0)-floorID.wz+1,charSurfSize,round(charSurfSize*.75)+1,false)
     draw_set_blend_mode(bm_normal)
     surface_reset_target()
 }

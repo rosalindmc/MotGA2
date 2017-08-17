@@ -4,7 +4,7 @@
 #define controlInitialize
 //Essentials
 randomize()
-global.frameRate = 60
+global.frameRate = 40
 room_speed = global.frameRate
 global.timeMult = 1
 enumerators();
@@ -138,8 +138,8 @@ else
 
 //Global Timer
 global.timer += 1/global.frameRate
-if (global.timer > 30){
-    global.timer -= 30
+if (global.timer > 600){
+    global.timer -= 600
 }
 
 //Threat Timer
@@ -243,19 +243,41 @@ else
 //Water Reflections
 if global.surfX2 != 0
 {
-    //Calculate the new liveSurfX and liveSurfY
-    global.liveSurfX1 = max(global.surfX1,view_xview)
-    global.liveSurfX2 = min(global.surfX2,view_xview+view_wview)
-    global.liveSurfY1 = max(global.surfY1,view_yview)
-    global.liveSurfY2 = min(global.surfY2,view_yview+view_hview)
+    if global.timer%.1 <= 1/global.frameRate
+    {
+        //Calculate the new liveSurfX and liveSurfY
+        global.liveSurfX1 = max(view_xview,global.surfX1)
+        global.liveSurfX2 = min(view_xview+view_wview,global.surfX2)
+        global.liveSurfY1 = max(view_yview,global.surfY1)   
+        global.liveSurfY2 = min(view_yview+view_hview,global.surfY2)
+        
+        /*
+        global.liveSurfX1 = view_xview+view_wview
+        global.liveSurfX2 = view_xview
+        global.liveSurfY1 = view_yview+view_hview
+        global.liveSurfY2 = view_yview
+        
+        for(i = 0; i < obj_level.numWaterTiles; i++)
+        {   
+            if obj_level.waterTiles[i].gridX >= floor((view_xview-(5*metre))/metre) and obj_level.waterTiles[i].gridX <= ceil((view_xview+view_wview+(5*metre))/metre)
+            and obj_level.waterTiles[i].gridY >= floor((view_yview-(5*metre))/metre) and obj_level.waterTiles[i].gridY <= ceil((view_yview+view_hview+(5*metre))/metre)
+            {
+                global.liveSurfX1 = min(view_xview,obj_level.waterTiles[i].x-8,global.liveSurfX1)
+                global.liveSurfX2 = max(view_xview+view_wview,obj_level.waterTiles[i].x+8,global.liveSurfX2)
+                global.liveSurfY1 = min(view_yview,obj_level.waterTiles[i].y-8,global.liveSurfY1)
+                global.liveSurfY2 = max(view_yview+view_hview,obj_level.waterTiles[i].y+8,global.liveSurfY2)
+            }
+        }
+        */
     
-    if global.liveSurfX1 < global.liveSurfX2 and global.liveSurfY1 < global.liveSurfY2
-    {
-        global.liveSurf = true
-    }
-    else
-    {
-        global.liveSurf = false
+        if global.liveSurfX1 < global.liveSurfX2 and global.liveSurfY1 < global.liveSurfY2
+        {
+            global.liveSurf = true
+        }
+        else
+        {
+            global.liveSurf = false
+        }
     }
     
     if global.liveSurf = true
@@ -335,7 +357,7 @@ if global.liveSurf = true
         global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
         
         shader_set(shd_ripple)
-        shader_set_uniform_f(uTime,(current_time/1000)) //Modify view Y
+        shader_set_uniform_f(uTime,((current_time/1000)-(global.liveSurfX1/6.2831))) //Modify view Y
         surface_set_target(global.finalReflectSurf)
         draw_clear_alpha(make_colour_rgb(150,240,255),0)
         draw_surface(global.reflectSurf,0,0)
@@ -360,6 +382,8 @@ if global.liveSurf = true
         draw_set_alpha(.5)
         draw_surface(global.finalReflectSurf,global.liveSurfX1,global.liveSurfY1)
         draw_set_alpha(1)
+        
+        //draw_rectangle(global.liveSurfX1,global.liveSurfY1,global.liveSurfX2,global.liveSurfY2,true)
     }
 }
 
@@ -428,8 +452,6 @@ if black > 0
         drawText(c_black,c_red,view_xview+(view_wview/2),view_yview+(view_hview/2),'DEAD')
     }
 }
-
-<<<<<<< HEAD
 */
 
 
@@ -473,6 +495,8 @@ if black > 0
         
         i += 1
     }
+    
+    drawText(c_black,c_white,view_xview[0]+15,view_yview[0]+50,fps)
     
     /*
     if point_in_rectangle(mouse_x,mouse_y,0,0,sizeX*metre*2+10,sizeY*metre*2+10)

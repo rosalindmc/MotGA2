@@ -11,6 +11,11 @@
     sizeY = global.currNode.sizeY
     global.poiSpacing = floor(sizeX/10)
     
+    waterTiles[0] = -4
+    numWaterTiles = 0
+    pathTiles[0] = -4
+    numPathTiles = 0
+    
     room_height = sizeY*metre
     room_width = sizeX*metre
     global.surfX1 = room_width
@@ -210,18 +215,10 @@ with(obj_tile)
             image_yscale = choose(-1.5,1.5)
             image_angle = random(360)
             depth = -2
-            
-            if irandom(2) = 0
-            {
-                additDoodSpr[0] = spr_blueGrass;
-                additDoodImg[0] = 1
-                additDoodX[0] = irandom(8)-4;
-                additDoodY[0] = irandom(8)-4;
-            }
         }
-        else
+        else if weight = 2
         {
-            if irandom(10) = 0
+            if irandom(2) = 0
             {
                 additDoodSpr[0] = spr_blueGrass;
                 additDoodImg[0] = 0
@@ -230,7 +227,7 @@ with(obj_tile)
             }    
         }
         
-        if weight = 4
+        if weight = 3 or weight = 4
         {
             i = instance_create(x-1+irandom(2),y-1+irandom(2),obj_terrain)
             i.sprite_index = spr_bush
@@ -238,7 +235,14 @@ with(obj_tile)
         else if weight > 4
         {
             
-            instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
+            i = instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
+            for(ii = 0; ii < obj_level.numPathTiles; ii++)
+            {
+                if rectangle_in_rectangle(obj_level.pathTiles[ii].x-8,obj_level.pathTiles[ii].y-8,obj_level.pathTiles[ii].x+8,obj_level.pathTiles[ii].y,x-20,y,x+20,y-50) != 0
+                {
+                    i.sprite_index = spr_bush
+                }
+            }
         }
         
     }
@@ -291,6 +295,8 @@ while(current.pathParent != noone)
     
     current.pathParent.weight = 1
     current.pathParent.rWeight = 5
+    pathTiles[numPathTiles] = current.pathParent
+    numPathTiles += 1
 
     if(current.gridX-1 >= 0){
         if (floorLayout[current.gridX-1, current.gridY].weight > 2){
@@ -365,6 +371,9 @@ while(current.pathParent != noone)
 {
     current.pathParent.rWeight = 0.5
 
+    waterTiles[numWaterTiles] = current.pathParent
+    numWaterTiles += 1
+    
     current.pathParent.isRiver = true
     current.pathParent.isWater = true
     global.surfX1 = min(global.surfX1,current.pathParent.x-8)
@@ -427,6 +436,8 @@ current = finish
 while(current.pathParent != noone)
 {
     current.critPath = true
+    pathTiles[numPathTiles] = current.pathParent
+    numPathTiles += 1
     returnFlag.finalWeight += current.weight
     current.pathParent.critPath = true
     current = current.pathParent

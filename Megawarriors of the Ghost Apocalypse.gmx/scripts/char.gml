@@ -519,7 +519,7 @@ draw_sprite(spr_shadow,0,round(x),round(y)-floorID.wz)
 if player = true
 {
     draw_set_colour(c_yellow)
-    //draw_ellipse(round(x-5),round(y-2)-floorID.wz,round(x+3),round(y+2)-floorID.wz,false)
+    draw_ellipse(round(x-5),round(y-2)-floorID.wz,round(x+3),round(y+2)-floorID.wz,false)
 }
 
 //Draw Surface
