@@ -107,13 +107,30 @@ riverGen()
 critPathTiles = ds_list_create()
 openTiles = ds_list_create()
 
+/*
+
+ other.floorLayout[gridX,gridY].weight = 1
+other.floorLayout[gridX,gridY].hasPoi = true
+other.floorLayout[gridX,gridY].poi = id 
+
+*/
+
 with(obj_tile){
-   
-    if(critPath){
-        ds_list_add(other.critPathTiles, id)
+    if (hasPoi = true){
+        if(critPath && poi.hasPod && poi.gridX != gridX && poi.gridY != gridY){
+            ds_list_add(other.critPathTiles, id)
+        }
+        else if (isPath && poi.hasPod && poi.gridX != gridX && poi.gridY != gridY){
+            ds_list_add(other.openTiles, id)
+        }
     }
-    else if (isPath){
-        ds_list_add(other.openTiles, id)
+    else{
+        if(critPath){
+            ds_list_add(other.critPathTiles, id)
+        }
+        else if (isPath){
+            ds_list_add(other.openTiles, id)
+        }
     }
     
 }
@@ -383,7 +400,7 @@ with(obj_poi){
     }
     
     if (loot != noone){
-        createItem(gridX*16+8, gridY*16+8, loot, noone)
+        createItem(gridX*16+8, gridY*16+8, crate, noone)
     }
     
     

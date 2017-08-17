@@ -25,7 +25,7 @@ with(i){
     //charSetup()
 }
 
-
+return(i);
 
 
 #define charInitialize

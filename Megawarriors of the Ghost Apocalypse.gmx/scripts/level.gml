@@ -100,8 +100,8 @@
         }
     }
     
-    global.pc.x = critLength[j].start.gridX*16+8
-    global.pc.y = critLength[j].start.gridY*16+8
+    global.pc.x = critLength[j].start.gridX*16+1
+    global.pc.y = critLength[j].start.gridY*16+1
     critLength[j].start.critPath = false
     
     for(i = 0; i < array_length_1d(critLength)-1; i++){
@@ -110,7 +110,7 @@
             }
     }
     
-    //podGen()
+    podGen()
     
     with(obj_pod){
         podTypeSelect()
@@ -126,7 +126,7 @@ repeat(4)
     createItem(random(room_width),random(room_height),sword,noone)
     createItem(random(room_width),random(room_height),khopesh,noone)
     createItem(random(room_width),random(room_height),pike,noone)
-    createItem(random(room_width),random(room_height),crate,noone)
+    //createItem(random(room_width),random(room_height),crate,noone)
     createItem(random(room_width),random(room_height),genericPotion,noone)
 }
 
