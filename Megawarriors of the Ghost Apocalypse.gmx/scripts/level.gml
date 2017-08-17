@@ -122,6 +122,23 @@
         podSpawn()
     }
     
+    
+    //create the crit PoI deco
+for (i = 0; i< array_length_1d(global.currNode.pois);i++){
+    with (pois[i]){
+        if(array_length_1d(furniture) > 3){
+            for(i = 0; i < array_length_1d(furniture) / 4; i++){
+                var place = i*4;
+                //createFurniture(objType, statHolderScript, gridX, gridY)
+                    //CURRENTLY IN DOODAD
+                createFurniture(furniture[place],furniture[place+1],
+                                gridX + furniture[place+2], gridY + furniture[place+3]);
+            }
+            
+        }
+    }
+}
+    
 //start the threat timer for the level
 threatInitialize();
 
@@ -207,10 +224,12 @@ with(obj_tile)
                 
         if irandom(20) = 20
         {
-            additDoodSpr[0] = spr_bones;
-            additDoodImg[0] = irandom(4);
-            additDoodX[0] = irandom(4)-2;
-            additDoodY[0] = irandom(4)-2;
+            additDoodSpr[numAdditDood] = spr_bones;
+            additDoodImg[numAdditDood] = irandom(4);
+            additDoodX[numAdditDood] = irandom(4)-2;
+            additDoodY[numAdditDood] = irandom(4)-2;
+            
+            numAdditDood++;
         }
     }
     else if isRiver = false
@@ -228,20 +247,24 @@ with(obj_tile)
             
             if irandom(2) = 0 and weight = 3
             {
-                additDoodSpr[0] = spr_blueGrass;
-                additDoodImg[0] = 1
-                additDoodX[0] = irandom(8)-4;
-                additDoodY[0] = irandom(8)-4;
+                additDoodSpr[numAdditDood] = spr_blueGrass;
+                additDoodImg[numAdditDood] = 1
+                additDoodX[numAdditDood] = irandom(8)-4;
+                additDoodY[numAdditDood] = irandom(8)-4;
+                
+                numAdditDood++;
             }
         }
         else if weight = 2
         {
             if irandom(2) = 0
             {
-                additDoodSpr[0] = spr_blueGrass;
-                additDoodImg[0] = 0
-                additDoodX[0] = irandom(8)-4;
-                additDoodY[0] = irandom(8)-4;
+                additDoodSpr[numAdditDood] = spr_blueGrass;
+                additDoodImg[numAdditDood] = 0
+                additDoodX[numAdditDood] = irandom(8)-4;
+                additDoodY[numAdditDood] = irandom(8)-4;
+                
+                numAdditDood++;
             }    
         }
         

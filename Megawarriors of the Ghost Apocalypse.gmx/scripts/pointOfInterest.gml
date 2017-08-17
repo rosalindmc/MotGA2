@@ -3,6 +3,7 @@
 
 #define poiInitialize
 type = poiType.none //Type of point of interest
+typeScript = emptyPoi
 
 gridX = x
 gridY = y
@@ -11,6 +12,8 @@ spaceX = 5
 spaceY = 5  //needed space
 
 buffer = 0  //the amount of space this has around it before it should generate walls.
+
+furniture[0] = 0
 
 entrance = false
 
@@ -29,6 +32,7 @@ roads = 0       //whether or not this has roads
 #define poiImport
 
 type = argument0.type //Type of point of interest
+typeScript = argument0.typeScript
 
 gridX = argument0.gridX
 gridY = argument0.gridY
@@ -57,35 +61,38 @@ ret = noone
 switch(argument0){
 default:
     ret = instance_create(0,0,obj_poi)
+    with(ret){
+        typeScript = smallLoot
+    }
 break
 case 1:
     ret = instance_create(0,0,obj_poi)
     with(ret){
-        shrineTemp()
+        typeScript = shrineTemp
     }
 break
 case 10:
     ret = instance_create(0,0,obj_poi)
     with(ret){
-        miniBossTemp()
+        typeScript = miniBossTemp
     }
 break
 case 11:
     ret = instance_create(0,0,obj_poi)
     with(ret){
-        specItemTemp()
+        typeScript = specItemTemp
     }
 break
 case 12:
     ret = instance_create(0,0,obj_poi)
     with(ret){
-        specCharTemp()
+        typeScript = specCharTemp
     }
 break
 case 13:
     ret = instance_create(0,0,obj_poi)
     with(ret){
-        dungeonTemp()
+        typeScript = dungeonTemp
     }
 break
 }

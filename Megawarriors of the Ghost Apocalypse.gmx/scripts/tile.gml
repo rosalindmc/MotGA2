@@ -20,6 +20,8 @@ wNBorder = false
 wEBorder = false
 wSBorder = false
 wWBorder = false
+
+numAdditDood = 0
 additDoodSpr[0] = spr_none
 additDoodImg[0] = 0
 additDoodX[0] = 0
@@ -67,6 +69,8 @@ else
 
 
 #define tileDrawDoodads
-for(var i = 0; i < array_length_1d(additDoodSpr); i++){
-    draw_sprite(additDoodSpr[i],additDoodImg[i],x+additDoodX[i],y+additDoodY[i]);
+if(numAdditDood>0){
+    for(var i = 0; i < numAdditDood; i++){
+        draw_sprite(additDoodSpr[i],additDoodImg[i],x+additDoodX[i],y+additDoodY[i]);
+    }
 }
