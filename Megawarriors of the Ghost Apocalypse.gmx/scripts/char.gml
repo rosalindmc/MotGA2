@@ -129,6 +129,14 @@ stabilityDelay = 0.0
 recovery = 5.0
 staggerRecovery = 0.0
 
+armour = 1.0
+physicalResist = 1.0
+magicResist = 1.0
+
+for(i = 0; i<=13; i++){
+    damageResist[i] = 1.0
+}
+
 //Fighting
 hold[1] = 0
 hold[2] = 0
@@ -183,6 +191,11 @@ switch (type){
         damageMod = 1 + (might-4)*0.05
         impactMod = 1 + (might-4)*0.2
         
+        penMod = 1 + (wit - 4) * 0.025
+        
+        physicalResist = 1 + (endurance-4)*0.05
+        magicResist = 1 + (magic-4)*0.05
+        
         break;
     
     case 'megawarrior':
@@ -195,6 +208,11 @@ switch (type){
         
         damageMod = 1 + (might-4)*0.1
         impactMod = 1 + (might-4)*0.2  
+        
+        penMod = 1 + (wit - 4) * 0.05
+        
+        physicalResist = 1 + (endurance-4)*0.05
+        magicResist = 1 + (magic-4)*0.05
     
         break
     
@@ -209,6 +227,11 @@ switch (type){
         damageMod = 1 + (might-4)*0.15
         impactMod = 1 + (might-4)*0.2  
     
+        penMod = 1 + (wit - 4) * 0.05
+        
+        physicalResist = 1 + (endurance-4)*0.05
+        magicResist = 1 + (magic-4)*0.05
+        
         break
     
     default:

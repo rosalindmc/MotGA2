@@ -25,6 +25,7 @@ switch(argument0)
     meleeSlow = .5
     meleeSize = 1
     meleeCost = 1
+    meleePen = 0
     
     gwPowMult = 1.5
     gwRateMult = .8
@@ -43,6 +44,7 @@ switch(argument0)
     throwSpin = 180
     throwCost = 1
     throwType = dmgType.pierce
+    throwPen = 0
     
     anim[0] = weaponIdle    //Idle Anim
     anim[1] = weaponSlash   //Basic Attack
@@ -99,6 +101,7 @@ switch(argument0)
     meleeSlow = .5
     meleeSize = 1
     meleeCost = 1
+    meleePen = 0
     
     gwPowMult = 1.5
     gwRateMult = .8
@@ -117,6 +120,7 @@ switch(argument0)
     throwSpin = 180
     throwCost = 1
     throwType = dmgType.pierce
+    throwPen = 0
     
     anim[0] = weaponIdle    //Idle Anim
     anim[1] = weaponStab   //Basic Attack

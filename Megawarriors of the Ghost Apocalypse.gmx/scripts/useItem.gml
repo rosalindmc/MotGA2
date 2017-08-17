@@ -142,10 +142,11 @@ with(handItem[argument0])
     i.originY = y
     i.dist = (length/2)+owner.handDist[argument0]+holdPoint
     i.image_angle = owner.facing
+    i.dmgType = meleeType[argument1]
     i.dmg = (random(meleeVariance)-meleeVariance/2)+meleePow*meleePowMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwPowMult)-owner.greatWeapon))*owner.damageMod
     i.impact = meleeImpact*meleeImpactMult[argument1]*(1+((owner.charge[argument0]-1)*.5))*(1+((owner.greatWeapon*gwImpactMult)-owner.greatWeapon))*owner.impactMod
+    i.pen = (meleePen * owner.penMod)
     i.z = z
-    i.dmgType = meleeType[argument1]
     i.sprite_index = meleeAttackMask[argument1]
     i.image_yscale = meleeSize*meleeSizeMult[argument1]*owner.meleeSwing[argument0]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))
     i.image_xscale = meleeSize*meleeSizeMult[argument1]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))
