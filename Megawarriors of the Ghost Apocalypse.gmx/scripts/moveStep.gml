@@ -1,4 +1,6 @@
 #define moveStep
+var temp = 0
+
 floorID = obj_level.floorLayout[median(0,floor(x/metre),obj_level.sizeX-1),median(0,floor(y/metre),obj_level.sizeY-1)]
 floorZ = floorID.z
 
@@ -17,9 +19,10 @@ else
 //Horizontal Collision
 if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true)
 {
-    while !place_meeting(x+sign(hspd),y,obj_solid)
+    while !place_meeting(x+sign(hspd),y,obj_solid) and temp < 100
     {
         x += sign(hspd)
+        temp++ 
     }
     hspd = 0
 }
@@ -29,9 +32,10 @@ x += metre*hspd/global.frameRate
 //Vertical Collision
 if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true)
 {
-    while !place_meeting(x,y+sign(vspd),obj_solid)
+    while !place_meeting(x,y+sign(vspd),obj_solid) and temp < 100 
     {
         y += sign(vspd)
+        temp++
     }
     vspd = 0
 }
