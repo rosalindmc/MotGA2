@@ -26,10 +26,17 @@
     
     challenge = global.currNode.challenge
     
-    critPoi[] = global.currNode.critPoi     //the type of the critical point of interest
+    for (var i = 0; i< array_length_1d(global.currNode.critPoi);i++){
+        critPoi[i] = global.currNode.critPoi[i]     //the type of the critical point of interest
+    }
+    
     poiDensity = global.currNode.poiDensity //number of points of interest on the map
     numEntrance = global.currNode.numEntrance
-    pois[]=global.currNode.pois[]
+    
+    for (var i = 0; i< array_length_1d(global.currNode.pois);i++){
+        pois[i] = global.currNode.pois[i]     //the type of the critical point of interest
+    }
+    
     numRivers=global.currNode.numRivers
     
     

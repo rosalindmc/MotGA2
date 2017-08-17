@@ -2,6 +2,8 @@
 
 
 #define weaponIdle
+var arg0 = argument0;
+
 animDelay[argument1] = 1
 animSpeed[argument1] = 1
 

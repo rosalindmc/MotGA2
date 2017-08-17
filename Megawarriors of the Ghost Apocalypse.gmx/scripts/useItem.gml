@@ -171,7 +171,7 @@ case 0:
 break;
 
 case 1:
-    global.pc.life += 3;
+    life += 3;
     with(handItem[argument0]){
         instance_destroy();
     }

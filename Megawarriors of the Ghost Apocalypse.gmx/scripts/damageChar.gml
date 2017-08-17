@@ -1,11 +1,15 @@
 t = argument0
 
 //Damage
-if (type > 4){
-    t.life -= (dmg)/(max(other.armour-(pen),1))*owner.physicalResist*damageResist[type]
+if (dmgType > 4){
+    t.life -= (dmg)/(max(other.armour-(pen),1))
+                    *owner.physicalResist
+                    *owner.damageResist[dmgType]
 }
 else{
-     t.life -= (dmg)/(max(other.armour-(pen),1))*owner.magicResist*damageResist[type]
+     t.life -= (dmg)/(max(other.armour-(pen),1))
+                    *owner.magicResist
+                    *owner.damageResist[dmgType]
 }
 
 createParticle(t.x,t.y,z,floor(dmg),partBlood,point_direction(originX,originY,t.x,t.y))

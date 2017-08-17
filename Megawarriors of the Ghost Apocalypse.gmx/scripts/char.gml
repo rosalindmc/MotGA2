@@ -19,7 +19,7 @@ with(i){
     
     if (argument3 != noone){
         leader = argument3
-        leader.subordinate[array_length_1d(leader.subordinate[])] = id
+        leader.subordinate[array_length_1d(leader.subordinate)] = id
     }
     
     //charSetup()

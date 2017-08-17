@@ -16,7 +16,8 @@ draw_sprite_ext(sprite_index,image_index,round(x),round(y-z),image_xscale,image_
 
 
 #define meleeColliderStep
-x = owner.x+lengthdir_x(dist,image_angle)
+x = owner.x+
+    lengthdir_x(dist,image_angle)
 y = owner.y+lengthdir_y(dist,image_angle)
 
 isoDepth(-25)

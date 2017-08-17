@@ -33,7 +33,7 @@ else{
     ii.name = i.name
     ii.owner = i
     with(ii){
-        pickUp(other.argument3)
+        pickUp(argument3)
     }
 }
 

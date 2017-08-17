@@ -158,7 +158,7 @@ ds_list_destroy(openTiles)
 //set up the positions of points of interests
 var i = 0
 //critical at index 0
-for (i = i;i < array_length_1d(critPoi[]);i++){
+for (i = i;i < array_length_1d(critPoi);i++){
     pois[i] = instance_create(0,0,obj_poi)
     pois[i].critical = true;
     //poiImport(critPoi[i])
@@ -169,7 +169,7 @@ for (i = i;i < array_length_1d(critPoi[]);i++){
 
 
 //others at index 1 to x
-for (i = i; i < array_length_1d(critPoi[]) + poiDensity;i++){
+for (i = i; i < array_length_1d(critPoi) + poiDensity;i++){
     pois[i] = instance_create(0,0,obj_poi)
     with pois[i]{
         switch(irandom(3)){
@@ -191,7 +191,7 @@ for (i = i; i < array_length_1d(critPoi[]) + poiDensity;i++){
 
 
 //entrances from x+1 on
-for (i = i; i < numEntrance + array_length_1d(critPoi[]) + poiDensity; i++){
+for (i = i; i < numEntrance + array_length_1d(critPoi) + poiDensity; i++){
     switch(i%4){
         case 0:
             pois[i] = instance_create(0,0,obj_poi)
