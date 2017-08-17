@@ -12,7 +12,7 @@ else{
                     *owner.damageResist[dmgType]
 }
 
-createParticle(t.x,t.y,z,floor(dmg),partBlood,point_direction(originX,originY,t.x,t.y))
+createParticle(t.x,t.y,z,floor(dmg*5),partBlood,point_direction(originX,originY,t.x,t.y))
 
 //Impact
 t.hspd += lengthdir_x(impact,image_angle)//point_direction(originX,originY,t.x,t.y))

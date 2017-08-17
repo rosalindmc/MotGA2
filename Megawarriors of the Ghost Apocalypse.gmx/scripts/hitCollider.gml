@@ -17,10 +17,18 @@ audio_play_sound(snd_swing,0,false)
 #define hitColliderCollisionChar
 if owner != other
 {
-    if danger = 1
+    danger = true
+    for(i = 0; i < peopleHit; i++)
     {
-        damageChar(other)
+        if hit[i] = other
+        {
+            exit
+        }
     }
+
+    hit[peopleHit] = other
+    peopleHit += 1
+    damageChar(other)
 }
 
 #define hitColliderCollisionTerrain

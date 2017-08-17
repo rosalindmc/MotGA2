@@ -4,7 +4,8 @@
 
 #define meleeColliderInitialize
 z = 0
-danger = 2
+hit[0] = -4
+peopleHit = 0
 
 life = 0.15
 image_speed = 0
@@ -16,13 +17,14 @@ draw_sprite_ext(sprite_index,image_index,round(x),round(y-z),image_xscale,image_
 
 
 #define meleeColliderStep
-x = owner.x+
-    lengthdir_x(dist,image_angle)
-y = owner.y+lengthdir_y(dist,image_angle)
+if instance_exists(owner)
+{
+    x = owner.x+lengthdir_x(dist,image_angle)
+    y = owner.y+lengthdir_y(dist,image_angle)
+}
 
 isoDepth(-25)
 
-danger -= 1
 animDelay -= 1/global.frameRate
 
 if animDelay <= 0

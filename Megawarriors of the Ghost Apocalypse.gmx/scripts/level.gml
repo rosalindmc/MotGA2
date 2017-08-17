@@ -138,6 +138,16 @@ repeat(4)
 //Temp assign tile information
 with(obj_tile)
 {
+    if weight <= 2
+    {
+    obj_level.pathTiles[obj_level.numPathTiles] = id
+    obj_level.numPathTiles += 1
+    }
+}
+    
+
+with(obj_tile)
+{
     if isRiver = true
     {
         sprite_index = spr_water
@@ -215,6 +225,14 @@ with(obj_tile)
             image_yscale = choose(-1.5,1.5)
             image_angle = random(360)
             depth = -2
+            
+            if irandom(2) = 0 and weight = 3
+            {
+                additDoodSpr[0] = spr_blueGrass;
+                additDoodImg[0] = 1
+                additDoodX[0] = irandom(8)-4;
+                additDoodY[0] = irandom(8)-4;
+            }
         }
         else if weight = 2
         {
@@ -227,10 +245,11 @@ with(obj_tile)
             }    
         }
         
-        if weight = 3 or weight = 4
+        if weight = 4
         {
             i = instance_create(x-1+irandom(2),y-1+irandom(2),obj_terrain)
             i.sprite_index = spr_bush
+            i.canReflect = false
         }
         else if weight > 4
         {
@@ -238,9 +257,10 @@ with(obj_tile)
             i = instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
             for(ii = 0; ii < obj_level.numPathTiles; ii++)
             {
-                if rectangle_in_rectangle(obj_level.pathTiles[ii].x-8,obj_level.pathTiles[ii].y-8,obj_level.pathTiles[ii].x+8,obj_level.pathTiles[ii].y,x-20,y,x+20,y-50) != 0
+                if rectangle_in_rectangle(obj_level.pathTiles[ii].x-8,obj_level.pathTiles[ii].y-8,obj_level.pathTiles[ii].x+8,obj_level.pathTiles[ii].y,x-4,y,x+4,y-(metre*2.5)) != 0
                 {
                     i.sprite_index = spr_bush
+                    i.canReflect = false
                 }
             }
         }
@@ -295,8 +315,6 @@ while(current.pathParent != noone)
     
     current.pathParent.weight = 1
     current.pathParent.rWeight = 5
-    pathTiles[numPathTiles] = current.pathParent
-    numPathTiles += 1
 
     if(current.gridX-1 >= 0){
         if (floorLayout[current.gridX-1, current.gridY].weight > 2){
@@ -436,8 +454,6 @@ current = finish
 while(current.pathParent != noone)
 {
     current.critPath = true
-    pathTiles[numPathTiles] = current.pathParent
-    numPathTiles += 1
     returnFlag.finalWeight += current.weight
     current.pathParent.critPath = true
     current = current.pathParent

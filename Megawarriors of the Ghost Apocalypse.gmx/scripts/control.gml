@@ -357,7 +357,7 @@ if global.liveSurf = true
         global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
         
         shader_set(shd_ripple)
-        shader_set_uniform_f(uTime,((current_time/1000)-(global.liveSurfX1/6.2831))) //Modify view Y
+        shader_set_uniform_f(uTime,((current_time/1000)-(global.liveSurfY1/6.2831))) 
         surface_set_target(global.finalReflectSurf)
         draw_clear_alpha(make_colour_rgb(150,240,255),0)
         draw_surface(global.reflectSurf,0,0)

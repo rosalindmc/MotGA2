@@ -24,6 +24,8 @@ gravMult = 0
 
 spin = 0
 floorZ = 0
+growth = 0
+fade = 0
 
 animSpeed = 10
 animDelay = 1
@@ -32,6 +34,7 @@ onDeath = -4
 splatDecal = spr_none
 impactDeath = false
 
+reflectOnly = false
 life = 10
 
 image_angle = 0
@@ -41,6 +44,10 @@ image_speed = 0
 
 #define particleStep
 image_angle += spin/global.frameRate
+image_xscale += growth/global.frameRate
+image_yscale += growth/global.frameRate
+image_alpha -= fade/global.frameRate
+
 moveStepParticle()
 isoDepth(0)
 
@@ -60,7 +67,19 @@ if life <= 0
 }
 
 #define particleDraw
-draw_sprite_ext(sprite_index,image_index,x,y-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+if reflectOnly = false
+{
+    draw_sprite_ext(sprite_index,image_index,x,y-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+}
+else
+{
+    if surface_exists(global.reflectSurf)
+    {
+        surface_set_target(global.reflectSurf)
+        draw_sprite_ext(sprite_index,image_index,x-global.liveSurfX1,y-global.liveSurfY1-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+        surface_reset_target()
+    }    
+}
 
 #define particleDestroy
 if onDeath != -4

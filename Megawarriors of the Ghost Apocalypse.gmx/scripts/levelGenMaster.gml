@@ -500,7 +500,7 @@ for (var i = 0;i < numRivers;i++){
         floorLayout[i,j].hasPoi = false*/
         
 with(obj_tile){      
-    weight = choose(2,2,3,3,6,7,8,8)
+    weight = choose(2,2,2,2,2,3,3,3,3,4,4,4,5,6,7,8,9,10)
     rWeight = choose(1,1,2,2,3,3,4)
     g = 0
     isPath = false

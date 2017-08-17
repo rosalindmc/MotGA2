@@ -12,6 +12,10 @@ if z+max(0,zspd) > floorZ
 }
 else
 {
+    if z != floorZ
+    {
+        footStep(0)
+    }
     zspd = 0
     z = floorZ
 }
@@ -105,21 +109,27 @@ y += metre*vspd/global.frameRate
 
 #define moveStepParticle
 //Gravity
-if z+max(0,zspd) > floorZ
+floorID = obj_level.floorLayout[median(0,floor(x/metre),obj_level.sizeX-1),median(0,floor(y/metre),obj_level.sizeY-1)]
+floorZ = floorID.wz
+
+if gravMult != 0
 {
-    zspd -= grav/global.frameRate*gravMult
-    z += zspd*metre/global.frameRate
-}
-else
-{
-    zspd = 0
-    hspd = 0
-    vspd = 0
-    z = floorZ
-    
-    if impactDeath = true
+    if z+max(0,zspd) > floorZ
     {
-        instance_destroy()
+        zspd -= grav/global.frameRate*gravMult
+        z += zspd*metre/global.frameRate
+    }
+    else
+    {
+        zspd = 0
+        hspd = 0
+        vspd = 0
+        z = floorZ
+        
+        if impactDeath = true
+        {
+            instance_destroy()
+        }
     }
 }
 

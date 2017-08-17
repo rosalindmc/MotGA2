@@ -20,7 +20,7 @@ varying vec4 v_vColour;
 varying vec2 v_vTexcoord;
 
 uniform float Time;
-vec2 Wave = vec2(50,450);
+vec2 Wave = vec2(50,600);
 
 void main()
 {

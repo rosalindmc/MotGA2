@@ -828,6 +828,7 @@ if floorID.isRiver = false
 else
 {
     createParticle(x,y-1,floorID.wz+5,5+irandom(5),partSplash,0)
+    createParticle(x,y,floorID.wz,1,partRipple,0)
 }
 
 if player = true

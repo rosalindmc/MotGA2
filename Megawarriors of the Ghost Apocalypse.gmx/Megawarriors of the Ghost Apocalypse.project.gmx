@@ -115,6 +115,7 @@
     <sprites name="Particles">
       <sprite>sprites\spr_dust</sprite>
       <sprite>sprites\spr_splash</sprite>
+      <sprite>sprites\spr_ripple</sprite>
       <sprite>sprites\spr_blood</sprite>
       <sprite>sprites\spr_sheen</sprite>
       <sprite>sprites\spr_bloodSplat</sprite>
