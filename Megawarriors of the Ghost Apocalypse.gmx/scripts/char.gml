@@ -216,6 +216,8 @@ switch (type){
         
         physicalResist = 1 + (endurance-4)*0.05
         magicResist = 1 + (magic-4)*0.05
+        
+        shrineMod = 1 + (charisma-4)*0.1
     
         break
     

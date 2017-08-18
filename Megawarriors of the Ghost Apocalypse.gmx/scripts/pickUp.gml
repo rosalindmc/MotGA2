@@ -51,3 +51,29 @@ if(argument0 = global.pc){
     instance_destroy();
     //}
 }
+#define shrineUse
+if(argument0 = global.pc){
+    //run a switch for which kind of crate this is
+    
+    
+    check = random(3)*global.pc.shrineMod
+    
+    if(check > 1){
+        drop = genericPotion
+    }
+    else if(check > 2.5){
+        drop = sword
+    }
+    else{
+        drop = specialSword
+    }
+    
+    createItem(x,y, drop, noone);//might change noone to argument0
+    
+    //make the crate look opened
+    owner.imgInd = 1;
+    
+    //with(owner){//comment this out eventually
+    instance_destroy();
+    //}
+}

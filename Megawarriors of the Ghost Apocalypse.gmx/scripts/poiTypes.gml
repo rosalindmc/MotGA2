@@ -52,6 +52,11 @@ furniture[13] = lamp
 furniture[14] = -1.5
 furniture[15] = 2.5
 
+furniture[16] = obj_item;
+furniture[17] = justianAltar
+furniture[18] = 0.5
+furniture[19] = -0.5
+
 
 #define miniBossTemp
 
