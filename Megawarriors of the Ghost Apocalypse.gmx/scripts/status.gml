@@ -2,21 +2,24 @@
 
 
 #define applyStatus
-//Apply a status effect to a character(target,type,potency,duration)
+//Apply a status effect to a character(target,type,potency,duration,maxStacks)
 
-i = instance_create(argument0.x,argument0.y,obj_status)
-with(i)
+if argument4 = true
 {
-    owner = argument0
-    effect = argument1
-    potency = argument2
-    life = argument3
-    
-    script_execute(effect,0)
-    
-    tickTimer1 = tickLength1
-    tickTimer2 = tickLength2
-    ds_list_add(owner.sEffect,id)
+    i = instance_create(argument0.x,argument0.y,obj_status)
+    with(i)
+    {
+        owner = argument0
+        effect = argument1
+        potency = argument2
+        life = argument3
+        
+        script_execute(effect,0)
+        
+        tickTimer1 = tickLength1
+        tickTimer2 = tickLength2
+        ds_list_add(owner.sEffect,id)
+    }
 }
 
 #define statusInitialize
@@ -71,3 +74,4 @@ if instance_exists(owner)
     ds_list_delete(owner.sEffect,ds_list_find_index(owner.sEffect,id))
     script_execute(effect,3)
 }
+#define statusStack

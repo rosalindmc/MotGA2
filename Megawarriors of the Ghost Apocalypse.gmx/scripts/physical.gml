@@ -4,6 +4,7 @@
 switch(argument0)
 {
 case 0:     //Apply Effect
+statusStack()
 icon = ico_stun
 
 owner.moveMult = 0.25

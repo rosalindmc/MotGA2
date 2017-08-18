@@ -203,7 +203,7 @@ switch (type){
     
     case 'megawarrior':
         
-        lifeMax = 4+2*vitality
+        lifeMax = 4+(2*vitality)
         life = lifeMax
         
         stamMax = endurance    
@@ -221,7 +221,7 @@ switch (type){
     
     case 'boss':
         
-        lifeMax = 6+4*vitality
+        lifeMax = 6+(4*vitality)
         life = lifeMax
         
         stamMax = endurance    

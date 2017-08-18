@@ -1,22 +1,25 @@
 t = argument0
+p = 0
 
 //Damage
 if (dmgType > 4){
-    t.life -= (dmg)/(max(other.armour-(pen),1))
+    p = (dmg)/(max(other.armour-(pen),1))
                     *owner.physicalResist
                     *owner.damageResist[dmgType]
 }
 else{
-     t.life -= (dmg)/(max(other.armour-(pen),1))
+     p = (dmg)/(max(other.armour-(pen),1))
                     *owner.magicResist
                     *owner.damageResist[dmgType]
 }
 
+t.life -= floor(p-1+random(1.99))
+
  //Temp Apply Bleed
-applyStatus(t,choose(bleed,stun),1,12)
+applyStatus(t,choose(bleed,stun),1,12,false)
  
 //Dif damage types might have dif particles later
-createParticle(t.x,t.y,z,floor(dmg*5),partBlood,point_direction(originX,originY,t.x,t.y))
+createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
 
 //Impact
 t.hspd += lengthdir_x(impact,image_angle)//point_direction(originX,originY,t.x,t.y))
