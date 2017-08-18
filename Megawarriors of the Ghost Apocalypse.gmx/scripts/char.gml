@@ -440,33 +440,6 @@ else
     stamDelay = max(0,stamDelay-(1/global.frameRate))
 }
 
-
-
-if (stability < 0 && interactId == noone){
-    staggerStart()
-    stabilityDelay = abs(stability*5)
-    stability = 0
-}
-else if (stabilityDelay > 0)
-{
-    stabilityDelay = max(0,stabilityDelay-(1/global.frameRate))
-}
-else if (stabilityDelay = 0 && stability != stabilityMax)
-{
-    stability = min(stabilityMax,stability+(stabilityRegen/global.frameRate))
-    if moving = 0
-    {
-        stability = min(stabilityMax,stability+(stabilityRegen/global.frameRate))
-    }
-}
-
-if (staggerRecovery > 0 && staggered = true){
-    staggerRecovery = max(0,staggerRecovery-(1/global.frameRate))
-}
-else if(staggerRecovery <= 0 && staggered = true && grappled = false){
-    staggerEnd()
-}
-
 if (grappled = true){
     if instance_exists(grappler)
     {
@@ -545,8 +518,6 @@ if global.liveSurf = true
     }
 }
 
-smallHealthBar()
-
 //draw_text(x,y+10,string(floor(hspd))+string('m'))
 //draw_text(x,y+20,string(floor(vspd))+string('m'))
 //draw_text(x,y+30,canMove)
@@ -556,6 +527,9 @@ draw_set_colour(c_white)
 draw_rectangle(round(x)-4,round(y)-16,round(x)+4,round(y),false)
 draw_text(round(x),round(y)+20,global.frameRate)
 draw_text(round(x),round(y)+30,moving*global.frameRate/metre)
+
+#define charDrawEnd
+smallHealthBar()
 
 #define smallHealthBar
 if player = false
@@ -587,33 +561,3 @@ if player = false
         i += 1
     }
 }   
-
-#define staggerStart
-
-moveMult = 0.25
-canAttack = false
-canDodge = false
-staggered = true
-
-i = instance_create(x,y,obj_interactable)
-i.name = 'Grapple'
-i.owner = id
-i.useType = grappleStart
-interactId = i
-
-staggerRecovery = recovery
-
-
-
-#define staggerEnd
-with(interactId){
-    instance_destroy()
-}
-
-interactId = noone
-
-moveMult = 1.0
-
-canAttack = true
-canDodge = true
-staggered = false

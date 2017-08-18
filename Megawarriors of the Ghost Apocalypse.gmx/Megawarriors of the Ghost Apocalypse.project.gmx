@@ -120,6 +120,7 @@
       <sprite>sprites\spr_sheen</sprite>
       <sprite>sprites\spr_bloodSplat</sprite>
       <sprite>sprites\spr_waterSplat</sprite>
+      <sprite>sprites\spr_stunSpiral</sprite>
     </sprites>
     <sprites name="Mask">
       <sprite>sprites\spr_mask</sprite>
@@ -128,6 +129,10 @@
     <sprites name="Hitbox">
       <sprite>sprites\spr_slash</sprite>
       <sprite>sprites\spr_stab</sprite>
+    </sprites>
+    <sprites name="Icons">
+      <sprite>sprites\ico_bleed</sprite>
+      <sprite>sprites\ico_stun</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

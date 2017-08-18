@@ -23,6 +23,7 @@ host = -4
 life = 1
 potency = 1
 effect = -4
+icon = spr_none
 
 tickTimer1 = 0
 tickLength1 = 0
@@ -59,6 +60,9 @@ else
 {
     instance_destroy()
 }
+
+#define statusDrawEnd
+script_execute(effect,4)
 
 #define statusDestroy
 script_execute(effect,3)

@@ -13,7 +13,7 @@ else{
 }
 
  //Temp Apply Bleed
-applyStatus(t,bleed,1,12)
+applyStatus(t,choose(bleed,stun),1,12)
  
 //Dif damage types might have dif particles later
 createParticle(t.x,t.y,z,floor(dmg*5),partBlood,point_direction(originX,originY,t.x,t.y))
