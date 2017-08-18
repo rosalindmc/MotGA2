@@ -203,6 +203,7 @@
       <script>scripts\terrain.gml</script>
       <script>scripts\status.gml</script>
       <script>scripts\furniture.gml</script>
+      <script>scripts\text.gml</script>
     </scripts>
     <scripts name="Universal">
       <script>scripts\isoDepth.gml</script>
@@ -276,6 +277,7 @@
     </objects>
     <objects name="Aesthetics">
       <object>objects\obj_particle</object>
+      <object>objects\obj_text</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_interactable</object>
