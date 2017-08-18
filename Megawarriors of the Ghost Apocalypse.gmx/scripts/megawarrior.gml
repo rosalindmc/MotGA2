@@ -1,6 +1,7 @@
 player = true
 controlScript = playerControl
 type = 'megawarrior'
+invCircle = -4
 
 var i = global.statPoints
 

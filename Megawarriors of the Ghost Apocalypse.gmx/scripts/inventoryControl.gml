@@ -33,24 +33,33 @@ draw_set_colour(c_black)
 draw_rectangle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,false)
 
 //HUD Circle
-invCircle = surface_create(200,200)
-surface_set_target(invCircle)
-draw_set_colour(c_white)
-draw_circle(100,100,90,false)
-//Highlight segment somehow later
-//draw_set_blend_mode(bm_add)
-//draw_set_colour(c_yellow)
-//draw_triangle(100,100,100+lengthdir_x(100,(360/(inventorySize))-1+(hoverItem*(360/inventorySize))),100+lengthdir_y(100,(360/(inventorySize))-1+(hoverItem*(360/inventorySize))),100+lengthdir_x(100,(hoverItem*(360/inventorySize))+1),100+lengthdir_y(100,(hoverItem*(360/inventorySize))+1),false)
-draw_set_alpha(1)
-draw_set_blend_mode(bm_subtract)
-draw_circle(100,100,15,false)
-for(i = 0; i < inventorySize; i++)
+
+if surface_exists(invCircle)
 {
-    draw_line_width(100,100,100+lengthdir_x(100,(i*(360/inventorySize))),100+lengthdir_y(100,(i*(360/inventorySize))),2)
+    surface_set_target(invCircle)
+    draw_clear_alpha(c_black, 0)
+    draw_set_colour(c_white)
+    draw_circle(100,100,90,false)
+    //Highlight segment somehow later
+    //draw_set_blend_mode(bm_add)
+    //draw_set_colour(c_yellow)
+    //draw_triangle(100,100,100+lengthdir_x(100,(360/(inventorySize))-1+(hoverItem*(360/inventorySize))),100+lengthdir_y(100,(360/(inventorySize))-1+(hoverItem*(360/inventorySize))),100+lengthdir_x(100,(hoverItem*(360/inventorySize))+1),100+lengthdir_y(100,(hoverItem*(360/inventorySize))+1),false)
+    draw_set_alpha(1)
+    draw_set_blend_mode(bm_subtract)
+    draw_circle(100,100,15,false)
+    for(i = 0; i < inventorySize; i++)
+    {
+        draw_line_width(100,100,100+lengthdir_x(100,(i*(360/inventorySize))),100+lengthdir_y(100,(i*(360/inventorySize))),2)
+    }
+    surface_reset_target()
+    draw_set_blend_mode(bm_normal)
+    draw_surface(invCircle,view_xview+(view_wview/2)-100,view_yview+(view_hview/2)-100)
 }
-surface_reset_target()
-draw_set_blend_mode(bm_normal)
-draw_surface(invCircle,view_xview+(view_wview/2)-100,view_yview+(view_hview/2)-100)
+else
+{
+    invCircle = surface_create(200,200)
+}
+
 
 
 for(i = 1; i <= inventorySize; i++)
