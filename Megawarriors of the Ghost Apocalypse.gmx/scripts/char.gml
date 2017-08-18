@@ -129,12 +129,12 @@ stabilityDelay = 0.0
 recovery = 5.0
 staggerRecovery = 0.0
 
-armour = 1.0
-physicalResist = 1.0
-magicResist = 1.0
+armour = 0.0
+physicalResist = 0.0
+magicResist = 0.0
 
 for(i = 0; i<=13; i++){
-    damageResist[i] = 1.0
+    damageResist[i] = 0.0
 }
 
 //Fighting
@@ -149,8 +149,10 @@ queuedAnim[2] = -4
 strike[1] = 0
 strike[2] = 0
 sweetSpot = false
+sweetSpotBonus = false
 fumble = false
 perfectTimeMod = .5
+perfectTimeDmgMod = 0.1
 kick = 0
 
 grappling = false
@@ -185,7 +187,7 @@ sEffect = ds_list_create()
 //Vitals
 switch (type){
     case 'mook':
-        lifeMax = 2+vitality
+        lifeMax = (2*vitality)
         life = lifeMax
         
         stamMax = endurance    
@@ -196,14 +198,15 @@ switch (type){
         
         penMod = 1 + (wit - 4) * 0.025
         
-        physicalResist = 1 + (endurance-4)*0.05
-        magicResist = 1 + (magic-4)*0.05
+        physicalResist = (vitality-4)*0.05
+        magicResist = (magic-4)*0.05
+        perfectTimeDmgMod = 0
         
         break;
     
     case 'megawarrior':
         
-        lifeMax = 4+(2*vitality)
+        lifeMax = (3*vitality)
         life = lifeMax
         
         stamMax = endurance    
@@ -214,16 +217,16 @@ switch (type){
         
         penMod = 1 + (wit - 4) * 0.05
         
-        physicalResist = 1 + (endurance-4)*0.05
-        magicResist = 1 + (magic-4)*0.05
+        physicalResist = (vitality-4)*0.05
+        magicResist = (magic-4)*0.05
         
         shrineMod = 1 + (charisma-4)*0.1
-    
+        perfectTimeDmgMod = charisma*0.05
         break
     
     case 'boss':
         
-        lifeMax = 6+(4*vitality)
+        lifeMax = (5*vitality)
         life = lifeMax
         
         stamMax = endurance    
@@ -234,8 +237,8 @@ switch (type){
     
         penMod = 1 + (wit - 4) * 0.05
         
-        physicalResist = 1 + (endurance-4)*0.05
-        magicResist = 1 + (magic-4)*0.05
+        physicalResist = (vitality-4)*0.05
+        magicResist = (magic-4)*0.05
         
         break
     

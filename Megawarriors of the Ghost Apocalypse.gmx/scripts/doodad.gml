@@ -36,4 +36,3 @@ ii.name = 'Shrine to Justia'
 ii.owner = id
 ii.useType = shrineUse
 interactId = ii
-

@@ -10,7 +10,7 @@ image_angle = random(359)
 
 i = 2+random(6)
 
-dir = argument0-120+random(240)
+dir = argument0-60+random(120)
 
 hspd = lengthdir_x(i,dir)
 vspd = lengthdir_x(i,dir)

@@ -114,6 +114,7 @@ switch(argument1)
 spendStamina(handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
 
 //Anim and Essentials
+sweetSpotBonus = sweetSpot
 sweetSpot = false
 strike[argument0] = 1
 hold[argument0] = 0
@@ -143,9 +144,10 @@ with(handItem[argument0])
     i.dist = (length/2)+owner.handDist[argument0]+holdPoint
     i.image_angle = owner.facing
     i.dmgType = meleeType[argument1]
-    i.dmg = (random(meleeVariance)-meleeVariance/2)+meleePow*meleePowMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwPowMult)-owner.greatWeapon))*owner.damageMod
+    i.dmg = meleePow*meleePowMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwPowMult)-owner.greatWeapon))*owner.damageMod*(1+(owner.perfectTimeDmgMod*owner.sweetSpotBonus))
+    i.sweetSpot = owner.sweetSpotBonus
     i.impact = meleeImpact*meleeImpactMult[argument1]*(1+((owner.charge[argument0]-1)*.5))*(1+((owner.greatWeapon*gwImpactMult)-owner.greatWeapon))*owner.impactMod
-    i.pen = (meleePen * owner.penMod)
+    i.pen = (meleePen*owner.penMod)
     i.z = z
     i.sprite_index = meleeAttackMask[argument1]
     i.image_yscale = meleeSize*meleeSizeMult[argument1]*owner.meleeSwing[argument0]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))
