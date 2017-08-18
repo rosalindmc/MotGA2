@@ -13,7 +13,12 @@ else{
                     *owner.damageResist[dmgType]
 }
 
-t.life -= floor(p-1+random(1.99))
+p = floor(p-1+random(1.99))
+t.life -= p
+
+i = instance_create(t.x,t.y,obj_text)
+i.z = t.z+(metre*2)
+i.t = p
 
  //Temp Apply Bleed
 applyStatus(t,choose(bleed,stun),1,12,false)
