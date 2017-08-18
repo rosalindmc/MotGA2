@@ -23,7 +23,7 @@ else
 //Horizontal Collision
 if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true)
 {
-    while !place_meeting(x+sign(hspd),y,obj_solid) and temp < 100
+    while !place_meeting(x+sign(hspd),y,obj_solid) and temp < 10
     {
         x += sign(hspd)
         temp++ 
@@ -36,7 +36,7 @@ x += metre*hspd/global.frameRate
 //Vertical Collision
 if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true)
 {
-    while !place_meeting(x,y+sign(vspd),obj_solid) and temp < 100 
+    while !place_meeting(x,y+sign(vspd),obj_solid) and temp < 10 
     {
         y += sign(vspd)
         temp++
@@ -45,6 +45,11 @@ if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(
 }
 
 y += metre*vspd/global.frameRate
+
+if (temp = 10){
+    x+= irandom(2)-1
+    y+= irandom(2)-1
+}
     
 //Check Moving
 if canMove = true and point_distance(x,y,xprevious,yprevious) > 0

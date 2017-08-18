@@ -97,11 +97,8 @@
     var j = 0
     
     for(i = 0; i < array_length_1d(critLength)-1; i++){
-        if (critLength[i].finalWeight>critLength[i+1].finalWeight){
+        if (critLength[i].finalWeight > critLength[j].finalWeight){
             j = i
-        }
-        else{
-            j = i+1
         }
     }
     

@@ -34,9 +34,23 @@ entrance = false
 
 furniture[0] = obj_item;
 furniture[1] = lamp
-furniture[2] = 0
-furniture[3] = 0
+furniture[2] = 2.5
+furniture[3] = 2.5
 
+furniture[4] = obj_item;
+furniture[5] = lamp
+furniture[6] = -1.5
+furniture[7] = -1.5
+
+furniture[8] = obj_item;
+furniture[9] = lamp
+furniture[10] = 2.5
+furniture[11] = -1.5
+
+furniture[12] = obj_item;
+furniture[13] = lamp
+furniture[14] = -1.5
+furniture[15] = 2.5
 
 
 #define miniBossTemp
@@ -71,4 +85,3 @@ entrance = false
 
 sizeX = 5
 sizeY = 5
-
