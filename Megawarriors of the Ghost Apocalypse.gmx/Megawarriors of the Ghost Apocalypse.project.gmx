@@ -196,6 +196,7 @@
       <script>scripts\tile.gml</script>
       <script>scripts\doodad.gml</script>
       <script>scripts\terrain.gml</script>
+      <script>scripts\status.gml</script>
     </scripts>
     <scripts name="Universal">
       <script>scripts\isoDepth.gml</script>
@@ -228,6 +229,9 @@
     </scripts>
     <scripts name="Threat">
       <script>scripts\threatControl.gml</script>
+    </scripts>
+    <scripts name="Status Effects">
+      <script>scripts\physical.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

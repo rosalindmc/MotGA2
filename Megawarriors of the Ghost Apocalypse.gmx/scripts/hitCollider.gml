@@ -28,7 +28,7 @@ if owner != other
 
     hit[peopleHit] = other
     peopleHit += 1
-    damageChar(other)
+    damageChar(other) 
 }
 
 #define hitColliderCollisionTerrain
