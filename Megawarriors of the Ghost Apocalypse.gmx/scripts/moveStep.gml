@@ -21,12 +21,11 @@ else
 }
 
 //Horizontal Collision
-if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true)
+if (place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true))
 {
-    while !place_meeting(x+sign(hspd),y,obj_solid) and temp < 10
+    while !place_meeting(x+sign(hspd),y,obj_solid) && hspd != 0
     {
         x += sign(hspd)
-        temp++ 
     }
     hspd = 0
 }
@@ -34,23 +33,17 @@ if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(
 x += metre*hspd/global.frameRate
 
 //Vertical Collision
-if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true)
+if (place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true))
 {
-    while !place_meeting(x,y+sign(vspd),obj_solid) and temp < 10 
+    while !place_meeting(x,y+sign(vspd),obj_solid) && vspd != 0
     {
         y += sign(vspd)
-        temp++
     }
     vspd = 0
 }
 
 y += metre*vspd/global.frameRate
 
-if (temp = 10){
-    x+= irandom(2)-1
-    y+= irandom(2)-1
-}
-    
 //Check Moving
 if canMove = true and point_distance(x,y,xprevious,yprevious) > 0
 {
@@ -72,6 +65,7 @@ else
 x = median(0,x,room_width)
 y = median(0,y,room_height)
 
+
 #define moveStepObject
 //Gravity
 if z+max(0,zspd) > floorZ
@@ -91,7 +85,7 @@ else
 //Horizontal Collision
 if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true)
 {
-    while !place_meeting(x+sign(hspd),y,obj_solid)
+    while !place_meeting(x+sign(hspd),y,obj_solid) && hspd != 0
     {
         x += sign(hspd)
     }
@@ -103,7 +97,7 @@ x += metre*hspd/global.frameRate
 //Vertical Collision
 if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true)
 {
-    while !place_meeting(x,y+sign(vspd),obj_solid)
+    while !place_meeting(x,y+sign(vspd),obj_solid) && vspd != 0
     {
         y += sign(vspd)
     }
