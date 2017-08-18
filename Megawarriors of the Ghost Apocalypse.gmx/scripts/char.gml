@@ -175,6 +175,9 @@ pointInteract = noone
 
 interactId = noone
 
+//Status Effects
+sEffect = ds_list_create()
+
 
 
 
@@ -461,6 +464,7 @@ if (grappled = true){
 #define charDestroy
 //Clear the drawing surface
 surface_free(charSurf)
+ds_list_destroy(sEffect)
 aiDestroy()
 
 for(i = 0; i < inventorySize; i++)

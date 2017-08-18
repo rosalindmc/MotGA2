@@ -28,13 +28,10 @@ with(interactId)
     instance_destroy()
 }
 
-if instance_exists(owner)
-{
-    owner.moveMult = 1.0
-    owner.canAttack = true
-    owner.canDodge = true
-    owner.staggered = false
-}
+owner.moveMult = 1.0
+owner.canAttack = true
+owner.canDodge = true
+owner.staggered = false
 break
 case 4:     //Draw Event
 draw_sprite_ext(spr_stunSpiral,0,owner.x-(owner.charSurfSize*.5)+owner.headX,owner.y-(owner.charSurfSize*.5)+owner.headY-metre,1,1,global.timer*90,c_white,1)

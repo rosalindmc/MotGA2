@@ -424,39 +424,7 @@ else{
     draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8+kick,1,1,180,c_white,1)
     draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8-kick,1,1,270,c_white,1)
 }
-
-/*
-draw_sprite(spr_reticle,0,mouse_x,mouse_y)
-draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y-kick,1,1,0,c_white,1)
-draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y+kick,1,1,90,c_white,1)
-draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y+kick,1,1,180,c_white,1)
-draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y-kick,1,1,270,c_white,1)
-
-if instance_exists(global.pc)
-{
-    //scr_hudVital(20,20,global.pc)
-    //scr_hudItem()
-}
-
-if black > 0
-{
-    draw_set_colour(c_black)
-    draw_set_alpha(black)
-    draw_rectangle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,false)
-
-    if global.pc.vis = false
-    {
-        draw_set_halign(fa_center)
-        draw_set_valign(fa_center)
-        draw_set_font(fnt_dmgHuge)
-        drawText(c_black,c_red,view_xview+(view_wview/2),view_yview+(view_hview/2),'DEAD')
-    }
-}
-*/
-
-
-//Temp draw map for testing level gen
-    
+   
 //HUD stuff
     //Draw Health        
     i = 0
@@ -482,39 +450,19 @@ if black > 0
         draw_set_colour(uiStaminaGreen)
         draw_rectangle(view_xview[0]+15+(10*i)+(5*floor(i*.5)),view_yview[0]+24,view_xview[0]+15+(10*median(0,global.pc.stam-i,1))+(10*i)+(5*floor(i*.5)),view_yview[0]+29,false)
 
-        //if global.pc.stam-i > 0
-        //{
-        //    draw_set_alpha(.2)
-        //    draw_set_colour(c_black)
-        //    draw_rectangle(view_xview[0]+17+(10*i)+(5*floor(i*.5)),view_yview[0]+28,view_xview[0]+17+(6*median(0,global.pc.stam-i,1))+(10*i)+(5*floor(i*.5)),view_yview[0]+32,false)
-        //    draw_set_alpha(1)
-        //}
-        
         draw_set_colour(c_black)
         draw_rectangle(view_xview[0]+15+(10*i)+(5*floor(i*.5)),view_yview[0]+24,view_xview[0]+25+(10*i)+(5*floor(i*.5)),view_yview[0]+29,true)
         
         i += 1
     }
     
-    drawText(c_black,c_white,view_xview[0]+15,view_yview[0]+50,fps)
-    
-    /*
-    if point_in_rectangle(mouse_x,mouse_y,0,0,sizeX*metre*2+10,sizeY*metre*2+10)
+    //Draw Status Effects
+    for(i = 0; i < ds_list_size(global.pc.sEffect); i++)
     {
-        current = floorLayout[min(floor(mouse_x/(metre*2)),sizeX-1),min(floor(mouse_y/(metre*2)),sizeY-1)]
-        i= 5
-        while(current.pathParent != noone and i > 0)
-        {
-            draw_arrow(current.x*metre*2+15,current.y*metre*2+15,current.pathParent.x*metre*2+10,current.pathParent.y*metre*2+10,5)
-            //current.pathParent.weight = 1       
-            //current.pathParent.isPath = true
-            current = current.pathParent
-            i -= 1
-        }
+        draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,view_xview[0]+15,view_yview[0]+view_hview[0]-20-(i*20))
     }
-    */
-
-//draw_surface_ext(application_surface,global.xOffset,global.yOffset,1,1,0,c_white,1)
+    
+    drawText(c_black,c_white,view_xview[0]+view_wview[0]-15,view_yview[0]+50,fps)
 
 
 #define enumerators

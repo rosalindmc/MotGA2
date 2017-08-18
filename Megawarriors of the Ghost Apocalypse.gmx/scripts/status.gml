@@ -16,6 +16,7 @@ with(i)
     
     tickTimer1 = tickLength1
     tickTimer2 = tickLength2
+    ds_list_add(owner.sEffect,id)
 }
 
 #define statusInitialize
@@ -65,4 +66,8 @@ else
 script_execute(effect,4)
 
 #define statusDestroy
-script_execute(effect,3)
+if instance_exists(owner)
+{
+    ds_list_delete(owner.sEffect,ds_list_find_index(owner.sEffect,id))
+    script_execute(effect,3)
+}
