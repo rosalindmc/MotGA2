@@ -181,6 +181,7 @@ for (i = i;i < array_length_1d(critPoi);i++){
     pois[i] = instance_create(0,0,obj_poi)
     with(pois[i]){
         poiImport(global.currNode.critPoi[other.i])
+        entrance = false
     }
 }
 
@@ -206,14 +207,17 @@ for (i = array_length_1d(critPoi); i < array_length_1d(critPoi) + poiDensity;i++
                 typeScript = smallLoot
             break
         }   
+        entrance = false
     }
 }
+
 
 
 //entrances from x+1 on
 for (i = array_length_1d(critPoi) + poiDensity; i < numEntrance + array_length_1d(critPoi) + poiDensity; i++){
     pois[i] = instance_create(0,0,obj_poi)
-    typeScript = mapEntrance
+    pois[i].typeScript = mapEntrance
+    pois[i].entrance = true
 }
 
 
@@ -232,52 +236,7 @@ for (i = 0; i < array_length_1d(pois);i++){
         reps = 0
         while (genned = false && reps <= 10){
             reps++
-            if(entrance) {
-                var tempSide = choose(0,1,2,3)
-                
-                tempX = irandom(array_height_2d(other.poiPoints)-1)
-                tempY = irandom(array_length_2d(other.poiPoints,0)-1)
-                
-                switch(tempSide){
-                    case 0:
-                        tempX = 1
-                        tempY = tempY*global.poiSpacing
-                        break
-                    case 1:
-                        tempX = array_height_2d(other.poiPoints)*global.poiSpacing+((global.poiSpacing-1)/global.poiSpacing)
-                        tempY = tempY*global.poiSpacing
-                        break
-                    case 2:
-                    
-                        tempX = tempX*global.poiSpacing
-                        tempY = 1
-                        break
-                    case 3:
-                        tempX = tempX*global.poiSpacing
-                        tempY = array_length_2d(other.poiPoints,0)*+((global.poiSpacing-1)/global.poiSpacing)
-                        break
-            
-                }
-                gridX = tempX
-                gridY = tempY
-            
-                other.floorLayout[gridX,gridY].weight = 1
-                other.floorLayout[gridX,gridY].hasPoi = true
-                other.floorLayout[gridX,gridY].poi = id             //sets the point of this PoI to the earlier random poiPoint
-                
-                for(i = gridX-(ceil(spaceX/2)-1);i <= gridX+(floor(spaceX/2));i++){
-                    for(j = gridY-(ceil(spaceY/2)-1);j <= gridY+(floor(spaceY/2));j++){
-                        if(i >= 0 && j >= 0 && i < other.sizeX && j < other.sizeY){
-                            other.floorLayout[i,j].weight = 2
-                            other.floorLayout[i,j].hasPoi = true
-                            other.floorLayout[i,j].poi = id         //claims all the tiles in it's space
-                        }
-                    }
-                }
-                genned = true
-                
-            }
-            else{
+            if(!entrance) {
                 tempX = irandom(array_height_2d(other.poiPoints)-1)
                 tempY = irandom(array_length_2d(other.poiPoints,0)-1)   //chooses a random poiPoint (every 5 spaces starting 10 from the edge of the map)
                 
@@ -333,6 +292,51 @@ for (i = 0; i < array_length_1d(pois);i++){
                         }
                     }        
                 }  
+            }
+            else{
+                var tempSide = choose(0,1,2,3)
+                
+                tempX = irandom(array_height_2d(other.poiPoints)-1)
+                tempY = irandom(array_length_2d(other.poiPoints,0)-1)
+                
+                switch(tempSide){
+                    case 0:
+                        tempX = 1
+                        tempY = tempY*global.poiSpacing
+                        break
+                    case 1:
+                        tempX = (array_height_2d(other.poiPoints)+1)*global.poiSpacing-1
+                        tempY = tempY*global.poiSpacing
+                        break
+                    case 2:
+                    
+                        tempX = tempX*global.poiSpacing
+                        tempY = 1
+                        break
+                    case 3:
+                        tempX = tempX*global.poiSpacing
+                        tempY = (array_length_2d(other.poiPoints,0)+1)*global.poiSpacing-1
+                        break
+            
+                }
+                gridX = tempX
+                gridY = tempY
+            
+                other.floorLayout[gridX,gridY].weight = 1
+                other.floorLayout[gridX,gridY].hasPoi = true
+                other.floorLayout[gridX,gridY].poi = id             //sets the point of this PoI to the earlier random poiPoint
+                
+                for(i = gridX-(ceil(spaceX/2)-1);i <= gridX+(floor(spaceX/2));i++){
+                    for(j = gridY-(ceil(spaceY/2)-1);j <= gridY+(floor(spaceY/2));j++){
+                        if(i >= 0 && j >= 0 && i < other.sizeX && j < other.sizeY){
+                            other.floorLayout[i,j].weight = 2
+                            other.floorLayout[i,j].hasPoi = true
+                            other.floorLayout[i,j].poi = id         //claims all the tiles in it's space
+                        }
+                    }
+                }
+                genned = true
+                
             }
             
             

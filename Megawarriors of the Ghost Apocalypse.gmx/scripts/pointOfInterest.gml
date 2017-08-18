@@ -27,6 +27,9 @@ loot = noone      //whether or not this has a special item
 
 roads = 0       //whether or not this has roads
 
+genned = false    
+reps = 0
+
 
 
 #define poiImport

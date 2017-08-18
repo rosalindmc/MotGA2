@@ -67,7 +67,9 @@ ds_list_destroy(qualiList);
 #define biomeDeets
 switch(biomeType){
     case 0:
-        
+        nodeGen()
+        numEntrance = choose(1,2,2,2,3,4)
+        numRivers = choose(0,1,2,2,3)
     break
     
     case 1:
