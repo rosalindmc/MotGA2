@@ -13,7 +13,7 @@ spaceY = 5  //needed space
 
 buffer = 0  //the amount of space this has around it before it should generate walls.
 
-furniture[0] = 0
+furnitureArr[0] = 0
 
 entrance = false
 

@@ -32,30 +32,30 @@ sizeY=6;
 
 entrance = false
 
-furniture[0] = obj_item;
-furniture[1] = lamp
-furniture[2] = 2.5
-furniture[3] = 2.5
+furnitureArr[0] = obj_item;
+furnitureArr[1] = lamp
+furnitureArr[2] = 2.5
+furnitureArr[3] = 2.5
 
-furniture[4] = obj_item;
-furniture[5] = lamp
-furniture[6] = -1.5
-furniture[7] = -1.5
+furnitureArr[4] = obj_item;
+furnitureArr[5] = lamp
+furnitureArr[6] = -1.5
+furnitureArr[7] = -1.5
 
-furniture[8] = obj_item;
-furniture[9] = lamp
-furniture[10] = 2.5
-furniture[11] = -1.5
+furnitureArr[8] = obj_item;
+furnitureArr[9] = lamp
+furnitureArr[10] = 2.5
+furnitureArr[11] = -1.5
 
-furniture[12] = obj_item;
-furniture[13] = lamp
-furniture[14] = -1.5
-furniture[15] = 2.5
+furnitureArr[12] = obj_item;
+furnitureArr[13] = lamp
+furnitureArr[14] = -1.5
+furnitureArr[15] = 2.5
 
-furniture[16] = obj_item;
-furniture[17] = justianAltar
-furniture[18] = 0.5
-furniture[19] = -0.5
+furnitureArr[16] = obj_item;
+furnitureArr[17] = justianAltar
+furnitureArr[18] = 0.5
+furnitureArr[19] = -0.5
 
 
 #define miniBossTemp

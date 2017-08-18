@@ -123,13 +123,13 @@
     //create the crit PoI deco
 for (i = 0; i< array_length_1d(global.currNode.pois);i++){
     with (pois[i]){
-        if(array_length_1d(furniture) > 3){
-            for(i = 0; i < array_length_1d(furniture) / 4; i++){
+        if(array_length_1d(furnitureArr) > 3){
+            for(i = 0; i < array_length_1d(furnitureArr) / 4; i++){
                 var place = i*4;
                 //createFurniture(objType, statHolderScript, gridX, gridY)
                     //CURRENTLY IN DOODAD
-                createFurniture(furniture[place],furniture[place+1],
-                                gridX + furniture[place+2], gridY + furniture[place+3]);
+                createFurniture(furnitureArr[place],furnitureArr[place+1],
+                                 gridX + furnitureArr[place+2], gridY + furnitureArr[place+3]);
             }
             
         }
