@@ -485,6 +485,10 @@ for(i = 0; i < inventorySize; i++)
     }
 }
 
+if (id == global.pc.gpTarget){
+    global.pc.gpTarget = noone;
+}
+
 
 
 #define charDraw

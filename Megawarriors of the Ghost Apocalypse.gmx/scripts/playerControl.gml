@@ -61,7 +61,7 @@ else{
     rgtreleaseKey = gamepad_button_check_released(0, gp_shoulderl)
     
     //face... 1 = A, 2 = B, 3 = X, 4 = Y
-    interactKey = gamepad_button_check(0, gp_face3);
+    interactKey = gamepad_button_check_released(0, gp_face3);
     castKey = gamepad_button_check(0, gp_face2);
     castReleasedKey = gamepad_button_check_released(0, gp_face2);
     dodgeKey = gamepad_button_check(0, gp_face1);
