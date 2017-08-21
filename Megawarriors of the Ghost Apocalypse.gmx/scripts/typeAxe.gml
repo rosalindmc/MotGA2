@@ -1,4 +1,4 @@
-#define typeSword
+#define typeAxe
 switch(argument0)
 {
     case 0:     //Initialize 
@@ -81,87 +81,29 @@ switch(argument0)
     break
 }
 
-#define sword
+#define throwyAxe
 switch(argument0)
 {
     case 0:     //Initialize 
-    typeSword(0)
+    typeAxe(0)
     
     break
 }
 
-#define circleySword
+#define axe
 switch(argument0)
 {
     case 0:     //Initialize 
-    typeSword(0)    
-    
-    //Core
-    name = 'Circley Sword'
-    sprite_index = spr_circleySword
-    useScript[1] = melee
-    useScript[2] = melee
-    
-    //Item Stats
-    length = 17
-    holdPoint = 6
-    gwPoint = 2
-    
-    //Weapon Stats
-    meleePow = 1
-    meleeVariance = 1
-    meleeRate = 1.2
-    meleeImpact = 7
-    meleeLunge = 4
-    meleeSlow = .5
-    meleeSize = 1
-    meleeCost = 1
-    meleePen = 0
-    
-    gwPowMult = 1.5
-    gwRateMult = .8
-    gwImpactMult = 1.3
-    gwLungeMult = 1.2
-    gwSlowMult = 1.2
-    gwSizeMult = 1.2
-    gwCostMult = 1.2
-    
-    throwPow = 1
-    throwVariance = 1
-    throwRate = 1
-    throwImpact = 1
-    throwLunge = 0
-    throwSpeed = 5
-    throwSpin = 180
-    throwCost = 1
-    throwType = dmgType.pierce
-    throwPen = 0
-    break
-}
-
-#define bigSword
-switch(argument0)
-{
-    case 0:     //Initialize 
-    typeSword(0)
+    typeAxe(0)
     
     break
 }
 
-#define biggerSword
+#define longAxe
 switch(argument0)
 {
     case 0:     //Initialize 
-    typeSword(0)
+    typeAxe(0)
     
-    break
-}
-
-#define specialSword
-switch(argument0)
-{
-    case 0:     //Initialize 
-    typeSword(0)
-    name = 'Swordstia'
     break
 }

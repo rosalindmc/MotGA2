@@ -84,3 +84,14 @@ switch(argument0)
     name = choose('Pike')
     break
 }
+
+#define spear
+switch(argument0)
+{
+    case 0:     //Initialize 
+    typePolearm(0)
+    
+    //Core
+    name = choose('Pike')
+    break
+}
