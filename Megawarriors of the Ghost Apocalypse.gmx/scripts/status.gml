@@ -14,11 +14,15 @@ if argument4 = true
         potency = argument2
         life = argument3
         
-        script_execute(effect,0)
         
-        tickTimer1 = tickLength1
-        tickTimer2 = tickLength2
-        ds_list_add(owner.sEffect,id)
+        if(!script_execute(effect,0)){//if an effect can stack, make sure it returns false
+            tickTimer1 = tickLength1
+            tickTimer2 = tickLength2
+            ds_list_add(owner.sEffect,id)
+        }
+        else{
+            instance_destroy();
+        }
     }
 }
 
@@ -75,3 +79,19 @@ if instance_exists(owner)
     script_execute(effect,3)
 }
 #define statusStack
+//argument0 is which effect it's checking
+//returns if it found a matching effect
+//changes old effect to new effect
+var found = false;
+if(ds_list_size(owner.sEffect) != 0){
+    for(var i = 0; i < ds_list_size(owner.sEffect); i++){
+        if(ds_list_find_value(owner.sEffect,i).effect == argument0){
+            var found = true;
+            with(ds_list_find_value(owner.sEffect, i)){
+                potency = other.potency;
+                life = other.life;
+            }
+        }
+    }
+}
+return found;

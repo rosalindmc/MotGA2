@@ -4,8 +4,9 @@
 switch(argument0)
 {
 case 0:     //Apply Effect
-statusStack()
+var ret = statusStack(effect);
 icon = ico_stun
+
 
 owner.moveMult = 0.25
 owner.canAttack = false
@@ -17,6 +18,8 @@ i.name = 'Grapple'
 i.owner = owner
 i.useType = grappleStart
 interactId = i
+
+return ret;
 break
 case 1:     //Primary Tick Effect
 break
@@ -46,6 +49,7 @@ case 0:     //Apply Effect
 tickLength1 = 3
 tickLength2 = 1
 icon = ico_bleed
+return false;//Because this effect can stack
 break
 case 1:     //Primary Tick Effect
 owner.life -= floor(potency+random(.99))

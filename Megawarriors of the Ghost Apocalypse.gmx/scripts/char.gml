@@ -290,6 +290,7 @@ if alive = true
 moveStep()
 isoDepth(0)
 
+
 /*
 script_execute(control)
 charFacing()
