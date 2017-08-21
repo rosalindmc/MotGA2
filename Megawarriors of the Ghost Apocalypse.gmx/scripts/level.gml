@@ -446,6 +446,29 @@ while(current.pathParent != noone)
     global.surfX2 = max(global.surfX2,current.pathParent.x+8)
     global.surfY2 = max(global.surfY2,current.pathParent.y+8)
     current = current.pathParent
+    
+    if (current.gridX - 1 != -1){
+        waterTiles[numWaterTiles] = floorLayout[current.gridX - 1, current.gridY]
+        numWaterTiles += 1
+        
+        floorLayout[current.gridX - 1, current.gridY].isRiver = true
+        floorLayout[current.gridX - 1, current.gridY].isWater = true
+        global.surfX1 = min(global.surfX1,floorLayout[current.gridX - 1, current.gridY].x-8)
+        global.surfY1 = min(global.surfY1,floorLayout[current.gridX - 1, current.gridY].y-8)
+        global.surfX2 = max(global.surfX2,floorLayout[current.gridX - 1, current.gridY].x+8)
+        global.surfY2 = max(global.surfY2,floorLayout[current.gridX - 1, current.gridY].y+8)
+    }
+    if (current.gridY - 1 != -1){
+        waterTiles[numWaterTiles] = floorLayout[current.gridX, current.gridY - 1]
+        numWaterTiles += 1
+        
+        floorLayout[current.gridX, current.gridY - 1].isRiver = true
+        floorLayout[current.gridX, current.gridY - 1].isWater = true
+        global.surfX1 = min(global.surfX1,floorLayout[current.gridX, current.gridY - 1].x-8)
+        global.surfY1 = min(global.surfY1,floorLayout[current.gridX, current.gridY - 1].y-8)
+        global.surfX2 = max(global.surfX2,floorLayout[current.gridX, current.gridY - 1].x+8)
+        global.surfY2 = max(global.surfY2,floorLayout[current.gridX, current.gridY - 1].y+8)
+    }
 }
 
 
