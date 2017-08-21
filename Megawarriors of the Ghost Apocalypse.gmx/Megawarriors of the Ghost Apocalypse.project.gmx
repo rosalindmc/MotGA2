@@ -98,8 +98,16 @@
     </sprites>
     <sprites name="Items">
       <sprites name="Weapons">
+        <sprite>sprites\spr_bigSword</sprite>
+        <sprite>sprites\spr_biggerSword</sprite>
         <sprite>sprites\spr_sword</sprite>
-        <sprite>sprites\spr_khopesh</sprite>
+        <sprite>sprites\spr_circleySword</sprite>
+        <sprite>sprites\spr_bigAxe</sprite>
+        <sprite>sprites\spr_mace</sprite>
+        <sprite>sprites\spr_warhammer</sprite>
+        <sprite>sprites\spr_axe</sprite>
+        <sprite>sprites\spr_throwyAxe</sprite>
+        <sprite>sprites\spr_spear</sprite>
         <sprite>sprites\spr_pike</sprite>
       </sprites>
       <sprite>sprites\spr_smallCrate</sprite>
@@ -221,15 +229,17 @@
       <script>scripts\worldNode.gml</script>
     </scripts>
     <scripts name="Items">
-      <script>scripts\swords.gml</script>
+      <script>scripts\scripts/typeSword.gml</script>
       <script>scripts\potions.gml</script>
       <script>scripts\bows.gml</script>
       <script>scripts\axes.gml</script>
       <script>scripts\spoons.gml</script>
       <script>scripts\guns.gml</script>
       <script>scripts\bludgeons.gml</script>
-      <script>scripts\polearms.gml</script>
+      <script>scripts\typePolearm.gml</script>
       <script>scripts\uniques.gml</script>
+      <script>scripts\weaponEssentials.gml</script>
+      <script>scripts\crate.gml</script>
     </scripts>
     <scripts name="Particles">
       <script>scripts\particleTypes.gml</script>

@@ -23,16 +23,10 @@ switch(argument0)
 switch(argument0)
 {
     case 0:     //Initialize 
-    //Core
-    name = 'Best Potion Ever'
-    sprite_index = choose(spr_potionBlue, spr_potionRed)
-    useScript[1] = drinkPotion
-    useScript[2] = drinkPotion
+    potionEssentials(0)
     
-    //Item Stats
-    length = 7
-    holdPoint = 0
-    gwPoint = 1
-
+    //Core
+    name = 'Potion'
+    sprite_index = choose(spr_potionBlue, spr_potionRed)
     break
 }

@@ -55,6 +55,8 @@ spin = 0
 
 interactId = noone
 
+weaponEssentials(0)
+
 #define itemStep
 if owner != noone
 {
