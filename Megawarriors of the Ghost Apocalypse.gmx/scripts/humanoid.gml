@@ -893,11 +893,19 @@ switch(argument0)
 if floorID.isRiver = false
 {
     createParticle(x,y,z,1,partDust,hFacing)
+    if(!floorID.isPath)
+        moveDT = 0.1;
+    else
+        moveDT = 0;
 }
 else
 {
     createParticle(x,y-1,floorID.wz+5,5+irandom(5),partSplash,0)
     createParticle(x,y,floorID.wz,1,partRipple,0)
+    if(!floorID.isPath)
+        moveDT = 1;
+    else
+        moveDT = 0.5;
 }
 
 if player = true
