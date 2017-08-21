@@ -173,10 +173,12 @@ case 0:
 break;
 
 case 1:
-    life += 3;
+    life = min(life+3,lifeMax);
     with(handItem[argument0]){
         instance_destroy();
     }
     handItem[argument0] = noone;
+    inventory[argument0] = noone;
+    handItemSlot[argument0] = -1
 break;
 }

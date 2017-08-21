@@ -37,7 +37,7 @@ switch(argument0)
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
-    throwSpeed = 5
+    throwSpeed = 10
     throwSpin = 360
     throwCost = 1
     throwType = dmgType.rend
