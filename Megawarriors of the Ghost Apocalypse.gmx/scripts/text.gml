@@ -4,7 +4,7 @@
 t = ''
 c1 = c_black
 c2 = c_white
-f = fnt_dmgPlus
+f = fnt_small
 z = 0
 a = 1
 

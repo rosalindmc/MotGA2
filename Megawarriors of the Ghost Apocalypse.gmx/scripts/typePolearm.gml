@@ -24,13 +24,13 @@ switch(argument0)
     meleeCost = 1
     meleePen = 0
     
-    gwPowMult = 1.5
+    gwPowMult = 1.35
     gwRateMult = .8
     gwImpactMult = 1.3
     gwLungeMult = 1.2
     gwSlowMult = 1.2
     gwSizeMult = 1.2
-    gwCostMult = 1.2
+    gwCostMult = 1
     
     throwPow = 1
     throwVariance = 1
@@ -63,7 +63,7 @@ switch(argument0)
         meleeType[i] = dmgType.pierce
         meleeAttackMask[i] = spr_stab
         meleePowMult[i] = 1
-        meleeChargePowMult[i] = 1.5
+        meleeChargePowMult[i] = 2
         meleeRateMult[i] = 1
         meleeImpactMult[i] = 1
         meleeLungeMult[i] = 1
@@ -73,6 +73,7 @@ switch(argument0)
     }
     
     meleeAttackMask[3] = spr_stab
+    meleeChargePowMult[i] = 3
     break
 }
 
@@ -92,14 +93,16 @@ switch(argument0)
     gwPoint = 4
                      
     //Weapon Stats
-    meleePow = 3
+    meleePow = 2.5
     meleeRate = .9
     meleeImpact = 4
     meleeLunge = 3
     meleeSlow = .6
-    meleeSize = 1.2
+    meleeSize = 1
     meleeCost = 3
-    meleePen = 10  
+    meleePen = 10 
+
+    gwPowMult = 1.4 
     break
 }
 
@@ -124,7 +127,7 @@ switch(argument0)
     meleeImpact = 3
     meleeLunge = 2
     meleeSlow = .4
-    meleeSize = 1
+    meleeSize = .8
     meleeCost = 2
     meleePen = 5  
     break

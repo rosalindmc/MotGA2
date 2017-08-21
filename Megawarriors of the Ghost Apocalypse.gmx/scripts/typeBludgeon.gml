@@ -24,13 +24,13 @@ switch(argument0)
     meleeCost = 1
     meleePen = 0
     
-    gwPowMult = 1.5
+    gwPowMult = 1.35
     gwRateMult = .8
     gwImpactMult = 1.3
     gwLungeMult = 1.2
     gwSlowMult = 1.2
     gwSizeMult = 1.2
-    gwCostMult = 1.2
+    gwCostMult = 1
     
     throwPow = 1
     throwVariance = 1
@@ -47,14 +47,14 @@ switch(argument0)
     anim[1] = weaponSlash   //Basic Attack
     anim[2] = weaponSlash   //Power Attack
     anim[3] = weaponChop   //Alternate Attack (2h)
-    anim[4] = weaponStab    //Roll Attack
+    anim[4] = weaponSlash    //Roll Attack
     anim[5] = weaponHilt    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
     animHold[1] = weaponChopHold//Alt Hold Anim 
-    animHold[2] = weaponStabHold//Roll Hold Anim 
+    animHold[2] = weaponSlashHold//Roll Hold Anim 
     animHold[3] = weaponHiltHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
     
@@ -63,7 +63,7 @@ switch(argument0)
         meleeType[i] = dmgType.impact
         meleeAttackMask[i] = spr_slash
         meleePowMult[i] = 1
-        meleeChargePowMult[i] = 1.5
+        meleeChargePowMult[i] = 2
         meleeRateMult[i] = 1
         meleeImpactMult[i] = 1
         meleeLungeMult[i] = 1
@@ -74,10 +74,7 @@ switch(argument0)
     }
     
     meleeAttackMask[3] = spr_stab
-    meleeAttackMask[4] = spr_stab
-    meleeLungeMult[3] = 0
-    meleeRateMult[4] = 2
-    meleeLungeMult[4] = 0
+    meleeChargePowMult[i] = 3
     break
 }
 
@@ -97,7 +94,7 @@ switch(argument0)
     gwPoint = 3
     
     //Weapon Stats
-    meleePow = 4
+    meleePow = 3
     meleeRate = .8
     meleeImpact = 7
     meleeLunge = 4
@@ -106,7 +103,7 @@ switch(argument0)
     meleeCost = 3
     meleePen = 15 
     
-    gwPowMult = 1.6
+    gwPowMult = 1.5
     break
 }
 
@@ -126,15 +123,15 @@ switch(argument0)
     gwPoint = 3
     
     //Weapon Stats
-    meleePow = 5
+    meleePow = 4
     meleeRate = .6
     meleeImpact = 10
     meleeLunge = 3
     meleeSlow = .7
-    meleeSize = 1.3
+    meleeSize = 1.1
     meleeCost = 4
     meleePen = 25 
     
-    gwPowMult = 1.9
+    gwPowMult = 1.55
     break
 }

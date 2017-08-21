@@ -173,12 +173,15 @@ case 0:
 break;
 
 case 1:
+//Potion Effect
     life = min(life+3,lifeMax);
+    
+//Destroy Potion
     with(handItem[argument0]){
         instance_destroy();
     }
     handItem[argument0] = noone;
-    inventory[argument0] = noone;
+    inventory[handItemSlot[argument0]] = noone;
     handItemSlot[argument0] = -1
 break;
 }

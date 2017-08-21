@@ -33,8 +33,11 @@ else if min(1-(t.armour-(pen)),1) <= .5
 }
 
  //Temp Apply Bleed
-applyStatus(t,choose(bleed,stun),1,12)
- 
+if dmgType != dmgType.impact and irandom(5) > p
+{
+    applyStatus(t,bleed,1,6)
+}
+
 //Dif damage types might have dif particles later
 createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
 

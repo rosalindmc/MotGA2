@@ -32,6 +32,9 @@ draw_set_alpha(.5)
 draw_set_colour(c_black)
 draw_rectangle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,false)
 
+draw_set_font(fnt_small)
+draw_set_halign(fa_middle)
+
 //HUD Circle
 
 if surface_exists(invCircle)
@@ -40,10 +43,7 @@ if surface_exists(invCircle)
     draw_clear_alpha(c_black, 0)
     draw_set_colour(c_white)
     draw_circle(100,100,90,false)
-    //Highlight segment somehow later
-    //draw_set_blend_mode(bm_add)
-    //draw_set_colour(c_yellow)
-    //draw_triangle(100,100,100+lengthdir_x(100,(360/(inventorySize))-1+(hoverItem*(360/inventorySize))),100+lengthdir_y(100,(360/(inventorySize))-1+(hoverItem*(360/inventorySize))),100+lengthdir_x(100,(hoverItem*(360/inventorySize))+1),100+lengthdir_y(100,(hoverItem*(360/inventorySize))+1),false)
+    
     draw_set_alpha(1)
     draw_set_blend_mode(bm_subtract)
     draw_circle(100,100,15,false)

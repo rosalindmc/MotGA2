@@ -24,13 +24,13 @@ switch(argument0)
     meleeCost = 1
     meleePen = 0
     
-    gwPowMult = 1.5
+    gwPowMult = 1.35
     gwRateMult = .8
     gwImpactMult = 1.3
     gwLungeMult = 1.2
     gwSlowMult = 1.2
     gwSizeMult = 1.2
-    gwCostMult = 1.2
+    gwCostMult = 1
     
     throwPow = 1
     throwVariance = 1
@@ -63,7 +63,7 @@ switch(argument0)
         meleeType[i] = dmgType.rend
         meleeAttackMask[i] = spr_slash
         meleePowMult[i] = 1
-        meleeChargePowMult[i] = 1.5
+        meleeChargePowMult[i] = 2
         meleeRateMult[i] = 1
         meleeImpactMult[i] = 1
         meleeLungeMult[i] = 1
@@ -74,10 +74,9 @@ switch(argument0)
     }
     
     meleeAttackMask[3] = spr_stab
+    meleeChargePowMult[i] = 3
     meleeAttackMask[4] = spr_stab
-    meleeLungeMult[3] = 0
-    meleeRateMult[4] = 2
-    meleeLungeMult[4] = 0
+    meleePowMult[4] = 1.25
     break
 }
 
@@ -163,7 +162,7 @@ switch(argument0)
     meleeCost = 2
     meleePen = 0  
     
-    gwPowMult = 1.8
+    gwPowMult = 1.4
     break
 }
 
@@ -183,7 +182,7 @@ switch(argument0)
     gwPoint = 2
            
     //Weapon Stats
-    meleePow = 4
+    meleePow = 3.5
     meleeRate = .6
     meleeImpact = 8
     meleeLunge = 6
@@ -192,7 +191,7 @@ switch(argument0)
     meleeCost = 3
     meleePen = 0  
     
-    gwPowMult = 2.0
+    gwPowMult = 1.5
     break
 }
 
@@ -201,6 +200,26 @@ switch(argument0)
 {
     case 0:     //Initialize 
     typeSword(0)
-    name = 'Swordstia'
+    
+    //Core
+    name = 'Swordstria'
+    sprite_index = spr_bigSword
+    
+    //Item Stats
+    length = 25
+    holdPoint = 10
+    gwPoint = 1
+    
+    //Weapon Stats
+    meleePow = 4
+    meleeRate = .9
+    meleeImpact = 7
+    meleeLunge = 5
+    meleeSlow = .2
+    meleeSize = 1.3
+    meleeCost = 1
+    meleePen = 25  
+    
+    gwPowMult = 1.4
     break
 }
