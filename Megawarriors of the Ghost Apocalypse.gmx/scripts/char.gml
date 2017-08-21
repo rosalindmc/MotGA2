@@ -540,7 +540,7 @@ draw_text(round(x),round(y)+20,global.frameRate)
 draw_text(round(x),round(y)+30,moving*global.frameRate/metre)
 
 #define charDrawEnd
-smallHealthBar()
+if(alive){smallHealthBar()}
 
 #define smallHealthBar
 if (player == false && global.pc.autoTarget == id)

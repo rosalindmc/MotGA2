@@ -358,6 +358,37 @@ while(current.pathParent != noone)
 
     current.pathParent.isPath = true
     current = current.pathParent
+    
+    var extra = choose(0,1,2,3);
+    switch(extra){
+        case 0:
+        if (current.gridX - 1 != -1){
+            floorLayout[current.gridX - 1, current.gridY].isPath = true;
+            floorLayout[current.gridX - 1, current.gridY].rWeight = 5;
+        }
+        break;
+        
+        case 1:
+        if (current.gridX + 1 != sizeX){
+            floorLayout[current.gridX + 1, current.gridY].isPath = true;
+            floorLayout[current.gridX + 1, current.gridY].rWeight = 5;
+        }
+        break;
+        
+        case 2:
+        if (current.gridY - 1 != -1){
+            floorLayout[current.gridY, current.gridY - 1].isPath = true;
+            floorLayout[current.gridY, current.gridY - 1].rWeight = 5;
+        }
+        break;
+        
+        case 3:
+        if (current.gridY + 1 != sizeY){
+            floorLayout[current.gridX, current.gridY + 1].isPath = true;
+            floorLayout[current.gridX, current.gridY + 1].rWeight = 5;
+        }
+        break;
+    }
 
 }
 
