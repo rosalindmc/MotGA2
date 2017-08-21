@@ -63,7 +63,7 @@ switch(argument0)
         meleeType[i] = dmgType.impact
         meleeAttackMask[i] = spr_slash
         meleePowMult[i] = 1
-        meleeChargePowMult[i] = 2
+        meleeChargePowMult[i] = 1.5
         meleeRateMult[i] = 1
         meleeImpactMult[i] = 1
         meleeLungeMult[i] = 1
@@ -74,7 +74,7 @@ switch(argument0)
     }
     
     meleeAttackMask[3] = spr_stab
-    meleeChargePowMult[i] = 3
+    meleeChargePowMult[i] = 2
     break
 }
 
@@ -94,8 +94,8 @@ switch(argument0)
     gwPoint = 3
     
     //Weapon Stats
-    meleePow = 3
-    meleeRate = .8
+    meleePow = 1.5
+    meleeRate = 1
     meleeImpact = 7
     meleeLunge = 4
     meleeSlow = .5
@@ -123,8 +123,8 @@ switch(argument0)
     gwPoint = 3
     
     //Weapon Stats
-    meleePow = 4
-    meleeRate = .6
+    meleePow = 1.8
+    meleeRate = .9
     meleeImpact = 10
     meleeLunge = 3
     meleeSlow = .7

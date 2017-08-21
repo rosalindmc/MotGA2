@@ -99,7 +99,6 @@
     <sprites name="Items">
       <sprites name="Weapons">
         <sprite>sprites\spr_bigSword</sprite>
-        <sprite>sprites\sprites/spr_circleySword</sprite>
         <sprite>sprites\spr_sword</sprite>
         <sprite>sprites\spr_circleySword</sprite>
         <sprite>sprites\spr_longAxe</sprite>
@@ -109,6 +108,7 @@
         <sprite>sprites\spr_throwyAxe</sprite>
         <sprite>sprites\spr_spear</sprite>
         <sprite>sprites\spr_pike</sprite>
+        <sprite>sprites\spr_biggerSword</sprite>
       </sprites>
       <sprite>sprites\spr_smallCrate</sprite>
       <sprite>sprites\spr_largeCrate</sprite>

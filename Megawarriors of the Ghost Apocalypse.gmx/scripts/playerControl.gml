@@ -316,6 +316,7 @@ obj_camera.h = targetH
 var closest = 1 * metre;
 
 with(obj_char){
+if alive = true{
     if(!player && !grappled){
         var dist = point_distance(other.targetX, other.targetY, x, y);
         if (dist < closest){
@@ -323,4 +324,5 @@ with(obj_char){
             other.autoTarget = id;
         }
     }
+}
 }
