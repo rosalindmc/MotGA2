@@ -119,16 +119,27 @@ if rgtreleaseKey = true
 if(!global.padOn){
     targetX = mouse_x
     targetY = mouse_y
+    if(autoTarget == noone){
+        selectAutoTarget();
+    }
+    else{
+        if(point_distance(autoTarget.x, autoTarget.y, mouse_x, mouse_y) > 10*metre){
+            autoTarget = noone;
+        }
+        else if(point_distance(autoTarget.x, autoTarget.y, mouse_x, mouse_y) > 0.5*metre){
+            selectAutoTarget();
+        }
+    }
 }
 else{
     
     //check if there's an autolocked target
-    if(gpTarget == noone){
+    if(autoTarget == noone){
         targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
         targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
         //R3 selects an autolock target
         if(gamepad_button_check(0, gp_stickr)){
-            selectGPTarget();
+            selectAutoTarget();
         }
     }
     else{
@@ -138,7 +149,7 @@ else{
             targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
             
             if(gamepad_button_check(0, gp_stickr)){
-                selectGPTarget();
+                selectAutoTarget();
             }
         }
         else if (gamepad_axis_value(0, gp_axisrv)>0.5 || gamepad_axis_value(0, gp_axisrv) < -0.5){
@@ -146,17 +157,17 @@ else{
             targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
             
             if(gamepad_button_check(0, gp_stickr)){
-                selectGPTarget();
+                selectAutoTarget();
             }
         }
         else{
-            targetX = gpTarget.x;
-            targetY = gpTarget.y;
+            targetX = autoTarget.x;
+            targetY = autoTarget.y;
         }
         
         //check how far away the target is
-        if(point_distance(gpTarget.x, gpTarget.y, x, y) > 10 * metre){
-            gpTarget = noone;
+        if(point_distance(autoTarget.x, autoTarget.y, x, y) > 10 * metre){
+            autoTarget = noone;
         }
     }
 }
@@ -301,15 +312,15 @@ obj_camera.kick = kick
 obj_camera.h = targetH
 
 
-#define selectGPTarget
-var closest = 2 * metre;
+#define selectAutoTarget
+var closest = 1 * metre;
 
 with(obj_char){
     if(!player && !grappled){
         var dist = point_distance(other.targetX, other.targetY, x, y);
         if (dist < closest){
             closest = dist;
-            other.gpTarget = id;
+            other.autoTarget = id;
         }
     }
 }

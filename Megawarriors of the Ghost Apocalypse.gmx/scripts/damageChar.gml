@@ -95,8 +95,8 @@ with(argument0)
     
     aiDestroy()
     
-    if (id == global.pc.gpTarget){
-    global.pc.gpTarget = noone;
+    if (id == global.pc.autoTarget){
+    global.pc.autoTarget = noone;
     }
     
     mask_index = spr_none

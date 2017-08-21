@@ -95,7 +95,7 @@ turnSpeed = 360     //Degrees/second
 //Control Script
 controlScript = playerControl       //Temp, replace with ai control
 player = true                       //Change to false in type script
-gpTarget = noone;                   //This is so that if a player is using a controller, they can select an enemy
+autoTarget = noone;                   //This is so that if a player is using a controller, they can select an enemy
 
 
 lastAttack = 0                      //When this character last attacked for the AI
@@ -269,8 +269,20 @@ if alive = true
     }
     
     if grappled = false
-    {
+    {        
+        if(id == global.pc){
+            if(global.pc.autoTarget == noone){
+                //show_message('debug');
+                facing = rotate(facing,point_direction(x,y,targetX,targetY),tS/global.frameRate)
+            }
+            else{
+                facing = rotate(facing,point_direction(x,y,global.pc.autoTarget.x,global.pc.autoTarget.y),tS/global.frameRate)
+            }
+        }
+        
+        else{
             facing = rotate(facing,point_direction(x,y,targetX,targetY),tS/global.frameRate)
+        }
     }
 }
 
@@ -530,7 +542,7 @@ draw_text(round(x),round(y)+30,moving*global.frameRate/metre)
 smallHealthBar()
 
 #define smallHealthBar
-if player = false
+if (player == false && global.pc.autoTarget == id)
 {
     ix = round(x)
     iy = round(y-(metre*2))

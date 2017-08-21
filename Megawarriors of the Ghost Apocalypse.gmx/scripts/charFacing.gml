@@ -3,7 +3,13 @@ if canMove = true
 {
     if canAttack = true
     {
-        facing = rotate(facing,point_direction(x,y,targetX,targetY),(180*turnSpeed)/global.frameRate)
+        if(global.pc.autoTarget == noone){
+            //show_message('debug');
+            facing = rotate(facing,point_direction(x,y,targetX,targetY),(180*turnSpeed)/global.frameRate)
+        }
+        else{
+            facing = rotate(facing,point_direction(x,y,global.pc.autoTarget.x,global.pc.autoTarget.y),(180*turnSpeed)/global.frameRate)
+        }
     }
     else
     {
