@@ -60,7 +60,7 @@ switch(argument0)
     
     for(i = 1; i < 7; i++)
     {
-        meleeType[i] = 1
+        meleeType[i] = dmgType.rend
         meleeAttackMask[i] = spr_slash
         meleePowMult[i] = 1
         meleeChargePowMult[i] = 1.5
@@ -87,6 +87,27 @@ switch(argument0)
     case 0:     //Initialize 
     typeSword(0)
     
+    //Core
+    name = 'Sword'
+    sprite_index = spr_sword
+    
+    //Item Stats
+    length = 17
+    holdPoint = 6
+    gwPoint = 1
+    
+    //Weapon Stats
+    meleePow = 2
+    meleeRate = 1.2
+    meleeImpact = 3
+    meleeLunge = 2
+    meleeSlow = .2
+    meleeSize = 1
+    meleeCost = 1
+    meleePen = 0
+    
+    
+    
     break
 }
 
@@ -95,47 +116,25 @@ switch(argument0)
 {
     case 0:     //Initialize 
     typeSword(0)    
-    
+     
     //Core
     name = 'Circley Sword'
     sprite_index = spr_circleySword
-    useScript[1] = melee
-    useScript[2] = melee
     
     //Item Stats
-    length = 17
-    holdPoint = 6
-    gwPoint = 2
+    length = 19
+    holdPoint = 7
+    gwPoint = 1
     
     //Weapon Stats
-    meleePow = 1
-    meleeVariance = 1
-    meleeRate = 1.2
-    meleeImpact = 7
-    meleeLunge = 4
-    meleeSlow = .5
+    meleePow = 2
+    meleeRate = 1.4
+    meleeImpact = 4
+    meleeLunge = 5
+    meleeSlow = .2
     meleeSize = 1
     meleeCost = 1
-    meleePen = 0
-    
-    gwPowMult = 1.5
-    gwRateMult = .8
-    gwImpactMult = 1.3
-    gwLungeMult = 1.2
-    gwSlowMult = 1.2
-    gwSizeMult = 1.2
-    gwCostMult = 1.2
-    
-    throwPow = 1
-    throwVariance = 1
-    throwRate = 1
-    throwImpact = 1
-    throwLunge = 0
-    throwSpeed = 5
-    throwSpin = 180
-    throwCost = 1
-    throwType = dmgType.pierce
-    throwPen = 0
+    meleePen = -25   
     break
 }
 
@@ -144,7 +143,27 @@ switch(argument0)
 {
     case 0:     //Initialize 
     typeSword(0)
+        
+    //Core
+    name = 'Big Sword'
+    sprite_index = spr_bigSword
     
+    //Item Stats
+    length = 25
+    holdPoint = 10
+    gwPoint = 1
+    
+    //Weapon Stats
+    meleePow = 3
+    meleeRate = .7
+    meleeImpact = 7
+    meleeLunge = 5
+    meleeSlow = .5
+    meleeSize = 1.2
+    meleeCost = 2
+    meleePen = 0  
+    
+    gwPowMult = 1.8
     break
 }
 
@@ -153,7 +172,27 @@ switch(argument0)
 {
     case 0:     //Initialize 
     typeSword(0)
+        
+    //Core
+    name = 'Bigger Sword'
+    sprite_index = spr_biggerSword
     
+    //Item Stats
+    length = 35
+    holdPoint = 15
+    gwPoint = 2
+           
+    //Weapon Stats
+    meleePow = 4
+    meleeRate = .6
+    meleeImpact = 8
+    meleeLunge = 6
+    meleeSlow = .75
+    meleeSize = 1.5
+    meleeCost = 3
+    meleePen = 0  
+    
+    gwPowMult = 2.0
     break
 }
 

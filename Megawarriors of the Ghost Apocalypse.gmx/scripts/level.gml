@@ -142,11 +142,7 @@ threatInitialize();
 //replace later -> weapon spawn center
 repeat(4)
 {
-    createItem(random(room_width),random(room_height),sword,noone)
-    createItem(random(room_width),random(room_height),khopesh,noone)
-    createItem(random(room_width),random(room_height),pike,noone)
-    //createItem(random(room_width),random(room_height),crate,noone)
-    createItem(random(room_width),random(room_height),genericPotion,noone)
+    createItem(random(room_width),random(room_height),choose(sword,bigSword,biggerSword,circleySword,axe,longAxe,throwyAxe,mace,warhammer,spear,pike,genericPotion),noone)
 }
 
 //Temp assign tile information

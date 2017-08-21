@@ -40,7 +40,7 @@ instance_destroy()
 #define openUp
 if(argument0 = global.pc){
     //run a switch for which kind of crate this is
-    var crateLoot = choose(sword,khopesh,genericPotion, genericPotion, pike);
+    var crateLoot = choose(choose(sword,bigSword,biggerSword,circleySword,axe,longAxe,throwyAxe,mace,warhammer,spear,pike,genericPotion));
     
     createItem(x,y, crateLoot, noone);//might change noone to argument0
     
@@ -51,6 +51,7 @@ if(argument0 = global.pc){
     instance_destroy();
     //}
 }
+
 #define shrineUse
 if(argument0 = global.pc){
     //run a switch for which kind of crate this is

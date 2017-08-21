@@ -37,31 +37,31 @@ switch(argument0)
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
-    throwSpeed = 5
-    throwSpin = 180
+    throwSpeed = 8
+    throwSpin = 0
     throwCost = 1
     throwType = dmgType.pierce
     throwPen = 0
     
     anim[0] = weaponIdle    //Idle Anim
-    anim[1] = weaponSlash   //Basic Attack
-    anim[2] = weaponSlash   //Power Attack
+    anim[1] = weaponStab    //Basic Attack
+    anim[2] = weaponStab    //Power Attack
     anim[3] = weaponChop   //Alternate Attack (2h)
-    anim[4] = weaponStab    //Roll Attack
+    anim[4] = weaponSlash    //Roll Attack
     anim[5] = weaponHilt    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
-    animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
-    animHold[1] = weaponChopHold//Alt Hold Anim 
-    animHold[2] = weaponStabHold//Roll Hold Anim 
-    animHold[3] = weaponHiltHold//Close Hold Anim 
-    animHold[4] = throwHold //Throw Hold Anim 
+    animHold[0] = weaponStabHold   //Basic Hold Anim (basic+power)
+    animHold[1] = weaponChopHold    //Alt Hold Anim 
+    animHold[2] = weaponSlashHold    //Roll Hold Anim 
+    animHold[3] = weaponHiltHold    //Close Hold Anim 
+    animHold[4] = throwHold         //Throw Hold Anim 
     
     for(i = 1; i < 7; i++)
     {
-        meleeType[i] = 1
-        meleeAttackMask[i] = spr_slash
+        meleeType[i] = dmgType.pierce
+        meleeAttackMask[i] = spr_stab
         meleePowMult[i] = 1
         meleeChargePowMult[i] = 1.5
         meleeRateMult[i] = 1
@@ -71,6 +71,8 @@ switch(argument0)
         meleeSizeMult[i] = 1
         meleeCostMult[i] = 1
     }
+    
+    meleeAttackMask[3] = spr_stab
     break
 }
 
@@ -81,7 +83,23 @@ switch(argument0)
     typePolearm(0)
     
     //Core
-    name = choose('Pike')
+    name = 'Pike'
+    sprite_index = spr_pike
+    
+    //Item Stats
+    length = 63
+    holdPoint = 0
+    gwPoint = 4
+                     
+    //Weapon Stats
+    meleePow = 3
+    meleeRate = .9
+    meleeImpact = 4
+    meleeLunge = 3
+    meleeSlow = .6
+    meleeSize = 1.2
+    meleeCost = 3
+    meleePen = 10  
     break
 }
 
@@ -92,6 +110,22 @@ switch(argument0)
     typePolearm(0)
     
     //Core
-    name = choose('Pike')
+    name = 'Spear'
+    sprite_index = spr_spear
+    
+    //Item Stats
+    length = 37
+    holdPoint = 4
+    gwPoint = 3
+                         
+    //Weapon Stats
+    meleePow = 2
+    meleeRate = 1.1
+    meleeImpact = 3
+    meleeLunge = 2
+    meleeSlow = .4
+    meleeSize = 1
+    meleeCost = 2
+    meleePen = 5  
     break
 }

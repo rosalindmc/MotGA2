@@ -20,6 +20,6 @@
   <width>35</width>
   <height>5</height>
   <frames>
-    <frame index="0">images\spr_bigAxe_0.png</frame>
+    <frame index="0">images\spr_longAxe_0.png</frame>
   </frames>
 </sprite>

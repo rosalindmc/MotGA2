@@ -40,7 +40,7 @@ switch(argument0)
     throwSpeed = 5
     throwSpin = 180
     throwCost = 1
-    throwType = dmgType.pierce
+    throwType = dmgType.rend
     throwPen = 0
     
     anim[0] = weaponIdle    //Idle Anim
@@ -60,7 +60,7 @@ switch(argument0)
     
     for(i = 1; i < 7; i++)
     {
-        meleeType[i] = 1
+        meleeType[i] = dmgType.rend
         meleeAttackMask[i] = spr_slash
         meleePowMult[i] = 1
         meleeChargePowMult[i] = 1.5
@@ -87,6 +87,24 @@ switch(argument0)
     case 0:     //Initialize 
     typeAxe(0)
     
+    //Core
+    name = 'Throwy Axe'
+    sprite_index = spr_throwyAxe
+    
+    //Item Stats
+    length = 9
+    holdPoint = 4
+    gwPoint = 1
+                 
+    //Weapon Stats
+    meleePow = 2
+    meleeRate = 1.6
+    meleeImpact = 5
+    meleeLunge = 6
+    meleeSlow = .1
+    meleeSize = .8
+    meleeCost = 1
+    meleePen = 5  
     break
 }
 
@@ -96,6 +114,24 @@ switch(argument0)
     case 0:     //Initialize 
     typeAxe(0)
     
+    //Core
+    name = 'Axe'
+    sprite_index = spr_axe
+    
+    //Item Stats
+    length = 19
+    holdPoint = 2
+    gwPoint = 3
+             
+    //Weapon Stats
+    meleePow = 3
+    meleeRate = .8
+    meleeImpact = 8
+    meleeLunge = 6
+    meleeSlow = .2
+    meleeSize = 1.5
+    meleeCost = 2
+    meleePen = 10  
     break
 }
 
@@ -105,5 +141,26 @@ switch(argument0)
     case 0:     //Initialize 
     typeAxe(0)
     
+    //Core
+    name = 'Long Axe'
+    sprite_index = spr_longAxe
+    
+    //Item Stats
+    length = 35
+    holdPoint = 4
+    gwPoint = 3
+    
+               
+    //Weapon Stats
+    meleePow = 3.5
+    meleeRate = .6
+    meleeImpact = 8
+    meleeLunge = 8
+    meleeSlow = .5
+    meleeSize = 1.5
+    meleeCost = 3
+    meleePen = 15 
+    
+    gwPowMult = 1.8
     break
 }

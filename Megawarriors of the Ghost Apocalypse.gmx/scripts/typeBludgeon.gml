@@ -40,7 +40,7 @@ switch(argument0)
     throwSpeed = 5
     throwSpin = 180
     throwCost = 1
-    throwType = dmgType.pierce
+    throwType = dmgType.impact
     throwPen = 0
     
     anim[0] = weaponIdle    //Idle Anim
@@ -60,7 +60,7 @@ switch(argument0)
     
     for(i = 1; i < 7; i++)
     {
-        meleeType[i] = 1
+        meleeType[i] = dmgType.impact
         meleeAttackMask[i] = spr_slash
         meleePowMult[i] = 1
         meleeChargePowMult[i] = 1.5
@@ -87,6 +87,26 @@ switch(argument0)
     case 0:     //Initialize 
     typeBludgeon(0)
     
+    //Core
+    name = 'Mace'
+    sprite_index = spr_mace
+    
+    //Item Stats
+    length = 16
+    holdPoint = 1
+    gwPoint = 3
+    
+    //Weapon Stats
+    meleePow = 4
+    meleeRate = .8
+    meleeImpact = 7
+    meleeLunge = 4
+    meleeSlow = .5
+    meleeSize = 1
+    meleeCost = 3
+    meleePen = 15 
+    
+    gwPowMult = 1.6
     break
 }
 
@@ -96,5 +116,25 @@ switch(argument0)
     case 0:     //Initialize 
     typeBludgeon(0)
     
+    //Core
+    name = 'Warhammer'
+    sprite_index = spr_warhammer
+    
+    //Item Stats
+    length = 32
+    holdPoint = 3
+    gwPoint = 3
+    
+    //Weapon Stats
+    meleePow = 5
+    meleeRate = .6
+    meleeImpact = 10
+    meleeLunge = 3
+    meleeSlow = .7
+    meleeSize = 1.3
+    meleeCost = 4
+    meleePen = 25 
+    
+    gwPowMult = 1.9
     break
 }

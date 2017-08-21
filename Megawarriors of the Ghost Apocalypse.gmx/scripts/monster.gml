@@ -35,7 +35,7 @@ canRoll = false
 
 subordinate[0] = noone
 
-i = createItem(x,y,sword,id)
+i = createItem(x,y,choose(sword,bigSword,biggerSword,circleySword,axe,longAxe,throwyAxe,mace,warhammer,spear),id)
 
 charSetup()
 
@@ -108,7 +108,7 @@ canRoll = false
 
 subordinate[0] = noone
 
-i = createItem(x,y,khopesh,id)
+i = createItem(x,y,sword,id)
 
 charSetup()
 
