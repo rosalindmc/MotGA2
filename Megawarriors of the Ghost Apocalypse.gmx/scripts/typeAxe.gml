@@ -38,7 +38,7 @@ switch(argument0)
     throwImpact = 1
     throwLunge = 0
     throwSpeed = 5
-    throwSpin = 180
+    throwSpin = 360
     throwCost = 1
     throwType = dmgType.rend
     throwPen = 0
@@ -105,6 +105,9 @@ switch(argument0)
     meleeSize = .8
     meleeCost = 1
     meleePen = 5  
+    
+    throwLunge = 5
+    throwSpeed = 15
     break
 }
 

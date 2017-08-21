@@ -33,7 +33,7 @@ else if min(1-(t.armour-(pen)),1) <= .5
 }
 
  //Temp Apply Bleed
-applyStatus(t,choose(bleed,stun),1,12,false)
+applyStatus(t,choose(bleed,stun),1,12)
  
 //Dif damage types might have dif particles later
 createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
@@ -99,5 +99,5 @@ with(argument0)
     global.pc.autoTarget = noone;
     }
     
-    mask_index = spr_none
+    //mask_index = spr_none
 }

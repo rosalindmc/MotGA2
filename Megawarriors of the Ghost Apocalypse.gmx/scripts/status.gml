@@ -4,25 +4,22 @@
 #define applyStatus
 //Apply a status effect to a character(target,type,potency,duration,maxStacks)
 
-if argument4 = true
+i = instance_create(argument0.x,argument0.y,obj_status)
+with(i)
 {
-    i = instance_create(argument0.x,argument0.y,obj_status)
-    with(i)
-    {
-        owner = argument0
-        effect = argument1
-        potency = argument2
-        life = argument3
-        
-        
-        if(!script_execute(effect,0)){//if an effect can stack, make sure it returns false
-            tickTimer1 = tickLength1
-            tickTimer2 = tickLength2
-            ds_list_add(owner.sEffect,id)
-        }
-        else{
-            instance_destroy();
-        }
+    owner = argument0
+    effect = argument1
+    potency = argument2
+    life = argument3
+    
+    
+    if(!script_execute(effect,0)){//if an effect can stack, make sure it returns false
+        tickTimer1 = tickLength1
+        tickTimer2 = tickLength2
+        ds_list_add(owner.sEffect,id)
+    }
+    else{
+        instance_destroy();
     }
 }
 
