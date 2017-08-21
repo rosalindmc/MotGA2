@@ -1,11 +1,5 @@
 #define aiMaster
-if (life>0){
-    aiMasterSearch()
-}
-else{
-    instance_destroy()
-}
-
+aiMasterSearch()
 
 
 

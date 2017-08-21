@@ -15,9 +15,8 @@ depth = -y
 audio_play_sound(snd_swing,0,false)
 
 #define hitColliderCollisionChar
-if owner != other
+if owner != other and other.alive = true
 {
-    danger = true
     for(i = 0; i < peopleHit; i++)
     {
         if hit[i] = other

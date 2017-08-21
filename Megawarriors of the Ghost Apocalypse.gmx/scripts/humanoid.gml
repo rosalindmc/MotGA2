@@ -817,6 +817,75 @@ switch(argument0)
 }
 
 
+#define humanoidDie
+animSpeed[argument1] = 1
+
+switch(argument0)
+{
+    case 0:
+    hipsImage = 10
+    hipsRot = 30*hFacing
+    bodyRot = 30*hFacing
+    hairRot = 90*hFacing
+    
+    bounce = 1
+    bounceTimer = .2
+    flow = 3
+    flowTimer = .1
+    
+    animDelay[argument1] = .1
+    footStep(1)
+    break
+
+    case 1:
+    hipsRot = 45*hFacing
+    bodyRot = 60*hFacing
+    headRot = 45*hFacing
+    hairRot = 135*hFacing
+
+    animDelay[argument1] = .1
+    break
+
+    case 2:
+    hipsImage = 4
+    hipsRot = 90*hFacing
+    bodyRot = 90*hFacing
+    headRot = 60*hFacing
+    hairRot = 180*hFacing
+    
+    bounce = 1
+    bounceTimer = .2
+    flow = 3
+    flowTimer = .1
+    
+    animDelay[argument1] = .1
+    break
+
+    case 3:
+    hipsImage = 2
+    hipsRot = 90*hFacing
+    bodyRot = 90*hFacing
+    headRot = 90*hFacing
+    hairRot = 105*hFacing
+    animDelay[argument1] = .1
+    break
+
+    case 4:
+    hipsImage = 2
+    hipsRot = 90*hFacing
+    bodyRot = 90*hFacing
+    headRot = 90*hFacing
+    hairRot = 90*hFacing
+    animDelay[argument1] = .1
+    animSpeed[argument1] = 0
+    break
+    
+    case 5:
+    animationReset(0)
+    break
+}
+
+
 #define footStep
 //Check floor and make relvent sound+particles
 

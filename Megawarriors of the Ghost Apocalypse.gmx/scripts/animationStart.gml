@@ -32,7 +32,14 @@ animStep[argument0] = 0
 switch(argument0)
 {
     case 0:
+    if alive = true
+    {
     animIndex[argument0] = humanoid(3)  //Replace with animType(3)
+    }
+    else
+    {
+    animIndex[argument0] = humanoid(3)  //Replace with animType(3)
+    }
     script_execute(animIndex[argument0],0,argument0)
     break
     

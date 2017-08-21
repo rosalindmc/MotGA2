@@ -1,3 +1,4 @@
+#define damageChar
 t = argument0
 p = 0
 
@@ -62,4 +63,41 @@ with(t)
 if owner.player = true or t.player = true
 {
     obj_control.shake += impact
+}
+
+//Check Death
+if t.life <= 0
+{
+    killChar(t)
+}
+
+
+#define killChar
+with(argument0)
+{
+    alive = false
+    animationStart(humanoidDie,0)
+    animationReset(1)
+    animationReset(2)
+    
+    for(i = 0; i < inventorySize; i++)
+    {
+        if (inventory[i] != noone){
+            inventory[i].owner = noone
+            ii = instance_create(x,y,obj_interactable)
+            ii.owner = inventory[i]
+            ii.name = inventory[i].name
+            ii.useType = pickUp
+            inventory[i].interactId = ii
+            inventory[i] = noone    
+        }
+    }
+    
+    aiDestroy()
+    
+    if (id == global.pc.gpTarget){
+    global.pc.gpTarget = noone;
+    }
+    
+    mask_index = spr_none
 }

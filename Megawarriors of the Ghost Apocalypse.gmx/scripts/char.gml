@@ -32,6 +32,7 @@ return(i);
 //Art Essentials
 animType = humanoid
 animUpdate = true
+alive = true
 
 //Temp Run animType Initialize (move to a create char script later so this can be adjusted)
 script_execute(animType,0)
@@ -252,21 +253,25 @@ switch (type){
 moveLimit()
 
 //Execute Control Script
-script_execute(controlScript)
-
-//Facing
-var tS = turnSpeed;
-
-tS /= 1+max(charge[1],charge[2])
-
-if max(strike[1],strike[2]) = 1 or dodgeTimer != 0
+if alive = true
 {
-    tS = 0
-}
+    script_execute(controlScript)
 
-if grappled = false
-{
-        facing = rotate(facing,point_direction(x,y,targetX,targetY),tS/global.frameRate)
+    
+    //Facing
+    var tS = turnSpeed;
+    
+    tS /= 1+max(charge[1],charge[2])
+    
+    if max(strike[1],strike[2]) = 1 or dodgeTimer != 0
+    {
+        tS = 0
+    }
+    
+    if grappled = false
+    {
+            facing = rotate(facing,point_direction(x,y,targetX,targetY),tS/global.frameRate)
+    }
 }
 
 //Movement
@@ -375,7 +380,7 @@ animEndStep(1)
 animEndStep(2)
 
 //Animation Control (clean up and move somewhere else)
-if canMove = true
+if canMove = true and alive = true
 {
     if moving != 0
     {
@@ -470,26 +475,6 @@ if (grappled = true){
 //Clear the drawing surface
 surface_free(charSurf)
 ds_list_destroy(sEffect)
-aiDestroy()
-
-for(i = 0; i < inventorySize; i++)
-{
-    if (inventory[i] != noone){
-        inventory[i].owner = noone
-        ii = instance_create(x,y,obj_interactable)
-        ii.owner = inventory[i]
-        ii.name = inventory[i].name
-        ii.useType = pickUp
-        inventory[i].interactId = ii
-        inventory[i] = noone    
-    }
-}
-
-if (id == global.pc.gpTarget){
-    global.pc.gpTarget = noone;
-}
-
-
 
 #define charDraw
 //Draw Character
