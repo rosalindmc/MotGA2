@@ -53,7 +53,7 @@ global.owThreat++;
 return 1;
 
 #define newPodOne
-with(obj_poi){
+with(obj_pod){
     if(respawn){
         podSpawn();
     }
