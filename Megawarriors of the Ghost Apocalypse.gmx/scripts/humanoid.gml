@@ -878,8 +878,11 @@ switch(argument0)
     hairRot = 90*hFacing
     animDelay[argument1] = .1
     animSpeed[argument1] = 0
+    if (!player){
     corpseSpawn()
     instance_destroy()
+    }
+    
     break
     
     case 5:
@@ -892,22 +895,27 @@ switch(argument0)
 //Check floor and make relvent sound+particles
 
 //Temp replace later
-if floorID.isRiver = false
-{
-    createParticle(x,y,z,1,partDust,hFacing)
-    if(!floorID.isPath)
-        moveDT = 0.1;
+if (instance_exists(floorID)){
+    if floorID.isRiver = false
+    {
+        createParticle(x,y,z,1,partDust,hFacing)
+        if(!floorID.isPath)
+            moveDT = 0.1;
+        else
+            moveDT = 0;
+    }
     else
-        moveDT = 0;
+    {
+        createParticle(x,y-1,floorID.wz+5,5+irandom(5),partSplash,0)
+        createParticle(x,y,floorID.wz,1,partRipple,0)
+        if(!floorID.isPath)
+            moveDT = 1;
+        else
+            moveDT = 0.5;
+    }
 }
-else
-{
-    createParticle(x,y-1,floorID.wz+5,5+irandom(5),partSplash,0)
-    createParticle(x,y,floorID.wz,1,partRipple,0)
-    if(!floorID.isPath)
-        moveDT = 1;
-    else
-        moveDT = 0.5;
+else{
+    floorID = global.currLevel.floorLayout[floor(x/metre),floor(y/metre)]
 }
 
 if player = true

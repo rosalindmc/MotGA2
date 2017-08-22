@@ -22,7 +22,12 @@ i = instance_create(x,y,obj_doodad)
 with(i){
     
     corpse = true
-        
+    
+    player=other.player
+    if (player = true){
+        global.pc = id
+    }
+    
     floorID = other.floorID
     z = other.z
     
@@ -152,4 +157,3 @@ with(i){
     
 }
 //Create some sort of pilfer interactable
-
