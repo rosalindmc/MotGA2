@@ -395,6 +395,7 @@ for (i = 0; i < array_length_1d(pois);i++){
             i = instance_create(0,0,obj_pod)
             i.gridX = gridX
             i.gridY = gridY
+            i.respawn = choose(false, true);
         }
         
         if (loot != noone){

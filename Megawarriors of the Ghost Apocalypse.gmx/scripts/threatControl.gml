@@ -54,14 +54,8 @@ return 1;
 
 #define newPodOne
 with(obj_poi){
-    if(entrance && irandom(3)>2){
-        i = instance_create(gridX, gridY, obj_pod);
-        with(i){
-            gridX = other.gridX;
-            girdY = other.gridY;
-            podTypeSelect();
-            podSpawn();
-        }
+    if(respawn){
+        podSpawn();
     }
 }
 

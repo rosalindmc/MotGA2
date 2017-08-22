@@ -11,7 +11,7 @@ xpValue = 0
 members[0] = noone
 
 faction = noone
-
+respawn = false
 
 #define podSpawn
 
