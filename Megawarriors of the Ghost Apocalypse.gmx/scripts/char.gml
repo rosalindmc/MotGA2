@@ -181,6 +181,8 @@ interactId = noone
 //Status Effects
 sEffect = ds_list_create()
 
+ctrlFacing = 0
+
 
 
 

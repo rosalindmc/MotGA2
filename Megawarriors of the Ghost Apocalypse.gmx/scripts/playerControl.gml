@@ -135,8 +135,13 @@ else{
     
     //check if there's an autolocked target
     if(autoTarget == noone){
-        targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
-        targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
+        if hspd != 0 or vspd != 0
+        {
+        ctrlFacing = point_direction(0,0,hspd,vspd)
+        }
+    
+        targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + lengthdir_x(metre*abs(moving)/10, ctrlFacing);
+        targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + lengthdir_y(metre*abs(moving)/10, ctrlFacing);
         //R3 selects an autolock target
         if(gamepad_button_check(0, gp_stickr)){
             selectAutoTarget();
@@ -313,7 +318,7 @@ obj_camera.h = targetH
 
 
 #define selectAutoTarget
-var closest = 1 * metre;
+var closest = 3 * metre;
 
 with(obj_char){
 if alive = true{
