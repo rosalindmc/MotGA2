@@ -257,15 +257,15 @@ if global.surfX2 != 0
         global.liveSurfY1 = view_yview+view_hview
         global.liveSurfY2 = view_yview
         
-        for(i = 0; i < obj_level.numWaterTiles; i++)
+        for(i = 0; i < global.currLevel.numWaterTiles; i++)
         {   
-            if obj_level.waterTiles[i].gridX >= floor((view_xview-(5*metre))/metre) and obj_level.waterTiles[i].gridX <= ceil((view_xview+view_wview+(5*metre))/metre)
-            and obj_level.waterTiles[i].gridY >= floor((view_yview-(5*metre))/metre) and obj_level.waterTiles[i].gridY <= ceil((view_yview+view_hview+(5*metre))/metre)
+            if global.currLevel.waterTiles[i].gridX >= floor((view_xview-(5*metre))/metre) and global.currLevel.waterTiles[i].gridX <= ceil((view_xview+view_wview+(5*metre))/metre)
+            and global.currLevel.waterTiles[i].gridY >= floor((view_yview-(5*metre))/metre) and global.currLevel.waterTiles[i].gridY <= ceil((view_yview+view_hview+(5*metre))/metre)
             {
-                global.liveSurfX1 = min(view_xview,obj_level.waterTiles[i].x-8,global.liveSurfX1)
-                global.liveSurfX2 = max(view_xview+view_wview,obj_level.waterTiles[i].x+8,global.liveSurfX2)
-                global.liveSurfY1 = min(view_yview,obj_level.waterTiles[i].y-8,global.liveSurfY1)
-                global.liveSurfY2 = max(view_yview+view_hview,obj_level.waterTiles[i].y+8,global.liveSurfY2)
+                global.liveSurfX1 = min(view_xview,global.currLevel.waterTiles[i].x-8,global.liveSurfX1)
+                global.liveSurfX2 = max(view_xview+view_wview,global.currLevel.waterTiles[i].x+8,global.liveSurfX2)
+                global.liveSurfY1 = min(view_yview,global.currLevel.waterTiles[i].y-8,global.liveSurfY1)
+                global.liveSurfY2 = max(view_yview+view_hview,global.currLevel.waterTiles[i].y+8,global.liveSurfY2)
             }
         }
         */

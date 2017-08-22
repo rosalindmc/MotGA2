@@ -161,7 +161,7 @@ with(obj_tile)
 {
     if weight <= 2
     {
-    global.currLevel.pathTiles[obj_level.numPathTiles] = id
+    global.currLevel.pathTiles[global.currLevel.numPathTiles] = id
     global.currLevel.numPathTiles += 1
     }
 }

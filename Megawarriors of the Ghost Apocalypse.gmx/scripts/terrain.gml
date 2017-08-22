@@ -10,9 +10,9 @@ image_speed = 0
 mask_index = spr_mask
 canReflect = false
 
-for(i = 0; i < obj_level.numWaterTiles; i++)
+for(i = 0; i < global.currLevel.numWaterTiles; i++)
 {
-    if rectangle_in_rectangle(obj_level.waterTiles[i].x-8,obj_level.waterTiles[i].y-8,obj_level.waterTiles[i].x+8,obj_level.waterTiles[i].y+8,x-20,y,x+20,y+30) != 0
+    if rectangle_in_rectangle(global.currLevel.waterTiles[i].x-8,global.currLevel.waterTiles[i].y-8,global.currLevel.waterTiles[i].x+8,global.currLevel.waterTiles[i].y+8,x-20,y,x+20,y+30) != 0
     {
         canReflect = true
     }

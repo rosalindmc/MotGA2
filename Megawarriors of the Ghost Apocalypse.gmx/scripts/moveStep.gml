@@ -106,7 +106,7 @@ y += metre*vspd/global.frameRate
 
 #define moveStepParticle
 //Gravity
-floorID = obj_level.floorLayout[median(0,floor(x/metre),obj_level.sizeX-1),median(0,floor(y/metre),obj_level.sizeY-1)]
+floorID = global.currLevel.floorLayout[median(0,floor(x/metre),global.currLevel.sizeX-1),median(0,floor(y/metre),global.currLevel.sizeY-1)]
 floorZ = floorID.wz
 
 if gravMult != 0
