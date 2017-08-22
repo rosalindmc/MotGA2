@@ -84,13 +84,13 @@ switch(argument0)
 {
     case 0:
         useItem(1,0)
-        attackDelay = 0.75
+        attackDelay = 0.8
     break
     
     case 1:
         targetX = actionTargetId.x
         targetY = actionTargetId.y
-        attackDelay = 0.5
+        attackDelay = 0.55
     break
     
     case 2:
@@ -110,7 +110,7 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.7
+            attackDelay = 0.75
         break
     
         case 1:
@@ -160,7 +160,7 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.6
+            attackDelay = 0.65
         break
     
         case 1:
@@ -182,7 +182,7 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.45
+            attackDelay = 0.5
         break
     
         case 1:

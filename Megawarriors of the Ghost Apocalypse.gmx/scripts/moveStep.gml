@@ -23,10 +23,9 @@ else
 //Horizontal Collision
 if (place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true))
 {
-    while !place_meeting(x+sign(hspd),y,obj_solid) && hspd != 0
-    {
-        x += sign(hspd)
-    }
+    while collision_line(x,y,x+sign(hspd),y,obj_solid,false,true) && hspd != 0{
+        x -= sign(hspd)
+        }
     hspd = 0
 }
 
@@ -35,10 +34,9 @@ x += metre*hspd/global.frameRate
 //Vertical Collision
 if (place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true))
 {
-    while !place_meeting(x,y+sign(vspd),obj_solid) && vspd != 0
-    {
-        y += sign(vspd)
-    }
+    while collision_line(x,y,x,y+sign(vspd),obj_solid,false,true) && vspd != 0{
+        y -= sign(vspd)
+        } 
     vspd = 0
 }
 
