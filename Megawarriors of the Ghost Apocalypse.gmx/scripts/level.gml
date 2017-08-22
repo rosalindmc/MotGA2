@@ -133,6 +133,17 @@ for (i = 0; i< array_length_1d(global.currNode.pois);i++){
             }
             
         }
+        
+        if(array_length_1d(mobsArr) > 3){
+            for(i = 0; i < array_length_1d(mobsArr) / 4; i++){
+                var place = i*4;
+                //createFurniture(objType, statHolderScript, gridX, gridY)
+                    //CURRENTLY IN DOODAD
+                createChar((gridX + mobsArr[place]) * metre, (gridY + mobsArr[place+1]) * metre,
+                                 mobsArr[place+2], mobsArr[place+3]);
+            }
+            
+        }
     }
 }
     

@@ -30,7 +30,9 @@ entrance = false
 sizeX=6;
 sizeY=6;
 
-entrance = false
+critical = true;
+
+entrance = false;
 
 furnitureArr[0] = obj_item;
 furnitureArr[1] = lamp
@@ -57,6 +59,25 @@ furnitureArr[17] = justianAltar
 furnitureArr[18] = 0.5
 furnitureArr[19] = -0.5
 
+mobsArr[0] = -1.5
+mobsArr[1] = -0.5
+mobsArr[2] = darkSoldier
+mobsArr[3] = noone
+
+mobsArr[4] = 2.5
+mobsArr[5] = -0.5
+mobsArr[6] = darkSoldier
+mobsArr[7] = noone
+
+mobsArr[8] = 0.5
+mobsArr[9] = -1.5
+mobsArr[10] = darkSoldier
+mobsArr[11] = noone
+
+mobsArr[12] = 0.5
+mobsArr[13] = 2.5
+mobsArr[14] = darkSoldier
+mobsArr[15] = noone
 
 #define miniBossTemp
 

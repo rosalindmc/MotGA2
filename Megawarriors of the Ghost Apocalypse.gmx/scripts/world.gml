@@ -74,7 +74,7 @@ switch(biomeType){
     
     case 1:
         nodeGen()
-        numEntrance = choose(1,2,2,2,3,4)
+        numEntrance = 3//choose(1,2,2,2,3,4)
         numRivers = choose(0,1,2,2,3)
         
     break
