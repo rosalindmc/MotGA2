@@ -878,10 +878,12 @@ switch(argument0)
     hairRot = 90*hFacing
     animDelay[argument1] = .1
     animSpeed[argument1] = 0
+    corpseSpawn()
+    instance_destroy()
     break
     
     case 5:
-    animationReset(0)
+        animationReset(0)
     break
 }
 
