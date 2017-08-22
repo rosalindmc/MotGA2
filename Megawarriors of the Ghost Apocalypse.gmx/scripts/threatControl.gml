@@ -15,10 +15,10 @@ global.threatTimer = true;
 //what happens when the local threat increments
 
 switch(global.locThreat){
-    case 0:
+    default://case 0:
     threatCount = 0;
     //figure out a more universal equation and maybe put some of this in its own script
-    threshold = 1;
+    threshold = 1+threatCount*0.5;
     ds_list_add(global.threatList, newPodOne);
     break;
 
@@ -53,9 +53,17 @@ global.owThreat++;
 return 1;
 
 #define newPodOne
-//create a new pod, level one
-
-//show_message('Spawned a new pod nearby');
+with(obj_poi){
+    if(entrance && irandom(3)>2){
+        i = instance_create(gridX, gridY, obj_pod);
+        with(i){
+            gridX = other.gridX;
+            girdY = other.gridY;
+            podTypeSelect();
+            podSpawn();
+        }
+    }
+}
 
 return 1;
 
@@ -64,5 +72,13 @@ return 1;
 
 //show_message('NeRP knows about you.  Hurry up');
 global.threatSpeed--
+
+return 1;
+#define alert
+with(obj_char){
+    if(!player && irandom(2)>1){
+        actionTargetId = global.pc;
+    }
+}
 
 return 1;

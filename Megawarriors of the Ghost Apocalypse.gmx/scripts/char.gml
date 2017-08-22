@@ -41,6 +41,7 @@ script_execute(animType,0)
 movement = 7        //Metres per second
 moveMult = 1        //Malleable multiplier for movement speed
 moveDT = 0          //Difficult terrain divider
+moving = 0
 
 floorZ = 0
 floorID = -4

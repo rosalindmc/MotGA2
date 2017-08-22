@@ -161,8 +161,8 @@ with(obj_tile)
 {
     if weight <= 2
     {
-    obj_level.pathTiles[obj_level.numPathTiles] = id
-    obj_level.numPathTiles += 1
+    global.currLevel.pathTiles[obj_level.numPathTiles] = id
+    global.currLevel.numPathTiles += 1
     }
 }
     
@@ -282,9 +282,9 @@ with(obj_tile)
         {
             
             i = instance_create(x-2+irandom(4),y-2+irandom(4),obj_terrain)
-            for(ii = 0; ii < obj_level.numPathTiles; ii++)
+            for(ii = 0; ii < global.currLevel.numPathTiles; ii++)
             {
-                if rectangle_in_rectangle(obj_level.pathTiles[ii].x-8,obj_level.pathTiles[ii].y-8,obj_level.pathTiles[ii].x+8,obj_level.pathTiles[ii].y,x-4,y,x+4,y-(metre*2.5)) != 0
+                if rectangle_in_rectangle(global.currLevel.pathTiles[ii].x-8,global.currLevel.pathTiles[ii].y-8,global.currLevel.pathTiles[ii].x+8,global.currLevel.pathTiles[ii].y,x-4,y,x+4,y-(metre*2.5)) != 0
                 {
                     i.sprite_index = spr_bush
                     i.canReflect = false
