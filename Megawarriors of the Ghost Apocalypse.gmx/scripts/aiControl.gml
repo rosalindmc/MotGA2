@@ -20,6 +20,7 @@ else if (attackPattern != attackIdle){
 /*
 called by charCreate
 */
+player = false
 
 responseStart = 0
 responseMod = 1
@@ -74,8 +75,9 @@ else if (leader != noone && instance_exists(leader)){
     leader.subordinate[array_length_1d(leader.subordinate)-1] = 0
 }           
 
-
-ds_priority_destroy(alertness)
+if (ds_exists(alertness, ds_type_priority)){
+    ds_priority_destroy(alertness)
+}
 
 #define aiActionReset
 hasDodged = false

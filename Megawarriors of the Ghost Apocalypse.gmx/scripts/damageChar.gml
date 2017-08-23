@@ -109,7 +109,10 @@ with(argument0)
         }
     }
     
-    aiDestroy()
+    
+    if(!player){
+        aiDestroy()
+    }
     
     if (id == global.pc.autoTarget){
     global.pc.autoTarget = noone;
