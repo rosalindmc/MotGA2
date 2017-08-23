@@ -1,7 +1,9 @@
 #define moveStep
 var temp = 0
 
-floorID = global.currLevel.floorLayout[median(0,floor(x/metre),global.currLevel.sizeX-1),median(0,floor(y/metre),global.currLevel.sizeY-1)]
+gridX = median(0,floor(x/metre),global.currLevel.sizeX-1)
+gridY = median(0,floor(y/metre),global.currLevel.sizeY-1)
+floorID = global.currLevel.floorLayout[gridX,gridY]
 floorZ = floorID.z
 
 //Gravity
@@ -106,7 +108,9 @@ y += metre*vspd/global.frameRate
 
 #define moveStepParticle
 //Gravity
-floorID = global.currLevel.floorLayout[median(0,floor(x/metre),global.currLevel.sizeX-1),median(0,floor(y/metre),global.currLevel.sizeY-1)]
+gridX = median(0,floor(x/metre),global.currLevel.sizeX-1)
+gridY = median(0,floor(y/metre),global.currLevel.sizeY-1)
+floorID = global.currLevel.floorLayout[gridX,gridY]
 floorZ = floorID.wz
 
 if gravMult != 0

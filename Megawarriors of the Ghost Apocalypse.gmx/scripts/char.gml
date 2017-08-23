@@ -275,7 +275,6 @@ if alive = true
     {        
         if(id == global.pc){
             if(global.pc.autoTarget == noone){
-                //show_message('debug');
                 facing = rotate(facing,point_direction(x,y,targetX,targetY),tS/global.frameRate)
             }
             else{
@@ -469,6 +468,7 @@ else
     stamDelay = max(0,stamDelay-(1/global.frameRate))
 }
 
+//Grappled
 if (grappled = true){
     if instance_exists(grappler)
     {
