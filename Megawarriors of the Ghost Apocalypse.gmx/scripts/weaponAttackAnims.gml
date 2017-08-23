@@ -662,9 +662,10 @@ switch(argument0)
     
     case 3:
     //HIT
-    meleeSwing[argument1] *= hFacing
+    handItem[argument1].z = 0
+    hspd = 0
+    vspd = 0
     meleeHit(argument1,queuedAnim[argument1])
-    meleeSwing[argument1] *= hFacing
     
     handDistDest[argument1] = 16
     handDirDest[argument1] = (0*meleeSwing[argument1])

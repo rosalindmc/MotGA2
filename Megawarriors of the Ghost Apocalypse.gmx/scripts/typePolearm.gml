@@ -46,7 +46,7 @@ switch(argument0)
     anim[0] = weaponIdle    //Idle Anim
     anim[1] = weaponStab    //Basic Attack
     anim[2] = weaponStab    //Power Attack
-    anim[3] = weaponChop   //Alternate Attack (2h)
+    anim[3] = weaponStab   //Alternate Attack (2h)
     anim[4] = weaponSlash    //Roll Attack
     anim[5] = weaponHilt    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
@@ -72,8 +72,15 @@ switch(argument0)
         meleeCostMult[i] = 1
     }
     
-    meleeAttackMask[3] = spr_stab
-    meleeChargePowMult[i] = 2
+    meleeLungeMult[3] = 5
+    meleeRateMult[3] = .8
+    meleeChargePowMult[3] = 2
+    meleeImpactMult[3] = 2
+    meleeCostMult[3] = 1.5
+    meleeType[5] = dmgType.impact
+    meleePowMult[5] = .5
+    meleeAttackMask[5] = spr_impact
+    meleeImpactMult[5] = 1.5
     break
 }
 

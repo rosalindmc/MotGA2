@@ -7,11 +7,17 @@ case 0:     //Apply Effect
 var ret = statusStack(effect);
 icon = ico_stun
 
-
-owner.moveMult = 0.25
 owner.canAttack = false
 owner.canDodge = false
 owner.staggered = true
+owner.canMove = false
+owner.moveTimer = life
+
+with(owner)
+{
+    animationReset(1)
+    animationReset(2)    
+}
 
 i = instance_create(x,y,obj_interactable)
 i.name = 'Grapple'
@@ -32,13 +38,19 @@ with(interactId)
     instance_destroy()
 }
 
-owner.moveMult = 1.0
 owner.canAttack = true
 owner.canDodge = true
 owner.staggered = false
 break
 case 4:     //Draw Event
-draw_sprite_ext(spr_stunSpiral,0,owner.x-(owner.charSurfSize*.5)+owner.headX,owner.y-(owner.charSurfSize*.5)+owner.headY-metre,1,1,global.timer*90,c_white,1)
+if instance_exists(owner)
+{
+    draw_sprite_ext(spr_stunSpiral,0,owner.x-(owner.charSurfSize*.5)+owner.headX,owner.y-(owner.charSurfSize*.5)+owner.headY-metre,1,1,global.timer*90,c_white,1)
+}
+else
+{
+    instance_destroy()
+}
 break
 }
 

@@ -122,14 +122,14 @@ lifeRegen = 0.0 //per second
 
 stam = 4
 stamMax = 4    
-stamRegen = 3.0   //per second
+stamRegen = 4.0   //per second
 stamDelay = 0.0
 
 stability = 1.0
 stabilityMax = 1.0
 stabilityRegen = 3.0
 stabilityDelay = 0.0
-recovery = 5.0
+recovery = 5.0 
 staggerRecovery = 0.0
 
 armour = 0.0
@@ -201,6 +201,9 @@ switch (type){
         damageMod = 1 + (might-4)*0.05
         impactMod = 1 + (might-4)*0.2
         
+        stabilityMax = 5+(might/2)
+        stability = 5+(might/2)
+        
         penMod = 1 + (wit - 4) * 0.025
         
         physicalResist = (vitality-4)*0.05
@@ -219,6 +222,9 @@ switch (type){
         
         damageMod = 1 + (might-4)*0.1
         impactMod = 1 + (might-4)*0.2  
+        
+        stabilityMax = 10+might
+        stability = 10+might
         
         penMod = 1 + (wit - 4) * 0.05
         
@@ -239,6 +245,9 @@ switch (type){
         
         damageMod = 1 + (might-4)*0.15
         impactMod = 1 + (might-4)*0.2  
+        
+        stabilityMax = 15+(might*1.5)
+        stability = 15+(might*1.5)
     
         penMod = 1 + (wit - 4) * 0.05
         
@@ -444,6 +453,7 @@ if dodgeTimer > 0
     }
 }
 
+//Regain ability to move
 if moveTimer > 0
 {
     moveTimer -= 1/global.frameRate
@@ -452,6 +462,21 @@ if moveTimer > 0
     {
         canMove = true        
     }
+}
+
+//Stability Regeneration
+if stabilityDelay = 0
+{
+    stability = min(stabilityMax,stability+(stabilityRegen/global.frameRate))
+    
+    if moving = 0
+    {
+        stability = min(stabilityMax,stability+(stabilityRegen/global.frameRate))
+    }
+}
+else
+{
+    stabilityDelay = max(0,stabilityDelay-(1/global.frameRate))
 }
 
 //Stamina Regeneration
@@ -485,6 +510,7 @@ if (grappled = true){
         z = (grappler.charSurfSize*.75)-round(grappler.bodyY+grappler.handHeight[2]+grappler.z)
     }
 }
+
 
 
 

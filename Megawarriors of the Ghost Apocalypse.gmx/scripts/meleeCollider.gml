@@ -23,17 +23,17 @@ if instance_exists(owner)
     y = owner.y+lengthdir_y(dist,image_angle)
 }
 
-isoDepth(-25)
+isoDepth(0)
 
 animDelay -= 1/global.frameRate
 
 if animDelay <= 0
 {
     animDelay += 0.05
-    image_index = min(image_index+1,2)
+    image_index = min(image_index+1,sprite_get_number(sprite_index)-1)
 }
 
-life -= 1/global.frameRate
+life -= 1/global.frameRate*(3/sprite_get_number(sprite_index))
 
 if life <= 0
 {

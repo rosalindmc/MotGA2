@@ -137,6 +137,8 @@
     <sprites name="Hitbox">
       <sprite>sprites\spr_slash</sprite>
       <sprite>sprites\spr_stab</sprite>
+      <sprite>sprites\spr_slam</sprite>
+      <sprite>sprites\spr_impact</sprite>
     </sprites>
     <sprites name="Icons">
       <sprite>sprites\ico_bleed</sprite>
