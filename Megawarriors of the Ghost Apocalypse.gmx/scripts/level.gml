@@ -116,7 +116,7 @@
     
     with(obj_pod){
         podTypeSelect()
-        podSpawn()
+        podSpawn(false)
     }
     
     

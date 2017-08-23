@@ -24,25 +24,25 @@ if(!global.padOn){
 
 else{
 
-    if(gamepad_axis_value(0, gp_axislv) < 0  || gamepad_button_check(0, gp_padu)){
+    if(gamepad_axis_value(0, gp_axislv) < 0){
         upKey = 1;
     }
     else{
         upKey = 0;
     }
-    if(gamepad_axis_value(0, gp_axislv) > 0 || gamepad_button_check(0, gp_padd)){
+    if(gamepad_axis_value(0, gp_axislv) > 0){
         downKey = 1;
     }
     else{
         downKey = 0;
     }
-    if(gamepad_axis_value(0, gp_axislh) > 0 || gamepad_button_check(0, gp_padr)){
+    if(gamepad_axis_value(0, gp_axislh) > 0){
         rightKey = 1;
     }
     else{
         rightKey = 0;
     }
-    if(gamepad_axis_value(0, gp_axislh) < 0 || gamepad_button_check(0, gp_padl)){
+    if(gamepad_axis_value(0, gp_axislh) < 0){
         leftKey = 1;
     }
     else{
@@ -67,7 +67,7 @@ else{
     dodgeKey = gamepad_button_check(0, gp_face1);
     reloadKey = keyboard_check_pressed(global.reloadKey)
     //throw has to be seperated for each hand
-    throwKey = keyboard_check(global.throwKey)
+    throwKey = gamepad_button_check(0, gp_shoulderlb)
     sneakKey = gamepad_button_check(0, gp_stickl);
     inventoryKey = gamepad_button_check(0, gp_face4);
 }
@@ -143,7 +143,7 @@ else{
         targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + lengthdir_x(metre*abs(moving)/10, ctrlFacing);
         targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + lengthdir_y(metre*abs(moving)/10, ctrlFacing);
         //R3 selects an autolock target
-        if(gamepad_button_check(0, gp_stickr)){
+        if(gamepad_button_check(0, gp_shoulderrb)){
             selectAutoTarget();
         }
     }
@@ -153,7 +153,7 @@ else{
             targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
             targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
             
-            if(gamepad_button_check(0, gp_stickr)){
+            if(gamepad_button_check(0, gp_shoulderrb)){
                 selectAutoTarget();
             }
         }
@@ -161,7 +161,7 @@ else{
             targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre);
             targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre);
             
-            if(gamepad_button_check(0, gp_stickr)){
+            if(gamepad_button_check(0, gp_shoulderrb)){
                 selectAutoTarget();
             }
         }

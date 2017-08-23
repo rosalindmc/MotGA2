@@ -5,10 +5,12 @@
 //set this up to later be able to scale to the overworld threat on level init
 if (global.owThreat < 5){
     global.threatList = ds_list_create();
-    ds_list_add(global.threatList, owThreatUp, newPodOne, increaseTimer);
+    ds_list_add(global.threatList, owThreatUp, newPodOne, increaseTimer, alert);
 }
 
 global.threatTimer = true;
+
+global.threatSpeed = 10;
 //higher overworld threats will have their own starting lists that are more difficult
 
 #define threatUp
@@ -53,9 +55,17 @@ global.owThreat++;
 return 1;
 
 #define newPodOne
-with(obj_pod){
-    if(respawn){
-        podSpawn();
+with(obj_poi){
+    if(entrance){
+        i = instance_create(x,y,obj_pod);
+        with(i){
+            gridX = other.gridX;
+            gridY = other.gridY;
+            podTypeSelect();
+            podSpawn(true);
+            
+            instance_destroy();
+        }
     }
 }
 
@@ -65,9 +75,12 @@ return 1;
 //speed up the time until the next threat
 
 //show_message('NeRP knows about you.  Hurry up');
-global.threatSpeed--
+
+if(global.threatSpeed > 5)
+    global.threatSpeed--
 
 return 1;
+
 #define alert
 with(obj_char){
     if(!player && irandom(2)>1){

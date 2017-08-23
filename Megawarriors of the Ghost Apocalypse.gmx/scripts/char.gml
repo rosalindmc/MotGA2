@@ -45,6 +45,7 @@ moving = 0
 
 floorZ = 0
 floorID = -4
+
 z = 0
 hspd = 0
 vspd = 0
@@ -575,3 +576,6 @@ if (player == false && global.pc.autoTarget == id)
         i += 1
     }
 }   
+#define postCharInit
+floorID = global.currLevel.floorLayout[min(floor(x/metre), global.currLevel.sizeX - 1),
+                    min(floor(y/metre), global.currLevel.sizeY - 1)]

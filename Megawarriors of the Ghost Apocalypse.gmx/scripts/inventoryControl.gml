@@ -110,38 +110,74 @@ for(i = 1; i <= inventorySize; i++)
 
 
 #define scrollItems
-if mouse_wheel_up()
-{
-    for(i = handItemSlot[1]+1; i < inventorySize; i++)
+if(!global.padOn){
+    
+    if mouse_wheel_up()
     {
-        if inventory[i] != noone
+        for(i = handItemSlot[1]+1; i < inventorySize; i++)
         {
-            switchItem(i,1)
-            break
+            if inventory[i] != noone
+            {
+                switchItem(i,1)
+                break
+            }
+            else
+            {
+                switchItem(-1,1)
+            }
         }
-        else
+    }
+    
+    if mouse_wheel_down()
+    {
+        for(i = handItemSlot[2]+1; i < inventorySize; i++)
         {
-            switchItem(-1,1)
+            if inventory[i] != noone
+            {
+                switchItem(i,2)
+                break
+            }
+            else
+            {
+                switchItem(-1,2)
+            }
         }
     }
 }
 
-if mouse_wheel_down()
-{
-    for(i = handItemSlot[2]+1; i < inventorySize; i++)
+else{
+    if(gamepad_button_check_released(0, gp_padr))
     {
-        if inventory[i] != noone
+        for(i = handItemSlot[1]+1; i < inventorySize; i++)
         {
-            switchItem(i,2)
-            break
+            if inventory[i] != noone
+            {
+                switchItem(i,1)
+                break
+            }
+            else
+            {
+                switchItem(-1,1)
+            }
         }
-        else
+    }
+    
+    if(gamepad_button_check_released(0, gp_padl))
+    {
+        for(i = handItemSlot[2]+1; i < inventorySize; i++)
         {
-            switchItem(-1,2)
+            if inventory[i] != noone
+            {
+                switchItem(i,2)
+                break
+            }
+            else
+            {
+                switchItem(-1,2)
+            }
         }
     }
 }
-
 
 #define switchItem
 //argument0 is which function you're using, argument1 is which limb you're using
