@@ -3,14 +3,30 @@
 
 #define weaponIdle
 var arg0 = argument0;
+var i = 0;
 
 animDelay[argument1] = 1
 animSpeed[argument1] = 1
 
+if greatWeapon = true 
+{
+    i = 1
+    if handItem[1].anim[1] = weaponStab
+    {
+        i = 0
+    }
+}
+
 handDistDest[argument1] = 2
-handDirDest[argument1] = ((60*greatWeapon)+15)*meleeSwing[argument1]
+handDirDest[argument1] = ((60*i)+15)*meleeSwing[argument1]
 handHeightDest[argument1] = 0
-itemRotDest[argument1] = ((120*greatWeapon)+30)*meleeSwing[argument1]
+itemRotDest[argument1] = ((120*i)+30)*meleeSwing[argument1]
+
+if staggered = true
+{
+handHeightDest[argument1] = -5
+}
+
 
 if greatWeapon = false
 {
