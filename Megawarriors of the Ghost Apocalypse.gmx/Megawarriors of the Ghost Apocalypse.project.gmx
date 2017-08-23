@@ -91,6 +91,10 @@
         <sprite>sprites\spr_dreadPike</sprite>
         <sprite>sprites\spr_dreadPike2</sprite>
         <sprite>sprites\spr_darkSergeant</sprite>
+        <sprite>sprites\spr_soldierHelm</sprite>
+        <sprite>sprites\spr_pikeHelm</sprite>
+        <sprite>sprites\spr_stormHelm</sprite>
+        <sprite>sprites\spr_stormtrooper</sprite>
       </sprites>
       <sprites name="Hair">
         <sprite>sprites\spr_longHair</sprite>

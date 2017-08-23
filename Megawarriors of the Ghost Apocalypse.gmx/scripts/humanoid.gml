@@ -42,6 +42,7 @@ clothingSprite = spr_cBerzerk
 skirtSprite = spr_sBarbarian
 hairSprite = spr_longHair
 hairColour = hairBlack
+helmSprite = spr_none
 skinTone = choose(skinTan,skinDark,skinBrown,skinPink,skinPale,skinFireRed,skinBurntRed,skinAshRed)
 
 //Anim
@@ -304,6 +305,7 @@ if surface_exists(charSurf)
         
     //Head
     draw_sprite_ext(headSprite,headImage+vFacing,headX,headY,hFacing,1,headRot,skinTone,1)
+    draw_sprite_ext(helmSprite,headImage+vFacing,headX,headY,hFacing,1,headRot,c_white,1)
     draw_sprite_ext(hairSprite,(bounce*2)+vFacing,headX,headY,hFacing,1,headRot,hairColour,1)
     if vFacing = 1
     {
