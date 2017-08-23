@@ -61,22 +61,22 @@ furnitureArr[19] = -0.5
 
 mobsArr[0] = -1.5
 mobsArr[1] = -0.5
-mobsArr[2] = darkSoldier
+mobsArr[2] = stormtrooper
 mobsArr[3] = noone
 
 mobsArr[4] = 2.5
 mobsArr[5] = -0.5
-mobsArr[6] = darkSoldier
+mobsArr[6] = stormtrooper
 mobsArr[7] = noone
 
 mobsArr[8] = 0.5
 mobsArr[9] = -1.5
-mobsArr[10] = darkSoldier
+mobsArr[10] = stormtrooper
 mobsArr[11] = noone
 
 mobsArr[12] = 0.5
 mobsArr[13] = 2.5
-mobsArr[14] = darkSoldier
+mobsArr[14] = stormtrooper
 mobsArr[15] = noone
 
 #define miniBossTemp

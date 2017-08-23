@@ -70,6 +70,7 @@ with(i){
     skirtSprite = other.skirtSprite
     hairSprite = other.hairSprite
     hairColour = other.hairColour
+    helmSprite = other.helmSprite
     skinTone = other.skinTone
     
     //Anim

@@ -77,7 +77,7 @@ subordinate[0] = noone
 joinsFormation = true
 
 i = createItem(x,y,pike,id)
-
+handItem[2] = i
 charSetup()
 
 script_execute(behaviorType)
@@ -120,7 +120,7 @@ charSetup()
 
 script_execute(behaviorType)
 
-#define stormTrooper
+#define stormtrooper
 player = false
 controlScript = aiControl
 type = 'mook'
@@ -140,6 +140,7 @@ skirtSprite = spr_none
 hairSprite = spr_none
 helmSprite = spr_stormHelm
 
+armour = 50
 stealth = 0.5
 hearing = 1
 
@@ -154,6 +155,7 @@ canRoll = false
 subordinate[0] = noone
 
 i = createItem(x,y,choose(biggerSword,longAxe,warhammer),id)
+handItem[2] = i
 
 charSetup()
 

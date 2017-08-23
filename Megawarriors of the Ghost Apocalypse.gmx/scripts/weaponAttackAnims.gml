@@ -417,9 +417,9 @@ switch(argument0)
     
     case 3:
     //HIT
-    handDist[argument1] -= 12
+    handDist[argument1] -= handItem[argument1].length/2
     meleeHit(argument1,queuedAnim[argument1])
-    handDist[argument1] += 12
+    handDist[argument1] += handItem[argument1].length/2
         
     handDistDest[argument1] = 12
     handDirDest[argument1] = (0*meleeSwing[argument1])

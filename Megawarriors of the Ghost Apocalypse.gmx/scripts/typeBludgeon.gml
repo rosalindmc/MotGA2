@@ -76,7 +76,8 @@ switch(argument0)
     meleePenMod[2] = 25
     meleeAttackMask[3] = spr_slam
     meleeChargePowMult[3] = 2
-    meleeImpactMult[3] = 2
+    meleePowMult[3] = .6
+    meleeImpactMult[3] = .8
     meleeCostMult[3] = 1.5
     meleePenMod[3] = -10
     meleeType[5] = dmgType.impact
@@ -105,8 +106,8 @@ switch(argument0)
     //Weapon Stats
     meleePow = 1.5
     meleeRate = 1
-    meleeImpact = 7
-    meleeLunge = 4
+    meleeImpact = 4
+    meleeLunge = 2
     meleeSlow = .5
     meleeSize = 1
     meleeCost = 3
@@ -134,8 +135,8 @@ switch(argument0)
     //Weapon Stats
     meleePow = 1.8
     meleeRate = .9
-    meleeImpact = 10
-    meleeLunge = 3
+    meleeImpact = 5
+    meleeLunge = 1
     meleeSlow = .7
     meleeSize = 1.1
     meleeCost = 4

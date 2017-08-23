@@ -75,7 +75,7 @@ switch(argument1)
             queuedAnim[argument0] = 4
             animationStart(handItem[argument0].animHold[2],argument0)
         }
-        else if point_distance(x,y,targetX,targetY) < handItem[argument0].length+10 //Replace with var
+        else if point_distance(x,y,targetX,targetY) < (handItem[argument0].length/2)+metre
         {
             //Close Attack
             queuedAnim[argument0] = 5

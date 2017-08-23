@@ -198,8 +198,8 @@ switch (type){
         stamMax = endurance    
         stam = stamMax
         
-        damageMod = 1 + (might-4)*0.05
-        impactMod = 1 + (might-4)*0.2
+        damageMod = .75 + (might-4)*0.05
+        impactMod = 1 + (might-4)*0.1
         
         stabilityMax = 8+might
         stability = 8+might
@@ -222,10 +222,10 @@ switch (type){
         stam = stamMax
         
         damageMod = 1 + (might-4)*0.1
-        impactMod = 1 + (might-4)*0.2  
+        impactMod = 1 + (might-4)*0.1  
         
-        stabilityMax = 8+might
-        stability = 8+might
+        stabilityMax = 16+(might*2)
+        stability = 16+(might*2)
         weight = (2+might)/6
         
         penMod = wit
@@ -246,7 +246,7 @@ switch (type){
         stam = stamMax
         
         damageMod = 1 + (might-4)*0.15
-        impactMod = 1 + (might-4)*0.2  
+        impactMod = 1 + (might-4)*0.1 
         
         stabilityMax = 12+(might*1.5)
         stability = 12+(might*1.5)
