@@ -419,6 +419,12 @@ bodyRot = 0
 hairRot = 0
 headRot = 0
 
+if staggered = true
+{
+    bodyRot = -30*sign(hFacing)
+    headRot = -45*sign(hFacing)
+}
+
 switch(argument0)
 {
     case 0:
@@ -822,6 +828,7 @@ switch(argument0)
 
 #define humanoidDie
 animSpeed[argument1] = 1
+xAdj = 8*hFacing
 
 switch(argument0)
 {

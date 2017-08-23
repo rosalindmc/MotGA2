@@ -146,8 +146,8 @@ with(handItem[argument0])
     i.dmgType = meleeType[argument1]
     i.dmg = meleePow*meleePowMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwPowMult)-owner.greatWeapon))*owner.damageMod*(1+(owner.perfectTimeDmgMod*owner.sweetSpotBonus))
     i.sweetSpot = owner.sweetSpotBonus
-    i.impact = meleeImpact*meleeImpactMult[argument1]*(1+((owner.charge[argument0]-1)*.5))*(1+((owner.greatWeapon*gwImpactMult)-owner.greatWeapon))*owner.impactMod
-    i.pen = (meleePen*owner.penMod)
+    i.impact = meleeImpact*meleeImpactMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwImpactMult)-owner.greatWeapon))*owner.impactMod
+    i.pen = (meleePen+owner.penMod+meleePenMod[argument1])
     i.z = z
     i.sprite_index = meleeAttackMask[argument1]
     i.image_yscale = meleeSize*meleeSizeMult[argument1]*owner.meleeSwing[argument0]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))

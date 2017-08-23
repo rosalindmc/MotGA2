@@ -73,16 +73,20 @@ switch(argument0)
         meleeCostMult[i] = 1
     }
     
+    meleePenMod[2] = 25
     meleeAttackMask[3] = spr_slam
     meleeChargePowMult[3] = 2
     meleeCostMult[3] = 1.5
     meleeImpactMult[3] = 2
+    meleePenMod[3] = -10
     meleeAttackMask[4] = spr_stab
     meleePowMult[4] = 1.25
+    meleePenMod[4] = 50
     meleeType[5] = dmgType.impact
     meleeAttackMask[5] = spr_impact
     meleePowMult[5] = .5
     meleeImpactMult[5] = 1.5
+    meleePenMod[5] = -10
     break
 }
 

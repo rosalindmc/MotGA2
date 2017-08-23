@@ -69,6 +69,7 @@ switch(argument0)
         meleeSlowMult[i] = 1
         meleeSizeMult[i] = 1
         meleeCostMult[i] = 1
+        meleePenMod[i] = 0
     }
     break
 }

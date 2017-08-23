@@ -201,13 +201,14 @@ switch (type){
         damageMod = 1 + (might-4)*0.05
         impactMod = 1 + (might-4)*0.2
         
-        stabilityMax = 5+(might/2)
-        stability = 5+(might/2)
+        stabilityMax = 8+might
+        stability = 8+might
+        weight = (2+might)/6
         
-        penMod = 1 + (wit - 4) * 0.025
+        penMod = wit
         
-        physicalResist = (vitality-4)*0.05
-        magicResist = (magic-4)*0.05
+        physicalResist = .5+(vitality-4)*0.05
+        magicResist = .5+(magic-4)*0.05
         perfectTimeDmgMod = 0
         
         break;
@@ -223,13 +224,14 @@ switch (type){
         damageMod = 1 + (might-4)*0.1
         impactMod = 1 + (might-4)*0.2  
         
-        stabilityMax = 10+might
-        stability = 10+might
+        stabilityMax = 8+might
+        stability = 8+might
+        weight = (2+might)/6
         
-        penMod = 1 + (wit - 4) * 0.05
+        penMod = wit
         
-        physicalResist = (vitality-4)*0.05
-        magicResist = (magic-4)*0.05
+        physicalResist = .5+(vitality-4)*0.05
+        magicResist = .5+(magic-4)*0.05
         
         shrineMod = 1 + (charisma-4)*0.1
         perfectTimeDmgMod = charisma*0.05
@@ -246,13 +248,14 @@ switch (type){
         damageMod = 1 + (might-4)*0.15
         impactMod = 1 + (might-4)*0.2  
         
-        stabilityMax = 15+(might*1.5)
-        stability = 15+(might*1.5)
+        stabilityMax = 12+(might*1.5)
+        stability = 12+(might*1.5)
+        weight = (2+might)/6
     
-        penMod = 1 + (wit - 4) * 0.05
+        penMod = wit
         
-        physicalResist = (vitality-4)*0.05
-        magicResist = (magic-4)*0.05
+        physicalResist = .5+(vitality-4)*0.05
+        magicResist = .5+(magic-4)*0.05
         
         break
     
@@ -274,9 +277,9 @@ if alive = true
     //Facing
     var tS = turnSpeed;
     
-    tS /= 1+max(charge[1],charge[2])
+    tS /= 1+charge[1]+charge[2]
     
-    if max(strike[1],strike[2]) = 1 or dodgeTimer != 0
+    if max(strike[1],strike[2]) = 1 or dodgeTimer != 0 or staggered = true
     {
         tS = 0
     }
