@@ -41,6 +41,7 @@ global.isPaused = false;
 //Create pc
 global.statPoints = 6
 global.pc = createChar(x,y,megawarrior,noone)
+global.safezone = 10
 //later add import stats script
 
 global.timer = 0

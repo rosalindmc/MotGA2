@@ -116,23 +116,27 @@ other.floorLayout[gridX,gridY].poi = id
 */
 
 with(obj_tile){
-    if (hasPoi = true){
-        if(critPath && poi.hasPod && poi.gridX != gridX && poi.gridY != gridY){
-            ds_list_add(other.critPathTiles, id)
+    if (point_distance(gridX*metre+8,gridY*metre+8, global.pc.x, global.pc.y)>global.safezone*metre){
+        if (hasPoi = true){
+            if(critPath && poi.hasPod && poi.gridX != gridX && poi.gridY != gridY && !poi.entrance){
+                ds_list_add(other.critPathTiles, id)
+            }
+            else if (isPath && poi.hasPod && poi.gridX != gridX && poi.gridY != gridY && !poi.entrance){
+                ds_list_add(other.openTiles, id)
+            }
+            else{
+                ds_list_add(other.openTiles, id)
+            }
         }
-        else if (isPath && poi.hasPod && poi.gridX != gridX && poi.gridY != gridY){
-            ds_list_add(other.openTiles, id)
+        else{
+            if(critPath){
+                ds_list_add(other.critPathTiles, id)
+            }
+            else if (isPath){
+                ds_list_add(other.openTiles, id)
+            }
         }
     }
-    else{
-        if(critPath){
-            ds_list_add(other.critPathTiles, id)
-        }
-        else if (isPath){
-            ds_list_add(other.openTiles, id)
-        }
-    }
-    
 }
 
 
