@@ -156,5 +156,14 @@ with(i){
     handX[2] = other.handX[2]
     handY[2] = other.handY[2]
     
+    /*
+    ii = instance_create(x,y,obj_interactable)
+    ii.owner = id
+    ii.name = 'Pilfer'
+    ii.useType = pilferCorpse
+    */
+    
 }
+
+
 //Create some sort of pilfer interactable
