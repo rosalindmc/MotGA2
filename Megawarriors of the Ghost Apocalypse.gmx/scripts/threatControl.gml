@@ -10,7 +10,7 @@ if (global.owThreat < 5){
 
 global.threatTimer = true;
 
-global.threatSpeed = 10;
+global.threatSpeed = 60;
 //higher overworld threats will have their own starting lists that are more difficult
 
 #define threatUp
@@ -57,14 +57,16 @@ return 1;
 #define newPodOne
 with(obj_poi){
     if(entrance){
-        i = instance_create(x,y,obj_pod);
-        with(i){
-            gridX = other.gridX;
-            gridY = other.gridY;
-            podTypeSelect();
-            podSpawn(true);
-            
-            instance_destroy();
+        if (random(10)<10/global.currLevel.numEntrance){
+            i = instance_create(x,y,obj_pod);
+            with(i){
+                gridX = other.gridX;
+                gridY = other.gridY;
+                podTypeSelect();
+                podSpawn(true);
+                
+                instance_destroy();
+            }
         }
     }
 }
