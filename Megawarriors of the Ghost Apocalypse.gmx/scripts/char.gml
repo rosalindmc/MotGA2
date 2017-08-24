@@ -611,5 +611,4 @@ floorID = global.currLevel.floorLayout[min(floor(x/metre), global.currLevel.size
 #define enterClash
 //script for entering clashes, argument 0 is the person who's starting the clash with this character
 
-show_message('CLASH')
-
+//show_message('CLASH')
