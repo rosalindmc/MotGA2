@@ -15,7 +15,13 @@ depth = -y
 audio_play_sound(snd_swing,0,false)
 
 #define hitColliderCollisionChar
-if owner != other and other.alive = true
+
+if (owner != other and other.alive = true && (other.strike[1] || other.strike[2]) && (other.facing > (owner.facing +135)%360) && (other.facing > (owner.facing +215)%360)){
+    with (other){
+        enterClash(other.owner)
+    }    
+}
+else if (owner != other and other.alive = true && !other.strike[1] && !other.strike[2])
 {
     for(i = 0; i < peopleHit; i++)
     {
@@ -30,7 +36,22 @@ if owner != other and other.alive = true
     damageChar(other) 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 #define hitColliderCollisionTerrain
+
+#define hitColliderCollisionCollider
 
 #define hitColliderDraw
 draw_self()

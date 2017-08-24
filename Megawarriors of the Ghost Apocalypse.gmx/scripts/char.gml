@@ -608,3 +608,8 @@ if (player == false && global.pc.autoTarget == id)
 #define postCharInit
 floorID = global.currLevel.floorLayout[min(floor(x/metre), global.currLevel.sizeX - 1),
                     min(floor(y/metre), global.currLevel.sizeY - 1)]
+#define enterClash
+//script for entering clashes, argument 0 is the person who's starting the clash with this character
+
+show_message('CLASH')
+
