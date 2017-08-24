@@ -25,6 +25,8 @@ player = false
 responseStart = 0
 responseMod = 1
 
+attackPatRand = 0.4
+
 responseTime = 1 
 aiMasterListGreen[0] = actionIdle
 aiMasterListYellow[0] = actionIdle

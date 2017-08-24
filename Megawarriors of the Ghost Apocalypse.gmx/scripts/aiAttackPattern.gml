@@ -45,7 +45,7 @@ attackStep = 0
 switch(argument0)
 {
     case 0:
-        attackDelay = 0.2
+        attackDelay = 0.2 + random(attackPatRand)
     break
 
     case 1:
@@ -84,7 +84,7 @@ switch(argument0)
 {
     case 0:
         useItem(1,0)
-        attackDelay = 0.8 + random(0.2)
+        attackDelay = 0.8 + random(attackPatRand)
     break
     
     case 1:
@@ -110,12 +110,12 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.75 + random(0.2)
+            attackDelay = 0.75 + random(attackPatRand)
         break
     
         case 1:
             useItem(1,1)
-            attackDelay = 0.35 + random(0.2)
+            attackDelay = 0.35 + random(attackPatRand)
         break
         
         case 2:
@@ -129,7 +129,7 @@ if (instance_exists(actionTargetId)){
             targetX = actionTargetId.x
             targetY = actionTargetId.y
             useItem(1,1)
-            attackDelay = 0.35 + random(0.2)
+            attackDelay = 0.35 + random(attackPatRand)
         break
         
         case 4:
@@ -160,12 +160,12 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.65 + random(0.2)
+            attackDelay = 0.65 + random(attackPatRand)
         break
     
         case 1:
             useItem(1,1)
-            attackDelay = 0.35 + random(0.2)
+            attackDelay = 0.35 + random(attackPatRand)
         break
         
         case 2:
@@ -182,12 +182,12 @@ if (instance_exists(actionTargetId)){
     {
         case 0:
             useItem(1,0)
-            attackDelay = 0.5 + random(0.2)
+            attackDelay = 0.5 + random(attackPatRand)
         break
     
         case 1:
             useItem(1,1)
-            attackDelay = 0.8 + random(0.2)
+            attackDelay = 0.8 + random(attackPatRand)
         break
         
         case 2:
