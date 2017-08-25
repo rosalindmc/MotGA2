@@ -17,6 +17,7 @@ global.reflectSurf = -4
 global.finalReflectSurf = -4
 global.blockSurf = -4
 global.maskSurf = -4
+deathAlpha = 0
 
 //The spacing of the poi stuff
 global.poiSpacing = 8
@@ -413,8 +414,18 @@ else{
         draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,view_xview[0]+15,view_yview[0]+view_hview[0]-20-(i*20))
     }
     
-    drawText(c_black,c_white,view_xview[0]+view_wview[0]-15,view_yview[0]+50,fps)
-
+    //drawText(c_black,c_white,view_xview[0]+view_wview[0]-15,view_yview[0]+50,fps)
+if global.pc.alive = false
+{
+    deathAlpha += .5/global.frameRate
+    
+    draw_set_alpha(deathAlpha)
+    draw_set_colour(c_black)
+    draw_rectangle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,false)
+    draw_set_halign(fa_center)
+    drawText(c_black,c_red,view_xview+(view_wview/2),view_yview+(view_hview/2),'You have died')
+    draw_set_alpha(1)
+}
 
 #define enumerators
 

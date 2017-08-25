@@ -123,7 +123,7 @@ if(!global.padOn){
         selectAutoTarget();
     }
     else{
-        if(point_distance(autoTarget.x, autoTarget.y, mouse_x, mouse_y) > 10*metre){
+        if(point_distance(autoTarget.x, autoTarget.y, mouse_x, mouse_y) > 10*metre) or autoTarget.grappled = true{
             autoTarget = noone;
         }
         else if(point_distance(autoTarget.x, autoTarget.y, mouse_x, mouse_y) > 0.5*metre){
