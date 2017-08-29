@@ -32,6 +32,7 @@
       <sprite>sprites\spr_stamina</sprite>
       <sprite>sprites\spr_smallhealth</sprite>
       <sprite>sprites\spr_health</sprite>
+      <sprite>sprites\spr_logo</sprite>
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_shore</sprite>
@@ -306,8 +307,12 @@
       <object>objects\obj_node</object>
       <object>objects\obj_pod</object>
     </objects>
+    <objects name="Menu">
+      <object>objects\obj_openingScreen</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rom_title</room>
     <room>rooms\rom_game</room>
   </rooms>
   <constants number="29">

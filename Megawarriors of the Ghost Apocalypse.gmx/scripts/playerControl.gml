@@ -137,11 +137,19 @@ else{
     if(autoTarget == noone){
         if hspd != 0 or vspd != 0
         {
-        ctrlFacing = point_direction(0,0,hspd,vspd)
+            ctrlFacing = point_direction(0,0,hspd,vspd)
         }
-    
-        targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + lengthdir_x(metre*abs(moving)/10, ctrlFacing);
-        targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + lengthdir_y(metre*abs(moving)/10, ctrlFacing);
+        
+        if inventoryKey = true
+        {
+            targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + (gamepad_axis_value(0, gp_axislh) * 3 * metre);
+            targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + (gamepad_axis_value(0, gp_axislv) * 3 * metre);
+        }
+        else
+        {
+            targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + lengthdir_x(metre*abs(moving)/10, ctrlFacing);
+            targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + lengthdir_y(metre*abs(moving)/10, ctrlFacing);
+        }
         //R3 selects an autolock target
         if(gamepad_button_check(0, gp_shoulderrb)){
             selectAutoTarget();
@@ -177,7 +185,15 @@ else{
     }
 }
 
-
+//Slow mo
+if inventoryKey = true or grappling != false
+{
+    global.frameRate = 4*room_speed
+}
+else
+{
+    global.frameRate = room_speed    
+}
 
 #define selectAutoTarget
 var closest = 3 * metre;

@@ -8,14 +8,14 @@ if (dmgType > 4){
     if owner.physicalResist+owner.damageResist[dmgType] > 0
     {p /= 1+owner.physicalResist+owner.damageResist[dmgType]}
     else
-    {p *= abs(1+owner.physicalResist+owner.damageResist[dmgType])}   
+    {p *= 1+abs(owner.physicalResist+owner.damageResist[dmgType])}   
 }
 else{
     p = dmg
     if owner.magicResist+owner.damageResist[dmgType] > 0
     {p /= 1+owner.magicResist+owner.damageResist[dmgType]}
     else
-    {p *= abs(1+owner.magicResist+owner.damageResist[dmgType])}
+    {p *= 1+abs(owner.magicResist+owner.damageResist[dmgType])}
 }
 
 p = max(0,floor(p+random(.99)))

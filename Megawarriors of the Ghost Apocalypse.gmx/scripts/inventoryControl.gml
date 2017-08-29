@@ -3,7 +3,14 @@ scrollItems()
 
 if inventoryKey = true
 {
-    var p = point_direction(view_xview+(view_wview/2),view_yview+(view_hview/2), mouse_x, mouse_y)
+    if(!global.padOn)
+    {
+        var p = point_direction(view_xview+(view_wview/2),view_yview+(view_hview/2), mouse_x, mouse_y)
+    }
+    else
+    {
+        var p = point_direction(x, y, targetX, targetY)
+    }
     
     hoverItem = floor(inventorySize-(((p-90-(180/inventorySize)))/(360/inventorySize)))
     if hoverItem >= inventorySize

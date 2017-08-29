@@ -11,7 +11,7 @@ owner.canAttack = false
 owner.canDodge = false
 owner.staggered = true
 owner.canMove = false
-owner.physicalResist -= .5
+owner.physicalResist -= 1
 owner.moveTimer = life
 
 with(owner)
@@ -43,7 +43,7 @@ with(interactId)
 owner.canAttack = true
 owner.canDodge = true
 owner.staggered = false
-owner.physicalResist += .5
+owner.physicalResist += 1
 break
 case 4:     //Draw Event
 if instance_exists(owner)

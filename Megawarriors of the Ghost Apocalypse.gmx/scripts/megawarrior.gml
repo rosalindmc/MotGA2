@@ -56,5 +56,7 @@ endurance = 4 + temp[3]
 magic = 3 + temp[4]
 charisma = 3 + temp[5]
 
+i = createItem(x,y,choose(sword,throwyAxe),id)
+
 charSetup()
 

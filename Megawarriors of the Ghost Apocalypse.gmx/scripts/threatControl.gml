@@ -55,6 +55,8 @@ global.owThreat++;
 return 1;
 
 #define newPodOne
+if instance_number(obj_char) < 25   //Temp limiter
+{
 with(obj_poi){
     if(entrance){
         if (random(10)<10/global.currLevel.numEntrance){
@@ -70,7 +72,7 @@ with(obj_poi){
         }
     }
 }
-
+}
 return 1;
 
 #define increaseTimer

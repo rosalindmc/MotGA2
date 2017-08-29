@@ -22,20 +22,6 @@ deathAlpha = 0
 //The spacing of the poi stuff
 global.poiSpacing = 8
 
-//Screen Stuff (later handle in main menu)
-screenScale()
-window_set_cursor(cr_none)
-global.padOn = false;
-global.gp[0] = false;
-var gp_num = gamepad_get_device_count();
-for (var i = 0; i < gp_num; i++;)
-   {
-   if gamepad_is_connected(i) global.gp[i] = true else global.gp[i] = false;
-   }
-
-//Controls
-controls()
-
 //For pause functionality, or things that need to stop running when you're paused
 global.isPaused = false;
 
