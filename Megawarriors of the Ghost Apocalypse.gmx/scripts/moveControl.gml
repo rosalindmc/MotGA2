@@ -1,15 +1,6 @@
-var moveT = (movement*moveMult)
+var moveT = (movement*median(.25,moveMult,2))
 
-moveT = moveT/(1+moveDT)
-
-/*
-if sprinting = true and (leftKey-rightKey != 0 or upKey-downKey != 0)
-{
-    spDelay = .5
-    moveT *= 1.5
-    sp -= 1.5/global.frameRate
-}
-*/
+moveT = moveT/(1+moveDT+(sneak*sneakMovePen))
 
 if canMove = true
 {

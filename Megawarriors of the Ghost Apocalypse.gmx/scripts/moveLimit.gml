@@ -1,7 +1,7 @@
 //Establish Friction
 if canMove = true
 {
-    f = (movement*fric*moveMult/(1+moveDT))
+    f = (movement*fric*moveMult/(1+moveDT+(sneak*sneakMovePen)))
 }
 else
 {

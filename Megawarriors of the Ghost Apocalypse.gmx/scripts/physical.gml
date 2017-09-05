@@ -1,5 +1,6 @@
 #define physical
 
+
 #define stun
 switch(argument0)
 {
@@ -11,7 +12,7 @@ owner.canAttack = false
 owner.canDodge = false
 owner.staggered = true
 owner.canMove = false
-owner.physicalResist -= 1
+owner.physicalResist -= 1.5
 owner.moveTimer = life
 
 with(owner)
@@ -43,7 +44,7 @@ with(interactId)
 owner.canAttack = true
 owner.canDodge = true
 owner.staggered = false
-owner.physicalResist += 1
+owner.physicalResist += 1.5
 break
 case 4:     //Draw Event
 if instance_exists(owner)
@@ -63,6 +64,8 @@ switch(argument0)
 case 0:     //Apply Effect
 tickLength1 = 3
 tickLength2 = 1
+owner.moveMult -= .2
+owner.stamRegen -= 1
 icon = ico_bleed
 return false;//Because this effect can stack
 break
@@ -78,6 +81,8 @@ case 2:     //Secondary Tick Effect
 createParticle(owner.x,owner.y,(owner.charSurfSize*.75)-owner.bodyY,2,partBlood,random(360))
 break
 case 3:     //Destroy Effect
+owner.moveMult += .2
+owner.stamRegen += 1
 break
 case 4:     //Draw Event
 break

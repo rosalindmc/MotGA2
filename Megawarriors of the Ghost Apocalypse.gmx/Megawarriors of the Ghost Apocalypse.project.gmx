@@ -256,6 +256,7 @@
     </scripts>
     <scripts name="Status Effects">
       <script>scripts\physical.gml</script>
+      <script>scripts\mechanics.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

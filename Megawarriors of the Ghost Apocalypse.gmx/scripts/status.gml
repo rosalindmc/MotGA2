@@ -29,6 +29,7 @@ life = 1
 potency = 1
 effect = -4
 icon = spr_none
+draw = true
 
 tickTimer1 = 0
 tickLength1 = 0

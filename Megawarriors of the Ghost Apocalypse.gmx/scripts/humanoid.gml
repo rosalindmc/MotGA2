@@ -534,17 +534,17 @@ switch(argument0)
 {
     case 0:
     hipsImage = 14
-    legLength = 4
+    legLength = 2
     break
     
     case 1:
     hipsImage = 14
-    legLength = 4
+    legLength = 2
     break
     
     case 2:
     hipsImage = 14
-    legLength = 4
+    legLength = 2
     break
     
     case 3:

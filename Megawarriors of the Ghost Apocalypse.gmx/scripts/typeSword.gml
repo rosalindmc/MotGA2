@@ -136,13 +136,13 @@ switch(argument0)
     gwPoint = 1
     
     //Weapon Stats
-    meleePow = 1.2
-    meleeRate = 1.8
+    meleePow = 1.4
+    meleeRate = 1.7
     meleeImpact = 4
     meleeLunge = 5
     meleeSlow = .2
-    meleeSize = 1
-    meleeCost = 1
+    meleeSize = 1.1
+    meleeCost = 2
     meleePen = -25   
     break
 }
@@ -192,7 +192,7 @@ switch(argument0)
     gwPoint = 2
            
     //Weapon Stats
-    meleePow = 1.8
+    meleePow = 1.7
     meleeRate = 1
     meleeImpact = 5
     meleeLunge = 2
@@ -222,7 +222,7 @@ switch(argument0)
     
     //Weapon Stats
     meleePow = 2
-    meleeRate = .9
+    meleeRate = 1.4
     meleeImpact = 5
     meleeLunge = 3
     meleeSlow = .2

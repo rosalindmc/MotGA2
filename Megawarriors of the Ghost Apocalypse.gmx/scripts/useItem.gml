@@ -88,7 +88,15 @@ switch(argument1)
             animationStart(handItem[argument0].animHold[0],argument0)
         }
         
-        //moveMult = min(1-handItem[argument0].meleeSlow)
+        if argument0 = 1
+        {
+            applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2)
+        }
+        else
+        {
+            applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2)    
+        }
+        
     }
     else
     {
@@ -121,8 +129,8 @@ hold[argument0] = 0
 animationStart(handItem[argument0].anim[queuedAnim[argument0]],argument0)
 
 //Lunge
-hspd += lengthdir_x((4+(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)))),facing)
-vspd += lengthdir_y((4+(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)))),facing)
+hspd += lengthdir_x((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.8)),facing)
+vspd += lengthdir_y((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.8)),facing)
 
 if charge[argument0] = 2
 {
@@ -131,6 +139,15 @@ if charge[argument0] = 2
 
 moveTimer = .2
 canMove = false
+
+if argument0 = 1
+{
+    applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5)
+}
+else
+{
+    applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5)    
+}
 
 #define meleeHit
 // Make melee collider

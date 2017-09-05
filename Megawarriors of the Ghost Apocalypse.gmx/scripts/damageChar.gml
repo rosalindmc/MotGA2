@@ -39,7 +39,7 @@ else if min(1-((t.armour-(pen))/100),1) <= .8
 }
 
  //Temp Apply Bleed
-if dmgType != dmgType.impact and irandom(5) > p
+if dmgType != dmgType.impact and irandom(5) < p
 {
     applyStatus(t,bleed,1,6)
 }
@@ -48,10 +48,10 @@ if dmgType != dmgType.impact and irandom(5) > p
 createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
 
 //Impact
-t.hspd += lengthdir_x(impact,point_direction(originX,originY,t.x,t.y))/t.weight
-t.vspd += lengthdir_y(impact,point_direction(originX,originY,t.x,t.y))/t.weight
-t.stability -= 2+impact
-t.stabilityDelay = .5
+t.hspd += lengthdir_x(power(impact,.8),point_direction(originX,originY,t.x,t.y))/t.weight
+t.vspd += lengthdir_y(power(impact,.8),point_direction(originX,originY,t.x,t.y))/t.weight
+t.stability -= 3+(impact/2)
+t.stabilityDelay = 1
 
 if t.stability <= 0
 {

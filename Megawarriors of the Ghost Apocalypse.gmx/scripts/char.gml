@@ -38,7 +38,7 @@ alive = true
 script_execute(animType,0)
 
 //Movement Essentials
-movement = 7        //Metres per second
+movement = 6        //Metres per second
 moveMult = 1        //Malleable multiplier for movement speed
 moveDT = 0          //Difficult terrain divider
 moving = 0
@@ -51,17 +51,19 @@ hspd = 0
 vspd = 0
 zspd = 0
 fric = 4            //% per second
-accel = 4           //% max speed gained per second of acceleration
+accel = 2           //% max speed gained per second of acceleration
 
 canMove = true      //Can move check
 moveTimer = 0
 canAttack = true    //Can attack check
+sneak = false
+sneakMovePen = .5
 
 staggered = false
 
 canRoll = true
 dodgeCost = 1
-dodgeSpeed = 16
+dodgeSpeed = 12
 dodgeTimer = 0
 recentDodge = 0
 
@@ -207,7 +209,7 @@ switch (type){
         
         penMod = wit
         
-        physicalResist = .5+(vitality-4)*0.05
+        physicalResist = 1+(vitality-4)*0.05
         magicResist = .5+(magic-4)*0.05
         perfectTimeDmgMod = 0
         
@@ -230,7 +232,7 @@ switch (type){
         
         penMod = wit
         
-        physicalResist = .5+(vitality-4)*0.05
+        physicalResist = 1+(vitality-4)*0.05
         magicResist = .5+(magic-4)*0.05
         
         shrineMod = 1 + (charisma-4)*0.1
@@ -254,7 +256,7 @@ switch (type){
     
         penMod = wit
         
-        physicalResist = .5+(vitality-4)*0.05
+        physicalResist = 1+(vitality-4)*0.05
         magicResist = .5+(magic-4)*0.05
         
         break
@@ -412,7 +414,14 @@ if canMove = true and alive = true
 {
     if moving != 0
     {
+        if sneak = false
+        {
         animIndex[0] = humanoidWalk
+        }
+        else
+        {
+        animIndex[0] = humanoidSneakWalk
+        }
         animSpeed[0] = max(abs(moving),1)
         if animStep[0] > 4
         {
@@ -421,9 +430,19 @@ if canMove = true and alive = true
     }
     else
     {
+        if sneak = false
+        {
         if animIndex[0] != humanoidIdle
         {
             animationStart(humanoidIdle,0)
+        }
+        }
+        else
+        {
+        if animIndex[0] != humanoidSneakIdle
+        {
+            animationStart(humanoidSneakIdle,0)
+        }
         }
     }
 }

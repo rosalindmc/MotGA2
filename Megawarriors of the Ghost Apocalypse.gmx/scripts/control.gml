@@ -395,9 +395,14 @@ else{
     }
     
     //Draw Status Effects
+    ii = 0
     for(i = 0; i < ds_list_size(global.pc.sEffect); i++)
     {
-        draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,view_xview[0]+15,view_yview[0]+view_hview[0]-20-(i*20))
+        if ds_list_find_value(global.pc.sEffect,i).draw = true
+        {
+            draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,view_xview[0]+15,view_yview[0]+view_hview[0]-20-(ii*20))
+            ii += 1
+        }
     }
     
     //drawText(c_black,c_white,view_xview[0]+view_wview[0]-15,view_yview[0]+50,fps)
@@ -507,8 +512,7 @@ global.dodgeKey = vk_space
 global.castKey = ord('Q')
 global.reloadKey = ord('R')
 global.throwKey = ord('T')
-global.sneakKey = vk_lcontrol
-global.castKey = ord('Q')
+global.sneakKey = ord('C')
 global.inventoryKey = vk_lshift
 
 
