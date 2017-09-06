@@ -30,6 +30,7 @@
       <sprite>sprites\spr_reticle2</sprite>
       <sprite>sprites\spr_reticle</sprite>
       <sprite>sprites\spr_stamina</sprite>
+      <sprite>sprites\spr_staminaBox</sprite>
       <sprite>sprites\spr_smallhealth</sprite>
       <sprite>sprites\spr_health</sprite>
       <sprite>sprites\spr_logo</sprite>
@@ -155,108 +156,116 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <scripts name="Character">
-      <script>scripts\applyGravity.gml</script>
-      <script>scripts\charFacing.gml</script>
-      <script>scripts\rotate.gml</script>
-      <script>scripts\pcInitialize.gml</script>
-      <scripts name="Control">
-        <script>scripts\playerControl.gml</script>
-        <script>scripts\moveControl.gml</script>
-        <script>scripts\moveLimit.gml</script>
-        <script>scripts\moveStep.gml</script>
-        <script>scripts\useItem.gml</script>
-        <script>scripts\interact.gml</script>
-        <script>scripts\dropItem.gml</script>
-        <script>scripts\inventoryControl.gml</script>
-        <script>scripts\spendStamina.gml</script>
-        <script>scripts\damageChar.gml</script>
-        <script>scripts\dodgeRoll.gml</script>
-        <scripts name="AI">
-          <script>scripts\aiMaster.gml</script>
-          <script>scripts\aiAction.gml</script>
-          <script>scripts\aiAttackPattern.gml</script>
-          <script>scripts\aiControl.gml</script>
-        </scripts>
-      </scripts>
-      <scripts name="Anim Types">
-        <script>scripts\humanoid.gml</script>
-      </scripts>
-      <scripts name="Animations">
-        <script>scripts\weaponAttackAnims.gml</script>
-        <script>scripts\twist.gml</script>
-        <script>scripts\animationStart.gml</script>
-      </scripts>
-      <scripts name="Interactions">
-        <script>scripts\pickUp.gml</script>
-      </scripts>
-      <scripts name="Units">
-        <scripts name="Allies">
-          <script>scripts\ally.gml</script>
-        </scripts>
-        <scripts name="Megawarriors">
-          <script>scripts\megawarrior.gml</script>
-        </scripts>
-        <scripts name="Monsters">
-          <script>scripts\monster.gml</script>
-          <script>scripts\behaviorTypes.gml</script>
-        </scripts>
-      </scripts>
-    </scripts>
-    <scripts name="Object Scripts">
-      <script>scripts\control.gml</script>
-      <script>scripts\char.gml</script>
-      <script>scripts\interactable.gml</script>
-      <script>scripts\item.gml</script>
-      <script>scripts\projectileCollider.gml</script>
-      <script>scripts\hitCollider.gml</script>
-      <script>scripts\aoeCollider.gml</script>
-      <script>scripts\particle.gml</script>
-      <script>scripts\meleeCollider.gml</script>
-      <script>scripts\tile.gml</script>
-      <script>scripts\doodad.gml</script>
-      <script>scripts\terrain.gml</script>
-      <script>scripts\status.gml</script>
-      <script>scripts\furniture.gml</script>
-      <script>scripts\text.gml</script>
-    </scripts>
     <scripts name="Universal">
       <script>scripts\isoDepth.gml</script>
       <script>scripts\drawText.gml</script>
     </scripts>
-    <scripts name="Level Generation">
-      <script>scripts\biomeDungeon.gml</script>
-      <script>scripts\level.gml</script>
-      <script>scripts\levelGenMaster.gml</script>
-      <script>scripts\pod.gml</script>
-      <script>scripts\podTypes.gml</script>
-      <script>scripts\pointOfInterest.gml</script>
-      <script>scripts\poiTypes.gml</script>
-      <script>scripts\world.gml</script>
-      <script>scripts\worldNode.gml</script>
+    <scripts name="Adventure">
+      <scripts name="Character">
+        <script>scripts\applyGravity.gml</script>
+        <script>scripts\charFacing.gml</script>
+        <script>scripts\rotate.gml</script>
+        <script>scripts\pcInitialize.gml</script>
+        <scripts name="Control">
+          <script>scripts\playerControl.gml</script>
+          <script>scripts\moveControl.gml</script>
+          <script>scripts\moveLimit.gml</script>
+          <script>scripts\moveStep.gml</script>
+          <script>scripts\useItem.gml</script>
+          <script>scripts\interact.gml</script>
+          <script>scripts\dropItem.gml</script>
+          <script>scripts\inventoryControl.gml</script>
+          <script>scripts\spendStamina.gml</script>
+          <script>scripts\damageChar.gml</script>
+          <script>scripts\dodgeRoll.gml</script>
+          <scripts name="AI">
+            <script>scripts\aiMaster.gml</script>
+            <script>scripts\aiAction.gml</script>
+            <script>scripts\aiAttackPattern.gml</script>
+            <script>scripts\aiControl.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="Anim Types">
+          <script>scripts\humanoid.gml</script>
+        </scripts>
+        <scripts name="Animations">
+          <script>scripts\weaponAttackAnims.gml</script>
+          <script>scripts\twist.gml</script>
+          <script>scripts\animationStart.gml</script>
+        </scripts>
+        <scripts name="Interactions">
+          <script>scripts\pickUp.gml</script>
+        </scripts>
+        <scripts name="Units">
+          <scripts name="Allies">
+            <script>scripts\ally.gml</script>
+          </scripts>
+          <scripts name="Megawarriors">
+            <script>scripts\megawarrior.gml</script>
+          </scripts>
+          <scripts name="Monsters">
+            <script>scripts\monster.gml</script>
+            <script>scripts\behaviorTypes.gml</script>
+          </scripts>
+        </scripts>
+      </scripts>
+      <scripts name="Object Scripts">
+        <script>scripts\control.gml</script>
+        <script>scripts\char.gml</script>
+        <script>scripts\interactable.gml</script>
+        <script>scripts\item.gml</script>
+        <script>scripts\projectileCollider.gml</script>
+        <script>scripts\hitCollider.gml</script>
+        <script>scripts\aoeCollider.gml</script>
+        <script>scripts\particle.gml</script>
+        <script>scripts\meleeCollider.gml</script>
+        <script>scripts\tile.gml</script>
+        <script>scripts\doodad.gml</script>
+        <script>scripts\terrain.gml</script>
+        <script>scripts\status.gml</script>
+        <script>scripts\furniture.gml</script>
+        <script>scripts\text.gml</script>
+      </scripts>
+      <scripts name="Level Generation">
+        <script>scripts\biomeDungeon.gml</script>
+        <script>scripts\level.gml</script>
+        <script>scripts\levelGenMaster.gml</script>
+        <script>scripts\pod.gml</script>
+        <script>scripts\podTypes.gml</script>
+        <script>scripts\pointOfInterest.gml</script>
+        <script>scripts\poiTypes.gml</script>
+        <script>scripts\world.gml</script>
+        <script>scripts\worldNode.gml</script>
+      </scripts>
+      <scripts name="Items">
+        <script>scripts\typeSword.gml</script>
+        <script>scripts\potions.gml</script>
+        <script>scripts\bows.gml</script>
+        <script>scripts\typeAxe.gml</script>
+        <script>scripts\spoons.gml</script>
+        <script>scripts\guns.gml</script>
+        <script>scripts\typeBludgeon.gml</script>
+        <script>scripts\typePolearm.gml</script>
+        <script>scripts\uniques.gml</script>
+        <script>scripts\weaponEssentials.gml</script>
+        <script>scripts\crate.gml</script>
+      </scripts>
+      <scripts name="Particles">
+        <script>scripts\particleTypes.gml</script>
+      </scripts>
+      <scripts name="Threat">
+        <script>scripts\threatControl.gml</script>
+      </scripts>
+      <scripts name="Status Effects">
+        <script>scripts\physical.gml</script>
+        <script>scripts\mechanics.gml</script>
+      </scripts>
     </scripts>
-    <scripts name="Items">
-      <script>scripts\typeSword.gml</script>
-      <script>scripts\potions.gml</script>
-      <script>scripts\bows.gml</script>
-      <script>scripts\typeAxe.gml</script>
-      <script>scripts\spoons.gml</script>
-      <script>scripts\guns.gml</script>
-      <script>scripts\typeBludgeon.gml</script>
-      <script>scripts\typePolearm.gml</script>
-      <script>scripts\uniques.gml</script>
-      <script>scripts\weaponEssentials.gml</script>
-      <script>scripts\crate.gml</script>
-    </scripts>
-    <scripts name="Particles">
-      <script>scripts\particleTypes.gml</script>
-    </scripts>
-    <scripts name="Threat">
-      <script>scripts\threatControl.gml</script>
-    </scripts>
-    <scripts name="Status Effects">
-      <script>scripts\physical.gml</script>
-      <script>scripts\mechanics.gml</script>
+    <scripts name="Menu">
+      <scripts name="Object Scripts">
+        <script>scripts\landingPage.gml</script>
+        <script>scripts\viewManager.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -310,6 +319,7 @@
     </objects>
     <objects name="Menu">
       <object>objects\obj_openingScreen</object>
+      <object>objects\obj_viewManager</object>
     </objects>
   </objects>
   <rooms name="rooms">

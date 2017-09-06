@@ -217,7 +217,7 @@
     <option_facebook_app_display_name></option_facebook_app_display_name>
     <option_facebook_appid></option_facebook_appid>
     <option_facebook_enable>false</option_facebook_enable>
-    <option_fast_collision_compatibility>false</option_fast_collision_compatibility>
+    <option_fast_collision_compatibility>False</option_fast_collision_compatibility>
     <option_freeze>false</option_freeze>
     <option_frequency>0</option_frequency>
     <option_frontimage>nil</option_frontimage>
@@ -424,7 +424,7 @@
     <option_showprogress>1</option_showprogress>
     <option_sizeable>False</option_sizeable>
     <option_stayontop>false</option_stayontop>
-    <option_sync_vertex>1</option_sync_vertex>
+    <option_sync_vertex>0</option_sync_vertex>
     <option_textureGroup0_border>2</option_textureGroup0_border>
     <option_textureGroup0_nocropping>0</option_textureGroup0_nocropping>
     <option_textureGroup0_parent>&lt;none&gt;</option_textureGroup0_parent>
@@ -513,11 +513,11 @@
     <option_win8_store_logo>Configs\Default\Windows8\logos\logo50.png</option_win8_store_logo>
     <option_win8_texture_page>1024</option_win8_texture_page>
     <option_win8_wide_logo>Configs\Default\Windows8\logos\logo310.png</option_win8_wide_logo>
-    <option_winUAP_allowfullscreen>false</option_winUAP_allowfullscreen>
+    <option_winUAP_allowfullscreen>0</option_winUAP_allowfullscreen>
     <option_winUAP_build_version>0</option_winUAP_build_version>
     <option_winUAP_certificate_location>WinUWPRunner_TemporaryKey.pfx</option_winUAP_certificate_location>
     <option_winUAP_display_name>Megawarriors of the Ghost Apocalypse</option_winUAP_display_name>
-    <option_winUAP_fullscreen>false</option_winUAP_fullscreen>
+    <option_winUAP_fullscreen>0</option_winUAP_fullscreen>
     <option_winUAP_internet_capable>0</option_winUAP_internet_capable>
     <option_winUAP_interpolate>-1</option_winUAP_interpolate>
     <option_winUAP_landscape_allowed>-1</option_winUAP_landscape_allowed>
@@ -570,7 +570,7 @@
     <option_windows_steam_app_id>0</option_windows_steam_app_id>
     <option_windows_texture_page>512</option_windows_texture_page>
     <option_windows_use_splash>-1</option_windows_use_splash>
-    <option_windows_vertex_buffer_method2>1</option_windows_vertex_buffer_method2>
+    <option_windows_vertex_buffer_method2>0</option_windows_vertex_buffer_method2>
     <option_winphone_480_splash_image>Configs\Default\WinPhone\SplashScreenImage480.jpg</option_winphone_480_splash_image>
     <option_winphone_720_splash_image>Configs\Default\WinPhone\SplashScreenImage720.jpg</option_winphone_720_splash_image>
     <option_winphone_768_splash_image>Configs\Default\WinPhone\SplashScreenImage.jpg</option_winphone_768_splash_image>

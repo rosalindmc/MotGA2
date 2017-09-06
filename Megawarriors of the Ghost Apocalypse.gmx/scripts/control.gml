@@ -9,6 +9,7 @@ room_speed = global.frameRate
 global.timeMult = 1
 enumerators();
 global.decalSurf = -1
+global.camZoom = 1
 
 //Shaders and Surfaces
 uTime = shader_get_uniform(shd_ripple,"Time")
@@ -81,6 +82,22 @@ room_speed = global.frameRate
 randomize()
 
 #define controlStep
+//Temp Zoom
+if mouse_wheel_up()
+{
+    global.camZoom += .1
+}
+
+if mouse_wheel_down()
+{
+    global.camZoom -= .1
+}
+
+global.camZoom = clamp(global.camZoom,1,4)
+
+view_wview = obj_viewManager.idealWidth/global.camZoom
+view_hview = obj_viewManager.idealHeight/global.camZoom
+
 //Temp Restart Button
 if keyboard_check_pressed(ord('R'))
 {
@@ -333,7 +350,7 @@ if global.pc.pointInteract != noone
     {
         //draw_set_font(fnt_menu)
         draw_set_halign(fa_center)
-        drawText(c_black,c_white,x,y-15,name)
+        drawText(c_black,c_white,global.camZoom*(x-view_xview),global.camZoom*(y-15-view_yview),name)
     }
 }
 
@@ -347,20 +364,19 @@ if global.pc.inventoryKey = true
 }
 
 //Draw Cursor
-
 if(!global.padOn){
-    draw_sprite(spr_reticle,0,mouse_x,mouse_y-8)
-    draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y-8-kick,1,1,0,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,mouse_x-kick,mouse_y-8+kick,1,1,90,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y-8+kick,1,1,180,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,mouse_x+kick,mouse_y-8-kick,1,1,270,c_white,1)
+    draw_sprite(spr_reticle,0,global.camZoom*(mouse_x-view_xview),global.camZoom*(mouse_y-8-view_yview))
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(mouse_x-kick-view_xview),global.camZoom*(mouse_y-8-kick-view_yview),1,1,0,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(mouse_x-kick-view_xview),global.camZoom*(mouse_y-8+kick-view_yview),1,1,90,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(mouse_x+kick-view_xview),global.camZoom*(mouse_y-8+kick-view_yview),1,1,180,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(mouse_x+kick-view_xview),global.camZoom*(mouse_y-8-kick-view_yview),1,1,270,c_white,1)
 }
 else{
-    draw_sprite(spr_reticle,0,global.pc.targetX,global.pc.targetY-8)
-    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8-kick,1,1,0,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8+kick,1,1,90,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8+kick,1,1,180,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,global.pc.targetX-kick,global.pc.targetY-8-kick,1,1,270,c_white,1)
+    draw_sprite(spr_reticle,0,global.camZoom*(global.pc.targetX-view_xview),global.camZoom*(global.pc.targetY-8-view_yview))
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8-kick),1,1,0,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8+kick),1,1,90,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8+kick),1,1,180,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8-kick),1,1,270,c_white,1)
 }
    
 //HUD stuff
@@ -368,28 +384,28 @@ else{
     i = 0
     repeat(ceil(global.pc.life))
     {
-        draw_sprite_ext(spr_health,0,view_xview[0]+15+(5*i),view_yview[0]+15,1,1,0,c_white,global.pc.life-i)
+        draw_sprite_ext(spr_health,0,15+(5*i),15,1,1,0,c_white,global.pc.life-i)
         i += 1
     }
-    
-    //Outline
-    draw_set_colour(c_black)
-    draw_rectangle(view_xview[0]+15,view_yview[0]+9,view_xview[0]+15+(5*global.pc.lifeMax),view_yview[0]+20,true)
-        
+    repeat(ceil(global.pc.lifeMax-global.pc.life))
+    {
+        draw_sprite_ext(spr_health,1,15+(5*i),15,1,1,0,c_white,1)
+        i += 1
+    }
+            
     draw_set_valign(fa_middle)
     draw_set_halign(fa_left)
     draw_set_font(fnt_small)
-    drawText(c_black,c_white,view_xview[0]+20,view_yview[0]+14,string(round(global.pc.life))+" / "+string(round(global.pc.lifeMax)))
+    drawText(c_black,c_white,20,14,string(round(global.pc.life))+" / "+string(round(global.pc.lifeMax)))
 
     //Stamina
     i = 0
     repeat(ceil(global.pc.stamMax))
     {
         draw_set_colour(uiStaminaGreen)
-        draw_rectangle(view_xview[0]+15+(10*i)+(5*floor(i*.5)),view_yview[0]+24,view_xview[0]+15+(10*median(0,global.pc.stam-i,1))+(10*i)+(5*floor(i*.5)),view_yview[0]+29,false)
+        draw_rectangle(15+(10*i)+(5*floor(i*.5)),24,15+(10*median(0,global.pc.stam-i,1))+(10*i)+(5*floor(i*.5)),29,false)
 
-        draw_set_colour(c_black)
-        draw_rectangle(view_xview[0]+15+(10*i)+(5*floor(i*.5)),view_yview[0]+24,view_xview[0]+25+(10*i)+(5*floor(i*.5)),view_yview[0]+29,true)
+        draw_sprite(spr_staminaBox,0,15+(10*i)+(5*floor(i*.5)),24)
         
         i += 1
     }
@@ -400,7 +416,7 @@ else{
     {
         if ds_list_find_value(global.pc.sEffect,i).draw = true
         {
-            draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,view_xview[0]+15,view_yview[0]+view_hview[0]-20-(ii*20))
+            draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,15,view_hview[0]-20-(ii*20))
             ii += 1
         }
     }
@@ -412,9 +428,9 @@ if global.pc.alive = false
     
     draw_set_alpha(deathAlpha)
     draw_set_colour(c_black)
-    draw_rectangle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,false)
+    draw_rectangle(0,0,view_wview,view_hview,false)
     draw_set_halign(fa_center)
-    drawText(c_black,c_red,view_xview+(view_wview/2),view_yview+(view_hview/2),'You have died')
+    drawText(c_black,c_red,(view_wview/2),(view_hview/2),'You have died')
     draw_set_alpha(1)
 }
 
@@ -516,25 +532,6 @@ global.sneakKey = ord('C')
 global.inventoryKey = vk_lshift
 
 
-#define screenScale
-//This is supposed to allow us to do good screen scaling for multiple devices later, 
-//still don't know how it works
-
-/*
-//application_surface_draw_enable(false)
-window_set_fullscreen(true)
-
-global.monitorW = display_get_width()
-global.monitorH = display_get_height()
-
-global.viewW = 480
-global.viewH = 270
-
-global.viewScale = min(floor(global.monitorW/global.viewW),floor(global.monitorH/global.viewH))
-
-//surface_resize(application_surface,(global.viewW*global.viewScale),(global.viewH*global.viewScale))
-global.xOffset=(global.monitorW-(global.viewW*global.viewScale))/2
-global.yOffset=(global.monitorH-(global.viewH*global.viewScale))/2
 #define controlDestroy
 surface_free(global.reflectSurf)
 surface_free(global.blockSurf)

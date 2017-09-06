@@ -60,7 +60,7 @@ if surface_exists(invCircle)
     }
     surface_reset_target()
     draw_set_blend_mode(bm_normal)
-    draw_surface(invCircle,view_xview+(view_wview/2)-100,view_yview+(view_hview/2)-100)
+    draw_surface(invCircle,(obj_viewManager.idealWidth/2)-100,(obj_viewManager.idealHeight/2)-100)
 }
 else
 {
@@ -71,8 +71,8 @@ else
 
 for(i = 1; i <= inventorySize; i++)
 {
-    ix = view_xview+(view_wview/2)+lengthdir_x(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
-    iy = view_yview+(view_hview/2)+lengthdir_y(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
+    ix = (obj_viewManager.idealWidth/2)+lengthdir_x(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
+    iy = (obj_viewManager.idealHeight/2)+lengthdir_y(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
     
     if handItemSlot[1] = inventorySize- i
     {
@@ -87,8 +87,8 @@ for(i = 1; i <= inventorySize; i++)
 
 for(i = 1; i <= inventorySize; i++)
 {
-    ix = view_xview+(view_wview/2)+lengthdir_x(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
-    iy = view_yview+(view_hview/2)+lengthdir_y(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
+    ix = (obj_viewManager.idealWidth/2)+lengthdir_x(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
+    iy = (obj_viewManager.idealHeight/2)+lengthdir_y(75,(360/(inventorySize*2))+(i*(360/inventorySize))+(360/inventorySize)*round(inventorySize/4))
     
     if inventory[inventorySize-i] != noone
     { 
