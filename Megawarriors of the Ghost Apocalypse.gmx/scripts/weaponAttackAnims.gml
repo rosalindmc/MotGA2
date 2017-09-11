@@ -107,12 +107,13 @@ switch(argument0)
 
 
 #define weaponSlash
-if (instance_exists(handItem[argument1])&& queuedAnim[argument1] < 100){
+if (!grappling && !grappled){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
 }
 else{ 
 s = 1
 }
+
 switch(argument0)
 {
     case 0:
@@ -256,7 +257,12 @@ switch(argument0)
 
 
 #define weaponStab
+if (!grappling && !grappled){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
+}
+else{ 
+s = 1
+}
 
 switch(argument0)
 {
@@ -391,7 +397,12 @@ switch(argument0)
 
 
 #define weaponHilt
+if (!grappling && !grappled){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
+}
+else{ 
+s = 1
+}
 
 switch(argument0)
 {
@@ -652,7 +663,12 @@ switch(argument0)
 
 
 #define weaponChop
+if (!grappling && !grappled){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
+}
+else{ 
+s = 1
+}
 
 switch(argument0)
 {
