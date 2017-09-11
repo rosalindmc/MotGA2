@@ -134,7 +134,9 @@ else    //Char Throw
     grappling = false
     canRoll = true
     canInv = true
-    grappleTarg.grappled = false
+    if(instance_exists(grappleTarg)){
+        grappleTarg.grappled = false
+    }
     grappleTarg = -4
 }
 

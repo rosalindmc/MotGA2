@@ -107,8 +107,12 @@ switch(argument0)
 
 
 #define weaponSlash
+if (instance_exists(handItem[argument1])&& queuedAnim[argument1] < 100){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
-
+}
+else{ 
+s = 1
+}
 switch(argument0)
 {
     case 0:

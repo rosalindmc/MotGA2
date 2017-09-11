@@ -156,6 +156,21 @@ with(i){
     handX[2] = other.handX[2]
     handY[2] = other.handY[2]
     
+    canMove = false
+    grappled = other.grappled
+    grappling = false
+    grappler = other.grappler
+    if (instance_exists(grappler)){
+        other.grappler.grappleTarg = id
+    }
+    grappleTarg = other.grappleTarg
+    if (instance_exists(grappleTarg)){
+        other.grappleTarg.canMove = true
+        other.grappleTarg.grappled = false
+        other.grappleTarg.grappler = noone
+    }
+    
+    
     /*
     ii = instance_create(x,y,obj_interactable)
     ii.owner = id
