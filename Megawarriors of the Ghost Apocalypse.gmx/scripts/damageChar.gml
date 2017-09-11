@@ -96,6 +96,8 @@ with(argument0)
     animationReset(1)
     animationReset(2)
     
+    
+    
     for(i = 0; i < inventorySize; i++)
     {
         if (inventory[i] != noone){
@@ -112,6 +114,8 @@ with(argument0)
     
     if(!player){
         aiDestroy()
+        //Later Add check that player was near kill
+        gainExperience(xpReward)
     }
     
     if (id == global.pc.autoTarget){
@@ -120,3 +124,29 @@ with(argument0)
     
     //mask_index = spr_none
 }
+
+#define gainExperience
+p = round(argument0*global.pc.xpMult)
+
+i = instance_create(global.pc.x,global.pc.y,obj_text)
+i.z = (metre*2)
+i.t = '+'+string_format(p,0,1)+' XP'
+i.c1 = c_black
+i.c2 = c_purple
+
+global.pc.xp += p
+
+if global.pc.xp > global.pc.xpToLevel
+{
+global.pc.xp -= global.pc.xpToLevel
+global.pc.xpToLevel *= 1.4
+global.pc.combatLevel += 1
+global.pc.talentPoints += 1
+
+i = instance_create(global.pc.x,global.pc.y,obj_text)
+i.z = (metre*3)
+i.t = 'LEVEL UP'
+i.c1 = c_purple
+i.c2 = c_white
+}
+

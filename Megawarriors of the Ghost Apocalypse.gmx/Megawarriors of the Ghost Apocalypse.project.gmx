@@ -31,6 +31,7 @@
       <sprite>sprites\spr_reticle</sprite>
       <sprite>sprites\spr_stamina</sprite>
       <sprite>sprites\spr_staminaBox</sprite>
+      <sprite>sprites\spr_xpBox</sprite>
       <sprite>sprites\spr_smallhealth</sprite>
       <sprite>sprites\spr_health</sprite>
       <sprite>sprites\spr_logo</sprite>

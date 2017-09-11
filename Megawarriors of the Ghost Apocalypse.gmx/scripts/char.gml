@@ -117,6 +117,14 @@ charisma = 1
 
 stealth = 1
 
+//Experience
+xp = 0
+xpToLevel = 10
+xpReward = 1
+xpMult = 1
+combatLevel = 1
+talentPoints = 0
+
 //Vitals
 life = 12
 lifeMax = 12
@@ -231,6 +239,7 @@ switch (type){
         weight = (2+might)/6
         
         penMod = wit
+        xpMult = 1+((wit-4)*.05)
         
         physicalResist = 1+(vitality-4)*0.05
         magicResist = .5+(magic-4)*0.05

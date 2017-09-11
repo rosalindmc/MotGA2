@@ -410,6 +410,12 @@ else{
         i += 1
     }
     
+    //Experience
+    draw_set_colour(c_purple)
+    draw_rectangle(15,31,15+(50*(global.pc.xp/global.pc.xpToLevel)),33,false)
+    draw_sprite(spr_xpBox,0,15,31)    
+    
+    
     //Draw Status Effects
     ii = 0
     for(i = 0; i < ds_list_size(global.pc.sEffect); i++)
