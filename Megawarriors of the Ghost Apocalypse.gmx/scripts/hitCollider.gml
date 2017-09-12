@@ -15,10 +15,17 @@ depth = -y
 audio_play_sound(snd_swing,0,false)
 
 #define hitColliderCollisionChar
+if (owner != other and other.alive = true && (other.strike[1] || other.strike[2])) && abs(angle_difference(image_angle,other.facing)) > 90
+{
+    hit[peopleHit] = other
+    peopleHit += 1
 
-if (owner != other and other.alive = true && (other.strike[1] || other.strike[2]) && (other.facing > (owner.facing +135)%360) && (other.facing > (owner.facing +215)%360)){
-    with (other){
-        enterClash(other.owner)
+    if owner.clashing = false && other.clashing = false
+    {
+        with(other)
+        {
+            enterClash(other.owner)
+        }
     }    
 }
 else if (owner != other and other.alive = true && !other.strike[1] && !other.strike[2])

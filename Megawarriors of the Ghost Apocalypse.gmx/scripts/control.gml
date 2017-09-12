@@ -10,6 +10,7 @@ global.timeMult = 1
 enumerators();
 global.decalSurf = -1
 global.camZoom = 1
+global.camZoomTo = 1
 
 //Shaders and Surfaces
 uTime = shader_get_uniform(shd_ripple,"Time")
@@ -82,22 +83,6 @@ room_speed = global.frameRate
 randomize()
 
 #define controlStep
-//Temp Zoom
-if mouse_wheel_up()
-{
-    global.camZoom += .1
-}
-
-if mouse_wheel_down()
-{
-    global.camZoom -= .1
-}
-
-global.camZoom = clamp(global.camZoom,1,4)
-
-view_wview = obj_viewManager.idealWidth/global.camZoom
-view_hview = obj_viewManager.idealHeight/global.camZoom
-
 //Temp Restart Button
 if keyboard_check_pressed(ord('R'))
 {
@@ -113,6 +98,31 @@ if keyboard_check_pressed(ord('I')){
         global.padOn = false;
     }
 }
+
+//Zoom Control
+if global.pc.clashing = true
+{
+    global.camZoomTo = min(2+global.pc.interactProgress,4)
+}
+else if global.pc.grappling = true or global.pc.grappled = true
+{
+    global.camZoomTo = 4
+}
+else
+{
+    global.camZoomTo = 1
+}
+
+if global.camZoom > global.camZoomTo
+{
+    global.camZoom = max(global.camZoomTo,global.camZoom-(4/global.frameRate))
+}
+if global.camZoom < global.camZoomTo
+{
+    global.camZoom = min(global.camZoomTo,global.camZoom+(4/global.frameRate))
+}
+view_wview = obj_viewManager.idealWidth/global.camZoom
+view_hview = obj_viewManager.idealHeight/global.camZoom
 
 //Adjust Camera Position
 if instance_exists(global.pc)
@@ -133,7 +143,7 @@ view_yview[0] = round(median(8,y-(view_hview[0]/2),room_height-view_hview[0]-8))
 //Reduce Shake
 if shake > .1
 {
-    shake -= shake*(5/global.frameRate)
+    shake = max(shake-(shake*(5/global.frameRate)),0)
 }
 else
 {
@@ -363,6 +373,18 @@ if global.pc.inventoryKey = true
     }
 }
 
+//Draw Relevent Progress Bar
+if global.pc.clashing = true
+{
+    ix = round(global.camZoom*(view_wview*.5))
+    iy = round(global.camZoom*(view_hview*.75))
+    draw_set_colour(c_white)
+    draw_rectangle(ix-25,iy,ix+(24*clamp(-1,1,global.pc.interactProgress-global.pc.clashingWith.interactProgress)),5+iy,false)    
+    draw_set_colour(c_red)
+    draw_rectangle(ix+24,iy,ix+(24*clamp(-1,1,global.pc.interactProgress-global.pc.clashingWith.interactProgress)),5+iy,false)
+    draw_sprite(spr_bigBox,0,ix-25,iy)
+}
+
 //Draw Cursor
 if(!global.padOn){
     draw_sprite(spr_reticle,0,global.camZoom*(mouse_x-view_xview),global.camZoom*(mouse_y-8-view_yview))
@@ -434,9 +456,9 @@ if global.pc.alive = false
     
     draw_set_alpha(deathAlpha)
     draw_set_colour(c_black)
-    draw_rectangle(0,0,view_wview,view_hview,false)
+    draw_rectangle(0,0,global.camZoom*view_wview,global.camZoom*view_hview,false)
     draw_set_halign(fa_center)
-    drawText(c_black,c_red,(view_wview/2),(view_hview/2),'You have died')
+    drawText(c_black,c_red,global.camZoom*(view_wview/2),global.camZoom*(view_hview/2),'You have died')
     draw_set_alpha(1)
 }
 

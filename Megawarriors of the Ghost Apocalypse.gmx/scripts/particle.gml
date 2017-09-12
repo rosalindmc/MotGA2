@@ -25,6 +25,7 @@ gravMult = 0
 spin = 0
 floorZ = 0
 growth = 0
+bounciness = 0
 fade = 0
 
 animSpeed = 10

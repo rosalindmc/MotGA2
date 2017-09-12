@@ -37,7 +37,7 @@ if inventoryKey = true
 //Black Out everything else (later use a shader)
 draw_set_alpha(.5)
 draw_set_colour(c_black)
-draw_rectangle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,false)
+draw_rectangle(0,0,global.camZoom*view_wview,global.camZoom*view_hview,false)
 
 draw_set_font(fnt_small)
 draw_set_halign(fa_middle)

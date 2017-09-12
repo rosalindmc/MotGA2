@@ -122,10 +122,18 @@ if gravMult != 0
     }
     else
     {
-        zspd = 0
-        hspd = 0
-        vspd = 0
-        z = floorZ
+        if bounciness > 0
+        {
+            zspd *= -bounciness
+            z = floorZ
+        }
+        else
+        {
+            zspd = 0
+            hspd = 0
+            vspd = 0
+            z = floorZ
+        }
         
         if impactDeath = true
         {

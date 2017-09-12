@@ -168,10 +168,14 @@ perfectTimeMod = .5
 perfectTimeDmgMod = 0.1
 kick = 0
 
+clashing = false
+clashingWith = noone
 grappling = false
 grappled = false
 grappler = noone        //person grappling you
 grappleTarg = noone     //person you are grappling
+
+interactProgress = 0
 
 //Inventory
 canInv = true
@@ -295,7 +299,7 @@ if alive = true
         tS = 0
     }
     
-    if grappled = false
+    if grappled = false and clashing = false
     {        
         if(id == global.pc){
             if(global.pc.autoTarget == noone){
@@ -542,8 +546,17 @@ if (grappled = true){
     }
 }
 
-
-
+if (clashing = true)
+{
+    if instance_exists(clashingWith)
+    {
+        facing = point_direction(x,y,clashingWith.x,clashingWith.y)
+    }
+    else
+    {
+        endClash()
+    }
+}
 
 #define charDestroy
 //Clear the drawing surface
@@ -606,8 +619,8 @@ if(alive){smallHealthBar()}
 #define smallHealthBar
 if (player == false && global.pc.autoTarget == id)
 {
-    ix = round(x)
-    iy = round(y-(metre*2))
+    ix = round(global.camZoom*(x-view_xview))
+    iy = round(global.camZoom*(y-view_yview-(metre*2)))
     
     i = 0
     repeat(ceil(life))
@@ -615,28 +628,102 @@ if (player == false && global.pc.autoTarget == id)
         draw_sprite_ext(spr_smallhealth,0,ix-10+(4*i),iy,1,1,0,c_white,life-i)
         i += 1
     }
-    
-    //Outline
-    draw_set_colour(c_black)
-    draw_rectangle(ix-10,iy-3,ix-10+(4*lifeMax),iy+3,true)
+    repeat(ceil(lifeMax-life))
+    {
+        draw_sprite_ext(spr_smallhealth,1,ix-10+(4*i),iy,1,1,0,c_white,1)
+        i += 1
+    }
     
     //Stamina
     i = 0
     repeat(ceil(stamMax))
     {
         draw_set_colour(uiStaminaGreen)
-        draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+5,ix-10+(5*median(0,stam-i,1))+(5*i)+(3*floor(i*.5)),iy+7,false)
+        draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+6,ix-10+(5*median(0,stam-i,1))+(5*i)+(3*floor(i*.5)),iy+8,false)
         
         //Outline
-        draw_set_colour(c_black)
-        draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+5,ix-10+5+(5*i)+(3*floor(i*.5)),iy+7,true)        
+        draw_sprite(spr_staminaBox,1,ix-10+(5*i)+(3*floor(i*.5)),iy+6)       
         i += 1
     }
 }   
+
 #define postCharInit
 floorID = global.currLevel.floorLayout[min(floor(x/metre), global.currLevel.sizeX - 1),
                     min(floor(y/metre), global.currLevel.sizeY - 1)]
 #define enterClash
 //script for entering clashes, argument 0 is the person who's starting the clash with this character
 
-//show_message('CLASH')
+var ix, iy;
+
+if instance_exists(handItem[1])
+{
+    ix = (x+argument0.x)/2
+    iy = (y+argument0.y)/2
+    createParticle(ix,iy,handItem[1].z,15,partSpark,point_direction(x,y,ix,iy)+90)
+    createParticle(ix,iy,handItem[1].z,15,partSpark,point_direction(x,y,ix,iy)-90)
+}
+
+i = instance_create(x,y,obj_text)
+i.t = 'Clash!'
+
+clashing = true 
+clashingWith = argument0
+facing = point_direction(x,y,argument0.x,argument0.y)
+interactProgress = 0
+canMove = false
+moveTimer = 0
+hspd = lengthdir_x(8,facing)
+vspd = lengthdir_y(8,facing)
+
+animationReset(1)
+animationReset(2)  
+
+argument0.clashing = true
+argument0.clashingWith = id
+argument0.facing = point_direction(argument0.x,argument0.y,x,y)
+argument0.interactProgress = 0
+argument0.canMove = false
+argument0.moveTimer = 0
+argument0.hspd = lengthdir_x(8,argument0.facing)
+argument0.vspd = lengthdir_y(8,argument0.facing)
+
+with(argument0)
+{
+    animationReset(1)
+    animationReset(2)    
+}
+
+with(obj_char)
+{
+    if point_distance(ix,iy,x,y) < 8*metre
+    {
+        //Impact
+        hspd += lengthdir_x(5,point_direction(ix,iy,x,y))
+        vspd += lengthdir_y(5,point_direction(ix,iy,x,y))
+
+        //Stagger
+        canMove = false
+        moveTimer += 1.5
+        
+        if abs(angle_difference(point_direction(ix,iy,x,y),facing)) < 90
+        {
+            animationStart(humanoidFlinchForward,0)
+        }
+        else
+        {
+            animationStart(humanoidFlinchBackward,0)
+        }
+    }
+}
+
+#define endClash
+if instance_exists(clashingWith)
+{
+    clashingWith.moveTimer += .1
+    clashingWith.clashing = false 
+    clashingWith.clashingWith = noone
+}
+
+moveTimer += .1
+clashing = false 
+clashingWith = noone

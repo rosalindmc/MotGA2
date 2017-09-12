@@ -47,6 +47,14 @@ if dmgType != dmgType.impact and irandom(5) < p
 //Dif damage types might have dif particles later
 createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
 
+if t.clashing = true
+{
+    with(t)
+    {
+        endClash()
+    }
+}
+
 //Impact
 t.hspd += lengthdir_x(power(impact,.8),point_direction(originX,originY,t.x,t.y))/t.weight
 t.vspd += lengthdir_y(power(impact,.8),point_direction(originX,originY,t.x,t.y))/t.weight
@@ -149,4 +157,3 @@ i.t = 'LEVEL UP'
 i.c1 = c_purple
 i.c2 = c_white
 }
-

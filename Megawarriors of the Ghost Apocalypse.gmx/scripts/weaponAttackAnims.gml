@@ -5,6 +5,7 @@
 var arg0 = argument0;
 var i = 0;
 
+strike[argument1] = 0 
 animDelay[argument1] = 1
 animSpeed[argument1] = 1
 
@@ -24,9 +25,24 @@ itemRotDest[argument1] = ((120*i)+30)*meleeSwing[argument1]
 
 if staggered = true
 {
-handHeightDest[argument1] = -5
+    handHeightDest[argument1] = -5
 }
 
+if clashing = true
+{
+    handDistDest[argument1] = 5+(5*clamp(-1,1,interactProgress-clashingWith.interactProgress))
+    handDirDest[argument1] = (-15)*meleeSwing[argument1]
+    handHeightDest[argument1] = 4
+    itemRotDest[argument1] = (-45+(50*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
+    
+    if instance_exists(handItem[argument1])
+    {
+        ix = (x+clashingWith.x)/2
+        iy = (y+clashingWith.y)/2
+        createParticle(ix,iy,handItem[argument1].z,2,partSpark,point_direction(x,y,ix,iy)+90)
+    }
+    animSpeed[argument1] = 5
+}
 
 if greatWeapon = false
 {

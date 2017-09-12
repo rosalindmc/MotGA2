@@ -190,10 +190,10 @@ if sneakKey = true
     sneak = 1-sneak
 }
 
-//Temp Slow mo
-if inventoryKey = true or grappling != false
+//Slow mo
+if inventoryKey = true or clashing != false
 {
-    global.frameRate = 4*room_speed
+    global.frameRate = 2*room_speed
 }
 else
 {

@@ -1,8 +1,32 @@
 #define useItem
 //Run the use script of the item in hand argument0
 //Run the second use script if right clicking w/ two hands
-//Input argument 1 to script for press vs release
+//Input argument1 to script for press vs release
 
+if clashing = true  //Clash Button Mash
+{
+    if argument1 = 0
+    {
+        //Add progress
+        interactProgress += .2*(weight/clashingWith.weight)
+        
+        //Win Clash
+        if interactProgress >= clashingWith.interactProgress+1
+        {
+            if handItem[argument0] != noone
+            { 
+                charge[min(argument0,2-greatWeapon)] = 2
+                queuedAnim[min(argument0,2-greatWeapon)] = 5
+                meleeAttack(min(argument0,2-greatWeapon))
+            }
+            stam = stamMax
+            clashingWith.stability = 0
+            endClash()
+        }
+    }
+}
+else
+{
 if argument1 = 0    //Start an action based on context
 {
     if argument0 = 2 and grappling = true
@@ -42,6 +66,7 @@ else
             script_execute(handItem[argument0].useScript[min(1+greatWeapon,argument0)],argument0,argument1)
         }
     }
+}
 }
 
 #define melee

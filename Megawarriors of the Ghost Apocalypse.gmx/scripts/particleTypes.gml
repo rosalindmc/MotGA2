@@ -23,6 +23,28 @@ splatDecal = spr_bloodSplat
 
 sprite_index = spr_blood
 
+#define partSpark
+i = random(1.5)
+
+image_xscale = i
+image_yscale = i
+image_angle = random(359)
+
+i = 2+random(6)
+
+dir = argument0-60+random(120)
+
+hspd = lengthdir_x(i,dir)
+vspd = lengthdir_x(i,dir)
+zspd = -1+random(5)
+gravMult = 1
+bounciness = .75
+life = .5
+fade = 1
+
+impactDeath = false
+sprite_index = spr_spark
+
 #define partDust
 life = .25
 animSpeed = 20
