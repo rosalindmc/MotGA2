@@ -106,17 +106,16 @@ if handItem[argument0] != noone
 }
 else    //Char Throw
 {
-    moveMult = 1    //Need a better system for handling this
-    
     if charge[argument0] = 2    //if thrown instead of dropped
     {
         with(grappleTarg)
         {
-            hspd = lengthdir_x(15,other.facing)
-            vspd = lengthdir_y(15,other.facing)
+            hspd = lengthdir_x(25,other.facing)
+            vspd = lengthdir_y(25,other.facing)
+            dangerous = true
             zspd += 10
             animationStart(humanoidFlinchBackward,0)
-            moveTimer = 1
+            moveTimer = 1.5
             canMove = false
         }
     }
@@ -126,6 +125,7 @@ else    //Char Throw
         {
             hspd = lengthdir_x(10,other.facing)
             vspd = lengthdir_y(10,other.facing)
+            dangerous = true
             animationStart(humanoidFlinchBackward,0)
             moveTimer = .5
             canMove = false

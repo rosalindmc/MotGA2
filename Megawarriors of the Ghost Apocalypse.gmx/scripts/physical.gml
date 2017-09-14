@@ -70,11 +70,7 @@ icon = ico_bleed
 return false;//Because this effect can stack
 break
 case 1:     //Primary Tick Effect
-owner.life -= floor(potency+random(.99))
-if owner.life <= 0
-{
-    killChar(owner)
-}
+damageChar(owner,1,dmgType.blood)
 createParticle(owner.x,owner.y,(owner.charSurfSize*.75)-owner.bodyY,8,partBlood,random(360))
 break
 case 2:     //Secondary Tick Effect

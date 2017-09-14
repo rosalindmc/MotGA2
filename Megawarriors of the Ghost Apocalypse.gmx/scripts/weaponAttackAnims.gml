@@ -6,6 +6,7 @@ var arg0 = argument0;
 var i = 0;
 
 strike[argument1] = 0 
+charge[argument1] = 0
 animDelay[argument1] = 1
 animSpeed[argument1] = 1
 
@@ -30,10 +31,10 @@ if staggered = true
 
 if clashing = true
 {
-    handDistDest[argument1] = 5+(5*clamp(-1,1,interactProgress-clashingWith.interactProgress))
-    handDirDest[argument1] = (-15)*meleeSwing[argument1]
+    handDistDest[argument1] = 5+(2*clamp(-1,1,interactProgress-clashingWith.interactProgress))
+    handDirDest[argument1] = (30+(-30*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
     handHeightDest[argument1] = 4
-    itemRotDest[argument1] = (-45+(50*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
+    itemRotDest[argument1] = (-45+(60*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
     
     if instance_exists(handItem[argument1])
     {

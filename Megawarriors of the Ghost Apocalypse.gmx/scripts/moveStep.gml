@@ -5,6 +5,7 @@ gridX = median(0,floor(x/metre),global.currLevel.sizeX-1)
 gridY = median(0,floor(y/metre),global.currLevel.sizeY-1)
 floorID = global.currLevel.floorLayout[gridX,gridY]
 floorZ = floorID.z
+collide = false
 
 //Gravity
 if z+max(0,zspd) > floorZ
@@ -28,10 +29,22 @@ if (place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line
     while collision_line(x,y,x+sign(hspd),y,obj_solid,false,true) && hspd != 0{
         x -= sign(hspd)
         }
-    hspd = 0
+        
+    if dangerous = true
+    {
+        collide = true
+        hspd *= 1
+    }   
+    else
+    {
+        hspd = 0
+    }
 }
 
-x += metre*hspd/global.frameRate
+if collide = false
+{
+    x += metre*hspd/global.frameRate
+}
 
 //Vertical Collision
 if (place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true))
@@ -39,10 +52,22 @@ if (place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line
     while collision_line(x,y,x,y+sign(vspd),obj_solid,false,true) && vspd != 0{
         y -= sign(vspd)
         } 
-    vspd = 0
+    
+    if dangerous = true
+    {
+        collide = true
+        vspd *= 1
+    } 
+    else
+    {
+        vspd = 0
+    }
 }
 
-y += metre*vspd/global.frameRate
+if collide = false
+{
+    y += metre*vspd/global.frameRate
+}
 
 //Check Moving
 if canMove = true and point_distance(x,y,xprevious,yprevious) > 0
@@ -59,6 +84,20 @@ if canMove = true and point_distance(x,y,xprevious,yprevious) > 0
 else
 {
     moving = 0
+}
+
+if collide = true
+{
+    dangerous = false
+    collide = false
+    
+    
+    cPow = point_distance(0,0,hspd,vspd)
+    if life > 0
+    {
+    impactChar(id,cPow*.1,point_direction(0,0,hspd,vspd),.2)
+    damageChar(id,min((1+(cPow*.05*weight))/2,3),dmgType.impact)
+    }
 }
 
 //Bound to map

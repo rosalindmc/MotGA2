@@ -444,7 +444,7 @@ else{
     {
         if ds_list_find_value(global.pc.sEffect,i).draw = true
         {
-            draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,15,view_hview[0]-20-(ii*20))
+            draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,15,global.camZoom*(view_hview[0]-20-(ii*20)))
             ii += 1
         }
     }
@@ -517,12 +517,12 @@ enum dmgType{
     pierce = 3,   
     fire = 4,
     cold = 5,
-    corrode = 6,
-    lightning = 7,
+    corrode = 10,
+    lightning = 11,
     radiant = 8,
     profane = 9,
-    poison = 10,
-    blood = 11,
+    poison = 5,
+    blood = 6,
     mind = 12,
     thunder = 13
 };

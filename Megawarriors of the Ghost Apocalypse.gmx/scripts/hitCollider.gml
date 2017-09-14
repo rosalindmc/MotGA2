@@ -40,7 +40,7 @@ else if (owner != other and other.alive = true && !other.strike[1] && !other.str
 
     hit[peopleHit] = other
     peopleHit += 1
-    damageChar(other) 
+    hitChar(other) 
 }
 
 

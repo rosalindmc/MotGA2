@@ -1,34 +1,16 @@
-#define damageChar
+#define hitChar
 t = argument0
 p = 0
 
+
+//Impact
+impactChar(t,impact,point_direction(originX,originY,t.x,t.y),1)
+
 //Damage
-if (dmgType > 4){
-    p = (dmg)*(min(1-((t.armour-(pen))/100),1))
-    if owner.physicalResist+owner.damageResist[dmgType] > 0
-    {p /= 1+owner.physicalResist+owner.damageResist[dmgType]}
-    else
-    {p *= 1+abs(owner.physicalResist+owner.damageResist[dmgType])}   
-}
-else{
-    p = dmg
-    if owner.magicResist+owner.damageResist[dmgType] > 0
-    {p /= 1+owner.magicResist+owner.damageResist[dmgType]}
-    else
-    {p *= 1+abs(owner.magicResist+owner.damageResist[dmgType])}
-}
+p = (dmg)*(min(1-((t.armour-(pen))/100),1))
+damageChar(t,p,dmgType)
 
-p = max(0,floor(p+random(.99)))
-t.life -= p
-
-i = instance_create(t.x,t.y,obj_text)
-i.z = t.z+(metre*2)
-i.t = p
-if p = 0
-{
-    i.t = 'No Damage'
-}
-
+//Modify The Text pop up for crits and failed armour pen
 if sweetSpot = true
 {
     i.c2 = c_yellow
@@ -38,7 +20,7 @@ else if min(1-((t.armour-(pen))/100),1) <= .8
     i.c2 = c_gray
 }
 
- //Temp Apply Bleed
+//Apply Bleed
 if dmgType != dmgType.impact and irandom(5) < p
 {
     applyStatus(t,bleed,1,6)
@@ -47,19 +29,62 @@ if dmgType != dmgType.impact and irandom(5) < p
 //Dif damage types might have dif particles later
 createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
 
-if t.clashing = true
+//Shake
+if owner.player = true
 {
-    with(t)
-    {
-        endClash()
-    }
+    obj_control.shake += impact
 }
 
-//Impact
-t.hspd += lengthdir_x(power(2+impact,.9),point_direction(originX,originY,t.x,t.y))/t.weight
-t.vspd += lengthdir_y(power(2+impact,.9),point_direction(originX,originY,t.x,t.y))/t.weight
+#define damageChar
+p = argument1
+
+//Damage
+if (argument2 < 7){   
+    if argument0.physicalResist+argument0.damageResist[argument2] > 0
+    {p /= 1+argument0.physicalResist+argument0.damageResist[argument2]}
+    else
+    {p *= 1+abs(argument0.physicalResist+argument0.damageResist[argument2])}   
+}
+else{
+    if argument0.magicResist+argument0.damageResist[argument2] > 0
+    {p /= 1+argument0.magicResist+argument0.damageResist[argument2]}
+    else
+    {p *= 1+abs(argument0.magicResist+argument0.damageResist[argument2])}
+}
+
+p = max(0,floor(p+random(.99)))
+argument0.life -= p
+
+i = instance_create(argument0.x,argument0.y,obj_text)
+i.z = argument0.z+(metre*2)
+i.t = p
+
+if p = 0
+{
+    i.t = ''
+}
+
+if argument0.life <= 0
+{
+    killChar(argument0)
+}
+
+
+#define impactChar
+t = argument0
+impact = argument1
+dir = argument2
+punt = argument3
+
+t.hspd += (lengthdir_x(power(2+impact,.9),dir)/t.weight)*punt
+t.vspd += (lengthdir_y(power(2+impact,.9),dir)/t.weight)*punt
 t.stability -= 3+(impact/2)
 t.stabilityDelay = 1
+
+if impact > 5
+{
+    t.dangerous = true
+}
 
 if t.stability <= 0
 {
@@ -67,34 +92,39 @@ if t.stability <= 0
     t.stability = t.stabilityMax
 }
 
-//Stagger
-t.canMove = false
-t.moveTimer += .5
-
-with(t)
+if t.life > 0
 {
-    if abs(angle_difference(other.image_angle,facing)) < 90
+    //Stagger
+    t.canMove = false
+    t.moveTimer += .5
+    
+    with(t)
     {
-        animationStart(humanoidFlinchForward,0)
-    }
-    else
-    {
-        animationStart(humanoidFlinchBackward,0)
+        if abs(angle_difference(other.dir,facing)) < 90
+        {
+            animationStart(humanoidFlinchForward,0)
+        }
+        else
+        {
+            animationStart(humanoidFlinchBackward,0)
+        }
     }
 }
 
 //Shake
-if owner.player = true or t.player = true
+if t.player = true
 {
     obj_control.shake += impact
 }
 
-//Check Death
-if t.life <= 0
+//End Clashes
+if t.clashing = true
 {
-    killChar(t)
+    with(t)
+    {
+        endClash()
+    }
 }
-
 
 #define killChar
 with(argument0)

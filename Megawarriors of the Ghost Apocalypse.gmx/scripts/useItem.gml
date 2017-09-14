@@ -9,6 +9,8 @@ if clashing = true  //Clash Button Mash
     {
         //Add progress
         interactProgress += .2*(weight/clashingWith.weight)
+        animDelay[1] = 0.01
+        animDelay[2] = 0.01
         
         //Win Clash
         if interactProgress >= clashingWith.interactProgress+1
@@ -154,8 +156,8 @@ hold[argument0] = 0
 animationStart(handItem[argument0].anim[queuedAnim[argument0]],argument0)
 
 //Lunge
-hspd += lengthdir_x((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.8)),facing)
-vspd += lengthdir_y((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.8)),facing)
+hspd += lengthdir_x((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.9)),facing)
+vspd += lengthdir_y((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.9)),facing)
 
 if charge[argument0] = 2
 {

@@ -60,6 +60,7 @@ sneak = false
 sneakMovePen = .5
 
 staggered = false
+dangerous = false
 
 canRoll = true
 dodgeCost = 1
@@ -495,7 +496,8 @@ if moveTimer > 0
     
     if moveTimer <= 0
     {
-        canMove = true        
+        canMove = true   
+        dangerous = false     
     }
 }
 
@@ -551,6 +553,17 @@ if (clashing = true)
     if instance_exists(clashingWith)
     {
         facing = point_direction(x,y,clashingWith.x,clashingWith.y)
+        
+        if distance_to_point(clashingWith.x,clashingWith.y) > metre/2
+        {
+            hspd += lengthdir_x(10/global.frameRate,facing)
+            vspd += lengthdir_y(10/global.frameRate,facing)
+        }
+        else
+        {
+            hspd = 0
+            vspd = 0
+        }
     }
     else
     {
@@ -577,7 +590,7 @@ draw_sprite(spr_shadow,0,round(x),round(y)-floorID.wz)
 if player = true
 {
     draw_set_colour(c_yellow)
-    draw_ellipse(round(x-5),round(y-2)-floorID.wz,round(x+3),round(y+2)-floorID.wz,false)
+    draw_ellipse(round(x-5),round(y-2)-floorID.wz,round(x+3),round(y+2)-floorID.wz,false)   
 }
 
 //Draw Surface
@@ -672,6 +685,8 @@ facing = point_direction(x,y,argument0.x,argument0.y)
 interactProgress = 0
 canMove = false
 moveTimer = 0
+sweetSpot = false
+fumble = false
 hspd = lengthdir_x(8,facing)
 vspd = lengthdir_y(8,facing)
 
@@ -684,6 +699,8 @@ argument0.facing = point_direction(argument0.x,argument0.y,x,y)
 argument0.interactProgress = 0
 argument0.canMove = false
 argument0.moveTimer = 0
+argument0.sweetSpot = false
+argument0.fumble = false
 argument0.hspd = lengthdir_x(8,argument0.facing)
 argument0.vspd = lengthdir_y(8,argument0.facing)
 
@@ -695,23 +712,28 @@ with(argument0)
 
 with(obj_char)
 {
-    if point_distance(ix,iy,x,y) < 8*metre
+    if id != other and id != argument0
     {
-        //Impact
-        hspd += lengthdir_x(5,point_direction(ix,iy,x,y))
-        vspd += lengthdir_y(5,point_direction(ix,iy,x,y))
-
-        //Stagger
-        canMove = false
-        moveTimer += 1.5
+        if point_distance(ix,iy,x,y) < 8*metre
+        {
+            applyStatus(id,stun,1,.1)    
         
-        if abs(angle_difference(point_direction(ix,iy,x,y),facing)) < 90
-        {
-            animationStart(humanoidFlinchForward,0)
-        }
-        else
-        {
-            animationStart(humanoidFlinchBackward,0)
+            //Impact
+            hspd += lengthdir_x(5,point_direction(ix,iy,x,y))
+            vspd += lengthdir_y(5,point_direction(ix,iy,x,y))
+    
+            //Stagger
+            canMove = false
+            moveTimer += 1.5
+            
+            if abs(angle_difference(point_direction(ix,iy,x,y),facing)) < 90
+            {
+                animationStart(humanoidFlinchForward,0)
+            }
+            else
+            {
+                animationStart(humanoidFlinchBackward,0)
+            }
         }
     }
 }
@@ -723,6 +745,7 @@ if instance_exists(clashingWith)
     clashingWith.clashing = false 
     clashingWith.clashingWith = noone
 }
+
 
 moveTimer += .1
 clashing = false 

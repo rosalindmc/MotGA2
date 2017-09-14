@@ -179,7 +179,7 @@
           <script>scripts\dropItem.gml</script>
           <script>scripts\inventoryControl.gml</script>
           <script>scripts\spendStamina.gml</script>
-          <script>scripts\damageChar.gml</script>
+          <script>scripts\hitChar.gml</script>
           <script>scripts\dodgeRoll.gml</script>
           <scripts name="AI">
             <script>scripts\aiMaster.gml</script>
