@@ -33,11 +33,12 @@ switchItem(-1,2);
 
 other.grappling = true
 
-other.moveMult = 0.5
+other.moveMult -= 0.5
 other.canRoll = false
 other.canInv = false
 
 instance_destroy()
+
 #define openUp
 if(argument0 = global.pc){
     //run a switch for which kind of crate this is

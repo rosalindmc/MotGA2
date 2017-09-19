@@ -98,6 +98,10 @@ if handItem[argument0] != noone
         {
             hspd = lengthdir_x(throwSpeed,other.facing)
             vspd = lengthdir_y(throwSpeed,other.facing)
+            dir = other.facing
+            dangerous = true
+            sweetSpot = other.sweetSpot
+            thrower = other
             zspd += 5
             spin = throwSpin
         }
@@ -132,6 +136,7 @@ else    //Char Throw
         }
     }
     grappling = false
+    moveMult += 0.5
     canRoll = true
     canInv = true
     if(instance_exists(grappleTarg)){

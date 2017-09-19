@@ -33,11 +33,10 @@ switch(argument0)
     gwCostMult = 1
     
     throwPow = 1
-    throwVariance = 1
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
-    throwSpeed = 10
+    throwSpeed = 30
     throwSpin = 360
     throwCost = 1
     throwType = dmgType.rend
@@ -112,8 +111,13 @@ switch(argument0)
     meleeCost = 1
     meleePen = 5  
     
-    throwLunge = 5
-    throwSpeed = 15
+    throwPow = 2.4
+    throwRate = 2
+    throwImpact = 8
+    throwLunge = 7
+    throwSpeed = 40
+    throwCost = 1
+    throwPen = 10
     break
 }
 
@@ -143,6 +147,14 @@ switch(argument0)
     meleePen = 10
     
     gwPowMult = 1.4  
+    
+    throwPow = 2.4
+    throwRate = 1.5
+    throwImpact = 5
+    throwLunge = 7
+    throwSpeed = 30
+    throwCost = 2
+    throwPen = 15
     break
 }
 
@@ -160,8 +172,7 @@ switch(argument0)
     length = 35
     holdPoint = -1
     gwPoint = 3
-    
-               
+                   
     //Weapon Stats
     meleePow = 1.4
     meleeRate = 1.1
@@ -173,5 +184,13 @@ switch(argument0)
     meleePen = 15 
     
     gwPowMult = 1.5
+       
+    throwPow = 2.8
+    throwRate = 1.3
+    throwImpact = 5
+    throwLunge = 7
+    throwSpeed = 25
+    throwCost = 3
+    throwPen = 20
     break
 }

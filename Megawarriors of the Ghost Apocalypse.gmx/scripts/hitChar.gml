@@ -8,16 +8,19 @@ impactChar(t,impact,point_direction(originX,originY,t.x,t.y),1)
 
 //Damage
 p = (dmg)*(min(1-((t.armour-(pen))/100),1))
-damageChar(t,p,dmgType)
+damageChar(t,p,dmgType,visNumbers)
 
 //Modify The Text pop up for crits and failed armour pen
-if sweetSpot = true
-{
-    i.c2 = c_yellow
-}
-else if min(1-((t.armour-(pen))/100),1) <= .8
-{
-    i.c2 = c_gray
+if visNumbers = true
+{    
+    if sweetSpot = true
+    {
+        i.c2 = c_yellow
+    }
+    else if min(1-((t.armour-(pen))/100),1) <= .8
+    {
+        i.c2 = c_gray
+    }
 }
 
 //Apply Bleed
@@ -55,13 +58,16 @@ else{
 p = max(0,floor(p+random(.99)))
 argument0.life -= p
 
-i = instance_create(argument0.x,argument0.y,obj_text)
-i.z = argument0.z+(metre*2)
-i.t = p
-
-if p = 0
+if argument3 = true
 {
-    i.t = ''
+    i = instance_create(argument0.x,argument0.y,obj_text)
+    i.z = argument0.z+(metre*2)
+    i.t = p
+    
+    if p = 0
+    {
+        i.t = ''
+    }
 }
 
 if argument0.life <= 0
@@ -71,6 +77,11 @@ if argument0.life <= 0
 
 
 #define impactChar
+//Eventually Add z dir to impact
+//type 0 z is a knockback, behaves as coded below
+//type 1 z is a knockdown, if stability is reduced to 0 the target is proned
+//type 2 z is a punt, target is given upwards z speed and can't move again until grounded
+//stability reduced to 0 and they will be proned upon landing
 t = argument0
 impact = argument1
 dir = argument2

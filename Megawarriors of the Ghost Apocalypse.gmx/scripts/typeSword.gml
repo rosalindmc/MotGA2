@@ -33,15 +33,14 @@ switch(argument0)
     gwCostMult = 1
     
     throwPow = 1
-    throwVariance = 1
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
-    throwSpeed = 5
-    throwSpin = 180
+    throwSpeed = 25
+    throwSpin = 0
     throwCost = 1
     throwType = dmgType.pierce
-    throwPen = 0
+    throwPen = 25
     
     anim[0] = weaponIdle    //Idle Anim
     anim[1] = weaponSlash   //Basic Attack
@@ -115,8 +114,11 @@ switch(argument0)
     meleeCost = 1
     meleePen = 0
     
-    
-    
+    throwPow = 1.5
+    throwRate = 1.8
+    throwImpact = 5
+    throwLunge = 5
+    throwCost = 1
     break
 }
 
@@ -136,7 +138,7 @@ switch(argument0)
     gwPoint = 1
     
     //Weapon Stats
-    meleePow = 1.4
+    meleePow = 1.5
     meleeRate = 1.7
     meleeImpact = 4
     meleeLunge = 5
@@ -144,6 +146,14 @@ switch(argument0)
     meleeSize = 1.1
     meleeCost = 2
     meleePen = -25   
+    
+    throwPow = 2
+    throwRate = 2
+    throwImpact = 6
+    throwLunge = 7
+    throwCost = 2
+    throwSpin = 360
+    throwPen = -25
     break
 }
 
@@ -173,6 +183,12 @@ switch(argument0)
     meleePen = 0  
     
     gwPowMult = 1.4
+    
+    throwPow = 2
+    throwRate = 1.4
+    throwImpact = 6
+    throwLunge = 5
+    throwCost = 2
     break
 }
 
@@ -202,6 +218,12 @@ switch(argument0)
     meleePen = 0  
     
     gwPowMult = 1.5
+    
+    throwPow = 2.2
+    throwRate = 1.2
+    throwImpact = 7
+    throwLunge = 4
+    throwCost = 3
     break
 }
 
@@ -231,5 +253,11 @@ switch(argument0)
     meleePen = 25  
     
     gwPowMult = 1.4
+    
+    throwPow = 4
+    throwRate = 1.6
+    throwImpact = 7
+    throwLunge = 5
+    throwCost = 1
     break
 }

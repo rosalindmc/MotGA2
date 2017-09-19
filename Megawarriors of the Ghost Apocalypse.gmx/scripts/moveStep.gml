@@ -33,7 +33,7 @@ if (place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line
     if dangerous = true
     {
         collide = true
-        hspd *= 1
+        hspd *= .2
     }   
     else
     {
@@ -56,7 +56,7 @@ if (place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line
     if dangerous = true
     {
         collide = true
-        vspd *= 1
+        vspd *= .2
     } 
     else
     {
@@ -91,12 +91,27 @@ if collide = true
     dangerous = false
     collide = false
     
-    
     cPow = point_distance(0,0,hspd,vspd)
+    
+    i = instance_create(x+lengthdir_x(metre*1.5,point_direction(0,0,hspd,vspd)),y+lengthdir_y(metre*1.5,point_direction(0,0,hspd,vspd)),obj_meleeCollider)
+    i.owner = id
+    i.originX = x
+    i.originY = y
+    i.dist = 0
+    i.image_angle = point_direction(0,0,hspd,vspd)
+    i.dmgType = dmgType.impact
+    i.dmg = cPow*.1
+    i.impact = cPow*.1    
+    i.pen = 100
+    i.z = 0
+    i.visNumbers = false
+    i.sprite_index = spr_slam
+    i.image_alpha = 0
+
     if life > 0
     {
-    impactChar(id,cPow*.1,point_direction(0,0,hspd,vspd),.2)
-    damageChar(id,min((1+(cPow*.05*weight))/2,3),dmgType.impact)
+        impactChar(id,cPow*.1,point_direction(0,0,hspd,vspd),.2)
+        damageChar(id,min((1+(cPow*.05*weight))/2,3),dmgType.impact,false)
     }
 }
 
@@ -118,6 +133,7 @@ else
     hspd = 0
     vspd = 0
     spin = 0
+    dangerous = false
     z = floorZ
 }
 
@@ -128,7 +144,16 @@ if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(
     {
         x += sign(hspd)
     }
-    hspd = 0
+    
+    if dangerous = true
+    {
+        collide = true
+        hspd *= 1
+    }   
+    else
+    {
+        hspd = 0
+    }
 }
 
 x += metre*hspd/global.frameRate
@@ -140,7 +165,38 @@ if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(
     {
         y += sign(vspd)
     }
-    vspd = 0
+    
+    if dangerous = true
+    {
+        collide = true
+        vspd *= 1
+    }   
+    else
+    {
+        vspd = 0
+    }
+}
+
+
+if collide = true
+{
+    dangerous = false
+    collide = false
+       
+    i = instance_create(x,y,obj_meleeCollider)
+    i.owner = id
+    i.originX = x
+    i.originY = y
+    i.dist = 0
+    i.image_angle = dir
+    i.dmgType = throwType
+    i.dmg = throwPow*thrower.damageMod*(1+(thrower.perfectTimeDmgMod*sweetSpot))
+    i.impact = throwImpact*thrower.impactMod
+    i.pen = throwPen+thrower.penMod
+    i.sweetSpot = sweetSpot
+    i.z = z
+    i.sprite_index = spr_stab
+    i.image_alpha = 0
 }
 
 y += metre*vspd/global.frameRate

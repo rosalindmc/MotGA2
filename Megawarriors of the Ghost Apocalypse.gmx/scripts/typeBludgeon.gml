@@ -33,12 +33,11 @@ switch(argument0)
     gwCostMult = 1
     
     throwPow = 1
-    throwVariance = 1
     throwRate = 1
     throwImpact = 1
     throwLunge = 0
-    throwSpeed = 5
-    throwSpin = 180
+    throwSpeed = 20
+    throwSpin = 0
     throwCost = 1
     throwType = dmgType.impact
     throwPen = 0
@@ -114,6 +113,11 @@ switch(argument0)
     meleePen = 15 
     
     gwPowMult = 1.5
+    
+    throwPow = 1
+    throwRate = 1
+    throwImpact = 6
+    throwCost = 3
     break
 }
 
@@ -143,5 +147,11 @@ switch(argument0)
     meleePen = 25 
     
     gwPowMult = 1.55
+        
+    throwPow = 1.4
+    throwRate = .8
+    throwImpact = 7
+    throwCost = 4
+    throwSpeed = 15
     break
 }

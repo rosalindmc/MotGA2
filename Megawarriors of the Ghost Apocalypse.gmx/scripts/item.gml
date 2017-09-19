@@ -53,7 +53,11 @@ floorZ = 0
 z = 0
 spin = 0
 
+dir = 0
 interactId = noone
+dangerous = false
+thrower = noone
+sweetSpot = false
 
 weaponEssentials(0)
 

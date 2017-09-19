@@ -222,8 +222,8 @@ switch (type){
         
         penMod = wit
         
-        physicalResist = 1+(vitality-4)*0.05
-        magicResist = .5+(magic-4)*0.05
+        physicalResist = 1.5+(vitality-4)*0.05
+        magicResist = 1.5+(magic-4)*0.05
         perfectTimeDmgMod = 0
         
         break;
@@ -246,8 +246,8 @@ switch (type){
         penMod = wit
         xpMult = 1+((wit-4)*.05)
         
-        physicalResist = 1+(vitality-4)*0.05
-        magicResist = .5+(magic-4)*0.05
+        physicalResist = 1.5+(vitality-4)*0.05
+        magicResist = 1.5+(magic-4)*0.05
         
         shrineMod = 1 + (charisma-4)*0.1
         perfectTimeDmgMod = charisma*0.05
@@ -270,8 +270,8 @@ switch (type){
     
         penMod = wit
         
-        physicalResist = 1+(vitality-4)*0.05
-        magicResist = .5+(magic-4)*0.05
+        physicalResist = 1.5+(vitality-4)*0.05
+        magicResist = 1.5+(magic-4)*0.05
         
         break
     
