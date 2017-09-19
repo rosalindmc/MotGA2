@@ -38,6 +38,11 @@ impactDeath = false
 reflectOnly = false
 life = 10
 
+col1 = c_white
+col2 = c_white
+spr2 = spr_none
+img2 = spr_none
+
 image_angle = 0
 image_speed = 0
 
@@ -70,7 +75,8 @@ if life <= 0
 #define particleDraw
 if reflectOnly = false
 {
-    draw_sprite_ext(sprite_index,image_index,x,y-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+    draw_sprite_ext(sprite_index,image_index,x,y-z,image_xscale,image_yscale,image_angle,col1,image_alpha)
+    draw_sprite_ext(spr2,img2,x,y-z,image_xscale,image_yscale,image_angle,col2,image_alpha)
 }
 else
 {

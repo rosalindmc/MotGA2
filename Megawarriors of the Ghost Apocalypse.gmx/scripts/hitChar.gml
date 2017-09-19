@@ -73,6 +73,24 @@ if argument3 = true
 if argument0.life <= 0
 {
     killChar(argument0)
+    
+    p += choose(0,0,0,1,1,2,2,3)
+    with(argument0)
+    {
+        if other.p > lifeMax
+        {
+            gibLegs(argument2)
+        }
+        else if other.p > vitality*1.5
+        {
+            gibHead(argument2)
+        }
+        else if other.p > vitality
+        {
+            gibArm(argument2,choose(1,2))
+        }
+    }
+    
 }
 
 

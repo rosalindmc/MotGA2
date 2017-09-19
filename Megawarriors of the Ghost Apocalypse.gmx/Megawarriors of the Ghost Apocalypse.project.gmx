@@ -177,6 +177,7 @@
           <script>scripts\useItem.gml</script>
           <script>scripts\interact.gml</script>
           <script>scripts\dropItem.gml</script>
+          <script>scripts\gibArm.gml</script>
           <script>scripts\inventoryControl.gml</script>
           <script>scripts\spendStamina.gml</script>
           <script>scripts\hitChar.gml</script>

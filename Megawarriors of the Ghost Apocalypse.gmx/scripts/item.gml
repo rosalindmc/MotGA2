@@ -58,6 +58,7 @@ interactId = noone
 dangerous = false
 thrower = noone
 sweetSpot = false
+collide = false
 
 weaponEssentials(0)
 

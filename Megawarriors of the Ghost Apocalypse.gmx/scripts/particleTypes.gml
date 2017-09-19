@@ -35,7 +35,7 @@ i = 2+random(6)
 dir = argument0-60+random(120)
 
 hspd = lengthdir_x(i,dir)
-vspd = lengthdir_x(i,dir)
+vspd = lengthdir_y(i,dir)
 zspd = -1+random(10)
 gravMult = 1
 bounciness = .75
@@ -65,7 +65,7 @@ i = 1+random(1)
 dir = random(360)
 
 hspd = lengthdir_x(i,dir)
-vspd = lengthdir_x(i,dir)
+vspd = lengthdir_y(i,dir)
 zspd = -1+random(3)
 gravMult = 1
 spin = random(360)*choose(-1,1)
@@ -100,7 +100,22 @@ if floorID.isRiver = false
 }
 else
 {
-    createParticle(x,y,z,5,partBloodyWater,image_xscale)
+    createParticle(x,y,z,3,partBloodyWater,image_xscale)
+}
+
+#define gibSplat
+if floorID.isRiver = false
+{
+    surface_set_target(global.decalSurf)
+    draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,col1,image_alpha)
+    draw_sprite_ext(spr2,img2,x,y,image_xscale,image_yscale,image_angle,col2,image_alpha)
+    surface_reset_target()
+    createParticle(x,y,z+3,3,partBlood,random(360))
+}
+else
+{   
+    createParticle(x,y,z,3,partBloodyWater,random(2))
+    createParticle(x,y,z,3,partSplash,random(2))
 }
 
 #define splat
@@ -126,10 +141,24 @@ dir = random(359)
 spin = random(90)*choose(-1,1)
 
 hspd = lengthdir_x(i,dir)
-vspd = lengthdir_x(i,dir)
+vspd = lengthdir_y(i,dir)
 animSpeed = 0
 
 growth = random(1)
 fade = .1
 reflectOnly = true
 sprite_index = spr_bloodSplat
+
+#define partGib
+dir = argument0-60+random(120)
+i = 4+random(4)
+
+hspd = lengthdir_x(i,dir)
+vspd = lengthdir_y(i,dir)
+zspd = 3+random(7)
+gravMult = 1
+
+spin = random(90)*choose(1,-1)
+
+impactDeath = true
+onDeath = gibSplat

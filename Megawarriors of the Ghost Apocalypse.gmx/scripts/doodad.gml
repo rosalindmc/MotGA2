@@ -156,6 +156,11 @@ with(i){
     handX[2] = other.handX[2]
     handY[2] = other.handY[2]
     
+    headAlpha = other.headAlpha
+    hipsAlpha = other.hipsAlpha
+    armAlpha[1] = other.armAlpha[1]
+    armAlpha[2] = other.armAlpha[2]
+    
     canMove = false
     grappled = other.grappled
     grappling = false

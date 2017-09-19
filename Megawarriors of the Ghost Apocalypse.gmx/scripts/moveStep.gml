@@ -137,6 +137,8 @@ else
     z = floorZ
 }
 
+collide = false
+
 //Horizontal Collision
 if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true)
 {
