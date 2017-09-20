@@ -117,11 +117,11 @@ switch(argument1)
         
         if argument0 = 1
         {
-            applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2)
+            applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id)
         }
         else
         {
-            applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2)    
+            applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id)    
         }
         
     }
@@ -169,11 +169,11 @@ canMove = false
 
 if argument0 = 1
 {
-    applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5)
+    applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)
 }
 else
 {
-    applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5)    
+    applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)    
 }
 
 #define meleeHit

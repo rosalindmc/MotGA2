@@ -61,6 +61,7 @@ sneakMovePen = .5
 
 staggered = false
 dangerous = false
+launcher = noone
 
 canRoll = true
 dodgeCost = 1
@@ -222,8 +223,8 @@ switch (type){
         
         penMod = wit
         
-        physicalResist = 1.5+(vitality-4)*0.05
-        magicResist = 1.5+(magic-4)*0.05
+        physicalResist = 0+(vitality-4)*0.05
+        magicResist = 0+(magic-4)*0.05
         perfectTimeDmgMod = 0
         
         break;
@@ -246,8 +247,8 @@ switch (type){
         penMod = wit
         xpMult = 1+((wit-4)*.05)
         
-        physicalResist = 1.5+(vitality-4)*0.05
-        magicResist = 1.5+(magic-4)*0.05
+        physicalResist = 0+(vitality-4)*0.05
+        magicResist = 0+(magic-4)*0.05
         
         shrineMod = 1 + (charisma-4)*0.1
         perfectTimeDmgMod = charisma*0.05
@@ -270,9 +271,8 @@ switch (type){
     
         penMod = wit
         
-        physicalResist = 1.5+(vitality-4)*0.05
-        magicResist = 1.5+(magic-4)*0.05
-        
+        physicalResist = 0+(vitality-4)*0.05
+        magicResist = 0+(magic-4)*0.05    
         break
     
     default:
@@ -716,7 +716,7 @@ with(obj_char)
     {
         if point_distance(ix,iy,x,y) < 8*metre
         {
-            applyStatus(id,stun,1,.1)    
+            applyStatus(id,stun,1,.1,id)    
         
             //Impact
             hspd += lengthdir_x(5,point_direction(ix,iy,x,y))

@@ -4,22 +4,25 @@
 ix = x+(shldrX[argument1]-(charSurfSize*.5))
 iy = y
 iz = ((charSurfSize*.75)-shldrY[argument1])
+dir = random(360)
 
 switch(argument0)
 {
     case dmgType.rend:
     armAlpha[argument1] = 0
-    createParticle(ix,iy,iz,1,partGib,random(360))
-    createParticle(ix,iy,iz,5,partBlood,random(360))
+    createParticle(ix,iy,iz,5,partBlood,dir)
+    createParticle(ix,iy,iz,1,partGib,dir)
     i.sprite_index = armSprite
     i.image_index = armLength[argument1]
     i.spr2 = clothingSprite
     i.img2 = 10+armLength[argument1]
     i.col1 = skinTone
+    i.zspd = -3+random(7)
     break
     case dmgType.impact:
     armAlpha[argument1] = 0
-    createParticle(ix,iy,iz,5,partBlood,random(360))
+    createParticle(ix,iy,iz,2,partBone,dir)
+    createParticle(ix,iy,iz,5,partBlood,dir)
     break
 }
 
@@ -28,13 +31,14 @@ switch(argument0)
 ix = x+(headX-(charSurfSize*.5))
 iy = y
 iz = ((charSurfSize*.75)-headY)
+dir = random(360)
 
 switch(argument0)
 {
     case dmgType.rend:
     headAlpha = 0
-    createParticle(ix,iy,iz,10,partBlood,random(360))
-    createParticle(ix,iy,iz,1,partGib,random(360))
+    createParticle(ix,iy,iz,10,partBlood,dir)
+    createParticle(ix,iy,iz,1,partGib,dir)
     i.sprite_index = headSprite
     i.image_index = headImage+vFacing
     i.col1 = skinTone
@@ -52,7 +56,8 @@ switch(argument0)
     break
     case dmgType.impact:
     headAlpha = 0
-    createParticle(ix,iy,iz,10,partBlood,random(360))
+    createParticle(ix,iy,iz,4,partBone,dir)
+    createParticle(ix,iy,iz,10,partBlood,dir)
     break
 }
 
@@ -61,21 +66,24 @@ switch(argument0)
 ix = x+(hipsX-(charSurfSize*.5))
 iy = y
 iz = ((charSurfSize*.75)-hipsY)
+dir = random(360)
 
 switch(argument0)
 {
     case dmgType.rend:
     hipsAlpha = 0
-    createParticle(ix,iy,iz,1,partGib,random(360))
-    createParticle(ix,iy,iz,20,partBlood,random(360))
+    createParticle(ix,iy,iz,20,partBlood,dir)
+    createParticle(ix,iy,iz,1,partGib,dir)
     i.sprite_index = hipsSprite
     i.image_index = hipsImage+hipsVFacing
     i.spr2 = clothingSprite
     i.img2 = 20+hipsImage+hipsVFacing
     i.col1 = skinTone
+    i.zspd = -2+random(2)
     break
     case dmgType.impact:
-    createParticle(ix,iy,iz,20,partBlood,random(360))
+    createParticle(ix,iy,iz,6,partBone,dir)
+    createParticle(ix,iy,iz,20,partBlood,dir)
     hipsAlpha = 0
     break
 }

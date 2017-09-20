@@ -138,6 +138,7 @@
       <sprite>sprites\spr_bloodSplat</sprite>
       <sprite>sprites\spr_waterSplat</sprite>
       <sprite>sprites\spr_stunSpiral</sprite>
+      <sprite>sprites\spr_boneShard</sprite>
     </sprites>
     <sprites name="Mask">
       <sprite>sprites\spr_mask</sprite>

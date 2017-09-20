@@ -2,7 +2,7 @@
 
 
 #define applyStatus
-//Apply a status effect to a character(target,type,potency,duration,maxStacks)
+//Apply a status effect to a character(target,type,potency,duration,origin)
 
 i = instance_create(argument0.x,argument0.y,obj_status)
 with(i)
@@ -11,7 +11,7 @@ with(i)
     effect = argument1
     potency = argument2
     life = argument3
-    
+    creator = argument4
     
     if(!script_execute(effect,0)){//if an effect can stack, make sure it returns false
         tickTimer1 = tickLength1

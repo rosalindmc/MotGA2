@@ -95,12 +95,12 @@ sprite_index = spr_sheen
 if floorID.isRiver = false
 {
     surface_set_target(global.decalSurf)
-    draw_sprite_ext(splatDecal,random(100),x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha)    
+    draw_sprite_ext(splatDecal,random(100),x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha*(.3+random(.4)))    
     surface_reset_target()
 }
 else
 {
-    createParticle(x,y,z,3,partBloodyWater,image_xscale)
+    createParticle(x,y,z,1+irandom(2),partBloodyWater,image_xscale)
 }
 
 #define gibSplat
@@ -110,7 +110,7 @@ if floorID.isRiver = false
     draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,col1,image_alpha)
     draw_sprite_ext(spr2,img2,x,y,image_xscale,image_yscale,image_angle,col2,image_alpha)
     surface_reset_target()
-    createParticle(x,y,z+3,3,partBlood,random(360))
+    createParticle(x,y,z+3,3,partBlood,point_direction(hspd,vspd,0,0))
 }
 else
 {   
@@ -162,3 +162,19 @@ spin = random(90)*choose(1,-1)
 
 impactDeath = true
 onDeath = gibSplat
+#define partBone
+dir = argument0-60+random(120)
+i = 4+random(4)
+
+hspd = lengthdir_x(i,dir)
+vspd = lengthdir_y(i,dir)
+zspd = 3+random(7)
+gravMult = 1
+
+spin = random(180)*choose(1,-1)
+
+sprite_index = spr_boneShard
+
+impactDeath = true
+onDeath = splat
+splatDecal = spr_boneShard

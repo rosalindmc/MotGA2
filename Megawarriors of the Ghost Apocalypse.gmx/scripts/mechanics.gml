@@ -10,7 +10,7 @@ icon = ico_stun
 draw = false
 
 owner.moveMult -= potency
-owner.physicalResist -= .5
+owner.physicalResist -= .2
 return ret;
 break
 case 1:     //Primary Tick Effect
@@ -21,7 +21,7 @@ break
 
 case 3:     //Destroy Effect
 owner.moveMult += potency
-owner.physicalResist += .75
+owner.physicalResist += .2
 break
 case 4:     //Draw Event
 break
@@ -36,7 +36,7 @@ icon = ico_stun
 draw = false
 
 owner.moveMult -= potency
-owner.physicalResist -= .5
+owner.physicalResist -= .2
 return ret;
 break
 case 1:     //Primary Tick Effect
@@ -47,7 +47,7 @@ break
 
 case 3:     //Destroy Effect
 owner.moveMult += potency
-owner.physicalResist += .75
+owner.physicalResist += .2
 break
 case 4:     //Draw Event
 break

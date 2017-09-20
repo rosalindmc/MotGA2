@@ -24,7 +24,7 @@ switch(argument0)
     meleeCost = 1
     meleePen = 0
     
-    gwPowMult = 1.35
+    gwPowMult = 1.25
     gwRateMult = .8
     gwImpactMult = 1.3
     gwLungeMult = 1.2
@@ -62,7 +62,7 @@ switch(argument0)
         meleeType[i] = dmgType.rend
         meleeAttackMask[i] = spr_slash
         meleePowMult[i] = 1
-        meleeChargePowMult[i] = 1.5
+        meleeChargePowMult[i] = 1.35
         meleeRateMult[i] = 1
         meleeImpactMult[i] = 1
         meleeLungeMult[i] = 1
@@ -74,6 +74,7 @@ switch(argument0)
     
     meleePenMod[2] = 25
     meleeAttackMask[3] = spr_slam
+    meleePowMult[3] = .6
     meleeChargePowMult[3] = 2
     meleeImpactMult[3] = .7
     meleeCostMult[3] = 1.5
@@ -146,7 +147,7 @@ switch(argument0)
     meleeCost = 2
     meleePen = 10
     
-    gwPowMult = 1.4  
+    gwPowMult = 1.3  
     
     throwPow = 2.4
     throwRate = 1.5
@@ -178,12 +179,12 @@ switch(argument0)
     meleeRate = 1.1
     meleeImpact = 4
     meleeLunge = 5
-    meleeSlow = .5
+    meleeSlow = .3
     meleeSize = 1.1
     meleeCost = 3
     meleePen = 15 
     
-    gwPowMult = 1.5
+    gwPowMult = 1.35
        
     throwPow = 2.8
     throwRate = 1.3

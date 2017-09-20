@@ -19,7 +19,8 @@ if (owner != other and other.alive = true && (other.strike[1] || other.strike[2]
 {
     hit[peopleHit] = other
     peopleHit += 1
-
+    dmg -= 1
+    
     if owner.clashing = false && other.clashing = false
     {
         with(other)
@@ -41,6 +42,7 @@ else if (owner != other and other.alive = true && !other.strike[1] && !other.str
     hit[peopleHit] = other
     peopleHit += 1
     hitChar(other) 
+    dmg -= 1
 }
 
 

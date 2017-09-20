@@ -12,7 +12,7 @@ owner.canAttack = false
 owner.canDodge = false
 owner.staggered = true
 owner.canMove = false
-owner.physicalResist -= 1.5
+owner.physicalResist -= .5
 owner.moveTimer = life
 
 with(owner)
@@ -44,7 +44,7 @@ with(interactId)
 owner.canAttack = true
 owner.canDodge = true
 owner.staggered = false
-owner.physicalResist += 1.5
+owner.physicalResist += .5
 break
 case 4:     //Draw Event
 if instance_exists(owner)
@@ -70,7 +70,7 @@ icon = ico_bleed
 return false;//Because this effect can stack
 break
 case 1:     //Primary Tick Effect
-damageChar(owner,1,dmgType.blood,false)
+damageChar(owner,1,dmgType.blood,false,creator)
 createParticle(owner.x,owner.y,(owner.charSurfSize*.75)-owner.bodyY,8,partBlood,random(360))
 break
 case 2:     //Secondary Tick Effect

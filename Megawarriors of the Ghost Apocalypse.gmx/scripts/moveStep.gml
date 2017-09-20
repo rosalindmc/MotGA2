@@ -93,8 +93,8 @@ if collide = true
     
     cPow = point_distance(0,0,hspd,vspd)
     
-    i = instance_create(x+lengthdir_x(metre*1.5,point_direction(0,0,hspd,vspd)),y+lengthdir_y(metre*1.5,point_direction(0,0,hspd,vspd)),obj_meleeCollider)
-    i.owner = id
+    i = instance_create(x+lengthdir_x(metre*.5,point_direction(0,0,hspd,vspd)),y+lengthdir_y(metre*.5,point_direction(0,0,hspd,vspd)),obj_meleeCollider)
+    i.owner = launcher
     i.originX = x
     i.originY = y
     i.dist = 0
@@ -104,15 +104,19 @@ if collide = true
     i.impact = cPow*.1    
     i.pen = 100
     i.z = 0
-    i.visNumbers = false
-    i.sprite_index = spr_slam
     i.image_alpha = 0
-
-    if life > 0
+    //i.visNumbers = false
+    i.sprite_index = spr_slam
+    i.sticky = false
+    i.image_xscale = .8
+    i.image_yscale = .8   
+    
+    launcher = noone
+    /*if life > 0
     {
         impactChar(id,cPow*.1,point_direction(0,0,hspd,vspd),.2)
         damageChar(id,min((1+(cPow*.05*weight))/2,3),dmgType.impact,false)
-    }
+    }*/
 }
 
 //Bound to map
@@ -186,7 +190,7 @@ if collide = true
     collide = false
        
     i = instance_create(x,y,obj_meleeCollider)
-    i.owner = id
+    i.owner = thrower
     i.originX = x
     i.originY = y
     i.dist = 0

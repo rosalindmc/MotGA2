@@ -1,18 +1,13 @@
 #define hitChar
 t = argument0
-p = 0
-
-
-//Impact
-impactChar(t,impact,point_direction(originX,originY,t.x,t.y),1)
 
 //Damage
 p = (dmg)*(min(1-((t.armour-(pen))/100),1))
-damageChar(t,p,dmgType,visNumbers)
+damageChar(t,p,dmgType,visNumbers,owner)
 
 //Modify The Text pop up for crits and failed armour pen
 if visNumbers = true
-{    
+{   
     if sweetSpot = true
     {
         i.c2 = c_yellow
@@ -23,14 +18,24 @@ if visNumbers = true
     }
 }
 
+//Impact
+impactChar(t,impact,point_direction(originX,originY,t.x,t.y),1,owner)
+
 //Apply Bleed
 if dmgType != dmgType.impact and irandom(5) < p
 {
-    applyStatus(t,bleed,1,6)
+    applyStatus(t,bleed,1,6,owner)
 }
 
 //Dif damage types might have dif particles later
-createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
+if image_index = spr_slash
+{
+    createParticle(t.x,t.y,z,floor(p*5),partBlood,image_angle-(90*image_yscale))
+}
+else
+{
+    createParticle(t.x,t.y,z,floor(p*5),partBlood,point_direction(originX,originY,t.x,t.y))
+}
 
 //Shake
 if owner.player = true
@@ -39,7 +44,10 @@ if owner.player = true
 }
 
 #define damageChar
+//dmageChar(target,damage,type,dmgtext,damager)
+
 p = argument1
+attacker = argument4    //use later to do procs/on kill effects etc
 
 //Damage
 if (argument2 < 7){   
@@ -63,7 +71,7 @@ if argument3 = true
     i = instance_create(argument0.x,argument0.y,obj_text)
     i.z = argument0.z+(metre*2)
     i.t = p
-    
+      
     if p = 0
     {
         i.t = ''
@@ -113,11 +121,12 @@ t.stabilityDelay = 1
 if impact > 5
 {
     t.dangerous = true
+    t.launcher = argument4
 }
 
 if t.stability <= 0
 {
-    applyStatus(t,stun,1,3+abs(t.stability/5))
+    applyStatus(t,stun,1,3+abs(t.stability/5),argument4)
     t.stability = t.stabilityMax
 }
 
