@@ -124,7 +124,7 @@ if impact > 5
     t.launcher = argument4
 }
 
-if t.stability <= 0
+if t.stability <= 0 and t.alive = true
 {
     applyStatus(t,stun,1,3+abs(t.stability/5),argument4)
     t.stability = t.stabilityMax
