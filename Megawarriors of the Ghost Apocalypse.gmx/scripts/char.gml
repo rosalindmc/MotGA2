@@ -181,7 +181,7 @@ interactProgress = 0
 
 //Inventory
 canInv = true
-inventorySize = 10
+inventorySize = 5
 for(i = 0; i < inventorySize; i++)
 {
     inventory[i] = noone

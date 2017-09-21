@@ -162,6 +162,9 @@ spin = random(90)*choose(1,-1)
 
 impactDeath = true
 onDeath = gibSplat
+onUpdate = bloodDrip
+updateSpeed = 10
+
 #define partBone
 dir = argument0-60+random(120)
 i = 4+random(4)
@@ -178,3 +181,5 @@ sprite_index = spr_boneShard
 impactDeath = true
 onDeath = splat
 splatDecal = spr_boneShard
+#define bloodDrip
+createParticle(x,y,z,5,partBlood,point_direction(hspd,vspd,0,0))

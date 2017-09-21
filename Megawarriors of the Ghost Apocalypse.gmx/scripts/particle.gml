@@ -32,6 +32,8 @@ animSpeed = 10
 animDelay = 1
 
 onDeath = -4
+onUpdate = -4
+updateDelay = 1
 splatDecal = spr_none
 impactDeath = false
 
@@ -63,6 +65,16 @@ if animDelay <= 0
 {
     animDelay += 1
     image_index += 1
+}
+
+if onUpdate != -4
+{
+    updateDelay -= updateSpeed/global.frameRate
+    if updateDelay <= 0
+    {
+        updateDelay += 1
+        script_execute(onUpdate)
+    }
 }
 
 life -= 1/global.frameRate

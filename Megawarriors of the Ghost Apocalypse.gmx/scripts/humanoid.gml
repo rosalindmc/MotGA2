@@ -851,6 +851,7 @@ switch(argument0)
     
     animDelay[argument1] = .1
     footStep(1)
+    bleedOut()
     break
 
     case 1:
@@ -860,6 +861,7 @@ switch(argument0)
     hairRot = 135*hFacing
 
     animDelay[argument1] = .1
+    bleedOut()
     break
 
     case 2:
@@ -875,6 +877,7 @@ switch(argument0)
     flowTimer = .1
     
     animDelay[argument1] = .1
+    bleedOut()
     break
 
     case 3:
@@ -884,6 +887,7 @@ switch(argument0)
     headRot = 90*hFacing
     hairRot = 105*hFacing
     animDelay[argument1] = .1
+    bleedOut()
     break
 
     case 4:
@@ -894,6 +898,7 @@ switch(argument0)
     hairRot = 90*hFacing
     animDelay[argument1] = .1
     animSpeed[argument1] = 0
+    bleedOut()
     if (!player){
     corpseSpawn()
     instance_destroy()

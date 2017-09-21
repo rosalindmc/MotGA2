@@ -167,6 +167,13 @@ if t.clashing = true
 #define killChar
 with(argument0)
 {
+    if(!player and alive = true)
+    {
+        aiDestroy()
+        //Later Add check that player was near kill
+        gainExperience(xpReward)
+    }
+    
     alive = false
     animationStart(humanoidDie,0)
     animationReset(1)
@@ -183,13 +190,6 @@ with(argument0)
             inventory[i].interactId = ii
             inventory[i] = noone    
         }
-    }
-    
-    
-    if(!player){
-        aiDestroy()
-        //Later Add check that player was near kill
-        gainExperience(xpReward)
     }
     
     if (id == global.pc.autoTarget){

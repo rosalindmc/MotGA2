@@ -87,3 +87,36 @@ switch(argument0)
     hipsAlpha = 0
     break
 }
+#define bleedOut
+if armAlpha[1] = 0
+{
+    ix = x+(shldrX[1]-(charSurfSize*.5))
+    iy = y
+    iz = ((charSurfSize*.75)-shldrY[1])
+    dir = random(360)
+    createParticle(ix,iy,iz,3,partBlood,dir)
+}
+if armAlpha[2] = 0
+{
+    ix = x+(shldrX[2]-(charSurfSize*.5))
+    iy = y
+    iz = ((charSurfSize*.75)-shldrY[2])
+    dir = random(360)
+    createParticle(ix,iy,iz,3,partBlood,dir)
+}
+if headAlpha = 0
+{
+    ix = x+(headX-(charSurfSize*.5))
+    iy = y
+    iz = ((charSurfSize*.75)-headY)
+    dir = random(360)
+    createParticle(ix,iy,iz,3,partBlood,dir)
+}
+if hipsAlpha = 0
+{
+    ix = x+(hipsX-(charSurfSize*.5))
+    iy = y
+    iz = ((charSurfSize*.75)-hipsY)
+    dir = random(360)
+    createParticle(ix,iy,iz,3,partBlood,dir)
+}
