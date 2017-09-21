@@ -201,6 +201,8 @@ sEffect = ds_list_create()
 
 ctrlFacing = 0
 
+team = 0
+
 
 
 
