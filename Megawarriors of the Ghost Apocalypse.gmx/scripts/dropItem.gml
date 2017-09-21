@@ -12,6 +12,7 @@ if handItem[argument0] != noone
     i.name = handItem[argument0].name
     i.useType = pickUp
     handItem[argument0].interactId = i
+    inventory[handItemSlot[argument0]] = noone
     handItem[argument0] = noone
 }
 
