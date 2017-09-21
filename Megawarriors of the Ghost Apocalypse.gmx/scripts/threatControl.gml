@@ -10,7 +10,7 @@ if (global.owThreat < 5){
 
 global.threatTimer = true;
 
-global.threatSpeed = 60;
+global.threatSpeed = 1/30;
 //higher overworld threats will have their own starting lists that are more difficult
 
 #define threatUp
@@ -38,7 +38,10 @@ if(global.locThreat % 3 == 1){
     //show_message(global.owThreat);
 }
 
-global.locThreat++;
+if global.locThreat < 8
+{
+    global.locThreat++;
+}
 
 #define threatDown
 //Using a threat reducing ability runs this script
@@ -79,6 +82,8 @@ return 1;
 //speed up the time until the next threat
 
 //show_message('NeRP knows about you.  Hurry up');
+
+/*
 
 if(global.threatSpeed > 5)
     global.threatSpeed--

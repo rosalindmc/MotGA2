@@ -98,7 +98,7 @@ switch(argument0)
     sprite_index = spr_pike
     
     //Item Stats
-    length = 63
+    length = 63 
     holdPoint = 0
     gwPoint = 4
                      
@@ -134,7 +134,7 @@ switch(argument0)
     sprite_index = spr_spear
     
     //Item Stats
-    length = 37
+    length = 37 
     holdPoint = 4
     gwPoint = 3
                          

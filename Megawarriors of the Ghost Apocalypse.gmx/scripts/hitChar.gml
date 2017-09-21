@@ -202,13 +202,15 @@ with(argument0)
 #define gainExperience
 p = round(argument0*global.pc.xpMult)
 
-i = instance_create(global.pc.x,global.pc.y,obj_text)
-i.z = (metre*2)
+i = instance_create(60,view_hview-25,obj_text)
+i.z = 0
 i.t = '+'+string_format(p,0,1)+' XP'
 i.c1 = c_black
-i.c2 = c_purple
+i.c2 = uiXpPurple
+i.hud = true
 
 global.pc.xp += p
+global.xpTimer = 2
 
 if global.pc.xp > global.pc.xpToLevel
 {
@@ -217,9 +219,10 @@ global.pc.xpToLevel *= 1.4
 global.pc.combatLevel += 1
 global.pc.talentPoints += 1
 
-i = instance_create(global.pc.x,global.pc.y,obj_text)
-i.z = (metre*3)
+i = instance_create(60,view_hview-25,obj_text)
+i.z = metre
 i.t = 'LEVEL UP'
-i.c1 = c_purple
+i.c1 = uiXpPurple
 i.c2 = c_white
+i.hud = true
 }

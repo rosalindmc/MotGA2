@@ -13,7 +13,7 @@ i = 2+random(6)
 dir = argument0-60+random(120)
 
 hspd = lengthdir_x(i,dir)
-vspd = lengthdir_x(i,dir)
+vspd = lengthdir_y(i,dir)
 zspd = -1+random(5)
 gravMult = 1
 

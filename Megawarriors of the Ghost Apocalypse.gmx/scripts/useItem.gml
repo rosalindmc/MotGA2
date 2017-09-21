@@ -181,7 +181,7 @@ else
 strike[argument0] = 0
 with(handItem[argument0])
 {    
-    i = instance_create(owner.x+lengthdir_x(length+owner.handDist[argument0],owner.facing),owner.y+lengthdir_y(length+owner.handDist[argument0],owner.facing),obj_meleeCollider)
+    i = instance_create(owner.x+lengthdir_x((length/2)+owner.handDist[argument0]+holdPoint,owner.facing),owner.y+lengthdir_y((length/2)+owner.handDist[argument0]+holdPoint,owner.facing),obj_meleeCollider)
     i.owner = owner
     i.originX = owner.x
     i.originY = owner.y
