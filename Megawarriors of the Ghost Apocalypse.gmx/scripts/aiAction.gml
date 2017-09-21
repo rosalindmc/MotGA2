@@ -73,7 +73,7 @@ case 0:
         return 1;
     }
     else{
-        actionTargetId = global.pc
+        //actionTargetId = global.pc
         return 0;
     }
     

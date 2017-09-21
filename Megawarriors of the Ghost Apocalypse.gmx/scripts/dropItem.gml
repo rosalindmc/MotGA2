@@ -14,6 +14,11 @@ if handItem[argument0] != noone
     handItem[argument0].interactId = i
     inventory[handItemSlot[argument0]] = noone
     handItem[argument0] = noone
+    if (greatWeapon = true)
+    {
+        handItem[1] = noone
+        handItem[2] = noone
+    }
 }
 
 #define throw
@@ -109,6 +114,11 @@ if handItem[argument0] != noone
     }
     inventory[handItemSlot[argument0]] = noone
     handItem[argument0] = noone
+    if (greatWeapon = true)
+    {
+        handItem[1] = noone
+        handItem[2] = noone
+    }
 }
 else    //Char Throw
 {
