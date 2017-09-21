@@ -15,7 +15,7 @@ depth = -y
 audio_play_sound(snd_swing,0,false)
 
 #define hitColliderCollisionChar
-if (owner != other and other.alive = true && (other.strike[1] || other.strike[2])) && abs(angle_difference(image_angle,other.facing)) > 90
+if (owner != other and other.alive = true && (other.strike[1] || other.strike[2])) && abs(angle_difference(image_angle,other.facing)) > 90 && other.team != owner.team
 {
     hit[peopleHit] = other
     peopleHit += 1
