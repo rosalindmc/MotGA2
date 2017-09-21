@@ -462,6 +462,15 @@ switch(argument0)
     break
 }
 
+if isProne = true or alive = false
+{
+    hipsImage = 2
+    hipsRot = 90*hFacing
+    bodyRot = 90*hFacing
+    headRot = 90*hFacing
+    hairRot = 90*hFacing
+}
+
 #define humanoidSneakWalk
 animSpeed[argument1] = max(abs(moving),1)
 xAdj = 0
@@ -899,11 +908,6 @@ switch(argument0)
     animDelay[argument1] = .1
     animSpeed[argument1] = 0
     bleedOut()
-    if (!player){
-    corpseSpawn()
-    instance_destroy()
-    }
-    
     break
     
     case 5:

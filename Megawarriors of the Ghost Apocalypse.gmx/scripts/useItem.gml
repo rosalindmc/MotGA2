@@ -146,7 +146,14 @@ switch(argument1)
 //Spend Stamina
 
 //Stamina Cost
-spendStamina(handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
+if rhythm = argument0
+{
+    spendStamina(.5*handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
+}
+else
+{
+    spendStamina(handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
+}
 
 //Anim and Essentials
 sweetSpotBonus = sweetSpot
@@ -176,6 +183,7 @@ else
     applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)    
 }
 
+
 #define meleeHit
 // Make melee collider
 strike[argument0] = 0
@@ -193,14 +201,23 @@ with(handItem[argument0])
     i.impact = meleeImpact*meleeImpactMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwImpactMult)-owner.greatWeapon))*owner.impactMod
     i.pen = (meleePen+owner.penMod+meleePenMod[argument1])
     i.z = z
+    i.canProvokeClash = true
+    i.impactType = meleeImpactTypeMult[argument1]
+    i.puntMult = meleePuntMult[argument1]
     i.sprite_index = meleeAttackMask[argument1]
     i.image_yscale = meleeSize*meleeSizeMult[argument1]*owner.meleeSwing[argument0]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))
     i.image_xscale = meleeSize*meleeSizeMult[argument1]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))
 }
+rhythm = 3-argument0
 
 #define meleeEnd
 charge[argument0] = 0
 animationReset(argument0)
+
+if charge[1] = 0 and charge[2] = 0
+{
+    rhythm = 0
+}
 
 #define perfectHitSheen
 if fumble = false

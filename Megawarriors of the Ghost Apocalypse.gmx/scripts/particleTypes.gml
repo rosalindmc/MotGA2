@@ -134,6 +134,7 @@ i = argument0
 image_xscale = i
 image_yscale = i
 image_angle = random(359)
+image_index = random(100)
 
 i = random(1)
 

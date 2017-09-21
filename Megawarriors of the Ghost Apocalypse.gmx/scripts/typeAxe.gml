@@ -70,13 +70,16 @@ switch(argument0)
         meleeSizeMult[i] = 1
         meleeSpecialMult[i] = 1
         meleeCostMult[i] = 1
+        meleePuntMult[i] = 1
+        meleeImpactTypeMult[i] = 0
     }    
     
     meleePenMod[2] = 25
     meleeAttackMask[3] = spr_slam
     meleePowMult[3] = .6
     meleeChargePowMult[3] = 2
-    meleeImpactMult[3] = .7
+    meleeImpactMult[3] = 1.5
+    meleeImpactTypeMult[3] = 1
     meleeCostMult[3] = 1.5
     meleePenMod[3] = -10
     meleeType[5] = dmgType.impact

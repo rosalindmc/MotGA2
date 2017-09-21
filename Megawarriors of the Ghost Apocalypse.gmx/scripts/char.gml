@@ -62,6 +62,7 @@ sneakMovePen = .5
 staggered = false
 dangerous = false
 launcher = noone
+rhythm = 0
 
 canRoll = true
 dodgeCost = 1

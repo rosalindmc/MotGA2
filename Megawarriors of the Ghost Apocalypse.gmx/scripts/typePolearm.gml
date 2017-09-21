@@ -69,6 +69,8 @@ switch(argument0)
         meleeSlowMult[i] = 1
         meleeSizeMult[i] = 1
         meleeCostMult[i] = 1
+        meleePuntMult[i] = 1
+        meleeImpactTypeMult[i] = 0
     }
     
     meleePenMod[2] = 25
@@ -77,6 +79,7 @@ switch(argument0)
     meleeRateMult[3] = .8
     meleeChargePowMult[3] = 1.8
     meleeImpactMult[3] = .5
+    meleeImpactTypeMult[3] = 2
     meleeCostMult[3] = 1.5
     meleePenMod[3] = 50
     meleeType[5] = dmgType.impact
