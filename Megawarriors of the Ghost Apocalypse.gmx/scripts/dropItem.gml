@@ -133,6 +133,7 @@ else    //Char Throw
             animationStart(humanoidFlinchBackward,0)
             moveTimer = 1.5
             canMove = false
+            launcher = other
         }
     }
     else
@@ -145,6 +146,7 @@ else    //Char Throw
             animationStart(humanoidFlinchBackward,0)
             moveTimer = .5
             canMove = false
+            launcher = other
         }
     }
     grappling = false
