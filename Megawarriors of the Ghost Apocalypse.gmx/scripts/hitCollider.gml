@@ -45,19 +45,6 @@ else if (owner != other and other.alive = true && !other.strike[1] && !other.str
     dmg -= 1
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 #define hitColliderCollisionTerrain
 
 #define hitColliderCollisionCollider

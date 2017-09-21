@@ -12,7 +12,7 @@ life = 0.15
 image_speed = 0
 animDelay = 0.05
 sticky = false
-
+sweetSpot = false
 
 #define meleeColliderDraw
 draw_sprite_ext(sprite_index,image_index,round(x),round(y-z),image_xscale,image_yscale,image_angle,c_white,image_alpha)
