@@ -606,6 +606,6 @@ break;
 #define levelEnd
 //clear up that little global list
 
-global.threatTimer = false;
+global.threatTimer = 0;
 
 ds_list_destroy(global.threatList);

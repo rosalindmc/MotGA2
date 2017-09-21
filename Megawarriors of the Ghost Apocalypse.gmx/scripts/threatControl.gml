@@ -8,7 +8,7 @@ if (global.owThreat < 5){
     ds_list_add(global.threatList, owThreatUp, newPodOne, increaseTimer, alert);
 }
 
-global.threatTimer = true;
+global.threatTimer = 0;
 
 global.threatSpeed = 1/30;
 //higher overworld threats will have their own starting lists that are more difficult
