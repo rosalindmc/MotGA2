@@ -107,6 +107,7 @@ if handItem[argument0] != noone
             spin = throwSpin
         }
     }
+    inventory[handItemSlot[argument0]] = noone
     handItem[argument0] = noone
 }
 else    //Char Throw
