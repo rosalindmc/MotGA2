@@ -388,8 +388,8 @@ while(current.pathParent != noone)
         
         case 2:
         if (current.gridY - 1 != -1){
-            floorLayout[current.gridY, current.gridY - 1].isPath = true;
-            floorLayout[current.gridY, current.gridY - 1].rWeight = 5;
+            floorLayout[current.gridX, current.gridY - 1].isPath = true;
+            floorLayout[current.gridX, current.gridY - 1].rWeight = 5;
         }
         break;
         
