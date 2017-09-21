@@ -60,6 +60,7 @@ sneak = false
 sneakMovePen = .5
 
 staggered = false
+isProne = false
 dangerous = false
 launcher = noone
 rhythm = 0

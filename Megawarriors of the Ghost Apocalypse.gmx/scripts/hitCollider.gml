@@ -15,11 +15,7 @@ depth = -y
 audio_play_sound(snd_swing,0,false)
 
 #define hitColliderCollisionChar
-<<<<<<< HEAD
-if (owner != other and other.alive = true && (other.strike[1] || other.strike[2])) && abs(angle_difference(image_angle,other.facing)) > 90 and canProvokeClash = true
-=======
-if (owner != other and other.alive = true && (other.strike[1] || other.strike[2])) && abs(angle_difference(image_angle,other.facing)) > 90 && other.team != owner.team && !other.grappling && !other.grappled && !owner.grappling && !owner.grappled
->>>>>>> origin/master
+if (owner != other and other.alive = true && (other.strike[1] || other.strike[2])) && abs(angle_difference(image_angle,other.facing)) > 90 && other.team != owner.team && !other.grappling && !other.grappled && !owner.grappling && !owner.grappled and canProvokeClash = true
 {
     hit[peopleHit] = other
     peopleHit += 1
