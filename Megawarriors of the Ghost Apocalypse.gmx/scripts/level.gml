@@ -216,7 +216,7 @@ with(obj_tile)
         }        
         
     }
-    else if isPath = true
+    else if (isPath = true)
     {
         sprite_index = spr_road
         xScatter = choose(0,0,0,-1,1)
@@ -388,8 +388,8 @@ while(current.pathParent != noone)
         
         case 2:
         if (current.gridY - 1 != -1){
-            floorLayout[current.gridY, current.gridY - 1].isPath = true;
-            floorLayout[current.gridY, current.gridY - 1].rWeight = 5;
+            floorLayout[current.gridX, current.gridY - 1].isPath = true;
+            floorLayout[current.gridX, current.gridY - 1].rWeight = 5;
         }
         break;
         

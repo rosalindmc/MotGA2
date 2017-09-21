@@ -8,7 +8,7 @@ damageChar(t,p,dmgType,visNumbers,owner)
 //Modify The Text pop up for crits and failed armour pen
 if visNumbers = true
 {   
-    if sweetSpot = true
+    if owner.sweetSpot = true
     {
         i.c2 = c_yellow
     }
