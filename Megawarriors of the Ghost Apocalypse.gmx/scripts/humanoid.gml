@@ -25,6 +25,10 @@ break
 case 5:
 return humanoidDodge
 break
+
+case 6:
+return humanoidDie
+break
 }
 
 #define humanoidInitialize
@@ -88,6 +92,8 @@ handHeightdest[1] = 2
 
 itemRot[1] = 0
 itemRotDest[1] = 0
+itemZRot[1] = 0
+itemZRotDest[1] = 0
 itemSprite[1] = spr_sword
 
 handDist[2] = 4
@@ -96,8 +102,11 @@ handDir[2] = 0
 handDirDest[2] = 0
 handHeight[2] = 2
 handHeightDest[2] = 2
+
 itemRot[2] = 0
 itemRotDest[2] = 0
+itemZRot[2] = 0
+itemZRotDest[2] = 0
 itemSprite[2] = spr_sword
 
 armSprite = spr_humanoidArms
@@ -342,9 +351,12 @@ if surface_exists(charSurf)
     
     if instance_exists(floorID)
     {
-        draw_set_blend_mode(bm_subtract)
-        draw_rectangle(0,round(charSurfSize*.75)+min(z,0)-floorID.wz+1,charSurfSize,round(charSurfSize*.75)+1,false)
-        draw_set_blend_mode(bm_normal)
+        if floorID.wz != 0
+        {
+            draw_set_blend_mode(bm_subtract)
+            draw_rectangle(0,round(charSurfSize*.75)+min(z,0)-floorID.wz+1,charSurfSize,round(charSurfSize*.75)+1,false)
+            draw_set_blend_mode(bm_normal)
+        }
     }
     surface_reset_target()
 }
@@ -906,12 +918,19 @@ switch(argument0)
     headRot = 90*hFacing
     hairRot = 90*hFacing
     animDelay[argument1] = .1
-    animSpeed[argument1] = 0
     bleedOut()
     break
     
     case 5:
+    if ((!player) and alive = false) and abs(hspd) < 1 and abs(vspd) < 1 and z = floorZ
+    {
+        corpseSpawn()
+        instance_destroy()
+    }
+    else
+    {
         animationReset(0)
+    }
     break
 }
 

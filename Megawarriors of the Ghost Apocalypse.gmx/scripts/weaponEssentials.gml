@@ -11,6 +11,7 @@ switch(argument0)
     length = 25
     holdPoint = 9
     gwPoint = 2
+    tooltip = ''
     
     //Weapon Stats
     meleePow = 1
@@ -47,14 +48,14 @@ switch(argument0)
     anim[2] = weaponSlash   //Power Attack
     anim[3] = weaponChop   //Alternate Attack (2h)
     anim[4] = weaponStab    //Roll Attack
-    anim[5] = weaponHilt    //Close attack    
+    anim[5] = weaponPommel    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
     animHold[1] = weaponChopHold//Alt Hold Anim 
     animHold[2] = weaponStabHold//Roll Hold Anim 
-    animHold[3] = weaponHiltHold//Close Hold Anim 
+    animHold[3] = weaponPommelHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
     
     for(i = 1; i < 7; i++)

@@ -196,7 +196,9 @@
           <script>scripts\humanoid.gml</script>
         </scripts>
         <scripts name="Animations">
-          <script>scripts\weaponAttackAnims.gml</script>
+          <script>scripts\weaponBasicAnims.gml</script>
+          <script>scripts\weaponSwordAnims.gml</script>
+          <script>scripts\weaponPolearmAnims.gml</script>
           <script>scripts\twist.gml</script>
           <script>scripts\animationStart.gml</script>
         </scripts>
@@ -245,16 +247,16 @@
         <script>scripts\worldNode.gml</script>
       </scripts>
       <scripts name="Items">
+        <script>scripts\weaponEssentials.gml</script>
         <script>scripts\typeSword.gml</script>
-        <script>scripts\potions.gml</script>
-        <script>scripts\bows.gml</script>
-        <script>scripts\typeAxe.gml</script>
-        <script>scripts\spoons.gml</script>
-        <script>scripts\guns.gml</script>
         <script>scripts\typeBludgeon.gml</script>
         <script>scripts\typePolearm.gml</script>
+        <script>scripts\typeAxe.gml</script>
+        <script>scripts\potions.gml</script>
+        <script>scripts\bows.gml</script>
+        <script>scripts\spoons.gml</script>
+        <script>scripts\guns.gml</script>
         <script>scripts\uniques.gml</script>
-        <script>scripts\weaponEssentials.gml</script>
         <script>scripts\crate.gml</script>
       </scripts>
       <scripts name="Particles">
@@ -285,6 +287,7 @@
     <font>fonts\fnt_lrgMenu</font>
     <font>fonts\fnt_menu</font>
     <font>fonts\fnt_small</font>
+    <font>fonts\fnt_smaller</font>
     <font>fonts\fnt_smlMenu</font>
   </fonts>
   <objects name="objects">

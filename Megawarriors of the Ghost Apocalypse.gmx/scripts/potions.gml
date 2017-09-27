@@ -15,7 +15,7 @@ switch(argument0)
     length = 7
     holdPoint = 0
     gwPoint = 1
-    
+    weight = 0
     break
 }
 

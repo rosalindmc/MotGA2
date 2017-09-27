@@ -145,14 +145,17 @@ switch(argument1)
 //Set Stamina Delay
 //Spend Stamina
 
+//Weight Multiplier
+wM = 1+max(0,(handItem[argument0].weight-might-(greatWeapon*ceil(might*.5)))*.2)
+
 //Stamina Cost
 if rhythm = argument0
 {
-    spendStamina(.5*handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
+    spendStamina(.5*wM*handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
 }
 else
 {
-    spendStamina(handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
+    spendStamina(wM*handItem[argument0].meleeCost*handItem[argument0].meleeCostMult[queuedAnim[argument0]]/(1+(sweetSpot*perfectTimeMod))*(1+((greatWeapon*handItem[argument0].gwCostMult)-greatWeapon)),1)
 }
 
 //Anim and Essentials
@@ -185,6 +188,9 @@ else
 
 
 #define meleeHit
+//Weight Multiplier
+wM = 1+max(0,(handItem[argument0].weight-might-(greatWeapon*ceil(might*.5)))*.2)
+
 // Make melee collider
 strike[argument0] = 0
 with(handItem[argument0])
@@ -196,13 +202,13 @@ with(handItem[argument0])
     i.dist = (length/2)+owner.handDist[argument0]+holdPoint
     i.image_angle = owner.facing
     i.dmgType = meleeType[argument1]
-    i.dmg = meleePow*meleePowMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwPowMult)-owner.greatWeapon))*owner.damageMod*(1+(owner.perfectTimeDmgMod*owner.sweetSpotBonus))
+    i.dmg = meleePow*meleePowMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwPowMult)-owner.greatWeapon))*owner.damageMod*(1+(owner.perfectTimeDmgMod*owner.sweetSpotBonus))/other.wM
     i.sweetSpot = owner.sweetSpotBonus
     i.impact = meleeImpact*meleeImpactMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwImpactMult)-owner.greatWeapon))*owner.impactMod
     i.pen = (meleePen+owner.penMod+meleePenMod[argument1])
     i.z = z
     i.canProvokeClash = true
-    i.impactType = meleeImpactTypeMult[argument1]
+    i.impactType = meleeImpactTypeMult[argument1]/other.wM
     i.puntMult = meleePuntMult[argument1]
     i.sprite_index = meleeAttackMask[argument1]
     i.image_yscale = meleeSize*meleeSizeMult[argument1]*owner.meleeSwing[argument0]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))

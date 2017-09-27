@@ -47,14 +47,14 @@ switch(argument0)
     anim[2] = weaponStab    //Power Attack
     anim[3] = weaponStab   //Alternate Attack (2h)
     anim[4] = weaponSlash    //Roll Attack
-    anim[5] = weaponHilt    //Close attack    
+    anim[5] = weaponPommel    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponStabHold   //Basic Hold Anim (basic+power)
     animHold[1] = weaponChopHold    //Alt Hold Anim 
     animHold[2] = weaponSlashHold    //Roll Hold Anim 
-    animHold[3] = weaponHiltHold    //Close Hold Anim 
+    animHold[3] = weaponPommelHold    //Close Hold Anim 
     animHold[4] = throwHold         //Throw Hold Anim 
     
     for(i = 1; i < 7; i++)
@@ -99,15 +99,17 @@ switch(argument0)
     //Core
     name = 'Pike'
     sprite_index = spr_pike
+    tooltip = "For the warrior who wants to stay very far away from their foes but sucks at aiming."
     
     //Item Stats
     length = 63 
     holdPoint = 0
     gwPoint = 4
+    weight = 6
                      
     //Weapon Stats
     meleePow = 1.4
-    meleeRate = 1.2
+    meleeRate = .9
     meleeImpact = 3
     meleeLunge = 2
     meleeSlow = .4
@@ -116,6 +118,7 @@ switch(argument0)
     meleePen = 10 
 
     gwPowMult = 1.35
+    gwRateMult = 1.3
     
     throwPow = 2.1
     throwRate = 1
@@ -135,11 +138,13 @@ switch(argument0)
     //Core
     name = 'Spear'
     sprite_index = spr_spear
+    tooltip = "Stick plus spike brought together with deadly purpose.  Don't make one at home kids."
     
     //Item Stats
     length = 37 
     holdPoint = 4
     gwPoint = 3
+    weight = 3
                          
     //Weapon Stats
     meleePow = 1

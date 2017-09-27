@@ -14,7 +14,7 @@ dir = argument0-60+random(120)
 
 hspd = lengthdir_x(i,dir)
 vspd = lengthdir_y(i,dir)
-zspd = -1+random(5)
+zspd = -1+random(8)
 gravMult = 1
 
 impactDeath = true

@@ -18,7 +18,7 @@ if hspd != 0 or vspd != 0
     vspd = lengthdir_y(max(0,dT-(f/global.frameRate)),point_direction(0,0,hT,vT))
 }
 
-if ((!player) and alive = false) and hspd = 0 and vspd = 0 and z = floorZ and animIndex[0] = humanoid(3) 
+if ((!player) and alive = false) and abs(hspd) < 1 and abs(vspd) < 1 and z = floorZ and animIndex[0] != humanoid(6)
 {
     corpseSpawn()
     instance_destroy()

@@ -15,6 +15,7 @@ if argument0 != 0
     handDir[argument0] += (handDirDest[argument0]-handDir[argument0])/ceil(global.frameRate*animDelay[argument0])
     handHeight[argument0] += (handHeightDest[argument0]-handHeight[argument0])/ceil(global.frameRate*animDelay[argument0])
     itemRot[argument0] += (itemRotDest[argument0]-itemRot[argument0])/ceil(global.frameRate*animDelay[argument0])
+    itemZRot[argument0] += (itemZRotDest[argument0]-itemZRot[argument0])/ceil(global.frameRate*animDelay[argument0])
 }
 
 animDelay[argument0] -= animSpeed[argument0]/global.frameRate

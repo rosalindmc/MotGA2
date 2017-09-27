@@ -133,6 +133,7 @@ else
     hspd = 0
     vspd = 0
     spin = 0
+    zAngle = 0
     dangerous = false
     z = floorZ
 }

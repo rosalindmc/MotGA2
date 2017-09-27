@@ -33,6 +33,7 @@ return(i);
 animType = humanoid
 animUpdate = true
 alive = true
+shadowSprite = spr_shadow
 
 //Temp Run animType Initialize (move to a create char script later so this can be adjusted)
 script_execute(animType,0)
@@ -47,6 +48,7 @@ floorZ = 0
 floorID = -4
 
 z = 0
+wz = 0
 hspd = 0
 vspd = 0
 zspd = 0
@@ -589,7 +591,7 @@ if animUpdate = true
 }
 
 //Shadow
-draw_sprite(spr_shadow,0,round(x),round(y)-floorID.wz)
+draw_sprite(shadowSprite,0,round(x),round(y)-floorID.wz)
 
 if player = true
 {
@@ -607,7 +609,7 @@ if global.liveSurf = true
     {
         surface_set_target(global.blockSurf)
         draw_surface(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y-(charSurfSize*.75))-global.liveSurfY1-z)   
-        draw_sprite(spr_shadow,0,round(x)-global.liveSurfX1,round(y)-global.liveSurfY1)     
+        draw_sprite(shadowSprite,0,round(x)-global.liveSurfX1,round(y)-global.liveSurfY1)     
         surface_reset_target()
     }
     
