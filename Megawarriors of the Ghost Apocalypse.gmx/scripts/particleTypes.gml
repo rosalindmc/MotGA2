@@ -95,7 +95,7 @@ sprite_index = spr_sheen
 if floorID.isRiver = false
 {
     surface_set_target(global.decalSurf)
-    draw_sprite_ext(splatDecal,random(100),x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha*(.3+random(.4)))    
+    draw_sprite_ext(splatDecal,irandom(4),x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha*(.3+random(.4)))    
     surface_reset_target()
 }
 else
@@ -134,7 +134,7 @@ i = argument0
 image_xscale = i
 image_yscale = i
 image_angle = random(359)
-image_index = random(100)
+image_index = irandom(4)
 
 i = random(1)
 

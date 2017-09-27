@@ -226,13 +226,14 @@ if charge[1] = 0 and charge[2] = 0
 }
 
 #define perfectHitSheen
-if fumble = false
+if fumble = false and player = true
 {
     with(handItem[argument0])
     {    
         createParticle(owner.x+lengthdir_x(length+owner.handDist[argument0],image_angle),owner.y+lengthdir_y(length+owner.handDist[argument0],image_angle),z,1,partSheen,0)
     }
 }
+
 #define drinkPotion
 switch(argument1){
 case 0:

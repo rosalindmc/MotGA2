@@ -7,7 +7,7 @@ switch(argument0)
 case 0:     //Apply Effect
 var ret = statusStack(effect);
 icon = ico_stun
-//draw = false
+draw = false
 
 owner.moveMult -= potency
 owner.physicalResist -= .2
@@ -33,7 +33,7 @@ switch(argument0)
 case 0:     //Apply Effect
 var ret = statusStack(effect);
 icon = ico_stun
-//draw = false
+draw = false
 
 owner.moveMult -= potency
 owner.physicalResist -= .2
