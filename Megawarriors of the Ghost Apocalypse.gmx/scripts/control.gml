@@ -11,7 +11,6 @@ enumerators();
 global.decalSurf = -1
 global.camZoom = 1
 global.camZoomTo = 1
-global.xpTimer = 0
 
 //Shaders and Surfaces
 uTime = shader_get_uniform(shd_ripple,"Time")
@@ -57,8 +56,9 @@ with (mainWorld){
 
 global.owThreat = 0;
 global.locThreat = 0;
-global.threatTimer = 0;
-global.threatSpeed = .02
+global.locThreatTimer = 0;
+global.threatTimer = false;
+global.threatSpeed = 15
 
 global.currLevel = instance_create(0,0,obj_level)
 
@@ -98,9 +98,6 @@ if keyboard_check_pressed(ord('I')){
         global.padOn = false;
     }
 }
-
-//Xp Alpha
-global.xpTimer = max(0,global.xpTimer-(1/global.frameRate))
 
 //Zoom Control
 if global.pc.clashing = true
@@ -163,17 +160,34 @@ if (global.timer > 600){
 //Threat Timer
 
 //if(global.currLevel != noone){
-    if(!global.isPaused)
-    {
-        global.threatTimer += global.threatSpeed/global.frameRate;
-        if global.threatTimer >= 1
-        {
+
+    if(global.threatTimer && !global.isPaused){
+        //global.locThreatTimer += 1/global.frameRate;
+        global.locThreatTimer++;
+        if((global.locThreatTimer/global.frameRate) % 15 == 0){
             threatUp();
-            global.threatTimer -= 1
         }
     }
 
 //}
+
+/*
+if global.pc.vis = true and global.win = false
+{
+    black -= 1/global.frameRate
+}
+else
+{
+    black += .5/global.frameRate
+    if keyboard_check_pressed(global.interactKey)
+    {
+        room_restart()
+    }
+    if keyboard_check_pressed(vk_escape)
+    {
+        game_restart()
+    }
+}
 
 
 
@@ -418,52 +432,20 @@ else{
         i += 1
     }
     
-    if global.camZoom = 1
+    //Experience
+    draw_set_colour(c_purple)
+    draw_rectangle(15,31,15+(50*(global.pc.xp/global.pc.xpToLevel)),33,false)
+    draw_sprite(spr_xpBox,0,15,31)    
+    
+    
+    //Draw Status Effects
+    ii = 0
+    for(i = 0; i < ds_list_size(global.pc.sEffect); i++)
     {
-        if global.xpTimer != 0
+        if ds_list_find_value(global.pc.sEffect,i).draw = true
         {
-            //Experience
-            draw_set_alpha(global.xpTimer)
-            draw_set_colour(uiDarkGray)
-            draw_rectangle(global.camZoom*35,global.camZoom*(view_hview-23),global.camZoom*84,global.camZoom*(view_hview-21),false)
-            draw_set_colour(uiXpPurple)  
-            draw_rectangle(global.camZoom*35,global.camZoom*(view_hview-23),global.camZoom*(35+(49*(global.pc.xp/global.pc.xpToLevel))),global.camZoom*(view_hview-21),false)  
-            draw_sprite(spr_xpBox,0,global.camZoom*35,global.camZoom*(view_hview-23))
-            draw_set_alpha(1)
-        }
-        
-        //Threat
-        draw_set_colour(uiDarkGray)
-        draw_rectangle(view_wview-190,15,view_wview-30,20,false)
-        draw_set_colour(c_red)  
-        draw_rectangle(view_wview-190,15,view_wview-190+min(160,(20*global.locThreat)+(20*global.threatTimer)),20,false)
-        
-        for(i = 0; i < 8; i++)
-        {
-            draw_sprite(spr_threatBar,0,view_wview-190+(i*20),15)
-        }
-        
-        for(i = 0; i < 4; i++)
-        {    
-            if global.locThreat/2 >= i+1
-            {
-                draw_sprite(spr_threatSkull,1,view_wview-190+(i*40)+40,17)
-            }
-            else
-            {
-                draw_sprite(spr_threatSkull,0,view_wview-190+(i*40)+40,17)
-            }
-        }
-        
-        //Draw Status Effects
-        ii = 0
-        for(i = 0; i < ds_list_size(global.pc.sEffect); i++)
-        {
-            if ds_list_find_value(global.pc.sEffect,i).draw = true
-            {
-                draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,15,global.camZoom*(view_hview[0]-20-(ii*20)))
-                ii += 1
-            }
+            draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,15,global.camZoom*(view_hview[0]-20-(ii*20)))
+            ii += 1
         }
     }
     

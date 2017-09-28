@@ -43,6 +43,7 @@ draw_set_font(fnt_small)
 draw_set_halign(fa_middle)
 
 //HUD Circle
+
 if surface_exists(invCircle)
 {
     surface_set_target(invCircle)
@@ -65,6 +66,7 @@ else
 {
     invCircle = surface_create(200,200)
 }
+
 
 
 for(i = 1; i <= inventorySize; i++)
@@ -113,58 +115,6 @@ for(i = 1; i <= inventorySize; i++)
     }
 }
 
-draw_set_halign(fa_left)
-draw_set_valign(fa_top)
-if instance_exists(handItem[1])
-{
-    ix = 20
-    iy = 80
-    drawText(c_black,c_white,ix,iy,handItem[1].name)
-    
-    wM = 1+max(0,(handItem[1].weight-might-(greatWeapon*ceil(might*.5)))*.2)
-
-    if greatWeapon = true
-    {
-        draw_text(ix,iy+12,'POW '+string_format(handItem[1].meleePow*handItem[1].gwPowMult/wM,0,1))
-        draw_text(ix,iy+21,'IMP '+string_format(handItem[1].meleeImpact*handItem[1].gwImpactMult/wM,0,1))
-        draw_text(ix,iy+30,'RAT '+string_format(handItem[1].meleeRate*handItem[1].gwRateMult,0,1))     
-    }
-    else
-    {
-        draw_text(ix,iy+12,'POW '+string_format(handItem[1].meleePow/wM,0,1))
-        draw_text(ix,iy+21,'IMP '+string_format(handItem[1].meleeImpact/wM,0,1))
-        draw_text(ix,iy+30,'RAT '+string_format(handItem[1].meleeRate/wM,0,1))
-    }
-    if might+(greatWeapon*ceil(might*.5)) < handItem[1].weight
-    {
-        draw_set_colour(c_red)
-    }
-    draw_text(ix,iy+39,'WEIGHT '+string(handItem[1].weight))
-    draw_set_colour(c_white)
-    draw_text_ext(ix,iy+51,handItem[1].tooltip,9,120)
-}
-
-if instance_exists(handItem[2]) and greatWeapon = false
-{
-    ix = view_wview-20-120
-    iy = 80
-    drawText(c_black,c_white,ix,iy,handItem[2].name)
-    
-    wM = 1+max(0,(handItem[2].weight-might-(greatWeapon*ceil(might*.5)))*.2)
-    
-    draw_text(ix,iy+12,'POW '+string_format(handItem[2].meleePow/wM,0,1))
-    draw_text(ix,iy+21,'IMP '+string_format(handItem[2].meleeImpact/wM,0,1))
-    draw_text(ix,iy+30,'RAT '+string_format(handItem[2].meleeRate,0,1))
-    
-    if might < handItem[2].weight
-    {
-        draw_set_colour(c_red)
-    }
-    draw_text(ix,iy+39,'WEIGHT '+string(handItem[2].weight))
-    draw_set_colour(c_white)
-    draw_text_ext(ix,iy+51,handItem[2].tooltip,9,120)
-}
-draw_set_valign(fa_middle)
 
 #define scrollItems
 if(!global.padOn){

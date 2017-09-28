@@ -47,14 +47,14 @@ switch(argument0)
     anim[2] = weaponSlash   //Power Attack
     anim[3] = weaponChop   //Alternate Attack (2h)
     anim[4] = weaponStab    //Roll Attack
-    anim[5] = weaponPommel    //Close attack    
+    anim[5] = weaponHilt    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
     animHold[1] = weaponChopHold//Alt Hold Anim 
     animHold[2] = weaponStabHold//Roll Hold Anim 
-    animHold[3] = weaponPommelHold//Close Hold Anim 
+    animHold[3] = weaponHiltHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
     
     for(i = 1; i < 7; i++)
@@ -70,8 +70,6 @@ switch(argument0)
         meleeSizeMult[i] = 1
         meleeSpecialMult[i] = 1
         meleeCostMult[i] = 1
-        meleePuntMult[i] = 1
-        meleeImpactTypeMult[i] = 0
     }
     
     meleePenMod[2] = 25
@@ -80,7 +78,6 @@ switch(argument0)
     meleeChargePowMult[3] = 2
     meleeCostMult[3] = 1.2
     meleeImpactMult[3] = 1.5
-    meleeImpactTypeMult[3] = 1
     meleePenMod[3] = -10
     meleeAttackMask[4] = spr_stab
     meleePowMult[4] = 1.25
@@ -102,13 +99,11 @@ switch(argument0)
     //Core
     name = 'Sword'
     sprite_index = spr_sword
-    tooltip = "A typical stabby slashy hacky sword for typical megawarriors."
     
     //Item Stats
     length = 17
     holdPoint = 6
     gwPoint = 1
-    weight = 3
     
     //Weapon Stats
     meleePow = 1
@@ -137,13 +132,11 @@ switch(argument0)
     //Core
     name = 'Circley Sword'
     sprite_index = spr_circleySword
-    tooltip = "This is like a sword but you can't stab with it... or slash the other way with it....or put it in a scabbard.  It looks like a moon though, that's worth something."
     
     //Item Stats
     length = 19
     holdPoint = 7
     gwPoint = 1
-    weight = 4
     
     //Weapon Stats
     meleePow = 1.5
@@ -174,17 +167,15 @@ switch(argument0)
     //Core
     name = 'Big Sword'
     sprite_index = spr_bigSword
-    tooltip = "The big sword beats up smaller swords and steals their lunch money and kisses their girlfriends.  Don't be like sword, be like big sword."
     
     //Item Stats
     length = 25
     holdPoint = 10
     gwPoint = 1
-    weight = 5
     
     //Weapon Stats
     meleePow = 1.5
-    meleeRate = 1.1
+    meleeRate = 1.2
     meleeImpact = 4
     meleeLunge = 3
     meleeSlow = .3
@@ -193,7 +184,6 @@ switch(argument0)
     meleePen = 0  
     
     gwPowMult = 1.35
-    gwRateMult = 1
     
     throwPow = 2
     throwRate = 1.4
@@ -212,17 +202,15 @@ switch(argument0)
     //Core
     name = 'Bigger Sword'
     sprite_index = spr_biggerSword
-    tooltip = "The bigger sword protects the smaller swords from big swords.  Bigger swords fight for justice and their friends."
     
     //Item Stats
     length = 35
     holdPoint = 15
     gwPoint = 2
-    weight = 8
            
     //Weapon Stats
     meleePow = 1.7
-    meleeRate = .7
+    meleeRate = 1
     meleeImpact = 5
     meleeLunge = 2
     meleeSlow = .4
@@ -231,7 +219,6 @@ switch(argument0)
     meleePen = 0  
     
     gwPowMult = 1.4
-    gwRateMult = 1.4
     
     throwPow = 2.2
     throwRate = 1.2
@@ -250,17 +237,15 @@ switch(argument0)
     //Core
     name = 'Swordstria'
     sprite_index = spr_bigSword
-    tooltip = "Justia's sword of justice.  Best used to justly enact justice upon the unjust."
     
     //Item Stats
     length = 25
     holdPoint = 10
     gwPoint = 1
-    weight = 5
     
     //Weapon Stats
     meleePow = 2
-    meleeRate = 1.3
+    meleeRate = 1.4
     meleeImpact = 5
     meleeLunge = 3
     meleeSlow = .2
@@ -269,7 +254,6 @@ switch(argument0)
     meleePen = 25  
     
     gwPowMult = 1.4
-    gwRateMult = 1
     
     throwPow = 4
     throwRate = 1.6

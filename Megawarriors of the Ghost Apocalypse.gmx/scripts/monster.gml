@@ -1,8 +1,6 @@
 #define monster
 player = false
 controlScript = aiControl
-team = 2
-
 
 #define darkSoldier
 player = false

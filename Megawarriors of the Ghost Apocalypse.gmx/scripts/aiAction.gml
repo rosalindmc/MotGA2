@@ -73,7 +73,7 @@ case 0:
         return 1;
     }
     else{
-        //actionTargetId = global.pc
+        actionTargetId = global.pc
         return 0;
     }
     
@@ -236,23 +236,18 @@ argument0 is the check/set order/run switch
 */
 switch (argument0){
 case 0:
-    var tempDist = 10*metre
-    with(obj_char){
-        if(team != other.team){
-            if(other.actionTargetId != noone && point_distance(x,y,other.actionTargetId.x,other.actionTargetId.y) < 5*metre && other.stam == other.stamMax && other.staggered != true){
-                //pathFind to the spot and check if you can get there
-                return 1;
-            }
-            else if (point_distance(other.x,other.y,x,y)<tempDist){
-                other.actionTargetId = id
-                tempDist = point_distance(other.x,other.y,x,y)
-                return 0;
-            }
-            else{        
-                return 0;           
-            }
-        }
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 5*metre && stam == stamMax && staggered != true){
+        //pathFind to the spot and check if you can get there
+        return 1;
     }
+    else if (point_distance(x,y,global.pc.x,global.pc.y)<10*metre){
+        actionTargetId = global.pc
+        return 0;
+    }
+    else{        
+        return 0;           
+    }
+    
     break;
     
 case 1:
@@ -311,23 +306,18 @@ argument0 is the check/set order/run switch
 */
 switch (argument0){
 case 0:
-    var tempDist = 10*metre
-    with(obj_char){
-        if(team != other.team){
-            if(other.actionTargetId != noone && point_distance(x,y,other.actionTargetId.x,other.actionTargetId.y) < 5*metre && other.stam == other.stamMax && other.staggered != true){
-                //pathFind to the spot and check if you can get there
-                return 1;
-            }
-            else if (point_distance(other.x,other.y,x,y)<tempDist){
-                other.actionTargetId = id
-                tempDist = point_distance(other.x,other.y,x,y)
-                return 0;
-            }
-            else{        
-                return 0;           
-            }
-        }
+    if(actionTargetId != noone && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 5*metre && stam == stamMax && staggered != true){
+        //pathFind to the spot and check if you can get there
+        return 1;
     }
+    else if (point_distance(x,y,global.pc.x,global.pc.y)<10*metre){
+        actionTargetId = global.pc
+        return 0;
+    }
+    else{        
+        return 0;           
+    }
+    
     break;
     
 case 1:
@@ -492,7 +482,7 @@ case 0:
     else if (leader == noone){
     
         with(obj_char){
-            if (id != other.id && joinsFormation == true && point_distance(x,y,other.x,other.y) < 7*metre && team == other.team){
+            if (id != other.id && joinsFormation == true && point_distance(x,y,other.x,other.y) < 7*metre){
                 if (leader == noone || leader == id){
                     other.leader = id
                     leader = id

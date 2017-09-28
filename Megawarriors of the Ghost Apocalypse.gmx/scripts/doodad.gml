@@ -14,15 +14,7 @@ corpse = false
 
 
 #define doodadDraw
-if (corpse)
-{
-    charDraw()
-}
-else
-{
-    draw_self()
-}
-
+draw_self()
 #define corpseSpawn
 
 i = instance_create(x,y,obj_doodad)
@@ -80,7 +72,6 @@ with(i){
     hairColour = other.hairColour
     helmSprite = other.helmSprite
     skinTone = other.skinTone
-    shadowSprite = spr_none
     
     //Anim
     legLength = other.legLength

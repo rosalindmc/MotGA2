@@ -12,13 +12,7 @@ if handItem[argument0] != noone
     i.name = handItem[argument0].name
     i.useType = pickUp
     handItem[argument0].interactId = i
-    inventory[handItemSlot[argument0]] = noone
     handItem[argument0] = noone
-    if (greatWeapon = true)
-    {
-        handItem[1] = noone
-        handItem[2] = noone
-    }
 }
 
 #define throw
@@ -112,13 +106,7 @@ if handItem[argument0] != noone
             spin = throwSpin
         }
     }
-    inventory[handItemSlot[argument0]] = noone
     handItem[argument0] = noone
-    if (greatWeapon = true)
-    {
-        handItem[1] = noone
-        handItem[2] = noone
-    }
 }
 else    //Char Throw
 {
@@ -133,7 +121,6 @@ else    //Char Throw
             animationStart(humanoidFlinchBackward,0)
             moveTimer = 1.5
             canMove = false
-            launcher = other
         }
     }
     else
@@ -146,7 +133,6 @@ else    //Char Throw
             animationStart(humanoidFlinchBackward,0)
             moveTimer = .5
             canMove = false
-            launcher = other
         }
     }
     grappling = false

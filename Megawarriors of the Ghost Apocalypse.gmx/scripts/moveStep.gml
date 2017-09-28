@@ -101,7 +101,7 @@ if collide = true
     i.image_angle = point_direction(0,0,hspd,vspd)
     i.dmgType = dmgType.impact
     i.dmg = cPow*.1
-    i.impact = cPow*.5    
+    i.impact = cPow*.1    
     i.pen = 100
     i.z = 0
     i.image_alpha = 0
@@ -110,9 +110,13 @@ if collide = true
     i.sticky = false
     i.image_xscale = .8
     i.image_yscale = .8   
-    i.impactType = 1
     
     launcher = noone
+    /*if life > 0
+    {
+        impactChar(id,cPow*.1,point_direction(0,0,hspd,vspd),.2)
+        damageChar(id,min((1+(cPow*.05*weight))/2,3),dmgType.impact,false)
+    }*/
 }
 
 //Bound to map
@@ -133,7 +137,6 @@ else
     hspd = 0
     vspd = 0
     spin = 0
-    zAngle = 0
     dangerous = false
     z = floorZ
 }
