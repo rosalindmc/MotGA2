@@ -33,6 +33,7 @@ return(i);
 animType = humanoid
 animUpdate = true
 alive = true
+shadowSprite = spr_shadow
 
 //Temp Run animType Initialize (move to a create char script later so this can be adjusted)
 script_execute(animType,0)
@@ -47,6 +48,7 @@ floorZ = 0
 floorID = -4
 
 z = 0
+wz = 0
 hspd = 0
 vspd = 0
 zspd = 0
@@ -60,8 +62,10 @@ sneak = false
 sneakMovePen = .5
 
 staggered = false
+isProne = false
 dangerous = false
 launcher = noone
+rhythm = 0
 
 canRoll = true
 dodgeCost = 1
@@ -201,6 +205,8 @@ sEffect = ds_list_create()
 
 ctrlFacing = 0
 
+team = 0
+
 
 
 
@@ -223,8 +229,8 @@ switch (type){
         
         penMod = wit
         
-        physicalResist = 0+(vitality-4)*0.05
-        magicResist = 0+(magic-4)*0.05
+        physicalResist = 0.5+(vitality-4)*0.05
+        magicResist = 0.5+(magic-4)*0.05
         perfectTimeDmgMod = 0
         
         break;
@@ -247,8 +253,8 @@ switch (type){
         penMod = wit
         xpMult = 1+((wit-4)*.05)
         
-        physicalResist = 0+(vitality-4)*0.05
-        magicResist = 0+(magic-4)*0.05
+        physicalResist = 0.5+(vitality-4)*0.05
+        magicResist = 0.5+(magic-4)*0.05
         
         shrineMod = 1 + (charisma-4)*0.1
         perfectTimeDmgMod = charisma*0.05
@@ -271,8 +277,8 @@ switch (type){
     
         penMod = wit
         
-        physicalResist = 0+(vitality-4)*0.05
-        magicResist = 0+(magic-4)*0.05    
+        physicalResist = 0.5+(vitality-4)*0.05
+        magicResist = 0.5+(magic-4)*0.05    
         break
     
     default:
@@ -585,7 +591,7 @@ if animUpdate = true
 }
 
 //Shadow
-draw_sprite(spr_shadow,0,round(x),round(y)-floorID.wz)
+draw_sprite(shadowSprite,0,round(x),round(y)-floorID.wz)
 
 if player = true
 {
@@ -603,7 +609,7 @@ if global.liveSurf = true
     {
         surface_set_target(global.blockSurf)
         draw_surface(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y-(charSurfSize*.75))-global.liveSurfY1-z)   
-        draw_sprite(spr_shadow,0,round(x)-global.liveSurfX1,round(y)-global.liveSurfY1)     
+        draw_sprite(shadowSprite,0,round(x)-global.liveSurfX1,round(y)-global.liveSurfY1)     
         surface_reset_target()
     }
     

@@ -36,6 +36,8 @@
       <sprite>sprites\spr_smallhealth</sprite>
       <sprite>sprites\spr_health</sprite>
       <sprite>sprites\spr_logo</sprite>
+      <sprite>sprites\spr_threatBar</sprite>
+      <sprite>sprites\spr_threatSkull</sprite>
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_shore</sprite>
@@ -194,7 +196,9 @@
           <script>scripts\humanoid.gml</script>
         </scripts>
         <scripts name="Animations">
-          <script>scripts\weaponAttackAnims.gml</script>
+          <script>scripts\weaponBasicAnims.gml</script>
+          <script>scripts\weaponSwordAnims.gml</script>
+          <script>scripts\weaponPolearmAnims.gml</script>
           <script>scripts\twist.gml</script>
           <script>scripts\animationStart.gml</script>
         </scripts>
@@ -243,16 +247,16 @@
         <script>scripts\worldNode.gml</script>
       </scripts>
       <scripts name="Items">
+        <script>scripts\weaponEssentials.gml</script>
         <script>scripts\typeSword.gml</script>
-        <script>scripts\potions.gml</script>
-        <script>scripts\bows.gml</script>
-        <script>scripts\typeAxe.gml</script>
-        <script>scripts\spoons.gml</script>
-        <script>scripts\guns.gml</script>
         <script>scripts\typeBludgeon.gml</script>
         <script>scripts\typePolearm.gml</script>
+        <script>scripts\typeAxe.gml</script>
+        <script>scripts\potions.gml</script>
+        <script>scripts\bows.gml</script>
+        <script>scripts\spoons.gml</script>
+        <script>scripts\guns.gml</script>
         <script>scripts\uniques.gml</script>
-        <script>scripts\weaponEssentials.gml</script>
         <script>scripts\crate.gml</script>
       </scripts>
       <scripts name="Particles">
@@ -283,6 +287,7 @@
     <font>fonts\fnt_lrgMenu</font>
     <font>fonts\fnt_menu</font>
     <font>fonts\fnt_small</font>
+    <font>fonts\fnt_smaller</font>
     <font>fonts\fnt_smlMenu</font>
   </fonts>
   <objects name="objects">
@@ -331,7 +336,7 @@
     <room>rooms\rom_title</room>
     <room>rooms\rom_game</room>
   </rooms>
-  <constants number="29">
+  <constants number="33">
     <constant name="metre">16</constant>
     <constant name="grav">20</constant>
     <constant name="skinTan">make_colour_rgb(216,182,108)</constant>
@@ -360,6 +365,10 @@
     <constant name="hairBlonde">make_colour_rgb(205,207,49)</constant>
     <constant name="hairBrown">make_colour_rgb(162,83,20)</constant>
     <constant name="hairDarkBrown">make_colour_rgb(71,38,11)</constant>
+    <constant name="uiDarkGray">make_colour_rgb(24,24,24)</constant>
+    <constant name="uiXpPurple">make_colour_rgb(89,24,163)</constant>
+    <constant name="uiThreatRed">make_colour_rgb(175,40,40)</constant>
+    <constant name="uiThreatBackground">make_colour_rgb(57,21,21)</constant>
     <constant name="uiStaminaGreen">make_colour_rgb(0,160,0)</constant>
   </constants>
   <help>

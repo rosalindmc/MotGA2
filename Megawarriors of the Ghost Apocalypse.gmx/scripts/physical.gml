@@ -10,7 +10,14 @@ icon = ico_stun
 
 owner.canAttack = false
 owner.canDodge = false
+if potency = 1 
+{
 owner.staggered = true
+}
+else
+{
+owner.isProne = true
+}
 owner.canMove = false
 owner.physicalResist -= .5
 owner.moveTimer = life
@@ -44,6 +51,7 @@ with(interactId)
 owner.canAttack = true
 owner.canDodge = true
 owner.staggered = false
+owner.isProne = false
 owner.physicalResist += .5
 break
 case 4:     //Draw Event

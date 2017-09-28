@@ -48,13 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (corpse){
-    charDraw()
-    charDrawEnd()
-}
-else{
-    doodadDraw()
-}
+            <string>doodadDraw()
+
 </string>
           </argument>
         </arguments>

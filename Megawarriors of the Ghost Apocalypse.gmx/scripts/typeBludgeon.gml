@@ -47,14 +47,14 @@ switch(argument0)
     anim[2] = weaponSlash   //Power Attack
     anim[3] = weaponChop   //Alternate Attack (2h)
     anim[4] = weaponSlash    //Roll Attack
-    anim[5] = weaponHilt    //Close attack    
+    anim[5] = weaponPommel    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
     animHold[1] = weaponChopHold//Alt Hold Anim 
     animHold[2] = weaponSlashHold//Roll Hold Anim 
-    animHold[3] = weaponHiltHold//Close Hold Anim 
+    animHold[3] = weaponPommelHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
     
     for(i = 1; i < 7; i++)
@@ -70,13 +70,16 @@ switch(argument0)
         meleeSizeMult[i] = 1
         meleeSpecialMult[i] = 1
         meleeCostMult[i] = 1
+        meleePuntMult[i] = 1
+        meleeImpactTypeMult[i] = 0
     }
     
     meleePenMod[2] = 25
     meleeAttackMask[3] = spr_slam
     meleeChargePowMult[3] = 2
     meleePowMult[3] = .6
-    meleeImpactMult[3] = .8
+    meleeImpactMult[3] = 1.5
+    meleeImpactTypeMult[3] = 1
     meleeCostMult[3] = 1.5
     meleePenMod[3] = -10
     meleeType[5] = dmgType.impact
@@ -96,11 +99,13 @@ switch(argument0)
     //Core
     name = 'Mace'
     sprite_index = spr_mace
+    tooltip = 'Warriors wield maces when they feel the need to justify all those years of doing push ups in mountaintop dojos.'
     
     //Item Stats
     length = 16
     holdPoint = 1
     gwPoint = 3
+    weight = 6
     
     //Weapon Stats
     meleePow = 1.5
@@ -109,7 +114,7 @@ switch(argument0)
     meleeLunge = 2
     meleeSlow = .3
     meleeSize = 1
-    meleeCost = 3
+    meleeCost = 2
     meleePen = 15 
     
     gwPowMult = 1.35
@@ -117,7 +122,7 @@ switch(argument0)
     throwPow = 1
     throwRate = 1
     throwImpact = 6
-    throwCost = 3
+    throwCost = 2
     break
 }
 
@@ -130,28 +135,31 @@ switch(argument0)
     //Core
     name = 'Warhammer'
     sprite_index = spr_warhammer
+    tooltip = "Legends tell of a warhammer that weighs 40 kilograms.  I have no idea who could actually wield such a thing but it probably looks pretty cool."
     
     //Item Stats
     length = 32
     holdPoint = 3
     gwPoint = 3
+    weight = 7
     
     //Weapon Stats
     meleePow = 1.8
-    meleeRate = .9
+    meleeRate = .7
     meleeImpact = 5
     meleeLunge = 1
     meleeSlow = .5
     meleeSize = 1.1
-    meleeCost = 4
+    meleeCost = 3
     meleePen = 25 
     
     gwPowMult = 1.4
+    gwRateMult = 1.3
         
     throwPow = 1.4
     throwRate = .8
     throwImpact = 7
-    throwCost = 4
+    throwCost = 3
     throwSpeed = 15
     break
 }
