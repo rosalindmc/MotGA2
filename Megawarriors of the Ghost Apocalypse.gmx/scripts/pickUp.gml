@@ -80,4 +80,3 @@ if(argument0 = global.pc){
     instance_destroy();
     //}
 }
-#define pilferCorpse

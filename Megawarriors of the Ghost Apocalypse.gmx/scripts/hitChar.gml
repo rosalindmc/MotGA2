@@ -19,7 +19,7 @@ if visNumbers = true
 }
 
 //Impact
-impactChar(t,impact,point_direction(originX,originY,t.x,t.y),1,owner)
+impactChar(t,impact,point_direction(originX,originY,t.x,t.y),puntMult,owner,impactType)
 
 //Apply Bleed
 if dmgType != dmgType.impact and irandom(5) < p
@@ -115,6 +115,10 @@ punt = argument3
 
 t.hspd += (lengthdir_x(power(2+impact,.9),dir)/t.weight)*punt
 t.vspd += (lengthdir_y(power(2+impact,.9),dir)/t.weight)*punt
+if argument5 = 2
+{
+    t.zspd += power(2+impact*punt,.9)
+}
 t.stability -= 3+(impact/2)
 t.stabilityDelay = 1
 
@@ -126,7 +130,14 @@ if impact > 5
 
 if t.stability <= 0 and t.alive = true
 {
-    applyStatus(t,stun,1,3+abs(t.stability/5),argument4)
+    if argument5 = 0
+    {
+        applyStatus(t,stun,1,3+abs(t.stability/5),argument4)
+    }
+    else
+    {
+        applyStatus(t,stun,2,3+abs(t.stability/5),argument4)    
+    }
     t.stability = t.stabilityMax
 }
 
@@ -202,13 +213,15 @@ with(argument0)
 #define gainExperience
 p = round(argument0*global.pc.xpMult)
 
-i = instance_create(global.pc.x,global.pc.y,obj_text)
-i.z = (metre*2)
+i = instance_create(60,(global.camZoom*view_hview)-25,obj_text)
+i.z = 0
 i.t = '+'+string_format(p,0,1)+' XP'
 i.c1 = c_black
-i.c2 = c_purple
+i.c2 = uiXpPurple
+i.hud = true
 
 global.pc.xp += p
+global.xpTimer = 2
 
 if global.pc.xp > global.pc.xpToLevel
 {
@@ -217,9 +230,10 @@ global.pc.xpToLevel *= 1.4
 global.pc.combatLevel += 1
 global.pc.talentPoints += 1
 
-i = instance_create(global.pc.x,global.pc.y,obj_text)
-i.z = (metre*3)
+i = instance_create(60,(global.camZoom*view_hview)-25,obj_text)
+i.z = metre
 i.t = 'LEVEL UP'
-i.c1 = c_purple
+i.c1 = uiXpPurple
 i.c2 = c_white
+i.hud = true
 }

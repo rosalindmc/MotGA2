@@ -47,14 +47,14 @@ switch(argument0)
     anim[2] = weaponSlash   //Power Attack
     anim[3] = weaponChop   //Alternate Attack (2h)
     anim[4] = weaponSlash    //Roll Attack
-    anim[5] = weaponHilt    //Close attack    
+    anim[5] = weaponPommel    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
     animHold[1] = weaponChopHold//Alt Hold Anim 
     animHold[2] = weaponSlashHold//Roll Hold Anim 
-    animHold[3] = weaponHiltHold//Close Hold Anim 
+    animHold[3] = weaponPommelHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
     
     for(i = 1; i < 7; i++)
@@ -70,13 +70,16 @@ switch(argument0)
         meleeSizeMult[i] = 1
         meleeSpecialMult[i] = 1
         meleeCostMult[i] = 1
+        meleePuntMult[i] = 1
+        meleeImpactTypeMult[i] = 0
     }    
     
     meleePenMod[2] = 25
     meleeAttackMask[3] = spr_slam
     meleePowMult[3] = .6
     meleeChargePowMult[3] = 2
-    meleeImpactMult[3] = .7
+    meleeImpactMult[3] = 1.5
+    meleeImpactTypeMult[3] = 1
     meleeCostMult[3] = 1.5
     meleePenMod[3] = -10
     meleeType[5] = dmgType.impact
@@ -96,11 +99,13 @@ switch(argument0)
     //Core
     name = 'Throwy Axe'
     sprite_index = spr_throwyAxe
+    tooltip = "This small axe can be used for throwing and opening canned goods."
     
     //Item Stats
     length = 9
     holdPoint = 4
     gwPoint = 1
+    weight = 2
                  
     //Weapon Stats
     meleePow = .8
@@ -131,11 +136,13 @@ switch(argument0)
     //Core
     name = 'Axe'
     sprite_index = spr_axe
+    tooltip = "Two heads are better than one.  See the second head adds weight and makes it... uh... why did we do this again?"
     
     //Item Stats
     length = 19
     holdPoint = 2
     gwPoint = 3
+    weight = 4
              
     //Weapon Stats
     meleePow = 1.2
@@ -168,15 +175,17 @@ switch(argument0)
     //Core
     name = 'Long Axe'
     sprite_index = spr_longAxe
+    tooltip = "The humble long axe is beloved by lumberjanes and lumberjacks everywhere.  No better weapon to fel those accursed trees."
     
     //Item Stats
     length = 35
     holdPoint = -1
     gwPoint = 3
+    weight = 6
                    
     //Weapon Stats
     meleePow = 1.4
-    meleeRate = 1.1
+    meleeRate = .85
     meleeImpact = 4
     meleeLunge = 5
     meleeSlow = .3
@@ -185,6 +194,7 @@ switch(argument0)
     meleePen = 15 
     
     gwPowMult = 1.35
+    gwRateMult = 1.3
        
     throwPow = 2.8
     throwRate = 1.3

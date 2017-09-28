@@ -15,6 +15,7 @@ if argument0 != 0
     handDir[argument0] += (handDirDest[argument0]-handDir[argument0])/ceil(global.frameRate*animDelay[argument0])
     handHeight[argument0] += (handHeightDest[argument0]-handHeight[argument0])/ceil(global.frameRate*animDelay[argument0])
     itemRot[argument0] += (itemRotDest[argument0]-itemRot[argument0])/ceil(global.frameRate*animDelay[argument0])
+    itemZRot[argument0] += (itemZRotDest[argument0]-itemZRot[argument0])/ceil(global.frameRate*animDelay[argument0])
 }
 
 animDelay[argument0] -= animSpeed[argument0]/global.frameRate
@@ -32,14 +33,7 @@ animStep[argument0] = 0
 switch(argument0)
 {
     case 0:
-    if alive = true
-    {
     animIndex[argument0] = humanoid(3)  //Replace with animType(3)
-    }
-    else
-    {
-    animIndex[argument0] = humanoid(3)  //Replace with animType(3)
-    }
     script_execute(animIndex[argument0],0,argument0)
     break
     

@@ -18,22 +18,8 @@ if hspd != 0 or vspd != 0
     vspd = lengthdir_y(max(0,dT-(f/global.frameRate)),point_direction(0,0,hT,vT))
 }
 
-/*
-//Apply Friction
-if hspd > 0 
+if ((!player) and alive = false) and abs(hspd) < 1 and abs(vspd) < 1 and z = floorZ and animIndex[0] != humanoid(6)
 {
-    hspd = max(hspd-(f/global.frameRate),0)
-}
-else
-{
-    hspd = min(hspd+(f/global.frameRate),0)
-}
-
-if vspd > 0
-{
-    vspd = max(vspd-(f/global.frameRate),0)
-}
-else
-{
-    vspd = min(vspd+(f/global.frameRate),0)
+    corpseSpawn()
+    instance_destroy()
 }
