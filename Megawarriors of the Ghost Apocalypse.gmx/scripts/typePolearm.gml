@@ -182,19 +182,41 @@ switch(argument0)
     weight = 3
                          
     //Weapon Stats
-    meleePow = .9
-    meleeRate = 1.8
-    meleeImpact = 2
-    meleeLunge = 2
-    meleeSlow = .3
-    meleeSize = .8
+    meleePow = 1.3
+    meleeRate = 1.6
+    meleeImpact = 6
+    meleeLunge = 3
+    meleeSlow = .4
+    meleeSize = 1
     meleeCost = 1
     meleePen = 5  
     
-    throwPow = 2
+    throwPow = 1.5
     throwRate = 1.6
     throwImpact = 2
     throwLunge = 4
     throwCost = 1
+    
+    anim[1] = weaponHack
+    meleeAttackMask[1] = spr_hack
+    anim[2] = weaponChop
+    animHold[0] = weaponSlashChopHold
+    meleeAttackMask[2] = spr_stab
+    meleeSizeMult[2] = .7
+    meleePowMult[2] = 1.2
+    meleeType[1] = dmgType.rend
+    meleeType[2] = dmgType.rend
+    
+    meleeLungeMult[3] = 3
+    
+    anim[4] = weaponCrossHack
+    animHold[2] = weaponSlashHold
+    meleeAttackMask[4] = spr_hack
+    meleeRateMult[4] = 1.5
+    meleeLungeMult[4] = 2
+    meleePowMult[4] = 1.2
+    meleeImpactTypeMult[4] = 2
+    meleePenMod[4] = 0
+    meleeType[4] = dmgType.rend  
     break
 }

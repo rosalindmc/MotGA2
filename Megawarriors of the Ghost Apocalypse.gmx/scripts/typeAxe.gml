@@ -43,16 +43,16 @@ switch(argument0)
     throwPen = 0
     
     anim[0] = weaponIdle    //Idle Anim
-    anim[1] = weaponSlash   //Basic Attack
+    anim[1] = weaponHack   //Basic Attack
     anim[2] = weaponChop   //Power Attack
-    anim[3] = weaponChop   //Alternate Attack (2h)
-    anim[4] = weaponSlash    //Roll Attack
+    anim[3] = weaponSlash   //Alternate Attack (2h)
+    anim[4] = weaponCrossHack    
     anim[5] = weaponPommel    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponSlashChopHold//Basic Hold Anim (basic+power)
-    animHold[1] = weaponChopHold//Alt Hold Anim 
+    animHold[1] = weaponSlashHold//Alt Hold Anim 
     animHold[2] = weaponSlashHold//Roll Hold Anim 
     animHold[3] = weaponPommelHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
@@ -60,7 +60,7 @@ switch(argument0)
     for(i = 1; i < 7; i++)
     {
         meleeType[i] = dmgType.rend
-        meleeAttackMask[i] = spr_slash
+        meleeAttackMask[i] = spr_hack
         meleePowMult[i] = 1
         meleeChargePowMult[i] = 1.35
         meleeRateMult[i] = 1
@@ -75,18 +75,25 @@ switch(argument0)
     }    
     meleeSizeMult[2] = .7
     meleeAttackMask[2] = spr_stab
+    meleePowMult[2] = 1.2
     meleePenMod[2] = 25
-    meleeAttackMask[3] = spr_slam
-    meleePowMult[3] = .6
-    meleeChargePowMult[3] = 2
-    meleeImpactMult[3] = 1.5
-    meleeImpactTypeMult[3] = 1
-    meleeCostMult[3] = 1.5
-    meleePenMod[3] = -10
+    meleeChargePowMult[3] = 1.5
+    meleeRateMult[3] = .8
+    meleeLungeMult[3] = 1.3
+    meleeAttackMask[3] = spr_slash
+
+    meleeAttackMask[4] = spr_hack
+    meleeRateMult[4] = 1.5
+    meleeLungeMult[4] = 2
+    meleePowMult[4] = 1.2
+    meleeImpactTypeMult[4] = 2
+    meleePenMod[4] = 0
+    meleeType[4] = dmgType.rend
+    
+    meleePowMult[5] = .25
+    meleeLungeMult[5] = 2
     meleeType[5] = dmgType.impact
     meleeAttackMask[5] = spr_impact
-    meleePowMult[5] = .5
-    meleeImpactMult[5] = 1.5
     meleePenMod[5] = -10
     break
 }

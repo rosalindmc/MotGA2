@@ -118,34 +118,53 @@ switch(argument0)
     weight = 3
     
     //Weapon Stats
-    meleePow = 1
-    meleeRate = 1.5
-    meleeImpact = 3
-    meleeLunge = 3
-    meleeSlow = .1
-    meleeSize = 1
+    meleePow = .5
+    meleeRate = 2.5
+    meleeImpact = .5
+    meleeLunge = 2
+    meleeSlow = 0
+    meleeSize = .7
     meleeCost = 1
-    meleePen = 0
+    meleePen = 10
     
-    throwPow = 1.5
-    throwRate = 1.8
-    throwImpact = 5
-    throwLunge = 5
+    throwPow = 2
+    throwRate = 2
+    throwImpact = 3
+    throwLunge = 3
     throwCost = 1
     
-    anim[2] = weaponStab
-    animHold[0] = weaponSlashStabHold
-    meleeAttackMask[2] = spr_stab
-    meleePenMod[2] = 40
+    anim[1] = weaponStab    //Basic Attack
+    anim[2] = weaponStabUp  //Power Attack
+    
+    animHold[0] = weaponStabHold//Basic Hold Anim (basic+power)
+    meleeType[1] = dmgType.pierce
+    meleeAttackMask[1] = spr_stab
+    meleePowMult[1] = .75
+    meleePenMod[1] = 25
+    
+    meleePenMod[2] = 50
     meleeType[2] = dmgType.pierce
-    meleePowMult[3] = 1.2
-    meleeChargePowMult[3] = 1.5
-    meleeSizeMult[3] = .7
-    meleeCostMult[3] = 1
-    meleeImpactMult[3] = 1.2
-    meleeImpactTypeMult[3] = 1
-    meleePenMod[3] = 15
+    meleeAttackMask[2] = spr_stab
+    
+    anim[3] = weaponChop
+    animHold[1] = weaponChopHold
+    meleeChargePowMult[3] = 4
+    meleeRateMult[3] = .33
+    meleeLungeMult[3] = 1.5
     meleeAttackMask[3] = spr_stab
+    meleeSizeMult[3] = .7
+    
+    meleeRateMult[4] = 1.5
+    meleeLungeMult[4] = 1.5
+    meleePowMult[4] = 1.2
+    
+    anim[5] = weaponHack   //Close Attack
+    animHold[3] = weaponSlashHold//Close Hold Anim
+    meleeType[5] = dmgType.rend
+    meleeAttackMask[5] = spr_hack
+    meleePowMult[5] = 1.5
+    meleeImpactMult[5] = 1.25
+    meleePenMod[5] = 0
     break
 }
 
@@ -336,7 +355,7 @@ switch(argument0)
     length = 25
     holdPoint = 10
     gwPoint = 1
-    weight = 5
+    weight = 6
     
     //Weapon Stats
     meleePow = 1.5
@@ -381,27 +400,36 @@ switch(argument0)
     weight = 4
     
     //Weapon Stats
-    meleePow = 1.5
-    meleeRate = 1.1
-    meleeImpact = 4
+    meleePow = 1
+    meleeRate = 1.3
+    meleeImpact = 2
     meleeLunge = 3
-    meleeSlow = .3
-    meleeSize = 1.2
-    meleeCost = 2
-    meleePen = 0  
+    meleeSlow = .1
+    meleeSize = 1
+    meleeCost = 1
+    meleePen = 5  
     
-    gwPowMult = 1.35
-    gwRateMult = 1
-    
-    throwPow = 2
+    throwPow = 3
     throwRate = 1.4
-    throwImpact = 6
+    throwImpact = 3
     throwLunge = 5
-    throwCost = 2
+    throwCost = 1
     
-    anim[1] = weaponHack
-    meleeAttackMask[1] = spr_hack
-    animHold[3] = weaponMurderHold
+    
+    anim[1] = weaponStab    //Basic Attack
+    anim[2] = weaponHack   //Power Attack
+    
+    animHold[0] = weaponStabSlashHold//Basic Hold Anim (basic+power)
+    meleeType[1] = dmgType.pierce
+    meleeAttackMask[1] = spr_stab
+    meleePowMult[1] = .75
+    meleePenMod[1] = 50
+    
+    meleeAttackMask[2] = spr_hack
+    
+    meleeRateMult[4] = 1.5
+    meleeLungeMult[4] = 1.5
+    meleePowMult[4] = 1.2
     break
 }
 
@@ -485,17 +513,17 @@ switch(argument0)
     length = 25
     holdPoint = 10
     gwPoint = 1
-    weight = 5
+    weight = 6
     
     //Weapon Stats
     meleePow = 1.5
-    meleeRate = 1.1
-    meleeImpact = 4
+    meleeRate = 1.2
+    meleeImpact = 3
     meleeLunge = 3
     meleeSlow = .3
-    meleeSize = 1.2
+    meleeSize = 1.1
     meleeCost = 2
-    meleePen = 0  
+    meleePen = 10 
     
     gwPowMult = 1.35
     gwRateMult = 1
@@ -506,9 +534,21 @@ switch(argument0)
     throwLunge = 5
     throwCost = 2
     
-    anim[1] = weaponHack
-    meleeAttackMask[1] = spr_hack
-    animHold[3] = weaponMurderHold
+    anim[1] = weaponStab    //Basic Attack
+    anim[2] = weaponChop    //Power Attack
+    
+    animHold[0] = weaponStabSlashHold//Basic Hold Anim (basic+power)
+    animHold[3] = weaponMurderHold 
+    meleeType[1] = dmgType.pierce
+    meleeAttackMask[1] = spr_stab
+    meleePowMult[1] = .75
+    meleePenMod[1] = 50
+    
+    meleeAttackMask[2] = spr_hack
+    
+    meleeRateMult[4] = 1.5
+    meleeLungeMult[4] = 1.5
+    meleePowMult[4] = 1.2
     break
 }
 
