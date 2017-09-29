@@ -163,3 +163,74 @@ switch(argument0)
     throwSpeed = 15
     break
 }
+#define club
+switch(argument0)
+{
+    case 0:     //Initialize 
+    typeBludgeon(0)
+    
+    //Core
+    name = 'Club'
+    sprite_index = spr_club
+    tooltip = "Somebody just picked up a particularly heavy branch and was like 'I guess this will do'.  That person is probably dead now, actually there most certainly dead because you own this item.  Unless you're the guy.  Don't be that guy."
+    
+    //Item Stats
+    length = 19
+    holdPoint = 6
+    gwPoint = 2
+    weight = 6
+    
+    //Weapon Stats
+    meleePow = 1.5
+    meleeRate = 1
+    meleeImpact = 4
+    meleeLunge = 2
+    meleeSlow = .3
+    meleeSize = 1
+    meleeCost = 2
+    meleePen = 15 
+    
+    gwPowMult = 1.35
+    
+    throwPow = 1
+    throwRate = 1
+    throwImpact = 6
+    throwCost = 2
+    break
+}
+
+#define staff
+switch(argument0)
+{
+    case 0:     //Initialize 
+    typeBludgeon(0)
+    
+    //Core
+    name = 'Staff'
+    sprite_index = spr_staff
+    tooltip = "Knights train with this weapon in their special dojos.  It is favoured for its ability to thwack undisciplined would-be hero types on the top of the head when they question your teachings."
+        
+    //Item Stats
+    length = 33
+    holdPoint = 0
+    gwPoint = 3
+    weight = 4
+    
+    //Weapon Stats
+    meleePow = 1.5
+    meleeRate = 1
+    meleeImpact = 4
+    meleeLunge = 2
+    meleeSlow = .3
+    meleeSize = 1
+    meleeCost = 2
+    meleePen = 15 
+    
+    gwPowMult = 1.35
+    
+    throwPow = 1
+    throwRate = 1
+    throwImpact = 6
+    throwCost = 2
+    break
+}

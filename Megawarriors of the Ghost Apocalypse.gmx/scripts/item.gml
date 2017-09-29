@@ -51,6 +51,7 @@ vspd = 0
 zspd = 0
 floorZ = 0
 z = 0
+zM = 1
 zAngle = 0
 spin = 0
 
@@ -75,15 +76,19 @@ if owner != noone
             if abs(angle_difference(90,image_angle)) < 90
             {
                 zAngle = ((owner.itemZRot[hand])+(owner.bodyRot*owner.hFacing))*(angle_difference(90,image_angle)/90)
+                zM = 1-((1-abs(lengthdir_x(1,zAngle)))*(1-(abs(angle_difference(90,image_angle)/90))))
             }
             else
             {
                 zAngle = ((owner.itemZRot[hand])+(owner.bodyRot*owner.hFacing))*(angle_difference(270,image_angle)/-90)
+                //zAngle = ((owner.itemZRot[hand])+(owner.bodyRot*owner.hFacing))*(angle_difference(90,image_angle)/90)
+                zM = 1-((1-abs(lengthdir_x(1,zAngle)))*(1-(abs(angle_difference(270,image_angle)/90))))
             }
+            image_xscale = owner.itemFlip[hand]
             image_yscale = owner.meleeSwing[hand]
-            x = owner.x+lengthdir_x(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_x(holdPoint,image_angle+zAngle)
+            x = owner.x+lengthdir_x(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_x(holdPoint+owner.itemHoldAdjust[hand],image_angle+zAngle)
             z = (owner.charSurfSize*.75)-round(owner.bodyY-owner.handHeight[hand])+owner.z
-            y = owner.y+lengthdir_y(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_y(holdPoint,image_angle+zAngle)
+            y = owner.y+lengthdir_y(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_y(holdPoint+owner.itemHoldAdjust[hand],image_angle+zAngle)
             image_index = 0
             isoDepth(0)
         }
@@ -109,15 +114,15 @@ if owner = noone or hand != 0
         surface_set_target(itemSurf)
         draw_clear_alpha(c_white,0)
             
-        draw_sprite_ext(sprite_index,image_index,30,30,1,image_yscale,image_angle+zAngle,c_white,1)  
+        draw_sprite_ext(sprite_index,image_index,30,30,(.5+(zM*.5))*image_xscale,(.75+(zM*.25))*image_yscale,image_angle+zAngle,c_white,1)  
         surface_reset_target()
     }
     else
     {
         itemSurf = surface_create(60,60)
     }
-    draw_sprite_ext(sprite_index,image_index,x,y,lengthdir_x(1,zAngle),image_yscale,image_angle,c_black,.3)
-    draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)
+    draw_sprite_ext(sprite_index,image_index,x,y,abs(lengthdir_x(1,zAngle))*(.5+(zM*.5))*image_xscale,(.75+(zM*.25))*image_yscale,image_angle,c_black,.3)
+    draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)     
     
     if global.surfX2 != 0
     {

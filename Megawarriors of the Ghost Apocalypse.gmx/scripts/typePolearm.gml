@@ -45,14 +45,14 @@ switch(argument0)
     anim[0] = weaponIdle    //Idle Anim
     anim[1] = weaponStab    //Basic Attack
     anim[2] = weaponStab    //Power Attack
-    anim[3] = weaponStab   //Alternate Attack (2h)
+    anim[3] = weaponStabUp   //Alternate Attack (2h)
     anim[4] = weaponSlash    //Roll Attack
     anim[5] = weaponPommel    //Close attack    
     anim[6] = weaponSlash    //Special Slot, called by some items
     anim[7] = throwAnim     //Throw
     
     animHold[0] = weaponStabHold   //Basic Hold Anim (basic+power)
-    animHold[1] = weaponChopHold    //Alt Hold Anim 
+    animHold[1] = weaponStabUpHold    //Alt Hold Anim 
     animHold[2] = weaponSlashHold    //Roll Hold Anim 
     animHold[3] = weaponPommelHold    //Close Hold Anim 
     animHold[4] = throwHold         //Throw Hold Anim 
@@ -108,13 +108,13 @@ switch(argument0)
     weight = 6
                      
     //Weapon Stats
-    meleePow = 1.4
+    meleePow = 1.3
     meleeRate = .9
     meleeImpact = 3
     meleeLunge = 2
     meleeSlow = .4
     meleeSize = 1
-    meleeCost = 3
+    meleeCost = 2
     meleePen = 10 
 
     gwPowMult = 1.35
@@ -125,7 +125,7 @@ switch(argument0)
     throwImpact = 3
     throwLunge = 4
     throwSpeed = 20
-    throwCost = 3
+    throwCost = 2
     break
 }
 
@@ -147,19 +147,54 @@ switch(argument0)
     weight = 3
                          
     //Weapon Stats
-    meleePow = 1
+    meleePow = .9
     meleeRate = 1.8
     meleeImpact = 2
     meleeLunge = 2
     meleeSlow = .3
     meleeSize = .8
-    meleeCost = 2
+    meleeCost = 1
     meleePen = 5  
     
     throwPow = 2
     throwRate = 1.6
     throwImpact = 2
     throwLunge = 4
-    throwCost = 2
+    throwCost = 1
+    break
+}
+
+#define stabbyAxe
+switch(argument0)
+{
+    case 0:     //Initialize 
+    typePolearm(0)
+    
+    //Core
+    name = 'Stabby Axe'
+    sprite_index = spr_stabbyAxe
+    tooltip = "Axes and spears did battle long ago, until they were united by a member of both tribes; the Nerdish 'Halberd' brought peace between worlds."
+    
+    //Item Stats
+    length = 55 
+    holdPoint = 0
+    gwPoint = 3
+    weight = 3
+                         
+    //Weapon Stats
+    meleePow = .9
+    meleeRate = 1.8
+    meleeImpact = 2
+    meleeLunge = 2
+    meleeSlow = .3
+    meleeSize = .8
+    meleeCost = 1
+    meleePen = 5  
+    
+    throwPow = 2
+    throwRate = 1.6
+    throwImpact = 2
+    throwLunge = 4
+    throwCost = 1
     break
 }

@@ -24,6 +24,8 @@ handDirDest[argument1] = ((60*i)+15)*meleeSwing[argument1]
 handHeightDest[argument1] = 0
 itemRotDest[argument1] = ((120*i)+30)*meleeSwing[argument1]
 itemZRotDest[argument1] = 5*argument1
+itemFlip[argument1] = 1
+itemHoldAdjust[argument1] = 0
 
 if staggered = true
 {
@@ -50,7 +52,6 @@ if greatWeapon = false
 {
     meleeSwing[argument1] = 3-(argument1*2)
 }
-
 if argument1 = 1
 {
     bodyTwist = 0
@@ -126,12 +127,7 @@ switch(argument0)
 
 
 #define weaponStab
-if (!grappling && !grappled){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
-}
-else{ 
-s = 1
-}
 
 switch(argument0)
 {
@@ -283,12 +279,7 @@ switch(argument0)
 
 
 #define weaponSlash
-if (!grappling && !grappled){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
-}
-else{ 
-s = 1
-}
 
 switch(argument0)
 {
@@ -387,7 +378,7 @@ switch(argument0)
     handDirDest[argument1] = (0*meleeSwing[argument1])
     handHeightDest[argument1] = 2
     itemRotDest[argument1] = (45*meleeSwing[argument1])
-    itemZRotDest[argument1] = 30
+    itemZRotDest[argument1] = 45
     animDelay[argument1] = .1*s
     break
 
@@ -414,7 +405,7 @@ switch(argument0)
     handDirDest[argument1] = (150*meleeSwing[argument1])
     handHeightDest[argument1] = 5
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
-    itemZRotDest[argument1] = 180
+    itemZRotDest[argument1] = 150
     animDelay[argument1] = .3
     
     charge[argument1] = 2
@@ -431,7 +422,7 @@ switch(argument0)
     handDirDest[argument1] = (150*meleeSwing[argument1])
     handHeightDest[argument1] = 6
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
-    itemZRotDest[argument1] = 225
+    itemZRotDest[argument1] = 165
     animDelay[argument1] = 1*s
     
     sweetSpot = false
@@ -445,12 +436,9 @@ switch(argument0)
 
 
 #define weaponChop
-if (!grappling && !grappled){
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
-}
-else{ 
-s = 1
-}
+
+meleeSwing[argument1] = hFacing
 
 switch(argument0)
 {
@@ -483,7 +471,6 @@ switch(argument0)
     
     case 3:
     //HIT
-    handItem[argument1].z = 0
     hspd = 0
     vspd = 0
     meleeHit(argument1,queuedAnim[argument1])

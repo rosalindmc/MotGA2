@@ -195,11 +195,11 @@ wM = 1+max(0,(handItem[argument0].weight-might-(greatWeapon*ceil(might*.5)))*.2)
 strike[argument0] = 0
 with(handItem[argument0])
 {    
-    i = instance_create(owner.x+lengthdir_x((length/2)+owner.handDist[argument0]+holdPoint,owner.facing),owner.y+lengthdir_y((length/2)+owner.handDist[argument0]+holdPoint,owner.facing),obj_meleeCollider)
+    i = instance_create(owner.x+lengthdir_x((length/2)+owner.itemHoldAdjust[argument0]+owner.handDist[argument0]+holdPoint,owner.facing),owner.y+lengthdir_y((length/2)+owner.itemHoldAdjust[argument0]+owner.handDist[argument0]+holdPoint,owner.facing),obj_meleeCollider)
     i.owner = owner
     i.originX = owner.x
     i.originY = owner.y
-    i.dist = (length/2)+owner.handDist[argument0]+holdPoint
+    i.dist = (length/2)+owner.handDist[argument0]+holdPoint+owner.itemHoldAdjust[argument0]
     i.image_angle = owner.facing
     i.dmgType = meleeType[argument1]
     i.dmg = meleePow*meleePowMult[argument1]*(1+((owner.charge[argument0]-1)*meleeChargePowMult[argument1]))*(1+((owner.greatWeapon*gwPowMult)-owner.greatWeapon))*owner.damageMod*(1+(owner.perfectTimeDmgMod*owner.sweetSpotBonus))/other.wM

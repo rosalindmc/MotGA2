@@ -552,8 +552,7 @@ enum podType{
 };
 
 enum itemType{
-    none = 0,
-    knife = 1
+    none = 0
 };
 
 enum bossType{

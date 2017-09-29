@@ -153,7 +153,7 @@ threatInitialize();
 //replace later -> weapon spawn center
 repeat(4)
 {
-    createItem(random(room_width),random(room_height),choose(sword,bigSword,biggerSword,circleySword,axe,longAxe,throwyAxe,mace,warhammer,spear,pike,genericPotion),noone)
+    createItem(random(room_width),random(room_height),itemList(),noone)
 }
 
 //Temp assign tile information
@@ -609,3 +609,6 @@ break;
 global.threatTimer = 0;
 
 ds_list_destroy(global.threatList);
+#define itemList
+//Temp location
+return choose(sword,edgeySword,choppySword,stabbyAxe,club,staff,stabbySword,bigStabbySword,bigSword,biggerSword,circleySword,axe,longAxe,throwyAxe,mace,warhammer,spear,pike,genericPotion)

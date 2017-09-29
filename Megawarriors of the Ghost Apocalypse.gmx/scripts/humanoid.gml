@@ -95,6 +95,8 @@ itemRotDest[1] = 0
 itemZRot[1] = 0
 itemZRotDest[1] = 0
 itemSprite[1] = spr_sword
+itemFlip[1] = 1
+itemHoldAdjust[1] = 0
 
 handDist[2] = 4
 handDistDest[2] = 4
@@ -108,6 +110,8 @@ itemRotDest[2] = 0
 itemZRot[2] = 0
 itemZRotDest[2] = 0
 itemSprite[2] = spr_sword
+itemFlip[2] = 1
+itemHoldAdjust[2] = 0
 
 armSprite = spr_humanoidArms
 armSpriteLength = 5
@@ -439,39 +443,8 @@ headRot = 0
 
 if staggered = true
 {
-    bodyRot = -30*sign(hFacing)
-    headRot = -45*sign(hFacing)
-}
-
-switch(argument0)
-{
-    case 0:
-    hipsImage = 2-(gender*2)
-    legLength = 4
-    break
-    
-    case 1:
-    hipsImage = 8
-    legLength = 3
-    bounce = 1
-    bounceTimer = .2
-    flow = 2
-    flowTimer = .2
-    break
-    
-    case 2:
-    hipsImage = 2-(gender*2)
-    legLength = 4
-    bounce = 1
-    bounceTimer = .2
-    flow = 1
-    flowTimer = .2
-    break
-    
-    case 3:
-    humanoidIdle(0,argument1)
-    animStep[argument1] = 0
-    break
+    bodyRot = -30*hFacing
+    headRot = -45*hFacing
 }
 
 if isProne = true or alive = false
@@ -481,6 +454,39 @@ if isProne = true or alive = false
     bodyRot = 90*hFacing
     headRot = 90*hFacing
     hairRot = 90*hFacing
+}
+else
+{
+    switch(argument0)
+    {
+        case 0:
+        hipsImage = 2-(gender*2)
+        legLength = 4
+        break
+        
+        case 1:
+        hipsImage = 8
+        legLength = 3
+        bounce = 1
+        bounceTimer = .2
+        flow = 2
+        flowTimer = .2
+        break
+        
+        case 2:
+        hipsImage = 2-(gender*2)
+        legLength = 4
+        bounce = 1
+        bounceTimer = .2
+        flow = 1
+        flowTimer = .2
+        break
+        
+        case 3:
+        humanoidIdle(0,argument1)
+        animStep[argument1] = 0
+        break
+    }
 }
 
 #define humanoidSneakWalk

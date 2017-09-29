@@ -109,16 +109,25 @@
     <sprites name="Items">
       <sprites name="Weapons">
         <sprite>sprites\spr_bigSword</sprite>
+        <sprite>sprites\spr_swordstria</sprite>
+        <sprite>sprites\spr_edgeySword</sprite>
+        <sprite>sprites\spr_biggerSword</sprite>
+        <sprite>sprites\spr_bigStabbySword</sprite>
         <sprite>sprites\spr_sword</sprite>
+        <sprite>sprites\spr_stabbySword</sprite>
+        <sprite>sprites\spr_choppySword</sprite>
+        <sprite>sprites\spr_knife</sprite>
         <sprite>sprites\spr_circleySword</sprite>
         <sprite>sprites\spr_longAxe</sprite>
         <sprite>sprites\spr_mace</sprite>
         <sprite>sprites\spr_warhammer</sprite>
         <sprite>sprites\spr_axe</sprite>
+        <sprite>sprites\spr_club</sprite>
         <sprite>sprites\spr_throwyAxe</sprite>
         <sprite>sprites\spr_spear</sprite>
+        <sprite>sprites\spr_staff</sprite>
         <sprite>sprites\spr_pike</sprite>
-        <sprite>sprites\spr_biggerSword</sprite>
+        <sprite>sprites\spr_stabbyAxe</sprite>
       </sprites>
       <sprite>sprites\spr_smallCrate</sprite>
       <sprite>sprites\spr_largeCrate</sprite>
@@ -148,6 +157,7 @@
     </sprites>
     <sprites name="Hitbox">
       <sprite>sprites\spr_slash</sprite>
+      <sprite>sprites\spr_hack</sprite>
       <sprite>sprites\spr_stab</sprite>
       <sprite>sprites\spr_slam</sprite>
       <sprite>sprites\spr_impact</sprite>
