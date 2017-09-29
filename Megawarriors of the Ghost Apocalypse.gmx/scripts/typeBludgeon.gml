@@ -169,8 +169,18 @@ switch(argument0)
     throwImpact = 7
     throwCost = 3
     throwSpeed = 15
+    
+    animHold[0] = weaponSlashChopHold//Basic Hold Anim (basic+power)
+    anim[2] = weaponChop   //Power Attack
+    meleeAttackMask[2] = spr_stab
+    meleeImpactMult[2] = 2
+    meleePuntMult[2] = 0
+    meleeSizeMult[2] = .7
+    meleePowMult[2] = 1.3
+    meleeImpactTypeMult[2] = 1
     break
 }
+
 #define club
 switch(argument0)
 {
