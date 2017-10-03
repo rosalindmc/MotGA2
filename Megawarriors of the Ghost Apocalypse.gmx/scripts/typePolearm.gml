@@ -123,8 +123,8 @@ switch(argument0)
     throwPow = 2.1
     throwRate = 1
     throwImpact = 3
-    throwLunge = 4
-    throwSpeed = 20
+    throwLunge = 1
+    throwSpeed = 10
     throwCost = 2
     break
 }
@@ -159,7 +159,8 @@ switch(argument0)
     throwPow = 2
     throwRate = 1.6
     throwImpact = 2
-    throwLunge = 4
+    throwLunge = 1
+    throwSpeed = 25
     throwCost = 1
     break
 }
@@ -194,17 +195,16 @@ switch(argument0)
     throwPow = 1.5
     throwRate = 1.6
     throwImpact = 2
-    throwLunge = 4
+    throwLunge = 1
+    throwSpeed = 15
     throwCost = 1
     
-    anim[1] = weaponHack
-    meleeAttackMask[1] = spr_hack
-    anim[2] = weaponChop
-    animHold[0] = weaponSlashChopHold
-    meleeAttackMask[2] = spr_stab
-    meleeSizeMult[2] = .7
-    meleePowMult[2] = 1.2
-    meleeType[1] = dmgType.rend
+    anim[1] = weaponStab
+    meleeAttackMask[1] = spr_stab
+    anim[2] = weaponHack
+    animHold[0] = weaponStabSlashHold
+    meleeAttackMask[2] = spr_hack
+    meleeType[1] = dmgType.pierce
     meleeType[2] = dmgType.rend
     
     meleeLungeMult[3] = 3

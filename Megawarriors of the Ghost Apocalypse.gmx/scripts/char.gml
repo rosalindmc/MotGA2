@@ -181,6 +181,9 @@ grappled = false
 grappler = noone        //person grappling you
 grappleTarg = noone     //person you are grappling
 
+lastStand = false
+
+
 interactProgress = 0
 
 //Inventory
@@ -220,7 +223,7 @@ switch (type){
         stamMax = endurance    
         stam = stamMax
         
-        damageMod = .75 + (might-4)*0.05
+        damageMod = .8 + (might-4)*0.04
         impactMod = 1 + (might-4)*0.1
         
         stabilityMax = 8+might
@@ -328,100 +331,6 @@ moveStep()
 isoDepth(0)
 
 
-/*
-script_execute(control)
-charFacing()
-
-/*
-if hp > hpMax
-{
-    hp = hpMax
-}
-
-if spDelay = 0
-{
-    sp = min(spMax,sp+(spRegen/global.frameRate))
-}
-else
-{
-    spDelay = max(0,spDelay-(1/global.frameRate))
-}
-
-if pc = true
-{
-    fire = min(100,fire+(2/global.frameRate))
-}
-
-if canAttack = true
-{
-    kick = max(0,kick-(10/global.frameRate))
-}
-
-kick = min(10,kick)
-
-if hp <= 0
-{
-    if pc = true
-    {
-        room_speed = global.frameRate/2
-        obj_control.black += .5/global.frameRate
-        canMove = false
-        canAttack = false
-        
-        if vis = true
-        {
-        obj_control.black = 0
-        i = instance_create(x,y,obj_corpse)
-        i.hspd = hspd
-        i.vspd = vspd
-        i.zspd = zspd
-        i.facingH = facingH
-        i.facingV = facingV
-        with(i){scr_humanoid(0)}
-        i.charSprite = charSprite
-        i.anim[0] = scr_humanoidDeath
-        i.anim[1] = scr_swordIdle
-        i.alarm[0] = 1
-        i.alarm[1] = -4
-        
-        vis = false
-            if instance_exists(invSlot[invSelect])
-            {
-                with(invSlot[invSelect])
-                {
-                scr_dropItem()
-                }
-            }
-        }
-    }
-    else
-    {
-        audio_play_sound(deathSound,0,false)
-    
-        i = instance_create(x,y,obj_corpse)
-        i.hspd = hspd
-        i.vspd = vspd
-        i.zspd = zspd
-        i.facingH = facingH
-        i.facingV = facingV
-        with(i){scr_humanoid(0)}
-        i.charSprite = charSprite
-        i.anim[0] = scr_humanoidDeath
-        i.alarm[0] = 1
-
-        repeat(arrows)
-        {
-            instance_create(x-5+random(10),y-5+random(10),obj_arrowPickup)
-        }
-        
-        instance_destroy()
-        
-
-    }
-}
-
-//Set Terrain to whatever the Grid Tile is (add exception for spots)
-dTerrain = grid.difficult
 
 #define charEndstep
 //Animate
@@ -644,12 +553,12 @@ if (player == false && global.pc.autoTarget == id)
     i = 0
     repeat(ceil(life))
     {
-        draw_sprite_ext(spr_smallhealth,0,ix-10+(4*i),iy,1,1,0,c_white,life-i)
+        draw_sprite_ext(spr_smallhealth,0,ix-10+(3*i),iy,1,1,0,c_white,life-i)
         i += 1
     }
     repeat(ceil(lifeMax-life))
     {
-        draw_sprite_ext(spr_smallhealth,1,ix-10+(4*i),iy,1,1,0,c_white,1)
+        draw_sprite_ext(spr_smallhealth,1,ix-10+(3*i),iy,1,1,0,c_white,1)
         i += 1
     }
     
@@ -658,10 +567,10 @@ if (player == false && global.pc.autoTarget == id)
     repeat(ceil(stamMax))
     {
         draw_set_colour(uiStaminaGreen)
-        draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+6,ix-10+(5*median(0,stam-i,1))+(5*i)+(3*floor(i*.5)),iy+8,false)
+        draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+4,ix-10+(5*median(0,stam-i,1))+(5*i)+(3*floor(i*.5)),iy+6,false)
         
         //Outline
-        draw_sprite(spr_staminaBox,1,ix-10+(5*i)+(3*floor(i*.5)),iy+6)       
+        draw_sprite(spr_staminaBox,1,ix-10+(5*i)+(3*floor(i*.5)),iy+4)       
         i += 1
     }
 }   

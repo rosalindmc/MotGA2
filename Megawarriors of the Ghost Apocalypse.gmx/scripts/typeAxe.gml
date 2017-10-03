@@ -37,7 +37,7 @@ switch(argument0)
     throwImpact = 1
     throwLunge = 0
     throwSpeed = 30
-    throwSpin = 360
+    throwSpin = 720
     throwCost = 1
     throwType = dmgType.rend
     throwPen = 0
@@ -76,7 +76,7 @@ switch(argument0)
     meleeSizeMult[2] = .7
     meleeAttackMask[2] = spr_stab
     meleePowMult[2] = 1.2
-    meleePenMod[2] = 25
+    meleePenMod[2] = 35
     meleeChargePowMult[3] = 1.5
     meleeRateMult[3] = .8
     meleeLungeMult[3] = 1.3
@@ -128,8 +128,8 @@ switch(argument0)
     throwPow = 2.4
     throwRate = 2
     throwImpact = 8
-    throwLunge = 7
-    throwSpeed = 40
+    throwLunge = 2
+    throwSpeed = 30
     throwCost = 1
     throwPen = 10
     break
@@ -167,8 +167,8 @@ switch(argument0)
     throwPow = 2.4
     throwRate = 1.5
     throwImpact = 5
-    throwLunge = 7
-    throwSpeed = 30
+    throwLunge = 2
+    throwSpeed = 20
     throwCost = 2
     throwPen = 15
     break
@@ -207,9 +207,10 @@ switch(argument0)
     throwPow = 2.8
     throwRate = 1.3
     throwImpact = 5
-    throwLunge = 7
-    throwSpeed = 25
+    throwLunge = 2
+    throwSpeed = 15
     throwCost = 3
     throwPen = 20
+    throwSpin = 360
     break
 }

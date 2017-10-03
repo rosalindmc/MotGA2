@@ -35,9 +35,9 @@ switch(argument0)
     throwPow = 1
     throwRate = 1
     throwImpact = 1
-    throwLunge = 0
-    throwSpeed = 20
-    throwSpin = 0
+    throwLunge = 1
+    throwSpeed = 15
+    throwSpin = 30
     throwCost = 1
     throwType = dmgType.impact
     throwPen = 0
@@ -77,7 +77,6 @@ switch(argument0)
     meleeAttackMask[2] = spr_slash
     meleeImpactMult[2] = 1.2
     meleePenMod[2] = 25
-    meleeImpactTypeMult[2] = 2
     meleeAttackMask[3] = spr_slam
     meleeChargePowMult[3] = 2
     meleePowMult[3] = .6
@@ -168,7 +167,7 @@ switch(argument0)
     throwRate = .8
     throwImpact = 7
     throwCost = 3
-    throwSpeed = 15
+    throwSpeed = 10
     
     animHold[0] = weaponSlashChopHold//Basic Hold Anim (basic+power)
     anim[2] = weaponChop   //Power Attack
@@ -177,6 +176,8 @@ switch(argument0)
     meleePuntMult[2] = 0
     meleeSizeMult[2] = .7
     meleePowMult[2] = 1.3
+    meleePenMod[2] = 50
+    meleePenMod[4] = 25
     meleeImpactTypeMult[2] = 1
     break
 }
@@ -251,6 +252,7 @@ switch(argument0)
     throwRate = 1
     throwImpact = 6
     throwCost = 2
+    throwSpeed = 25
     
     animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
     anim[1] = weaponHack   //Basic Attack

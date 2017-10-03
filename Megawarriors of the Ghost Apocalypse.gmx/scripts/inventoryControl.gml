@@ -74,12 +74,12 @@ for(i = 1; i <= inventorySize; i++)
     
     if handItemSlot[1] = inventorySize- i
     {
-        drawText(c_black,c_green,ix,iy+20,'Right Hand')
+        draw_sprite(spr_handIcon,0,ix-4,iy+21)
     }
     
     if handItemSlot[2] = inventorySize- i
     {
-        drawText(c_black,c_red,ix,iy+30,'Left Hand')
+        draw_sprite(spr_handIcon,1,ix+4,iy+21)
     }
 }
 
@@ -121,27 +121,33 @@ if instance_exists(handItem[1])
     iy = 80
     drawText(c_black,c_white,ix,iy,handItem[1].name)
     
-    wM = 1+max(0,(handItem[1].weight-might-(greatWeapon*ceil(might*.5)))*.2)
-
-    if greatWeapon = true
+    if handItem[1].useScript[1] = melee
     {
-        draw_text(ix,iy+12,'POW '+string_format(handItem[1].meleePow*handItem[1].gwPowMult/wM,0,1))
-        draw_text(ix,iy+21,'IMP '+string_format(handItem[1].meleeImpact*handItem[1].gwImpactMult/wM,0,1))
-        draw_text(ix,iy+30,'RAT '+string_format(handItem[1].meleeRate*handItem[1].gwRateMult,0,1))     
+        wM = 1+max(0,(handItem[1].weight-might-(greatWeapon*ceil(might*.5)))*.2)
+        if greatWeapon = true
+        {
+            draw_text(ix,iy+12,'POW '+string_format(handItem[1].meleePow*handItem[1].gwPowMult/wM,0,1))
+            draw_text(ix,iy+21,'IMP '+string_format(handItem[1].meleeImpact*handItem[1].gwImpactMult/wM,0,1))
+            draw_text(ix,iy+30,'RAT '+string_format(handItem[1].meleeRate*handItem[1].gwRateMult,0,1))     
+        }
+        else
+        {
+            draw_text(ix,iy+12,'POW '+string_format(handItem[1].meleePow/wM,0,1))
+            draw_text(ix,iy+21,'IMP '+string_format(handItem[1].meleeImpact/wM,0,1))
+            draw_text(ix,iy+30,'RAT '+string_format(handItem[1].meleeRate/wM,0,1))
+        }
+        if might+(greatWeapon*ceil(might*.5)) < handItem[1].weight
+        {
+            draw_set_colour(c_red)
+        }
+        draw_text(ix,iy+39,'WEIGHT '+string(handItem[1].weight))
+        draw_set_colour(c_white)
+        draw_text_ext(ix,iy+51,handItem[1].tooltip,9,120)
     }
     else
     {
-        draw_text(ix,iy+12,'POW '+string_format(handItem[1].meleePow/wM,0,1))
-        draw_text(ix,iy+21,'IMP '+string_format(handItem[1].meleeImpact/wM,0,1))
-        draw_text(ix,iy+30,'RAT '+string_format(handItem[1].meleeRate/wM,0,1))
+        draw_text_ext(ix,iy+12,handItem[1].tooltip,9,120)
     }
-    if might+(greatWeapon*ceil(might*.5)) < handItem[1].weight
-    {
-        draw_set_colour(c_red)
-    }
-    draw_text(ix,iy+39,'WEIGHT '+string(handItem[1].weight))
-    draw_set_colour(c_white)
-    draw_text_ext(ix,iy+51,handItem[1].tooltip,9,120)
 }
 
 if instance_exists(handItem[2]) and greatWeapon = false
@@ -150,19 +156,26 @@ if instance_exists(handItem[2]) and greatWeapon = false
     iy = 80
     drawText(c_black,c_white,ix,iy,handItem[2].name)
     
-    wM = 1+max(0,(handItem[2].weight-might-(greatWeapon*ceil(might*.5)))*.2)
-    
-    draw_text(ix,iy+12,'POW '+string_format(handItem[2].meleePow/wM,0,1))
-    draw_text(ix,iy+21,'IMP '+string_format(handItem[2].meleeImpact/wM,0,1))
-    draw_text(ix,iy+30,'RAT '+string_format(handItem[2].meleeRate,0,1))
-    
-    if might < handItem[2].weight
+    if handItem[2].useScript[1] = melee
     {
-        draw_set_colour(c_red)
+        wM = 1+max(0,(handItem[2].weight-might-(greatWeapon*ceil(might*.5)))*.2)
+        
+        draw_text(ix,iy+12,'POW '+string_format(handItem[2].meleePow/wM,0,1))
+        draw_text(ix,iy+21,'IMP '+string_format(handItem[2].meleeImpact/wM,0,1))
+        draw_text(ix,iy+30,'RAT '+string_format(handItem[2].meleeRate,0,1))
+        
+        if might < handItem[2].weight
+        {
+            draw_set_colour(c_red)
+        }
+        draw_text(ix,iy+39,'WEIGHT '+string(handItem[2].weight))
+        draw_set_colour(c_white)
+        draw_text_ext(ix,iy+51,handItem[2].tooltip,9,120)
     }
-    draw_text(ix,iy+39,'WEIGHT '+string(handItem[2].weight))
-    draw_set_colour(c_white)
-    draw_text_ext(ix,iy+51,handItem[2].tooltip,9,120)
+    else
+    {
+        draw_text_ext(ix,iy+12,handItem[2].tooltip,9,120)
+    }    
 }
 draw_set_valign(fa_middle)
 
@@ -171,33 +184,33 @@ if(!global.padOn){
     
     if mouse_wheel_up()
     {
-        for(i = handItemSlot[1]+1; i < inventorySize; i++)
+        for(i = handItemSlot[1]+1; i < inventorySize+1; i++)
         {
-            if inventory[i] != noone
+            if i < inventorySize
             {
-                switchItem(i,1)
-                break
+                if inventory[i] != noone
+                {
+                    switchItem(i,1)
+                    break
+                }
             }
-            else
-            {
-                switchItem(-1,1)
-            }
+            switchItem(-1,1)
         }
     }
     
     if mouse_wheel_down()
     {
-        for(i = handItemSlot[2]+1; i < inventorySize; i++)
+        for(i = handItemSlot[2]+1; i < inventorySize+1; i++)
         {
-            if inventory[i] != noone
+            if i < inventorySize
             {
-                switchItem(i,2)
-                break
+                if inventory[i] != noone
+                {
+                    switchItem(i,2)
+                    break
+                }
             }
-            else
-            {
-                switchItem(-1,2)
-            }
+            switchItem(-1,2)
         }
     }
 }
@@ -205,33 +218,33 @@ if(!global.padOn){
 else{
     if(gamepad_button_check_released(0, gp_padr))
     {
-        for(i = handItemSlot[1]+1; i < inventorySize; i++)
+        for(i = handItemSlot[1]+1; i < inventorySize+1; i++)
         {
-            if inventory[i] != noone
+            if i < inventorySize
             {
-                switchItem(i,1)
-                break
+                if inventory[i] != noone
+                {
+                    switchItem(i,1)
+                    break
+                }
             }
-            else
-            {
-                switchItem(-1,1)
-            }
+            switchItem(-1,1)
         }
     }
     
     if(gamepad_button_check_released(0, gp_padl))
     {
-        for(i = handItemSlot[2]+1; i < inventorySize; i++)
+        for(i = handItemSlot[2]+1; i < inventorySize+1; i++)
         {
-            if inventory[i] != noone
+            if i < inventorySize
             {
-                switchItem(i,2)
-                break
+                if inventory[i] != noone
+                {
+                    switchItem(i,2)
+                    break
+                }
             }
-            else
-            {
-                switchItem(-1,2)
-            }
+            switchItem(-1,2)
         }
     }
 }
@@ -276,15 +289,10 @@ if charge[1] = 0 and charge[2] = 0 && canInv
         handItem[argument1] = noone
     }
     
-    
-    
-    
-    
     //If both hands are on the same item wield it in two hands
     if handItemSlot[1] = handItemSlot[2] and handItem[1] != noone
     {
         greatWeapon = true
-        greatWeaponSize = 1
         handItem[1].hand = 1
     }
     else

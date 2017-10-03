@@ -10,6 +10,7 @@ switch(argument0)
     sprite_index = choose('spr_potionRed', 'spr_potionBlue')
     useScript[1] = drinkPotion
     useScript[2] = drinkPotion
+    force1h = false
     
     //Item Stats
     length = 7
@@ -27,6 +28,7 @@ switch(argument0)
     
     //Core
     name = 'Potion'
+    tooltip = "Drink potions every day."
     sprite_index = choose(spr_potionBlue, spr_potionRed)
     break
 }

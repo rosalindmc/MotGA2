@@ -12,12 +12,15 @@ if handItem[argument0] != noone
     i.name = handItem[argument0].name
     i.useType = pickUp
     handItem[argument0].interactId = i
-    inventory[handItemSlot[argument0]] = noone
-    handItem[argument0] = noone
+    inventory[handItemSlot[argument0]] = noone   
     if (greatWeapon = true)
     {
-        handItem[1] = noone
-        handItem[2] = noone
+        switchItem(-1,1)
+        switchItem(-1,2)
+    }
+    else
+    {
+        switchItem(-1,argument0)
     }
 }
 
@@ -32,21 +35,21 @@ switch(argument1)
     if grappling = true or handItem[argument0] != noone
     {
         //Begin Hold
-        charge[argument0] = 1
+        charge[min(argument0,2-greatWeapon)] = 1
         fumble = false
-        hold[argument0] = 1
+        hold[min(argument0,2-greatWeapon)] = 1
         stamDelay = max(stamDelay,1)
         
-        queuedAnim[1] = 7
-        animationStart(throwHold,argument0)
+        queuedAnim[min(argument0,2-greatWeapon)] = 7
+        animationStart(throwHold,min(argument0,2-greatWeapon))
     }
     break
     
     case 1:
     //Release Throw
-    if hold[argument0] != 0 and dodgeTimer = 0 and canAttack = true
+    if hold[min(argument0,2-greatWeapon)] != 0 and dodgeTimer = 0 and canAttack = true
     {
-        throwAttack(argument0)
+        throwAttack(min(argument0,2-greatWeapon))
     }
     break
 }
@@ -102,6 +105,8 @@ if handItem[argument0] != noone
     {
         with(handItem[argument0])
         {
+            x = other.x+lengthdir_x((length/2)+other.itemHoldAdjust[argument0]+other.handDist[argument0]+holdPoint,other.facing)
+            y = other.y+lengthdir_y((length/2)+other.itemHoldAdjust[argument0]+other.handDist[argument0]+holdPoint,other.facing)
             hspd = lengthdir_x(throwSpeed,other.facing)
             vspd = lengthdir_y(throwSpeed,other.facing)
             dir = other.facing
@@ -113,11 +118,21 @@ if handItem[argument0] != noone
         }
     }
     inventory[handItemSlot[argument0]] = noone
-    handItem[argument0] = noone
+    
     if (greatWeapon = true)
     {
+        switchItem(-1,1)
+        switchItem(-1,2)
         handItem[1] = noone
         handItem[2] = noone
+        handItemSlot[1] = -1
+        handItemSlot[2] = -1
+    }
+    else
+    {
+        switchItem(-1,argument0)
+        handItem[argument0] = noone
+        handItemSlot[argument0] = -1
     }
 }
 else    //Char Throw
@@ -126,10 +141,10 @@ else    //Char Throw
     {
         with(grappleTarg)
         {
-            hspd = lengthdir_x(25,other.facing)
-            vspd = lengthdir_y(25,other.facing)
+            hspd = lengthdir_x(10,other.facing)
+            vspd = lengthdir_y(10,other.facing)
             dangerous = true
-            zspd += 10
+            zspd += 5
             animationStart(humanoidFlinchBackward,0)
             moveTimer = 1.5
             canMove = false

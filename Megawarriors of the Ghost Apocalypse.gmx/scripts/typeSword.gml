@@ -130,8 +130,10 @@ switch(argument0)
     throwPow = 2
     throwRate = 2
     throwImpact = 3
-    throwLunge = 3
+    throwLunge = 1
     throwCost = 1
+    throwSpeed = 30
+    throwSpin = 720
     
     anim[1] = weaponStab    //Basic Attack
     anim[2] = weaponStabUp  //Power Attack
@@ -198,8 +200,9 @@ switch(argument0)
     throwPow = 1.5
     throwRate = 1.8
     throwImpact = 5
-    throwLunge = 5
+    throwLunge = 1
     throwCost = 1
+    throwSpeed = 20
     
     anim[2] = weaponStab
     animHold[0] = weaponSlashStabHold
@@ -247,9 +250,10 @@ switch(argument0)
     throwPow = 1
     throwRate = 2
     throwImpact = 6
-    throwLunge = 6
+    throwLunge = 2
     throwCost = 1
     throwSpin = 360
+    throwSpeed = 20
     throwPen = -10
     
     anim[2] = weaponChop
@@ -310,9 +314,10 @@ switch(argument0)
     throwPow = 2
     throwRate = 2
     throwImpact = 6
-    throwLunge = 7
+    throwLunge = 2
     throwCost = 2
     throwSpin = 360
+    throwSpeed = 15
     throwPen = -25
     
     anim[2] = weaponChop
@@ -373,8 +378,9 @@ switch(argument0)
     throwPow = 2
     throwRate = 1.4
     throwImpact = 6
-    throwLunge = 5
+    throwLunge = 2
     throwCost = 2
+    throwSpeed = 15
     
     anim[1] = weaponHack
     meleeAttackMask[1] = spr_hack
@@ -412,9 +418,9 @@ switch(argument0)
     throwPow = 3
     throwRate = 1.4
     throwImpact = 3
-    throwLunge = 5
+    throwLunge = 1
     throwCost = 1
-    
+    throwSpeed = 20    
     
     anim[1] = weaponStab    //Basic Attack
     anim[2] = weaponHack   //Power Attack
@@ -466,8 +472,9 @@ switch(argument0)
     throwPow = 1.7
     throwRate = 1.4
     throwImpact = 5
-    throwLunge = 5
+    throwLunge = 1
     throwCost = 2
+    throwSpeed = 15
     
     anim[1] = weaponHack
     meleeAttackMask[1] = spr_hack
@@ -531,8 +538,9 @@ switch(argument0)
     throwPow = 2
     throwRate = 1.4
     throwImpact = 6
-    throwLunge = 5
+    throwLunge = 1
     throwCost = 2
+    throwSpeed = 10
     
     anim[1] = weaponStab    //Basic Attack
     anim[2] = weaponChop    //Power Attack
@@ -585,8 +593,9 @@ switch(argument0)
     throwPow = 2.2
     throwRate = 1.2
     throwImpact = 7
-    throwLunge = 4
+    throwLunge = 1
     throwCost = 3
+    throwSpeed = 10
     
 
     anim[1] = weaponHack
@@ -628,8 +637,9 @@ switch(argument0)
     throwPow = 4
     throwRate = 1.6
     throwImpact = 7
-    throwLunge = 5
+    throwLunge = 1
     throwCost = 1
+    throwSpeed = 15
     
     anim[1] = weaponHack
     meleeAttackMask[1] = spr_hack

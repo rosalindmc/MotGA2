@@ -13,10 +13,12 @@ behaviorType = carefulSoldier
 
 vitality = 3
 might = 3
-wit = 3
+wit = 2
 endurance = 3
-magic = 3
-charisma = 3
+magic = 2
+charisma = 2
+randomizeStats(3)
+xpReward = 1.0
 
 //Appearance Info
 clothingSprite = choose(spr_darkSoldier,spr_darkSoldier2)
@@ -53,10 +55,12 @@ behaviorType = corrallingSoldier
 
 vitality = 3
 might = 3
-wit = 3
-endurance = 3
-magic = 3
+wit = 2
+endurance = 4
+magic = 2
 charisma = 3
+randomizeStats(3)
+xpReward = 1.2
 
 //Appearance Info
 clothingSprite = choose(spr_dreadPike,spr_dreadPike2)
@@ -66,6 +70,7 @@ helmSprite = spr_pikeHelm
 
 stealth = 0.5
 hearing = 1
+armour = 25
 
 centerVisionRange = 10
 sideVisionRange = 5
@@ -131,10 +136,12 @@ behaviorType = carefulSoldier
 
 vitality = 4
 might = 4
-wit = 4
+wit = 3
 endurance = 4
-magic = 4
-charisma = 4
+magic = 3
+charisma = 3
+randomizeStats(4)
+xpReward = 2.5
 
 //Appearance Info
 clothingSprite = spr_stormtrooper
@@ -142,7 +149,7 @@ skirtSprite = spr_none
 hairSprite = spr_none
 helmSprite = spr_stormHelm
 
-armour = 50
+armour = 75
 stealth = 0.5
 hearing = 1
 

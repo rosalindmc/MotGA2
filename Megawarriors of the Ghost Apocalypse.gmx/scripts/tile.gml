@@ -1,7 +1,7 @@
 #define tile
 
 #define tileInitialize
- weight = 0
+weight = 0
 rWeight = 0
 g = 0
 z = 0

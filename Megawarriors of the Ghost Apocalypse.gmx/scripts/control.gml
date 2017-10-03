@@ -200,7 +200,7 @@ if global.surfX2 != 0
         global.liveSurfX1 = max(view_xview,global.surfX1)
         global.liveSurfX2 = min(view_xview+view_wview,global.surfX2)
         global.liveSurfY1 = max(view_yview,global.surfY1)   
-        global.liveSurfY2 = min(view_yview+view_hview,global.surfY2)
+        global.liveSurfY2 = min(view_yview+view_hview+metre,global.surfY2)
         
         /* OPTIMIZE REFLECTIONS EVENTUALLY
         global.liveSurfX1 = view_xview+view_wview
@@ -572,9 +572,9 @@ global.interactKey = ord('E')
 global.dodgeKey = vk_space
 global.castKey = ord('Q')
 global.reloadKey = ord('R')
-global.throwKey = ord('T')
+global.throwKey = vk_lshift
 global.sneakKey = ord('C')
-global.inventoryKey = vk_lshift
+global.inventoryKey = vk_tab
 
 
 #define controlDestroy

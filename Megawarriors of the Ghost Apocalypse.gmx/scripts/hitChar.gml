@@ -113,13 +113,13 @@ impact = argument1
 dir = argument2
 punt = argument3
 
-t.hspd += (lengthdir_x(power(2+impact,.9),dir)/t.weight)*punt
-t.vspd += (lengthdir_y(power(2+impact,.9),dir)/t.weight)*punt
+t.hspd += (lengthdir_x(power(impact*punt,.9),dir)/t.weight)
+t.vspd += (lengthdir_y(power(impact*punt,.9),dir)/t.weight)
 if argument5 = 2
 {
-    t.zspd += power(2+impact*punt,.9)
+    t.zspd += power(impact*.3*punt,.9)
 }
-t.stability -= 3+(impact/2)
+t.stability -= 1+impact
 t.stabilityDelay = 1
 
 if impact > 5

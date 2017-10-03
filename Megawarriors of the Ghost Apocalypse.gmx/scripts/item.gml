@@ -45,11 +45,14 @@ owner = noone       //Who currently owns/wields this item
 type = sword
 hand1Pos = 0
 hand2Pos = 0
+force1h = false
+force2h = false
 
 hspd = 0
 vspd = 0
 zspd = 0
 floorZ = 0
+wz = 0
 z = 0
 zM = 1
 zAngle = 0
@@ -81,7 +84,6 @@ if owner != noone
             else
             {
                 zAngle = ((owner.itemZRot[hand])+(owner.bodyRot*owner.hFacing))*(angle_difference(270,image_angle)/-90)
-                //zAngle = ((owner.itemZRot[hand])+(owner.bodyRot*owner.hFacing))*(angle_difference(90,image_angle)/90)
                 zM = 1-((1-abs(lengthdir_x(1,zAngle)))*(1-(abs(angle_difference(270,image_angle)/90))))
             }
             image_xscale = owner.itemFlip[hand]
@@ -97,17 +99,31 @@ if owner != noone
 else
 {
     //Resolve Unowned
-    if(type == crate){
+    if(type == crate)
+    {
         image_index = imgInd;
     }
-    image_angle += spin/global.frameRate
-    zAngle += spin/global.frameRate
+    
+    if z+max(0,zspd) > floorZ
+    {
+        if spin != 0
+        {
+            zAngle -= spin/global.frameRate
+        }
+        else
+        {
+            image_angle = point_direction(0,0,hspd,vspd)
+            zAngle = point_direction(0,0,abs(hspd),-zspd/2)
+        }
+    }
     moveStepObject()
     isoDepth(10)
 }
 
 #define itemDraw
 if owner = noone or hand != 0
+{
+if z >= wz
 {
     if surface_exists(itemSurf)  
     {        
@@ -142,6 +158,7 @@ if owner = noone or hand != 0
             surface_reset_target()
         }
     }
+}
 }
 
 #define itemDestroy

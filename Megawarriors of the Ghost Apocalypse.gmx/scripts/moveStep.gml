@@ -17,7 +17,7 @@ else
 {
     if z != floorZ
     {
-        footStep(0)
+        footStep(abs(zspd))
     }
     zspd = 0
     z = floorZ
@@ -121,6 +121,13 @@ y = median(0,y,room_height)
 
 
 #define moveStepObject
+gridX = median(0,floor(x/metre),global.currLevel.sizeX-1)
+gridY = median(0,floor(y/metre),global.currLevel.sizeY-1)
+floorID = global.currLevel.floorLayout[gridX,gridY]
+floorZ = floorID.z
+wz = floorID.wz
+collide = false
+
 //Gravity
 if z+max(0,zspd) > floorZ
 {
@@ -129,6 +136,14 @@ if z+max(0,zspd) > floorZ
 }
 else
 {
+    if z != floorZ
+    {
+        if wz != floorZ
+        {
+            createParticle(x,y-1,floorID.wz+5,5+irandom(5)*zspd,partSplash,zspd)
+            createParticle(x,y,floorID.wz,1,partRipple,zspd)
+        }
+    }
     zspd = 0
     hspd = 0
     vspd = 0
@@ -137,8 +152,6 @@ else
     dangerous = false
     z = floorZ
 }
-
-collide = false
 
 //Horizontal Collision
 if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(x,y,x+(metre*hspd/global.frameRate),y,obj_solid,false,true)
@@ -159,7 +172,10 @@ if place_meeting(x+(metre*hspd/global.frameRate),y,obj_solid) or collision_line(
     }
 }
 
-x += metre*hspd/global.frameRate
+if collide = false
+{
+    x += metre*hspd/global.frameRate
+}
 
 //Vertical Collision
 if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(x,y,x,y+(metre*vspd/global.frameRate),obj_solid,false,true)
@@ -180,29 +196,43 @@ if place_meeting(x,y+(metre*vspd/global.frameRate),obj_solid) or collision_line(
     }
 }
 
+if collide = false
+{
+    y += metre*vspd/global.frameRate
+}
 
 if collide = true
 {
     dangerous = false
     collide = false
-       
-    i = instance_create(x,y,obj_meleeCollider)
+    cPow = point_distance(0,0,hspd,vspd)/15
+    spin += random(360)*choose(-1,1)
+    
+    i = instance_create(x+lengthdir_x(metre,point_direction(0,0,hspd,vspd)),y+lengthdir_y(metre,point_direction(0,0,hspd,vspd)),obj_meleeCollider)
     i.owner = thrower
     i.originX = x
     i.originY = y
     i.dist = 0
     i.image_angle = dir
     i.dmgType = throwType
-    i.dmg = throwPow*thrower.damageMod*(1+(thrower.perfectTimeDmgMod*sweetSpot))
-    i.impact = throwImpact*thrower.impactMod
-    i.pen = throwPen+thrower.penMod
+    if instance_exists(thrower)
+    {
+        i.dmg = throwPow*thrower.damageMod*(1+(thrower.perfectTimeDmgMod*sweetSpot))*cPow
+        i.impact = throwImpact*thrower.impactMod*cPow
+        i.pen = throwPen+thrower.penMod*cPow
+    }
+    else
+    {
+        i.dmg = throwPow*cPow
+        i.impact = throwImpact*cPow
+        i.pen = throwPen*cPow
+    }
     i.sweetSpot = sweetSpot
     i.z = z
     i.sprite_index = spr_stab
     i.image_alpha = 0
 }
 
-y += metre*vspd/global.frameRate
 
 #define moveStepParticle
 //Gravity

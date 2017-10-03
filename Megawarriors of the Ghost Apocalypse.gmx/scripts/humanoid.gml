@@ -264,11 +264,11 @@ if surface_exists(charSurf)
     //If using a great weapon, move second hand
     if greatWeapon = true and handItem[1] != noone
     {
-        handX[2] = round(handX[1]+lengthdir_x(handItem[1].gwPoint, (round(facing/15)*15)+(itemRot[1])))
-        handY[2] = round(handY[1]+lengthdir_y(handItem[1].gwPoint, (round(facing/15)*15)+(itemRot[1])))
+        handX[2] = round(handX[1]+lengthdir_x(handItem[1].gwPoint, handItem[1].image_angle))
+        handY[2] = round(handY[1]+lengthdir_y(handItem[1].gwPoint, handItem[1].image_angle))
         
-        handX[1] = round(handX[1]+lengthdir_x(handItem[1].gwPoint*-1, (round(facing/15)*15)+(itemRot[1])))
-        handY[1] = round(handY[1]+lengthdir_y(handItem[1].gwPoint*-1, (round(facing/15)*15)+(itemRot[1])))
+        handX[1] = round(handX[1]+lengthdir_x(handItem[1].gwPoint*-1, handItem[1].image_angle))
+        handY[1] = round(handY[1]+lengthdir_y(handItem[1].gwPoint*-1, handItem[1].image_angle))
     }
     
     //Arm Directions
@@ -956,8 +956,8 @@ if (instance_exists(floorID)){
     }
     else
     {
-        createParticle(x,y-1,floorID.wz+5,5+irandom(5),partSplash,0)
-        createParticle(x,y,floorID.wz,1,partRipple,0)
+        createParticle(x,y-1,floorID.wz+5,5+irandom(5)*argument0,partSplash,argument0)
+        createParticle(x,y,floorID.wz,1,partRipple,argument0)
         if(!floorID.isPath)
             moveDT = 1;
         else

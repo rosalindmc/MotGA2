@@ -30,16 +30,16 @@ image_xscale = i
 image_yscale = i
 image_angle = random(359)
 
-i = 2+random(6)
+i = 6+random(14)
 
 dir = argument0-60+random(120)
 
 hspd = lengthdir_x(i,dir)
 vspd = lengthdir_y(i,dir)
-zspd = -1+random(10)
-gravMult = 1
+zspd = -3+random(6)
+gravMult = 2
 bounciness = .75
-life = .5
+life = .1+random(.3)
 fade = 1
 
 impactDeath = false
@@ -60,7 +60,7 @@ image_yscale = i
 image_angle = random(359)
 image_alpha = random(1)
 
-i = 1+random(1)
+i = 1+random(argument0+1)
 
 dir = random(360)
 
@@ -83,7 +83,8 @@ animDelay = 1
 sprite_index = spr_ripple
 reflectOnly = true
 image_alpha = 1
-
+image_xscale = 1+(argument0*.1)
+image_yscale = 1+(argument0*.1)
 
 #define partSheen
 life = .50

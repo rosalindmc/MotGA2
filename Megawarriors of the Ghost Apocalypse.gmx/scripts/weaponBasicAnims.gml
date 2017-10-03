@@ -599,6 +599,8 @@ else
     s = .3
 }
 
+meleeSwing[argument1] = hFacing
+
 switch(argument0)
 {
     case 0:

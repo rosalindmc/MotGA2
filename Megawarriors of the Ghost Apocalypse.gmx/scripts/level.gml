@@ -150,12 +150,6 @@ for (i = 0; i< array_length_1d(global.currNode.pois);i++){
 //start the threat timer for the level
 threatInitialize();
 
-//replace later -> weapon spawn center
-repeat(4)
-{
-    createItem(random(room_width),random(room_height),itemList(),noone)
-}
-
 //Temp assign tile information
 with(obj_tile)
 {

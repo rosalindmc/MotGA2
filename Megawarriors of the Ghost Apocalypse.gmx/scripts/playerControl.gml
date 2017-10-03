@@ -76,7 +76,10 @@ else{
 moveControl()
 
 //Switch Items
-inventoryControl()
+if clashing = false
+{
+    inventoryControl()
+}
 
 //Dodge Control
 if (dodgeKey = true and canMove = true and stam >= 1 and (moving != 0))
@@ -89,7 +92,7 @@ if canAttack = true and inventoryKey = false
     //Interact Control
     interactSearch()
     
-    if interactKey = true
+    if interactKey = true and clashing = false
     {
         interact()  
     }
@@ -185,7 +188,7 @@ else{
     }
 }
 
-if sneakKey = true
+if sneakKey = true and canMove = true
 {
     sneak = 1-sneak
 }

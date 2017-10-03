@@ -15,16 +15,24 @@ iy = targetY
 d = metre
 targ = noone
 
-with(obj_interactable)
+if clashing = false
 {
-    if distance_to_point(other.x,other.y) < metre*2
+    with(obj_interactable)
     {
-        if distance_to_point(ix,iy) < d
+        if distance_to_point(other.x,other.y) < metre*4
         {
-            targ = id
-            d = distance_to_point(ix,iy)
+            if distance_to_point(ix,iy) < d
+            {
+                targ = id
+                d = distance_to_point(ix,iy)
+            }
         }
     }
 }
 
 pointInteract = targ
+
+
+    
+
+

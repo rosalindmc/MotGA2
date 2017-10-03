@@ -38,6 +38,7 @@
       <sprite>sprites\spr_logo</sprite>
       <sprite>sprites\spr_threatBar</sprite>
       <sprite>sprites\spr_threatSkull</sprite>
+      <sprite>sprites\spr_handIcon</sprite>
     </sprites>
     <sprites name="Environment">
       <sprite>sprites\spr_shore</sprite>
