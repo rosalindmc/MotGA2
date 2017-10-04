@@ -56,8 +56,9 @@ switch(argument0)
     animHold[2] = weaponStabUpHold//Roll Hold Anim 
     animHold[3] = weaponPommelHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
-
-    for(i = 1; i < 7; i++)
+    animHold[5] = throwHold //Throw Hold Anim
+    
+    for(i = 1; i < 8; i++)
     {
         meleeType[i] = dmgType.rend
         meleeAttackMask[i] = spr_slash

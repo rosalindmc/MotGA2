@@ -75,7 +75,7 @@ else
 switch(argument1)
 {
     case 0:     //Click
-    if canAttack = true and (charge[min(argument0,2-greatWeapon)] = 0 or (sweetSpot = true and fumble = false)) and stam >= 1
+    if canAttack = true and (charge[min(argument0,2-greatWeapon)] = 0 or (sweetSpot = true and fumble = false)) and stam >= 0 and fatigued = false
     {
         //Begin Hold
         charge[min(argument0,2-greatWeapon)] = 1
@@ -90,7 +90,13 @@ switch(argument1)
         }
         
         //Start Hold Animation as determined by weapon and context
-        if argument0 = 2 and greatWeapon = true
+        if argument0 = 2 and greatWeapon = true and altAttackKey = true
+        {
+            //Alt Attack
+            queuedAnim[1] = 6
+            animationStart(handItem[1].animHold[4],1)
+        }
+        else if argument0 = 2 and greatWeapon = true
         {
             //Alt Attack
             queuedAnim[1] = 3
@@ -101,6 +107,12 @@ switch(argument1)
             //Roll Attack
             queuedAnim[argument0] = 4
             animationStart(handItem[argument0].animHold[2],argument0)
+        }
+        else if altAttackKey = true
+        {
+            //Alt Attack
+            queuedAnim[argument0] = 7
+            animationStart(handItem[argument0].animHold[5],argument0)
         }
         else if point_distance(x,y,targetX,targetY) < (handItem[argument0].length/2)+metre
         {
@@ -134,8 +146,17 @@ switch(argument1)
     case 1:     //Release
     if hold[min(argument0,2-greatWeapon)] != 0 and dodgeTimer = 0 and canAttack = true
     {
-        //Play corresponding attack anim   
-        meleeAttack(min(argument0,2-greatWeapon))     
+        if animIndex[min(argument0,2-greatWeapon)] = throwHold
+        {
+            //Play corresponding attack anim   
+            throwAttack(min(argument0,2-greatWeapon)) 
+            show_message('Throw')
+        }
+        else
+        {
+            //Play corresponding attack anim   
+            meleeAttack(min(argument0,2-greatWeapon))
+        }     
     }
     break
 }

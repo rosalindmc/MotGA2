@@ -123,7 +123,7 @@ else
 #define itemDraw
 if owner = noone or hand != 0
 {
-if z >= wz
+if z >= wz or hand != 0
 {
     if surface_exists(itemSurf)  
     {        

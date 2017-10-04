@@ -18,6 +18,7 @@ if(!global.padOn){
     dodgeKey = keyboard_check_released(global.dodgeKey)
     reloadKey = keyboard_check_pressed(global.reloadKey)
     throwKey = keyboard_check(global.throwKey)
+    altAttackKey = keyboard_check(global.altAttackKey) 
     sneakKey = keyboard_check_pressed(global.sneakKey)
     inventoryKey = keyboard_check(global.inventoryKey)
 }

@@ -67,7 +67,9 @@ dangerous = false
 launcher = noone
 rhythm = 0
 
+fatigued = false
 canRoll = true
+canDodge = true
 dodgeCost = 1
 dodgeSpeed = 12
 dodgeTimer = 0
@@ -133,12 +135,14 @@ talentPoints = 0
 
 //Vitals
 life = 12
+lifeVis = 12
 lifeMax = 12
 lifeRegen = 0.0 //per second
 
 stam = 4
+stamVis = 4
 stamMax = 4    
-stamRegen = 4.0   //per second
+stamRegen = 6.0   //per second
 stamDelay = 0.0
 
 stability = 1.0
@@ -217,13 +221,15 @@ team = 0
 //Vitals
 switch (type){
     case 'mook':
-        lifeMax = (2*vitality)
+        lifeMax = 2+(2*vitality)
         life = lifeMax
+        lifeVis = lifeMax
         
         stamMax = endurance    
         stam = stamMax
+        stamVis = stamMax
         
-        damageMod = .8 + (might-4)*0.04
+        damageMod = 1 + (might-4)*0.1
         impactMod = 1 + (might-4)*0.1
         
         stabilityMax = 8+might
@@ -232,19 +238,21 @@ switch (type){
         
         penMod = wit
         
-        physicalResist = 0.5+(vitality-4)*0.05
-        magicResist = 0.5+(magic-4)*0.05
+        physicalResist = (vitality-4)*0.05
+        magicResist = (magic-4)*0.05
         perfectTimeDmgMod = 0
         
         break;
     
     case 'megawarrior':
         
-        lifeMax = (3*vitality)
+        lifeMax = 4+(2*vitality)
         life = lifeMax
+        lifeVis = lifeMax
         
         stamMax = endurance    
         stam = stamMax
+        stamVis = stamMax
         
         damageMod = 1 + (might-4)*0.1
         impactMod = 1 + (might-4)*0.1  
@@ -256,8 +264,8 @@ switch (type){
         penMod = wit
         xpMult = 1+((wit-4)*.05)
         
-        physicalResist = 0.5+(vitality-4)*0.05
-        magicResist = 0.5+(magic-4)*0.05
+        physicalResist = (vitality-4)*0.05
+        magicResist = (magic-4)*0.05
         
         shrineMod = 1 + (charisma-4)*0.1
         perfectTimeDmgMod = charisma*0.05
@@ -265,13 +273,15 @@ switch (type){
     
     case 'boss':
         
-        lifeMax = (5*vitality)
+        lifeMax = 10+(5*vitality)
         life = lifeMax
+        lifeVis = lifeMax
         
         stamMax = endurance    
         stam = stamMax
+        stamVis = stamMax
         
-        damageMod = 1 + (might-4)*0.15
+        damageMod = 1 + (might-4)*0.1
         impactMod = 1 + (might-4)*0.1 
         
         stabilityMax = 12+(might*1.5)
@@ -280,13 +290,12 @@ switch (type){
     
         penMod = wit
         
-        physicalResist = 0.5+(vitality-4)*0.05
-        magicResist = 0.5+(magic-4)*0.05    
+        physicalResist = (vitality-4)*0.05
+        magicResist = (magic-4)*0.05    
         break
     
     default:
-        break
-    
+    break
 }
 
 #define charStep
@@ -297,7 +306,6 @@ moveLimit()
 if alive = true
 {
     script_execute(controlScript)
-
     
     //Facing
     var tS = turnSpeed;
@@ -325,6 +333,10 @@ if alive = true
         }
     }
 }
+
+//Vis bars
+lifeVis += (life-lifeVis)/(global.frameRate)
+stamVis += (stam-stamVis)/(global.frameRate*.2)
 
 //Movement
 moveStep()
@@ -550,6 +562,7 @@ if (player == false && global.pc.autoTarget == id)
     ix = round(global.camZoom*(x-view_xview))
     iy = round(global.camZoom*(y-view_yview-(metre*2)))
     
+    //Life
     i = 0
     repeat(ceil(life))
     {
@@ -561,13 +574,33 @@ if (player == false && global.pc.autoTarget == id)
         draw_sprite_ext(spr_smallhealth,1,ix-10+(3*i),iy,1,1,0,c_white,1)
         i += 1
     }
+    for(i = life; i > ceil(lifeVis); i--)
+    {
+        draw_sprite_ext(spr_smallhealth,3,ix-10+(3*i),iy,1,1,0,c_white,life-lifeVis)
+    }
+    for(i = life; i < floor(lifeVis); i++)
+    {
+        draw_sprite_ext(spr_smallhealth,2,ix-10+(3*i),iy,1,1,0,c_white,lifeVis-life)
+    }
     
     //Stamina
     i = 0
     repeat(ceil(stamMax))
     {
-        draw_set_colour(uiStaminaGreen)
-        draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+4,ix-10+(5*median(0,stam-i,1))+(5*i)+(3*floor(i*.5)),iy+6,false)
+        if global.pc.stam < global.pc.stamVis
+        {
+            draw_set_colour(c_red)
+            draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+4,ix-10+(5*median(0,stamVis-i,1))+(5*i)+(3*floor(i*.5)),iy+6,false)
+            draw_set_colour(c_yellow)
+            draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+4,ix-10+(5*median(0,stam-i,1))+(5*i)+(3*floor(i*.5)),iy+6,false)
+        }
+        else
+        {
+            draw_set_colour(c_white)
+            draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+4,ix-10+(5*median(0,stam-i,1))+(5*i)+(3*floor(i*.5)),iy+6,false)
+            draw_set_colour(c_yellow)
+            draw_rectangle(ix-10+(5*i)+(3*floor(i*.5)),iy+4,ix-10+(5*median(0,stamVis-i,1))+(5*i)+(3*floor(i*.5)),iy+6,false)      
+        }
         
         //Outline
         draw_sprite(spr_staminaBox,1,ix-10+(5*i)+(3*floor(i*.5)),iy+4)       

@@ -240,8 +240,8 @@
         <script>scripts\particle.gml</script>
         <script>scripts\meleeCollider.gml</script>
         <script>scripts\tile.gml</script>
-        <script>scripts\doodad.gml</script>
         <script>scripts\terrain.gml</script>
+        <script>scripts\doodad.gml</script>
         <script>scripts\status.gml</script>
         <script>scripts\furniture.gml</script>
         <script>scripts\text.gml</script>

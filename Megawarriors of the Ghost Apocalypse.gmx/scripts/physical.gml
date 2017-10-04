@@ -8,17 +8,17 @@ case 0:     //Apply Effect
 var ret = statusStack(effect);
 icon = ico_stun
 
-owner.canAttack = false
-owner.canDodge = false
+owner.canAttack -= 1
+owner.canDodge -= 1
 if potency = 1 
 {
-owner.staggered = true
+    owner.staggered = true
 }
 else
 {
-owner.isProne = true
+    owner.isProne = true
 }
-owner.canMove = false
+owner.canMove -= 1
 owner.physicalResist -= .5
 owner.moveTimer = life
 
@@ -48,8 +48,8 @@ with(interactId)
     instance_destroy()
 }
 
-owner.canAttack = true
-owner.canDodge = true
+owner.canAttack += 1
+owner.canDodge += 1
 owner.staggered = false
 owner.isProne = false
 owner.physicalResist += .5

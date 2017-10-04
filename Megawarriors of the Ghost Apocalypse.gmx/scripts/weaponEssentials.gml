@@ -57,6 +57,7 @@ switch(argument0)
     animHold[2] = weaponStabHold//Roll Hold Anim 
     animHold[3] = weaponPommelHold//Close Hold Anim 
     animHold[4] = throwHold //Throw Hold Anim 
+    animHold[5] = throwHold //Throw Hold Anim
     
     for(i = 1; i < 7; i++)
     {

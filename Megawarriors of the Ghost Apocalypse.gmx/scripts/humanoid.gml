@@ -379,6 +379,16 @@ bodyRot = 0
 hairRot = 0
 headRot = 0
 
+if staggered = true or lastStand != false
+{
+    bodyRot = -30*hFacing
+    headRot = -45*hFacing
+}
+else if fatigued != false
+{
+    bodyRot = -30*hFacing
+}
+
 switch(argument0)
 {
     case 0:
@@ -441,10 +451,14 @@ bodyRot = 0
 hairRot = 0
 headRot = 0
 
-if staggered = true
+if staggered = true or lastStand != false
 {
     bodyRot = -30*hFacing
     headRot = -45*hFacing
+}
+else if fatigued != false
+{
+    bodyRot = -30*hFacing
 }
 
 if isProne = true or alive = false
@@ -454,6 +468,8 @@ if isProne = true or alive = false
     bodyRot = 90*hFacing
     headRot = 90*hFacing
     hairRot = 90*hFacing
+    xAdj = 5*hFacing
+    yAdj = 2
 }
 else
 {
@@ -498,6 +514,16 @@ hipsRot = 0
 bodyRot = 0
 hairRot = 0
 headRot = 0
+
+if staggered = true or lastStand != false
+{
+    bodyRot = -30*hFacing
+    headRot = -45*hFacing
+}
+else if fatigued != false
+{
+    bodyRot = -30*hFacing
+}
 
 switch(argument0)
 {
@@ -561,27 +587,50 @@ bodyRot = 0
 hairRot = 0
 headRot = 0
 
-switch(argument0)
+if staggered = true or lastStand != false
 {
-    case 0:
-    hipsImage = 14
-    legLength = 2
-    break
-    
-    case 1:
-    hipsImage = 14
-    legLength = 2
-    break
-    
-    case 2:
-    hipsImage = 14
-    legLength = 2
-    break
-    
-    case 3:
-    humanoidSneakIdle(0,argument1)
-    animStep[argument1] = 0
-    break
+    bodyRot = -30*hFacing
+    headRot = -45*hFacing
+}
+else if fatigued != false
+{
+    bodyRot = -30*hFacing
+}
+
+if isProne = true or alive = false
+{
+    hipsImage = 2
+    hipsRot = 90*hFacing
+    bodyRot = 90*hFacing
+    headRot = 90*hFacing
+    hairRot = 90*hFacing
+    xAdj = 5*hFacing
+    yAdj = 2
+}
+else
+{ 
+    switch(argument0)
+    {
+        case 0:
+        hipsImage = 14
+        legLength = 2
+        break
+        
+        case 1:
+        hipsImage = 14
+        legLength = 2
+        break
+        
+        case 2:
+        hipsImage = 14
+        legLength = 2
+        break
+        
+        case 3:
+        humanoidSneakIdle(0,argument1)
+        animStep[argument1] = 0
+        break
+    }     
 }
 
 #define humanoidShortDodge
@@ -902,6 +951,7 @@ switch(argument0)
     bounceTimer = .2
     flow = 3
     flowTimer = .1
+    xAdj = 1*hFacing
     
     animDelay[argument1] = .1
     bleedOut()
@@ -913,6 +963,7 @@ switch(argument0)
     bodyRot = 90*hFacing
     headRot = 90*hFacing
     hairRot = 105*hFacing
+    xAdj = 3*hFacing
     animDelay[argument1] = .1
     bleedOut()
     break
@@ -923,6 +974,8 @@ switch(argument0)
     bodyRot = 90*hFacing
     headRot = 90*hFacing
     hairRot = 90*hFacing
+    xAdj = 5*hFacing
+    yAdj = 2
     animDelay[argument1] = .1
     bleedOut()
     break

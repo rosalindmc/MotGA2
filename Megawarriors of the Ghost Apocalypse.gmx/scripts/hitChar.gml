@@ -82,23 +82,25 @@ if argument0.life <= 0
 {
     killChar(argument0)
     
-    p += choose(0,0,0,1,1,2,2,3)
-    with(argument0)
+    if argument0.player = false or argument0.lastStand = true
     {
-        if other.p > lifeMax
+        p += choose(0,0,0,1,1,2,2,3)
+        with(argument0)
         {
-            gibLegs(argument2)
-        }
-        else if other.p > vitality*1.5
-        {
-            gibHead(argument2)
-        }
-        else if other.p > vitality
-        {
-            gibArm(argument2,choose(1,2))
+            if other.p > lifeMax
+            {
+                gibLegs(argument2)
+            }
+            else if other.p > vitality*1.5
+            {
+                gibHead(argument2)
+            }
+            else if other.p > vitality
+            {
+                gibArm(argument2,choose(1,2))
+            }
         }
     }
-    
 }
 
 
@@ -178,36 +180,52 @@ if t.clashing = true
 #define killChar
 with(argument0)
 {
-    if(!player and alive = true)
+    if player = true and lastStand = false
     {
-        aiDestroy()
-        //Later Add check that player was near kill
-        gainExperience(xpReward)
+        lastStand = true
+        applyStatus(id,lastStandBleedout,1,6000,id)
+        applyStatus(id,stun,0,0,id)
+        
+        life = ceil(lifeMax/2)
+        global.threatTimer += 1
+        
+        i = instance_create(x,y,obj_text)
+        i.t = 'Last Stand!'
     }
-    
-    alive = false
-    animationStart(humanoidDie,0)
-    animationReset(1)
-    animationReset(2)
-    
-    for(i = 0; i < inventorySize; i++)
+    else
     {
-        if (inventory[i] != noone){
-            inventory[i].owner = noone
-            ii = instance_create(x,y,obj_interactable)
-            ii.owner = inventory[i]
-            ii.name = inventory[i].name
-            ii.useType = pickUp
-            inventory[i].interactId = ii
-            inventory[i] = noone    
+        if(!player and alive = true)
+        {
+            aiDestroy()
+            //Later Add check that player was near kill
+            gainExperience(xpReward)
+        }
+        
+        alive = false
+        lastStand = false
+        animationStart(humanoidDie,0)
+        animationReset(1)
+        animationReset(2)
+        
+        for(i = 0; i < inventorySize; i++)
+        {
+            if (inventory[i] != noone)
+            {
+                inventory[i].owner = noone
+                ii = instance_create(x,y,obj_interactable)
+                ii.owner = inventory[i]
+                ii.name = inventory[i].name
+                ii.useType = pickUp
+                inventory[i].interactId = ii
+                inventory[i] = noone    
+            }
+        }
+        
+        if (id == global.pc.autoTarget)
+        {
+            global.pc.autoTarget = noone;
         }
     }
-    
-    if (id == global.pc.autoTarget){
-    global.pc.autoTarget = noone;
-    }
-    
-    //mask_index = spr_none
 }
 
 #define gainExperience

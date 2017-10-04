@@ -1,5 +1,5 @@
 //Replace with anim type check
-if (canMove && stam >= 1){
+if (canMove && stam >= 0){
 if (recentDodge = 0 || canRoll = false)
 {
     animationStart(humanoid(4),0)

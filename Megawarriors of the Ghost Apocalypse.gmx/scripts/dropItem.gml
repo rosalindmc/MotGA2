@@ -86,6 +86,15 @@ else
     
     moveTimer = .2
     canMove = false
+    
+    if argument0 = 1
+    {
+        applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)
+    }
+    else
+    {
+        applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)    
+    }
 }
 
 #define throwRelease

@@ -111,6 +111,10 @@ else if global.pc.grappling = true or global.pc.grappled = true
 {
     global.camZoomTo = 4
 }
+else if global.pc.lastStand = true
+{
+    global.camZoomTo = 2
+}
 else
 {
     global.camZoomTo = 1
@@ -344,7 +348,6 @@ if global.pc.pointInteract != noone
 {    
     with(global.pc.pointInteract)
     {
-        //draw_set_font(fnt_menu)
         draw_set_halign(fa_center)
         drawText(c_black,c_white,global.camZoom*(x-view_xview),global.camZoom*(y-15-view_yview),name)
     }
@@ -360,6 +363,15 @@ if global.pc.inventoryKey = true
 }
 
 //Draw Relevent Progress Bar
+if global.pc.lastStand = true
+{
+    ix = round(global.camZoom*(view_wview*.5))
+    iy = round(global.camZoom*(view_hview*.85))
+    draw_set_colour(c_red)
+    draw_rectangle(ix-25,iy,ix-25+(50*(global.pc.life/global.pc.lifeMax)),5+iy,false)    
+    draw_sprite(spr_bigBox,0,ix-25,iy)
+}
+
 if global.pc.clashing = true
 {
     ix = round(global.camZoom*(view_wview*.5))
@@ -399,6 +411,14 @@ else{
     {
         draw_sprite_ext(spr_health,1,15+(5*i),15,1,1,0,c_white,1)
         i += 1
+    }  
+    for(i = global.pc.life; i > ceil(global.pc.lifeVis); i--)
+    {
+        draw_sprite_ext(spr_health,3,15+(5*i),15,1,1,0,c_white,global.pc.life-global.pc.lifeVis)
+    }
+    for(i = global.pc.life; i < floor(global.pc.lifeVis); i++)
+    {
+        draw_sprite_ext(spr_health,2,15+(5*i),15,1,1,0,c_white,global.pc.lifeVis-global.pc.lifeVis)
     }
             
     draw_set_valign(fa_middle)
@@ -406,66 +426,78 @@ else{
     draw_set_font(fnt_small)
     drawText(c_black,c_white,20,14,string(round(global.pc.life))+" / "+string(round(global.pc.lifeMax)))
 
-    //Stamina
+    //Stamina 
     i = 0
     repeat(ceil(global.pc.stamMax))
     {
-        draw_set_colour(uiStaminaGreen)
-        draw_rectangle(15+(10*i)+(5*floor(i*.5)),24,15+(10*median(0,global.pc.stam-i,1))+(10*i)+(5*floor(i*.5)),29,false)
-
+        if global.pc.stam < global.pc.stamVis
+        {
+            draw_set_colour(c_red)
+            draw_rectangle(15+(10*i)+(5*floor(i*.5)),24,15+(10*median(0,global.pc.stamVis-i,1))+(10*i)+(5*floor(i*.5)),29,false)
+            draw_set_colour(c_yellow)
+            draw_rectangle(15+(10*i)+(5*floor(i*.5)),24,15+(10*median(0,global.pc.stam-i,1))+(10*i)+(5*floor(i*.5)),29,false)
+        }
+        else
+        {
+            draw_set_colour(c_white)
+            draw_rectangle(15+(10*i)+(5*floor(i*.5)),24,15+(10*median(0,global.pc.stam-i,1))+(10*i)+(5*floor(i*.5)),29,false)
+            draw_set_colour(c_yellow)
+            draw_rectangle(15+(10*i)+(5*floor(i*.5)),24,15+(10*median(0,global.pc.stamVis-i,1))+(10*i)+(5*floor(i*.5)),29,false)        
+        }
+        
         draw_sprite(spr_staminaBox,0,15+(10*i)+(5*floor(i*.5)),24)
         
         i += 1
     }
     
-    if global.camZoom = 1
+if global.camZoom = 1
+{
+    if global.xpTimer != 0
     {
-        if global.xpTimer != 0
-        {
-            //Experience
-            draw_set_alpha(global.xpTimer)
-            draw_set_colour(uiDarkGray)
-            draw_rectangle(global.camZoom*35,global.camZoom*(view_hview-23),global.camZoom*84,global.camZoom*(view_hview-21),false)
-            draw_set_colour(uiXpPurple)  
-            draw_rectangle(global.camZoom*35,global.camZoom*(view_hview-23),global.camZoom*(35+(49*(global.pc.xp/global.pc.xpToLevel))),global.camZoom*(view_hview-21),false)  
-            draw_sprite(spr_xpBox,0,global.camZoom*35,global.camZoom*(view_hview-23))
-            draw_set_alpha(1)
-        }
-        
-        //Threat
+        //Experience
+        draw_set_alpha(global.xpTimer)
         draw_set_colour(uiDarkGray)
-        draw_rectangle(view_wview-190,15,view_wview-30,20,false)
-        draw_set_colour(c_red)  
-        draw_rectangle(view_wview-190,15,view_wview-190+min(160,(20*global.locThreat)+(20*global.threatTimer)),20,false)
-        
-        for(i = 0; i < 8; i++)
+        draw_rectangle(global.camZoom*35,global.camZoom*(view_hview-23),global.camZoom*84,global.camZoom*(view_hview-21),false)
+        draw_set_colour(uiXpPurple)  
+        draw_rectangle(global.camZoom*35,global.camZoom*(view_hview-23),global.camZoom*(35+(49*(global.pc.xp/global.pc.xpToLevel))),global.camZoom*(view_hview-21),false)  
+        draw_sprite(spr_xpBox,0,global.camZoom*35,global.camZoom*(view_hview-23))
+        draw_set_alpha(1)
+    }
+    
+    //Threat
+    draw_set_colour(uiDarkGray)
+    draw_rectangle(view_wview-190,15,view_wview-30,20,false)
+    draw_set_colour(c_red)  
+    draw_rectangle(view_wview-190,15,view_wview-190+min(160,(20*global.locThreat)+(20*global.threatTimer)),20,false)
+    
+    for(i = 0; i < 8; i++)
+    {
+        draw_sprite(spr_threatBar,0,view_wview-190+(i*20),15)
+    }
+    
+    for(i = 0; i < 4; i++)
+    {    
+        if global.locThreat/2 >= i+1
         {
-            draw_sprite(spr_threatBar,0,view_wview-190+(i*20),15)
+            draw_sprite(spr_threatSkull,1,view_wview-190+(i*40)+40,17)
         }
-        
-        for(i = 0; i < 4; i++)
-        {    
-            if global.locThreat/2 >= i+1
-            {
-                draw_sprite(spr_threatSkull,1,view_wview-190+(i*40)+40,17)
-            }
-            else
-            {
-                draw_sprite(spr_threatSkull,0,view_wview-190+(i*40)+40,17)
-            }
-        }
-        
-        //Draw Status Effects
-        ii = 0
-        for(i = 0; i < ds_list_size(global.pc.sEffect); i++)
+        else
         {
-            if ds_list_find_value(global.pc.sEffect,i).draw = true
-            {
-                draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,15,global.camZoom*(view_hview[0]-20-(ii*20)))
-                ii += 1
-            }
+            draw_sprite(spr_threatSkull,0,view_wview-190+(i*40)+40,17)
         }
     }
+    
+    //Draw Status Effects
+    ii = 0
+    for(i = 0; i < ds_list_size(global.pc.sEffect); i++)
+    {
+        if ds_list_find_value(global.pc.sEffect,i).draw = true
+        {
+            draw_sprite(ds_list_find_value(global.pc.sEffect,i).icon,0,15,global.camZoom*(view_hview[0]-20-(ii*20)))
+            ii += 1
+        }
+    }
+}
     
     //drawText(c_black,c_white,view_xview[0]+view_wview[0]-15,view_yview[0]+50,fps)
 if global.pc.alive = false
@@ -572,7 +604,8 @@ global.interactKey = ord('E')
 global.dodgeKey = vk_space
 global.castKey = ord('Q')
 global.reloadKey = ord('R')
-global.throwKey = vk_lshift
+global.altAttackKey = vk_lshift
+global.throwKey = ord('F')
 global.sneakKey = ord('C')
 global.inventoryKey = vk_tab
 
