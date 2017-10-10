@@ -27,6 +27,8 @@ if animDelay[argument0] <= 0
 }
 
 
+
+
 #define animationReset
 animStep[argument0] = 0
 
@@ -39,7 +41,18 @@ switch(argument0)
     
     case 1:
     case 2:
-    animIndex[argument0] = weaponIdle   //Replace with checking weapon anim
+    if handItem[argument0] = noone or (argument0 = 2 and greatWeapon = true)
+    {
+        animIndex[argument0] = weaponIdle
+    }
+    else if altAttackKey = true
+    {
+        animIndex[argument0] = handItem[argument0].anim[8]      
+    }
+    else
+    {
+        animIndex[argument0] = handItem[argument0].anim[0]   
+    }
     script_execute(animIndex[argument0],0,argument0)
     break
 }

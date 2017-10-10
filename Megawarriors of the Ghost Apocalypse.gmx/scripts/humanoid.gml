@@ -239,8 +239,8 @@ if surface_exists(charSurf)
     hipsX = round(charSurfSize*.5)+lengthdir_x(legLength, hipsRot+90)+xAdj
     hipsY = round(charSurfSize*.75)+lengthdir_y(legLength, hipsRot+90)-yAdj
     
-    bodyX = hipsX+lengthdir_x(bodyYAdjust, hipsRot+90)+lengthdir_x(bodyXAdjust*bodyHFacing, hipsRot)
-    bodyY = hipsY+lengthdir_y(bodyYAdjust, hipsRot+90)+lengthdir_y(bodyXAdjust*bodyHFacing, hipsRot)
+    bodyX = hipsX+lengthdir_x(bodyYAdjust, bodyRot+90)+lengthdir_x(bodyXAdjust*bodyHFacing, bodyRot)
+    bodyY = hipsY+lengthdir_y(bodyYAdjust, bodyRot+90)+lengthdir_y(bodyXAdjust*bodyHFacing, bodyRot)
     
     chstX = bodyX+lengthdir_x(chstYAdjust+bounce, bodyRot+90)+lengthdir_x(chstXAdjust*bodyHFacing, bodyRot)
     chstY = bodyY+lengthdir_y(chstYAdjust+bounce, bodyRot+90)+lengthdir_y(chstXAdjust*bodyHFacing, bodyRot)
@@ -381,12 +381,12 @@ headRot = 0
 
 if staggered = true or lastStand != false
 {
-    bodyRot = -30*hFacing
-    headRot = -45*hFacing
+    bodyRot = -15*hFacing
+    headRot = -30*hFacing
 }
 else if fatigued != false
 {
-    bodyRot = -30*hFacing
+    bodyRot = -15*hFacing
 }
 
 switch(argument0)
@@ -442,7 +442,7 @@ switch(argument0)
 
 #define humanoidIdle
 animDelay[argument1] = .3
-animSpeed[argument1] = 1
+animSpeed[argument1] = 1/(1+lastStand+fatigued)
 xAdj = 0
 yAdj = 0
 
@@ -453,12 +453,12 @@ headRot = 0
 
 if staggered = true or lastStand != false
 {
-    bodyRot = -30*hFacing
-    headRot = -45*hFacing
+    bodyRot = -15*hFacing
+    headRot = -30*hFacing
 }
 else if fatigued != false
 {
-    bodyRot = -30*hFacing
+    bodyRot = -15*hFacing
 }
 
 if isProne = true or alive = false
@@ -517,12 +517,12 @@ headRot = 0
 
 if staggered = true or lastStand != false
 {
-    bodyRot = -30*hFacing
-    headRot = -45*hFacing
+    bodyRot = -15*hFacing
+    headRot = -30*hFacing
 }
 else if fatigued != false
 {
-    bodyRot = -30*hFacing
+    bodyRot = -15*hFacing
 }
 
 switch(argument0)
@@ -578,7 +578,7 @@ switch(argument0)
 
 #define humanoidSneakIdle
 animDelay[argument1] = .3
-animSpeed[argument1] = 1
+animSpeed[argument1] = 1/(1+lastStand+fatigued)
 xAdj = 0
 yAdj = 0
 
@@ -589,12 +589,12 @@ headRot = 0
 
 if staggered = true or lastStand != false
 {
-    bodyRot = -30*hFacing
-    headRot = -45*hFacing
+    bodyRot = -15*hFacing
+    headRot = -30*hFacing
 }
 else if fatigued != false
 {
-    bodyRot = -30*hFacing
+    bodyRot = -15*hFacing
 }
 
 if isProne = true or alive = false
@@ -1022,3 +1022,34 @@ if player = true
 {
     obj_control.shake += argument0
 }
+#define humanoidBrace
+animDelay[argument1] = .3
+animSpeed[argument1] = 1
+xAdj = 0
+yAdj = 0
+
+hipsRot = 0
+bodyRot = 0
+hairRot = 0
+headRot = 0
+
+switch(argument0)
+{
+    case 0:
+    hipsImage = 18
+    legLength = 2
+    xAdj = -1*hFacing
+    break
+    
+    case 1:
+    hipsImage = 18
+    legLength = 2
+    xAdj = -1*hFacing
+    break
+    
+    case 2:
+    humanoidBrace(0,argument1)
+    animStep[argument1] = 0
+    break
+}
+    

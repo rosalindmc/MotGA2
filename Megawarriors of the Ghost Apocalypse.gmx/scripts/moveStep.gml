@@ -245,7 +245,7 @@ if gravMult != 0
 {
     if z+max(0,zspd) > floorZ
     {
-        zspd -= grav/global.frameRate*gravMult
+        zspd -= (grav/global.frameRate)*gravMult
         z += zspd*metre/global.frameRate
     }
     else

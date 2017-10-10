@@ -48,15 +48,16 @@ switch(argument0)
     anim[3] = weaponParryRelease   //Alternate Attack (2h)
     anim[4] = weaponStabUp    //Roll Attack
     anim[5] = weaponPommel    //Close attack    
-    anim[6] = weaponMurder    //Special Slot, called by some items
-    anim[7] = throwAnim     //Throw
+    anim[6] = weaponMurder    //Special 2h  
+    anim[7] = weaponStab      //Special 1h
+    anim[8] = weaponHalfSword   //Special Idle   
     
     animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
     animHold[1] = weaponParryHold//Alt Hold Anim 
     animHold[2] = weaponStabUpHold//Roll Hold Anim 
     animHold[3] = weaponPommelHold//Close Hold Anim 
-    animHold[4] = throwHold //Throw Hold Anim 
-    animHold[5] = throwHold //Throw Hold Anim
+    animHold[4] = weaponMurderHold  //Special 2 hold
+    animHold[5] = weaponStabHold      //Special 1 hold
     
     for(i = 1; i < 8; i++)
     {
@@ -78,10 +79,13 @@ switch(argument0)
     meleePenMod[2] = 25
     
     meleeAttackMask[4] = spr_stab
+    meleeType[4] = dmgType.pierce
     meleePowMult[4] = 1.25
     meleePenMod[4] = 50
     meleeImpactTypeMult[4] = 2
-    
+    meleeRateMult[4] = 1.5
+    meleeLungeMult[4] = 1.5
+
     meleeType[5] = dmgType.impact
     meleeAttackMask[5] = spr_impact
     meleePowMult[5] = .5
@@ -92,12 +96,14 @@ switch(argument0)
     meleePowMult[6] = .9
     meleeChargePowMult[6] = 1.6
     meleeSizeMult[6] = .7
-    meleeImpactTypeMult[6] = 1
-    meleeCostMult[6] = 1
     meleeImpactMult[6] = .8
     meleeImpactTypeMult[6] = 1
     meleePenMod[6] = 50
     meleeAttackMask[6] = spr_hack
+        
+    meleeAttackMask[7] = spr_stab
+    meleeType[7] = dmgType.pierce
+    meleePenMod[7] = 50
     break
 }
 
@@ -136,30 +142,23 @@ switch(argument0)
     throwSpeed = 30
     throwSpin = 720
     
-    anim[1] = weaponStab    //Basic Attack
-    anim[2] = weaponStabUp  //Power Attack
+    anim[1] = weaponHack
+    anim[3] = weaponStab
+    anim[6] = weaponLeapHack //Special 2h  
+    anim[7] = throwAnim      //Special 1h
+    anim[8] = weaponReverseKnife   //Special Idle  
     
-    animHold[0] = weaponStabHold//Basic Hold Anim (basic+power)
-    meleeType[1] = dmgType.pierce
-    meleeAttackMask[1] = spr_stab
-    meleePowMult[1] = .75
-    meleePenMod[1] = 25
+    animHold[0] = weaponSlashHold    //Basic Hold Anim (basic+power)
+    animHold[1] = weaponSlashHold
+    animHold[4] = weaponChopHold  //Special 2 hold
+    animHold[5] = throwHold         //Special 1 hold
+        
+    meleeAttackMask[1] = spr_hack
     
-    meleePenMod[2] = 50
-    meleeType[2] = dmgType.pierce
-    meleeAttackMask[2] = spr_stab
-    
-    anim[3] = weaponChop
-    animHold[1] = weaponChopHold
-    meleeChargePowMult[3] = 4
-    meleeRateMult[3] = .33
+
     meleeLungeMult[3] = 1.5
     meleeAttackMask[3] = spr_stab
-    meleeSizeMult[3] = .7
-    
-    meleeRateMult[4] = 1.5
-    meleeLungeMult[4] = 1.5
-    meleePowMult[4] = 1.2
+    meleePenMod[5] = 50
     
     anim[5] = weaponHack   //Close Attack
     animHold[3] = weaponSlashHold//Close Hold Anim
@@ -168,6 +167,12 @@ switch(argument0)
     meleePowMult[5] = 1.5
     meleeImpactMult[5] = 1.25
     meleePenMod[5] = 0
+    
+    meleeLungeMult[6] = 2
+    meleeChargePowMult[6] = 4
+    meleeRateMult[6] = .5
+    meleeType[6] = dmgType.pierce
+    meleeAttackMask[6] = spr_stab
     break
 }
 
@@ -205,11 +210,15 @@ switch(argument0)
     throwCost = 1
     throwSpeed = 20
     
-    anim[2] = weaponStab
-    animHold[0] = weaponSlashStabHold
-    meleeAttackMask[2] = spr_stab
-    meleePenMod[2] = 40
-    meleeType[2] = dmgType.pierce
+    anim[1] = weaponHack
+    anim[6] = weaponStabDown //Special 2h   
+    anim[8] = weaponEngarde   //Special Idle
+
+    animHold[4] = weaponStabUpHold
+    
+ 
+    meleeAttackMask[1] = spr_hack
+    
     meleePowMult[3] = 1.2
     meleeChargePowMult[3] = 1.5
     meleeSizeMult[3] = .7
@@ -218,6 +227,11 @@ switch(argument0)
     meleeImpactTypeMult[3] = 1
     meleePenMod[3] = 15
     meleeAttackMask[3] = spr_stab
+    
+    meleeAttackMask[6] = spr_stab
+    meleePenMod[6] = 40
+    meleeType[6] = dmgType.pierce
+    meleeLungeMult[6] = 2
     break
 }
 
@@ -282,6 +296,25 @@ switch(argument0)
     
     meleePowMult[5] = .25
     meleeLungeMult[5] = 2
+    
+    anim[7] = weaponCrossHack
+    animHold[5] = weaponSlashHold
+    meleeAttackMask[7] = spr_hack
+    meleePowMult[7] = 1.2
+    meleeImpactTypeMult[7] = 2
+    meleePenMod[7] = 0
+    meleeType[7] = dmgType.rend
+    
+    anim[6] = weaponLeapHack
+    animHold[4] = weaponStabUpHold
+    meleeAttackMask[6] = spr_stab
+    meleePowMult[6] = 1.4
+    meleeLungeMult[6] = 2
+    meleeImpactTypeMult[6] = 2
+    meleePenMod[6] = 0
+    meleeType[6] = dmgType.rend
+    
+    anim[8] = weaponNinjaHold
     break
 }
 
@@ -343,6 +376,25 @@ switch(argument0)
     meleeImpactTypeMult[4] = 2
     meleePenMod[4] = 0
     meleeType[4] = dmgType.rend
+    
+    anim[7] = weaponCrossHack
+    animHold[5] = weaponSlashHold
+    meleeAttackMask[7] = spr_hack
+    meleePowMult[7] = 1.2
+    meleeImpactTypeMult[7] = 2
+    meleePenMod[7] = 0
+    meleeType[7] = dmgType.rend
+    
+    anim[6] = weaponLeapHack
+    animHold[4] = weaponStabUpHold
+    meleeAttackMask[6] = spr_stab
+    meleePowMult[6] = 1.4
+    meleeLungeMult[6] = 2
+    meleeImpactTypeMult[6] = 2
+    meleePenMod[6] = 0
+    meleeType[6] = dmgType.rend
+    
+    anim[8] = weaponNinjaHold
     break
 }
 
@@ -385,7 +437,6 @@ switch(argument0)
     
     anim[1] = weaponHack
     meleeAttackMask[1] = spr_hack
-    animHold[3] = weaponMurderHold
     break
 }
 
@@ -423,20 +474,29 @@ switch(argument0)
     throwCost = 1
     throwSpeed = 20    
     
-    anim[1] = weaponStab    //Basic Attack
-    anim[2] = weaponHack   //Power Attack
+    anim[1] = weaponHack    //Basic Attack
+    anim[6] = weaponStabUp //Special 2h   
+    anim[8] = weaponEngarde   //Special Idle
     
-    animHold[0] = weaponStabSlashHold//Basic Hold Anim (basic+power)
-    meleeType[1] = dmgType.pierce
-    meleeAttackMask[1] = spr_stab
-    meleePowMult[1] = .75
-    meleePenMod[1] = 50
-    
-    meleeAttackMask[2] = spr_hack
+    animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
+    animHold[4] = weaponMegaLungeHold  //Special 2 hold
+    meleeAttackMask[1] = spr_hack
+    meleePowMult[1] = .6
+    meleePowMult[2] = .8
     
     meleeRateMult[4] = 1.5
     meleeLungeMult[4] = 1.5
     meleePowMult[4] = 1.2
+    
+    meleeType[6] = dmgType.pierce
+    meleePowMult[6] = 1
+    meleeChargePowMult[6] = 1.4
+    meleeSizeMult[6] = 1
+    meleeImpactTypeMult[6] = 2
+    meleeCostMult[6] = 1.2
+    meleeLungeMult = 3
+    meleePenMod[6] = 50
+    meleeAttackMask[6] = spr_stab
     break
 }
 
@@ -503,6 +563,25 @@ switch(argument0)
     
     meleePowMult[5] = .25
     meleeLungeMult[5] = 2
+    
+    anim[7] = weaponCrossHack
+    animHold[5] = weaponSlashHold
+    meleeAttackMask[7] = spr_hack
+    meleePowMult[7] = 1.2
+    meleeImpactTypeMult[7] = 2
+    meleePenMod[7] = 0
+    meleeType[7] = dmgType.rend
+    
+    anim[6] = weaponLeapHack
+    animHold[4] = weaponStabUpHold
+    meleeAttackMask[6] = spr_stab
+    meleePowMult[6] = 1.4
+    meleeLungeMult[6] = 2
+    meleeImpactTypeMult[6] = 2
+    meleePenMod[6] = 0
+    meleeType[6] = dmgType.rend
+    
+    anim[8] = weaponNinjaHold
     break
 }
 
@@ -543,21 +622,29 @@ switch(argument0)
     throwCost = 2
     throwSpeed = 10
     
-    anim[1] = weaponStab    //Basic Attack
-    anim[2] = weaponChop    //Power Attack
+    anim[1] = weaponHack    //Basic Attack
+    anim[6] = weaponStabUp //Special 2h   
+    anim[8] = weaponEngarde   //Special Idle
     
-    animHold[0] = weaponStabSlashHold//Basic Hold Anim (basic+power)
-    animHold[3] = weaponMurderHold 
-    meleeType[1] = dmgType.pierce
-    meleeAttackMask[1] = spr_stab
-    meleePowMult[1] = .75
-    meleePenMod[1] = 50
-    
-    meleeAttackMask[2] = spr_hack
+    animHold[0] = weaponSlashHold//Basic Hold Anim (basic+power)
+    animHold[4] = weaponMegaLungeHold  //Special 2 hold
+    meleeAttackMask[1] = spr_hack
+    meleePowMult[1] = .6
+    meleePowMult[2] = .8
     
     meleeRateMult[4] = 1.5
     meleeLungeMult[4] = 1.5
     meleePowMult[4] = 1.2
+    
+    meleeType[6] = dmgType.pierce
+    meleePowMult[6] = 1
+    meleeChargePowMult[6] = 1.4
+    meleeSizeMult[6] = 1
+    meleeImpactTypeMult[6] = 2
+    meleeCostMult[6] = 1.2
+    meleeLungeMult = 3
+    meleePenMod[6] = 50
+    meleeAttackMask[6] = spr_stab
     break
 }
 
@@ -601,7 +688,6 @@ switch(argument0)
 
     anim[1] = weaponHack
     meleeAttackMask[1] = spr_hack
-    animHold[3] = weaponMurderHold
     break
 }
 
@@ -644,6 +730,5 @@ switch(argument0)
     
     anim[1] = weaponHack
     meleeAttackMask[1] = spr_hack
-    animHold[3] = weaponMurderHold
     break
 }

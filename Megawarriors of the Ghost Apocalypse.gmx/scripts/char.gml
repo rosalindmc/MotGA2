@@ -74,6 +74,7 @@ dodgeCost = 1
 dodgeSpeed = 12
 dodgeTimer = 0
 recentDodge = 0
+altAttackKey = false
 
 //Animations
 animIndex[0] = humanoidWalk    //Current animation (For Legs+Body)
@@ -664,7 +665,7 @@ with(obj_char)
     {
         if point_distance(ix,iy,x,y) < 8*metre
         {
-            applyStatus(id,stun,1,.1,id)    
+            applyStatus(id,stun,1,.1,id,false)    
         
             //Impact
             hspd += lengthdir_x(5,point_direction(ix,iy,x,y))

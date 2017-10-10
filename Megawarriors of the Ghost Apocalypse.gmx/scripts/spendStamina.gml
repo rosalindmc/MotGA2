@@ -5,5 +5,5 @@ stam = max(stam,0)
 
 if stam = 0
 {
-    applyStatus(id,fatigue,1,6000,id)
+    applyStatus(id,fatigue,1,6000,id,false)
 }

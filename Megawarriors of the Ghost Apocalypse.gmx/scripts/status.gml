@@ -2,24 +2,27 @@
 
 
 #define applyStatus
-//Apply a status effect to a character(target,type,potency,duration,origin)
-
-i = instance_create(argument0.x,argument0.y,obj_status)
-with(i)
+//Apply a status effect to a character(target,type,potency,duration,origin,stacking)
+if argument5 = true or !statusStack(argument0,argument1,argument3)
 {
-    owner = argument0
-    effect = argument1
-    potency = argument2
-    life = argument3
-    creator = argument4
+i = instance_create(argument0.x,argument0.y,obj_status)
     
-    if(!script_execute(effect,0)){//if an effect can stack, make sure it returns false
+    with(i)
+    {
+        owner = argument0
+        effect = argument1
+        potency = argument2
+        life = argument3
+        creator = argument4
+        
+        script_execute(effect,0)
         tickTimer1 = tickLength1
         tickTimer2 = tickLength2
+        if draw = true
+        {
+            createParticle(x,y,3*metre,1,partIcon,icon)
+        }        
         ds_list_add(owner.sEffect,id)
-    }
-    else{
-        instance_destroy();
     }
 }
 
@@ -77,17 +80,19 @@ if instance_exists(owner)
     script_execute(effect,3)
 }
 #define statusStack
-//argument0 is which effect it's checking
-//returns if it found a matching effect
-//changes old effect to new effect
-var found = false;
-if(ds_list_size(owner.sEffect) != 0){
-    for(var i = 0; i < ds_list_size(owner.sEffect); i++){
-        if(ds_list_find_value(owner.sEffect,i).effect == argument0){
-            var found = true;
-            with(ds_list_find_value(owner.sEffect, i)){
-                potency = other.potency;
-                life = other.life;
+//(target,type,duration)
+var found = false
+
+if(ds_list_size(argument0.sEffect) != 0)
+{
+    for(var i = 0; i < ds_list_size(argument0.sEffect); i++)
+    {
+        if ds_list_find_value(argument0.sEffect,i).effect = argument1
+        {
+            found = true
+            with(ds_list_find_value(argument0.sEffect, i))
+            {
+                life = argument2;
             }
         }
     }

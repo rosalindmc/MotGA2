@@ -64,7 +64,7 @@ with(i){
     animSpeed[2] = 1    
     
     bodyTwist = other.bodyTwist
-    greatWeapon = other.greatWeapon
+    greatWeapon = 0
     
     //Surface Details
     charSurfSize = other.charSurfSize

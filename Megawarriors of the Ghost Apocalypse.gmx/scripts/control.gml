@@ -498,8 +498,7 @@ if global.camZoom = 1
         }
     }
 }
-    
-    //drawText(c_black,c_white,view_xview[0]+view_wview[0]-15,view_yview[0]+50,fps)
+
 if global.pc.alive = false
 {
     deathAlpha += .5/global.frameRate

@@ -165,6 +165,7 @@
     </sprites>
     <sprites name="Icons">
       <sprite>sprites\ico_bleed</sprite>
+      <sprite>sprites\ico_vulnerable</sprite>
       <sprite>sprites\ico_stun</sprite>
     </sprites>
   </sprites>
@@ -208,6 +209,7 @@
         </scripts>
         <scripts name="Animations">
           <script>scripts\weaponBasicAnims.gml</script>
+          <script>scripts\weaponIdleAnims.gml</script>
           <script>scripts\weaponSwordAnims.gml</script>
           <script>scripts\weaponPolearmAnims.gml</script>
           <script>scripts\twist.gml</script>

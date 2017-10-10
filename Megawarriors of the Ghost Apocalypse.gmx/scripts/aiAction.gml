@@ -48,8 +48,7 @@ case 2:
 
     
     if(point_distance(x,y,actionTargetX,actionTargetY) > 1*metre && canMove = true){
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT = moveTCalc()
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetX,actionTargetY))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetX,actionTargetY))
@@ -91,8 +90,7 @@ case 2:
             hasDodged = true
         }
         else if (point_distance(x,y,actionTargetId.x,actionTargetId.y) < 4*metre){
-            var moveT = (movement*moveMult)
-            moveT = moveT/(1+moveDT)
+            var moveT = moveTCalc()
             moveT = moveT/2
             
             if (point_distance(x,y,actionTargetId.x,actionTargetId.y)<3*metre){
@@ -103,9 +101,7 @@ case 2:
             }
         }
         else{
-            var moveT = (movement*moveMult)
-            moveT = moveT/(1+moveDT)
-            moveT = moveT
+            var moveT = moveTCalc()
             
             if (point_distance(x,y,actionTargetId.x,actionTargetId.y)>3*metre){
             
@@ -175,8 +171,7 @@ case 2:
         
         else if (canMove){
         
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT = moveTCalc()
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -215,8 +210,7 @@ case 1:
 case 2:
 
     if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT =  moveTCalc()
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -262,8 +256,7 @@ case 1:
 case 2:
 
     if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 5*metre){
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT = moveTCalc()
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -277,8 +270,7 @@ case 2:
     }
     else{
         
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT = moveTCalc()
         moveT = moveT/4
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -337,8 +329,7 @@ case 1:
 case 2:
 
     if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 4*metre){
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT = moveTCalc()
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -346,8 +337,7 @@ case 2:
     }
     else if (point_distance(x,y,actionTargetId.x,actionTargetId.y)<2.5*metre){
             
-            var moveT = (movement*moveMult)
-            moveT = moveT/(1+moveDT)      
+            var moveT = moveTCalc()   
             
             
             hspd = -lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -381,6 +371,7 @@ case 2:
 #define actionChaseAlert
 
 #define actionCover
+
 
 #define actionHide
 
@@ -419,10 +410,7 @@ case 1:
 case 2:
 
     if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 5*metre){
-        moveMult = 0.5
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
-        moveMult = 1.0
+        var moveT = moveTCalc()
         
         hspd = -lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
         vspd = -lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -464,8 +452,7 @@ case 1:
 case 2:
 
     if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 10*metre){
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT = moveTCalc()
         
         hspd = -lengthdir_x(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
         vspd = -lengthdir_y(moveT,point_direction(x,y,actionTargetId.x,actionTargetId.y))
@@ -583,8 +570,7 @@ case 2:
     
 
     if (canMove && point_distance(x,y,actionTargetX,actionTargetY) > 0.5*metre){
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT =  moveTCalc()
         
         hspd = lengthdir_x(moveT,point_direction(x,y,actionTargetX,actionTargetY))
         vspd = lengthdir_y(moveT,point_direction(x,y,actionTargetX,actionTargetY))
@@ -593,8 +579,7 @@ case 2:
         currentAction = actionAttackCorral
     }
     else if (canMove && point_distance(x,y,actionTargetId.x,actionTargetId.y) > 5*metre && point_distance(x,y,actionTargetId.x,actionTargetId.y) < 10*metre){
-        var moveT = (movement*moveMult)
-        moveT = moveT/(1+moveDT)
+        var moveT = moveTCalc()
         moveT = moveT/5
         
         var tempX = actionTargetId.x - x

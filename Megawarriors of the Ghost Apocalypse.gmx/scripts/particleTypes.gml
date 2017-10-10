@@ -183,5 +183,11 @@ sprite_index = spr_boneShard
 impactDeath = true
 onDeath = splat
 splatDecal = spr_boneShard
+#define partIcon
+life = 1
+zspd = 1
+fade = 1
+sprite_index = argument0
+
 #define bloodDrip
 createParticle(x,y,z,5,partBlood,point_direction(hspd,vspd,0,0))

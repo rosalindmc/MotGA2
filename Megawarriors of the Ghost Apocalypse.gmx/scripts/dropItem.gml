@@ -89,11 +89,11 @@ else
     
     if argument0 = 1
     {
-        applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)
+        applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id,false)
     }
     else
     {
-        applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)    
+        applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id,false)
     }
 }
 

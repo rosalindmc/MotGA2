@@ -1,62 +1,6 @@
 #define weaponBasicAnims
 
 
-#define weaponIdle
-var arg0 = argument0;
-var i = 0;
-
-strike[argument1] = 0 
-charge[argument1] = 0
-animDelay[argument1] = 1
-animSpeed[argument1] = 1
-
-if greatWeapon = true 
-{
-    i = 1
-    if handItem[1].anim[1] = weaponStab
-    {
-        i = 0
-    }
-}
-
-handDistDest[argument1] = 2
-handDirDest[argument1] = ((60*i)+15)*meleeSwing[argument1]
-handHeightDest[argument1] = 0
-itemRotDest[argument1] = ((120*i)+30)*meleeSwing[argument1]
-itemZRotDest[argument1] = 5*argument1
-itemFlip[argument1] = 1
-itemHoldAdjust[argument1] = 0
-
-if staggered = true
-{
-    handHeightDest[argument1] = -5
-}
-
-if clashing = true
-{
-    handDistDest[argument1] = 5+(2*clamp(-1,1,interactProgress-clashingWith.interactProgress))
-    handDirDest[argument1] = (30+(-30*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
-    handHeightDest[argument1] = 4
-    itemRotDest[argument1] = (-45+(60*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
-    
-    if instance_exists(handItem[argument1])
-    {
-        ix = (x+clashingWith.x)/2
-        iy = (y+clashingWith.y)/2
-        createParticle(ix,iy,handItem[argument1].z,2,partSpark,point_direction(x,y,ix,iy)+90)
-    }
-    animSpeed[argument1] = 5
-}
-
-if greatWeapon = false
-{
-    meleeSwing[argument1] = 3-(argument1*2)
-}
-if argument1 = 1
-{
-    bodyTwist = 0
-}
-
 #define weaponStabHold
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
 
@@ -137,7 +81,7 @@ switch(argument0)
     handHeightDest[argument1] = 2
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .01*s
     break
 
     case 1:
@@ -146,7 +90,7 @@ switch(argument0)
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 5
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .02*s
     break
     
     case 2:
@@ -155,7 +99,7 @@ switch(argument0)
     handHeightDest[argument1] = 6
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 10
-    animDelay[argument1] = .04*s
+    animDelay[argument1] = .02*s
     break
     
     case 3:
@@ -289,7 +233,7 @@ switch(argument0)
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (120*meleeSwing[argument1])
     itemZRotDest[argument1] = 10
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .01*s
     if greatWeapon = true
     {
         bodyTwist = 0
@@ -302,7 +246,7 @@ switch(argument0)
     handHeightDest[argument1] = 3
     itemRotDest[argument1] = (60*meleeSwing[argument1])
     itemZRotDest[argument1] = 5
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .02*s
     break
     
     case 2:
@@ -311,7 +255,7 @@ switch(argument0)
     handHeightDest[argument1] = 2
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
-    animDelay[argument1] = .04*s
+    animDelay[argument1] = .02*s
     break
     
     case 3:
@@ -448,7 +392,7 @@ switch(argument0)
     handHeightDest[argument1] = 8
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 105
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .01*s
     break
 
     case 1:
@@ -457,7 +401,7 @@ switch(argument0)
     handHeightDest[argument1] = 10
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 45
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .02*s
     break
     
     case 2:
@@ -466,7 +410,7 @@ switch(argument0)
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
-    animDelay[argument1] = .04*s
+    animDelay[argument1] = .02*s
     break
     
     case 3:
@@ -608,7 +552,7 @@ switch(argument0)
     handDirDest[argument1] = (45*meleeSwing[argument1])
     handHeightDest[argument1] = 2
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .01*s
     break
 
     case 1:
@@ -616,7 +560,7 @@ switch(argument0)
     handDirDest[argument1] = (15*meleeSwing[argument1])
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (0*meleeSwing[argument1])
-    animDelay[argument1] = .03*s
+    animDelay[argument1] = .02*s
     break
     
     case 2:
@@ -624,7 +568,7 @@ switch(argument0)
     handDirDest[argument1] = (0*meleeSwing[argument1])
     handHeightDest[argument1] = 6
     itemRotDest[argument1] = (0*meleeSwing[argument1])
-    animDelay[argument1] = .04*s
+    animDelay[argument1] = .02*s
     break
     
     case 3:

@@ -22,10 +22,11 @@ if visNumbers = true
 impactChar(t,impact,point_direction(originX,originY,t.x,t.y),puntMult,owner,impactType)
 
 //Apply Bleed
-if dmgType != dmgType.impact and irandom(5) < p
+if dmgType = dmgType.rend and irandom(5) < p
 {
-    applyStatus(t,bleed,1,6,owner)
+    applyStatus(t,bleed,.5,3,owner,true)
 }
+
 
 //Dif damage types might have dif particles later
 if image_index = spr_slash
@@ -134,11 +135,11 @@ if t.stability <= 0 and t.alive = true
 {
     if argument5 = 0
     {
-        applyStatus(t,stun,1,3+abs(t.stability/5),argument4)
+        applyStatus(t,stun,1,3+abs(t.stability/5),argument4,false)
     }
     else
     {
-        applyStatus(t,stun,2,3+abs(t.stability/5),argument4)    
+        applyStatus(t,stun,2,3+abs(t.stability/5),argument4,false)    
     }
     t.stability = t.stabilityMax
 }
@@ -183,9 +184,10 @@ with(argument0)
     if player = true and lastStand = false
     {
         lastStand = true
-        applyStatus(id,lastStandBleedout,1,6000,id)
-        applyStatus(id,stun,0,0,id)
+        applyStatus(id,lastStandBleedout,1,6000,id,false)
+        applyStatus(id,stun,0,0,id,false)
         
+        lifeVis = lifeMax
         life = ceil(lifeMax/2)
         global.threatTimer += 1
         

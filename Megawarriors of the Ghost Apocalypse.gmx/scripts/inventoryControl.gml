@@ -136,6 +136,7 @@ if instance_exists(handItem[1])
             draw_text(ix,iy+21,'IMP '+string_format(handItem[1].meleeImpact/wM,0,1))
             draw_text(ix,iy+30,'RAT '+string_format(handItem[1].meleeRate/wM,0,1))
         }
+        
         if might+(greatWeapon*ceil(might*.5)) < handItem[1].weight
         {
             draw_set_colour(c_red)

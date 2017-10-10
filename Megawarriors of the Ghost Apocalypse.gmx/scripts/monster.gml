@@ -85,6 +85,7 @@ joinsFormation = true
 
 i = createItem(x,y,pike,id)
 handItem[2] = i
+greatWeapon = true
 charSetup()
 
 script_execute(behaviorType)
@@ -165,7 +166,7 @@ subordinate[0] = noone
 
 i = createItem(x,y,choose(biggerSword,longAxe,warhammer),id)
 handItem[2] = i
-
+greatWeapon = true
 charSetup()
 
 script_execute(behaviorType)

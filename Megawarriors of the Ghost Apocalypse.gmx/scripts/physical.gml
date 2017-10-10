@@ -5,7 +5,6 @@
 switch(argument0)
 {
 case 0:     //Apply Effect
-var ret = statusStack(effect);
 icon = ico_stun
 
 owner.canAttack -= 1
@@ -33,8 +32,6 @@ i.name = 'Grapple'
 i.owner = owner
 i.useType = grappleStart
 interactId = i
-
-return ret;
 break
 case 1:     //Primary Tick Effect
 break
@@ -70,12 +67,11 @@ break
 switch(argument0)
 {
 case 0:     //Apply Effect
-tickLength1 = 3
-tickLength2 = 1
-owner.moveMult -= .2
+tickLength1 = 1
+tickLength2 = .25
+owner.moveMult -= .25
 owner.stamRegen -= 1
 icon = ico_bleed
-return false;//Because this effect can stack
 break
 case 1:     //Primary Tick Effect
 damageChar(owner,1,dmgType.blood,false,creator)
@@ -85,8 +81,26 @@ case 2:     //Secondary Tick Effect
 createParticle(owner.x,owner.y,(owner.charSurfSize*.75)-owner.bodyY,2,partBlood,random(360))
 break
 case 3:     //Destroy Effect
-owner.moveMult += .2
+owner.moveMult += .25
 owner.stamRegen += 1
+break
+case 4:     //Draw Event
+break
+}
+
+#define vulnerable
+switch(argument0)
+{
+case 0:     //Apply Effect
+owner.physicalResist -= potency
+icon = ico_vulnerable
+break
+case 1:     //Primary Tick Effect
+break
+case 2:     //Secondary Tick Effect
+break
+case 3:     //Destroy Effect
+owner.physicalResist += potency
 break
 case 4:     //Draw Event
 break

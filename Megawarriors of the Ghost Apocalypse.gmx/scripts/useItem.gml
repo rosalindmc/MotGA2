@@ -57,10 +57,6 @@ else
     {
         throw(argument0,argument1)
     }
-    else if queuedAnim[argument0] = 7
-    {
-        throw(argument0,argument1)
-    }
     else
     {
         if handItem[argument0] != noone
@@ -127,13 +123,13 @@ switch(argument1)
             animationStart(handItem[argument0].animHold[0],argument0)
         }
         
-        if argument0 = 1
+        if argument0 = 1 or greatWeapon = true
         {
-            applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id)
+            applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id,false)
         }
         else
         {
-            applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id)    
+            applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id,false)    
         }
         
     }
@@ -150,7 +146,6 @@ switch(argument1)
         {
             //Play corresponding attack anim   
             throwAttack(min(argument0,2-greatWeapon)) 
-            show_message('Throw')
         }
         else
         {
@@ -200,11 +195,11 @@ canMove = false
 
 if argument0 = 1
 {
-    applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)
+    applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id,false)
 }
 else
 {
-    applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id)    
+    applyStatus(id,wepSlow2,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),.5,id,false)    
 }
 
 

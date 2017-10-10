@@ -1,6 +1,5 @@
-var moveT = (movement*median(.25,moveMult,2))
-
-moveT = moveT/(1+moveDT+(sneak*sneakMovePen))
+#define moveControl
+var moveT = moveTCalc()
 
 if canMove = true
 {
@@ -29,4 +28,14 @@ if canMove = true
     dT = point_distance(0,0,hT,vT)
     hspd = lengthdir_x(min(moveT,dT),point_direction(0,0,hT,vT))
     vspd = lengthdir_y(min(moveT,dT),point_direction(0,0,hT,vT))
+}
+
+#define moveTCalc
+if z = floorZ
+{
+return (movement*median(.25,moveMult,2))/(1+moveDT+(sneak*sneakMovePen))
+}
+else
+{
+return 0
 }

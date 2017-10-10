@@ -13,7 +13,7 @@ hud = false
 #define textStep
 z += metre/global.frameRate
 
-a -= .2/global.frameRate
+a -= .4/global.frameRate
 
 if a <= 0
 {
