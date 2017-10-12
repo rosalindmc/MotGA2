@@ -23,7 +23,7 @@ argument0 is the check/set order/run switch
 */
 switch (argument0){
 case 0:
-    if(global.currLevel.floorLayout[floor(x/16),floor(y/16)].weight > 3){
+    if(global.currLevel.floorLayout[min(59,max(floor(x/16),0)),min(59,max(floor(y/16),0))].weight > 3){
         var tempDist = 10000
         var tempTarg = global.currLevel.pathTiles[0]
         for (i = 0;i<global.currLevel.numPathTiles;i++){
