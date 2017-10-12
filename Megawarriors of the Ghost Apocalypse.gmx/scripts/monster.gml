@@ -2,6 +2,7 @@
 player = false
 controlScript = aiControl
 team = 2
+agroRange = 10
 
 
 #define darkSoldier
@@ -20,13 +21,14 @@ charisma = 2
 randomizeStats(3)
 xpReward = 1.0
 
+
 //Appearance Info
 clothingSprite = choose(spr_darkSoldier,spr_darkSoldier2)
 skirtSprite = spr_none
 hairSprite = spr_none
 helmSprite = spr_soldierHelm
 
-
+agroRange = 10
 stealth = 0.5
 hearing = 1
 
@@ -68,6 +70,7 @@ skirtSprite = spr_none
 hairSprite = spr_none
 helmSprite = spr_pikeHelm
 
+agroRange = 10
 stealth = 0.5
 hearing = 1
 armour = 25
@@ -150,9 +153,10 @@ skirtSprite = spr_none
 hairSprite = spr_none
 helmSprite = spr_stormHelm
 
-armour = 75
+agroRange = 10
 stealth = 0.5
 hearing = 1
+armour = 75
 
 centerVisionRange = 10
 sideVisionRange = 5

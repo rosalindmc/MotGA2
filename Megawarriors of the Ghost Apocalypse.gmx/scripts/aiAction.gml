@@ -23,39 +23,38 @@ argument0 is the check/set order/run switch
 */
 switch (argument0){
 case 0:
-    if(global.currLevel.floorLayout[min(59,max(floor(x/metre),0)),min(59,max(floor(y/metre),0))].weight > 3){
-        var tempDist = 10000
-        var tempTarg = global.currLevel.pathTiles[0]
-        for (i = 0;i<global.currLevel.numPathTiles;i++){
-            if (point_distance(x,y,global.currLevel.pathTiles[i].x,global.currLevel.pathTiles[i].y)<tempDist){
-                tempDist =  point_distance(x,y,global.currLevel.pathTiles[i].x,global.currLevel.pathTiles[i].y)
-                tempTarg = global.currLevel.pathTiles[i]
-            }
-        }
-        actionTargetX = tempTarg.x*metre
-        actionTargetY = tempTarg.y*metre
-        
-        return 1;
-        
-    } 
-    else if(actionTargetX !=0 && actionTargetY != 0){
-        //pathFind to the spot and check if you can get there
-        actionTargetX = ceil(x + irandom(4*metre) - 2*metre)
-        actionTargetY = ceil(y + irandom(4*metre) - 2*metre)
-        
+    if(actionTargetX !=0 && actionTargetY != 0){
+
         return 1;
     }
     else{
         actionTargetX = ceil(x + irandom(4*metre) - 2*metre)
-        actionTargetY = ceil(y + irandom(4*metre) - 2*metre)  
-             
-        
+        actionTargetY = ceil(y + irandom(4*metre) - 2*metre)
+                
         return 0;  
     }
     
     break;
     
 case 1:
+    actionTargetX = ceil(x + irandom(4*metre) - 2*metre)
+    actionTargetY = ceil(y + irandom(4*metre) - 2*metre)
+    
+    if(floorID.isPath != true){
+        
+        tempDist = 10000
+        tempTarg = global.currLevel.pathTiles[0].id
+        
+        for (i = 0;i<global.currLevel.numPathTiles;i++){
+            if (point_distance(x,y,global.currLevel.pathTiles[i].x,global.currLevel.pathTiles[i].y) < tempDist){
+                tempDist =  point_distance(x,y,global.currLevel.pathTiles[i].x,global.currLevel.pathTiles[i].y)
+                tempTarg = global.currLevel.pathTiles[i].id
+            }
+        }
+        actionTargetX = ceil(tempTarg.x + irandom(4*metre) - 2*metre)
+        actionTargetY = ceil(tempTarg.y + irandom(4*metre) - 2*metre)
+    }
+    
     currentAction = actionMoveRand
     break;
     

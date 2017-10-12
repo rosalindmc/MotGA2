@@ -84,6 +84,8 @@ if (ds_exists(alertness, ds_type_priority)){
 #define aiActionReset
 hasDodged = false
 
-if (!instance_exists(actionTargetId)){
+if (!instance_exists(actionTargetId) ||
+         point_distance(x,y,actionTargetId.x,actionTargetId.y) < agroRange*metre ||
+         actionTargetId.floorID.sprite_index == spr_grass){
     actionTargetId = noone
 }
