@@ -23,7 +23,22 @@ argument0 is the check/set order/run switch
 */
 switch (argument0){
 case 0:
-    if(actionTargetX !=0 && actionTargetY != 0){
+    if(global.currLevel.floorLayout[floor(x/16),floor(y/16)].weight > 3){
+        var tempDist = 10000
+        var tempTarg = global.currLevel.pathTiles[0]
+        for (i = 0;i<global.currLevel.numPathTiles;i++){
+            if (point_distance(x,y,global.currLevel.pathTiles[i].x,global.currLevel.pathTiles[i].y)<tempDist){
+                tempDist =  point_distance(x,y,global.currLevel.pathTiles[i].x,global.currLevel.pathTiles[i].y)
+                tempTarg = global.currLevel.pathTiles[i]
+            }
+        }
+        actionTargetX = tempTarg.x*16
+        actionTargetY = tempTarg.y*16
+        
+        return 1;
+        
+    } 
+    else if(actionTargetX !=0 && actionTargetY != 0){
         //pathFind to the spot and check if you can get there
         actionTargetX = ceil(x + irandom(4*metre) - 2*metre)
         actionTargetY = ceil(y + irandom(4*metre) - 2*metre)

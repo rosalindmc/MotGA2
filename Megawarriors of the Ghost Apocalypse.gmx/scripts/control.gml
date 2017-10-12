@@ -48,8 +48,8 @@ kick = 0
 
 //global.currNode = noone
 global.numNodes = 9
-mainWorld = instance_create(0,0,obj_world)
-with (mainWorld){
+global.mainWorld = instance_create(0,0,obj_world)
+with (global.mainWorld){
     worldGen()
 }
 
