@@ -424,7 +424,7 @@ if moveTimer > 0
     if moveTimer <= 0
     {
         canMove = true   
-        dangerous = false     
+        dangerous = false   
     }
 }
 
@@ -574,13 +574,13 @@ if (player == false && global.pc.autoTarget == id)
         draw_sprite_ext(spr_smallhealth,1,ix-10+(3*i),iy,1,1,0,c_white,1)
         i += 1
     }
-    for(i = life; i > ceil(lifeVis); i--)
+    for(i = life-1; i > floor(lifeVis); i--)
     {
-        draw_sprite_ext(spr_smallhealth,3,ix-10+(3*i),iy,1,1,0,c_white,life-lifeVis)
+        draw_sprite_ext(spr_smallhealth,3,ix-10+(3*i),iy,1,1,0,c_white,i-lifeVis)
     }
-    for(i = life; i < floor(lifeVis); i++)
+    for(i = life; i < ceil(lifeVis); i++)
     {
-        draw_sprite_ext(spr_smallhealth,2,ix-10+(3*i),iy,1,1,0,c_white,lifeVis-life)
+        draw_sprite_ext(spr_smallhealth,2,ix-10+(3*i),iy,1,1,0,c_white,lifeVis-i)
     }
     
     //Stamina

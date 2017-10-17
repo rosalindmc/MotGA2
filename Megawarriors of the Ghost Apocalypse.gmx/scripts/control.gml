@@ -412,13 +412,13 @@ else{
         draw_sprite_ext(spr_health,1,15+(5*i),15,1,1,0,c_white,1)
         i += 1
     }  
-    for(i = global.pc.life; i > ceil(global.pc.lifeVis); i--)
+    for(i = global.pc.life-1; i > floor(global.pc.lifeVis); i--)
     {
-        draw_sprite_ext(spr_health,3,15+(5*i),15,1,1,0,c_white,global.pc.life-global.pc.lifeVis)
+        draw_sprite_ext(spr_health,3,15+(5*i),15,1,1,0,c_white,i-global.pc.lifeVis)
     }
-    for(i = global.pc.life; i < floor(global.pc.lifeVis); i++)
+    for(i = global.pc.life; i < ceil(global.pc.lifeVis); i++)
     {
-        draw_sprite_ext(spr_health,2,15+(5*i),15,1,1,0,c_white,global.pc.lifeVis-global.pc.lifeVis)
+        draw_sprite_ext(spr_health,2,15+(5*i),15,1,1,0,c_white,global.pc.lifeVis-i)
     }
             
     draw_set_valign(fa_middle)
