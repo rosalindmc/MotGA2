@@ -47,7 +47,7 @@ skirtSprite = spr_sBarbarian
 hairSprite = spr_longHair
 hairColour = hairBlack
 helmSprite = spr_none
-skinTone = choose(skinTan,skinDark,skinBrown,skinPink,skinPale,skinFireRed,skinBurntRed,skinAshRed)
+skinTone = choose(skinTan,skinDark,skinBrown,skinPink,skinPale)
 
 //Anim
 legLength = 4
@@ -190,18 +190,6 @@ headYAdjust = 4
 break
 }
 
-//Temp Clothes Randomize
-if gender = 0
-{
-    clothingSprite = spr_cDemonHunter
-    skirtSprite = spr_sDemonHunter
-}
-else
-{
-    clothingSprite = spr_cDemonHunterM
-    skirtSprite = spr_none
-}
-
 #define humanoidDraw
 //Establish bone information
 //Draw All Details to Char Surface
@@ -264,11 +252,11 @@ if surface_exists(charSurf)
     //If using a great weapon, move second hand
     if greatWeapon = true and handItem[1] != noone
     {
-        handX[2] = round(handX[1]+lengthdir_x(handItem[1].gwPoint, handItem[1].image_angle))
-        handY[2] = round(handY[1]+lengthdir_y(handItem[1].gwPoint, handItem[1].image_angle))
+        handX[2] = round(handX[1]+lengthdir_x(handItem[1].gwPoint, handItem[1].image_angle+handItem[1].zAngle))
+        handY[2] = round(handY[1]+lengthdir_y(handItem[1].gwPoint, handItem[1].image_angle+handItem[1].zAngle))
         
-        handX[1] = round(handX[1]+lengthdir_x(handItem[1].gwPoint*-1, handItem[1].image_angle))
-        handY[1] = round(handY[1]+lengthdir_y(handItem[1].gwPoint*-1, handItem[1].image_angle))
+        handX[1] = round(handX[1]+lengthdir_x(handItem[1].gwPoint*-1, handItem[1].image_angle+handItem[1].zAngle))
+        handY[1] = round(handY[1]+lengthdir_y(handItem[1].gwPoint*-1, handItem[1].image_angle+handItem[1].zAngle))
     }
     
     //Arm Directions
@@ -815,7 +803,7 @@ switch(argument0)
 {
     case 0:
     hipsImage = 12
-    hipsRot = -30*hFacing
+    hipsRot = -45*hFacing
     bodyRot = -30*hFacing
     hairRot = -90*hFacing
     
@@ -830,7 +818,7 @@ switch(argument0)
 
     case 1:
     hipsRot = -15*hFacing
-    bodyRot = -15*hFacing
+    bodyRot = -30*hFacing
     hairRot = -45*hFacing
 
     animDelay[argument1] = .1
@@ -1023,7 +1011,6 @@ if player = true
     obj_control.shake += argument0
 }
 #define humanoidBrace
-animDelay[argument1] = .3
 animSpeed[argument1] = 1
 xAdj = 0
 yAdj = 0
@@ -1039,17 +1026,119 @@ switch(argument0)
     hipsImage = 18
     legLength = 2
     xAdj = -1*hFacing
+    
+    bounce = 1
+    bounceTimer = .2
+    flow = 3
+    flowTimer = .1
+    animDelay[argument1] = .3
     break
     
     case 1:
     hipsImage = 18
     legLength = 2
     xAdj = -1*hFacing
+    bodyRot = -15*hFacing
+    animDelay[argument1] = .5
     break
     
     case 2:
-    humanoidBrace(0,argument1)
-    animStep[argument1] = 0
+    hipsImage = 18
+    legLength = 2
+    xAdj = -1*hFacing
+    bodyRot = -30*hFacing
+    animDelay[argument1] = 1
     break
-}
     
+    case 3:
+    hipsImage = 18
+    legLength = 2
+    xAdj = -1*hFacing
+    bodyRot = -45*hFacing
+    animDelay[argument1] = 1
+    break
+    
+    case 4:
+    hipsImage = 18
+    legLength = 2
+    xAdj = -1*hFacing
+    bodyRot = -60*hFacing
+    animDelay[argument1] = 1
+    break
+}   
+
+#define humanoidOverswing
+animSpeed[argument1] = 1
+yAdj = 0
+
+switch(argument0)
+{
+    case 0:
+    hipsImage = 6
+    legLength = 4
+    xAdj = -1*hFacing
+    
+    hipsRot = 15*hFacing
+    hairRot = 0
+    headRot = 0
+    bodyRot = 0
+    
+    bounce = 1
+    bounceTimer = .2
+    flow = 2
+    flowTimer = .1
+    animDelay[argument1] = .3
+    break
+    
+    case 1:
+    hipsImage = 6
+    legLength = 4
+    xAdj = -1*hFacing
+
+    hipsRot = 15*hFacing
+    hairRot = 0
+    headRot = 0
+    bodyRot = 15*hFacing
+    
+    animDelay[argument1] = .5
+    break
+    
+    case 2:
+    hipsImage = 6
+    legLength = 4
+    xAdj = -1*hFacing
+    
+    hipsRot = 15*hFacing
+    hairRot = 0
+    headRot = 0
+    bodyRot = 15*hFacing
+    
+    animDelay[argument1] = 1
+    break
+    
+    case 3:
+    hipsImage = 6
+    legLength = 4
+    xAdj = -1*hFacing
+    
+    hipsRot = 15*hFacing
+    hairRot = 0
+    headRot = 15*hFacing
+    bodyRot = 15*hFacing
+    
+    animDelay[argument1] = 1
+    break
+    
+    case 4:
+    hipsImage = 18
+    legLength = 2
+    xAdj = -1*hFacing
+    
+    hipsRot = 15*hFacing
+    hairRot = 0
+    headRot = 15*hFacing
+    bodyRot = 30*hFacing
+    
+    animDelay[argument1] = 1
+    break
+}   

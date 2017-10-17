@@ -80,9 +80,7 @@ if argument3 = true
 }
 
 if argument0.life <= 0
-{
-    killChar(argument0)
-    
+{    
     if argument0.player = false or argument0.lastStand = true
     {
         p += choose(0,0,0,1,1,2,2,3)
@@ -102,6 +100,8 @@ if argument0.life <= 0
             }
         }
     }
+    
+    killChar(argument0)
 }
 
 
@@ -120,9 +120,9 @@ t.hspd += (lengthdir_x(power(impact*punt,.9),dir)/t.weight)
 t.vspd += (lengthdir_y(power(impact*punt,.9),dir)/t.weight)
 if argument5 = 2
 {
-    t.zspd += power(impact*.3*punt,.9)
+    t.zspd += power(impact*.5*punt,.9)
 }
-t.stability -= 1+impact
+t.stability -= 1+abs(impact)
 t.stabilityDelay = 1
 
 if impact > 5

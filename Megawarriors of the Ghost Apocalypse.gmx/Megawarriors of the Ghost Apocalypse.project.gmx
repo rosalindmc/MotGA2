@@ -102,6 +102,9 @@
         <sprite>sprites\spr_pikeHelm</sprite>
         <sprite>sprites\spr_stormHelm</sprite>
         <sprite>sprites\spr_stormtrooper</sprite>
+        <sprite>sprites\spr_cVampireHunter</sprite>
+        <sprite>sprites\spr_cWizardHunter</sprite>
+        <sprite>sprites\spr_cDeathMage</sprite>
       </sprites>
       <sprites name="Hair">
         <sprite>sprites\spr_longHair</sprite>
@@ -148,6 +151,7 @@
       <sprite>sprites\spr_spark</sprite>
       <sprite>sprites\spr_sheen</sprite>
       <sprite>sprites\spr_bloodSplat</sprite>
+      <sprite>sprites\spr_bloodWater</sprite>
       <sprite>sprites\spr_waterSplat</sprite>
       <sprite>sprites\spr_stunSpiral</sprite>
       <sprite>sprites\spr_boneShard</sprite>
@@ -209,8 +213,8 @@
         </scripts>
         <scripts name="Animations">
           <script>scripts\weaponBasicAnims.gml</script>
-          <script>scripts\weaponIdleAnims.gml</script>
           <script>scripts\weaponSwordAnims.gml</script>
+          <script>scripts\weaponIdleAnims.gml</script>
           <script>scripts\weaponPolearmAnims.gml</script>
           <script>scripts\twist.gml</script>
           <script>scripts\animationStart.gml</script>
@@ -224,6 +228,7 @@
           </scripts>
           <scripts name="Megawarriors">
             <script>scripts\megawarrior.gml</script>
+            <script>scripts\classList.gml</script>
           </scripts>
           <scripts name="Monsters">
             <script>scripts\monster.gml</script>

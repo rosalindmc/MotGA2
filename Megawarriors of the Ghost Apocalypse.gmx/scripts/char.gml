@@ -110,7 +110,6 @@ controlScript = playerControl       //Temp, replace with ai control
 player = true                       //Change to false in type script
 autoTarget = noone;                   //This is so that if a player is using a controller, they can select an enemy
 
-
 lastAttack = 0                      //When this character last attacked for the AI
 inFormation = false                 //flag for being in a formation
 joinsFormation = false
@@ -544,8 +543,8 @@ if global.liveSurf = true
     }
 }
 
-//draw_text(x,y+10,string(floor(hspd))+string('m'))
-//draw_text(x,y+20,string(floor(vspd))+string('m'))
+//draw_text(x,y+10,string(moveTimer)+string(' timer'))
+//draw_text(x,y+20,string(animStep[0])+string(' step'))
 //draw_text(x,y+30,canMove)
 
 /*Temp just draw random stuff

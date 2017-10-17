@@ -132,8 +132,8 @@ life = 10
 
 i = argument0
 
-image_xscale = i
-image_yscale = i
+image_xscale = i/2
+image_yscale = i/2
 image_angle = random(359)
 image_index = irandom(4)
 
@@ -146,10 +146,10 @@ hspd = lengthdir_x(i,dir)
 vspd = lengthdir_y(i,dir)
 animSpeed = 0
 
-growth = random(1)
+growth = random(.5)
 fade = .1
 reflectOnly = true
-sprite_index = spr_bloodSplat
+sprite_index = spr_bloodWater
 
 #define partGib
 dir = argument0-60+random(120)

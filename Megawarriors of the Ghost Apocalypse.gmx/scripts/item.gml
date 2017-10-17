@@ -78,12 +78,12 @@ if owner != noone
             image_angle = (round(owner.facing/15)*15)+owner.itemRot[hand]
             if abs(angle_difference(90,image_angle)) < 90
             {
-                zAngle = ((owner.itemZRot[hand])+(owner.bodyRot*owner.hFacing))*(angle_difference(90,image_angle)/90)
+                zAngle = ((owner.itemZRot[hand]))*(angle_difference(90,image_angle)/90)
                 zM = 1-((1-abs(lengthdir_x(1,zAngle)))*(1-(abs(angle_difference(90,image_angle)/90))))
             }
             else
             {
-                zAngle = ((owner.itemZRot[hand])+(owner.bodyRot*owner.hFacing))*(angle_difference(270,image_angle)/-90)
+                zAngle = ((owner.itemZRot[hand]))*(angle_difference(270,image_angle)/-90)
                 zM = 1-((1-abs(lengthdir_x(1,zAngle)))*(1-(abs(angle_difference(270,image_angle)/90))))
             }
             image_xscale = owner.itemFlip[hand]

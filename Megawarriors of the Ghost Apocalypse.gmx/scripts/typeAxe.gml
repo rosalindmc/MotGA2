@@ -45,18 +45,18 @@ switch(argument0)
     anim[0] = weaponIdle    //Idle Anim
     anim[1] = weaponHack   //Basic Attack
     anim[2] = weaponChop   //Power Attack
-    anim[3] = weaponSlash   //Alternate Attack (2h)
+    anim[3] = weaponChopUp   //Alternate Attack (2h)
     anim[4] = weaponCrossHack    
     anim[5] = weaponPommel    //Close attack    
-    anim[6] = weaponSlash    //Special 2h
+    anim[6] = weaponPull    //Special 2h
     anim[7] = throwAnim     //Special 1h
-    anim[8] = weaponShoulderRest    //Special Idle
+    anim[8] = weaponEngarde    //Special Idle
     
     animHold[0] = weaponSlashChopHold//Basic Hold Anim (basic+power)
-    animHold[1] = weaponSlashHold//Alt Hold Anim 
+    animHold[1] = weaponChopUpHold//Alt Hold Anim 
     animHold[2] = weaponSlashHold//Roll Hold Anim 
     animHold[3] = weaponPommelHold//Close Hold Anim 
-    animHold[4] = throwHold         //Special 2 hold
+    animHold[4] = weaponStabHold    //Special 2 hold
     animHold[5] = throwHold         //Special 1 hold
     
     for(i = 1; i < 8; i++)
@@ -79,24 +79,34 @@ switch(argument0)
     meleeAttackMask[2] = spr_stab
     meleePowMult[2] = 1.2
     meleePenMod[2] = 35
-    meleeChargePowMult[3] = 1.5
+    
     meleeRateMult[3] = .8
     meleeLungeMult[3] = 1.3
-    meleeAttackMask[3] = spr_slash
+    meleeChargePowMult[3] = 1.5
+    meleeRateMult[3] = .8
+    meleePowMult[3] = 1.2
+    meleePenMod[3] = 35
+    meleeImpactTypeMult[3] = 2
 
     meleeAttackMask[4] = spr_hack
     meleeRateMult[4] = 1.5
     meleeLungeMult[4] = 2
     meleePowMult[4] = 1.2
     meleeImpactTypeMult[4] = 2
-    meleePenMod[4] = 0
-    meleeType[4] = dmgType.rend
     
     meleePowMult[5] = .25
     meleeLungeMult[5] = 2
     meleeType[5] = dmgType.impact
     meleeAttackMask[5] = spr_impact
     meleePenMod[5] = -10
+    
+    meleePowMult[6] = .1
+    meleeLungeMult[6] = 0
+    meleeAttackMask[6] = spr_stab
+    meleeImpactTypeMult[6] = 1
+    meleeImpactMult[6] = -1.5
+    meleeSizeMult[6] = -.7
+    
     break
 }
 

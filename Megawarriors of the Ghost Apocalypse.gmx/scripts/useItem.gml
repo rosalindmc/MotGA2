@@ -125,7 +125,7 @@ switch(argument1)
         
         if argument0 = 1 or greatWeapon = true
         {
-            applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[argument0]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id,false)
+            applyStatus(id,wepSlow1,handItem[argument0].meleeSlow*handItem[argument0].meleeSlowMult[queuedAnim[min(argument0,2-greatWeapon)]]*(1+((greatWeapon*handItem[argument0].gwSlowMult)-greatWeapon)),2,id,false)
         }
         else
         {
@@ -182,7 +182,11 @@ hold[argument0] = 0
 animationStart(handItem[argument0].anim[queuedAnim[argument0]],argument0)
 
 //Lunge
-hspd += lengthdir_x((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.9)),facing)
+hspd += lengthdir_x((4+power(charge[argument0]
+*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]
+*handItem[argument0].meleeLunge*(1+((greatWeapon
+*handItem[argument0].gwLungeMult)-greatWeapon))
+,.9)),facing)
 vspd += lengthdir_y((4+power(charge[argument0]*handItem[argument0].meleeLungeMult[queuedAnim[argument0]]*handItem[argument0].meleeLunge*(1+((greatWeapon*handItem[argument0].gwLungeMult)-greatWeapon)),.9)),facing)
 
 if charge[argument0] = 2
@@ -226,6 +230,7 @@ with(handItem[argument0])
     i.canProvokeClash = true
     i.impactType = meleeImpactTypeMult[argument1]/other.wM
     i.puntMult = meleePuntMult[argument1]
+    i.sticky = true
     i.sprite_index = meleeAttackMask[argument1]
     i.image_yscale = meleeSize*meleeSizeMult[argument1]*owner.meleeSwing[argument0]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))
     i.image_xscale = meleeSize*meleeSizeMult[argument1]*(1+((owner.greatWeapon*gwSizeMult)-owner.greatWeapon))

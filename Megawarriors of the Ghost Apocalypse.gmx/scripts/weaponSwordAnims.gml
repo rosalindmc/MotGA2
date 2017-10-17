@@ -255,6 +255,7 @@ switch(argument0)
     itemRotDest[argument1] = (45*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
     animDelay[argument1] = .3
+    bodyTwist = 0
     
     charge[argument1] = 2
     if queuedAnim[argument1] = 1
@@ -327,6 +328,11 @@ switch(argument0)
     itemRotDest[argument1] = (225*meleeSwing[argument1])
     itemZRotDest[argument1] = 60
     animDelay[argument1] = .3
+    bodyTwist = 0
+    
+    animationStart(humanoidOverswing,0)
+    moveTimer = .3
+    canMove = false
     
     charge[argument1] = 2
     if queuedAnim[argument1] = 1
@@ -344,6 +350,8 @@ switch(argument0)
     itemRotDest[argument1] = (225*meleeSwing[argument1])
     itemZRotDest[argument1] = 90
     animDelay[argument1] = 1*s
+    moveTimer = .1*s
+    canMove = false
     
     sweetSpot = false
     break
@@ -629,7 +637,7 @@ switch(argument0)
     animDelay[argument1] = .3
     strike[argument1] = 1
     charge[argument1] = 2
-    moveTimer = .05*s
+    moveTimer = .3
     canMove = false
     animationStart(humanoidBrace,0)
     break
@@ -640,11 +648,10 @@ switch(argument0)
     handHeightDest[argument1] = 6
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = -15
-    animDelay[argument1] = .3   
+    animDelay[argument1] = .1  *s
     perfectHitSheen(argument1)
     sweetSpot = true
-    moveTimer = .3
-    canMove = false
+    moveTimer = .1*s
     break
 
     case 2:
@@ -781,7 +788,7 @@ switch(argument0)
     break
 }
 
-#define weaponLeapHack
+#define weaponLeapSlash
 s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
 
 switch(argument0)
@@ -793,8 +800,8 @@ switch(argument0)
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (120*meleeSwing[argument1])
     itemZRotDest[argument1] = 10
-    animDelay[argument1] = .4
-    moveTimer = .4
+    animDelay[argument1] = .3
+    moveTimer = .3
     canMove = false
     if greatWeapon = true
     {
@@ -863,6 +870,170 @@ switch(argument0)
     handHeightDest[argument1] = 0
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
+    animDelay[argument1] = .2*s
+    sweetSpot = false
+    break
+    
+    case 7:
+    meleeEnd(argument1)
+    break
+}
+
+#define weaponChopUpHold
+s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
+
+meleeSwing[argument1] = -hFacing
+
+switch(argument0)
+{
+    case 0:    
+    handDistDest[argument1] = 4
+    handDirDest[argument1] = (0*meleeSwing[argument1])
+    handHeightDest[argument1] = 2
+    itemRotDest[argument1] = (45*meleeSwing[argument1])
+    itemZRotDest[argument1] = -45
+    animDelay[argument1] = .1*s
+    
+    animationStart(humanoidBrace,0)    
+    moveTimer = .1*s
+    canMove = false
+    break
+
+    case 1:
+    handDistDest[argument1] = 3
+    handDirDest[argument1] = (0*meleeSwing[argument1])
+    handHeightDest[argument1] = 0
+    itemRotDest[argument1] = (15*meleeSwing[argument1])
+    itemZRotDest[argument1] = -90
+    animDelay[argument1] = .3*s
+    moveTimer = .3*s
+    canMove = false
+    break
+
+    case 2:
+    handDistDest[argument1] = 2
+    handDirDest[argument1] = (45*meleeSwing[argument1])
+    handHeightDest[argument1] = -2
+    itemRotDest[argument1] = (-15*meleeSwing[argument1])
+    itemZRotDest[argument1] = -135
+    animDelay[argument1] = .3*s
+    moveTimer = .3*s
+    canMove = false
+    break
+    
+    case 3:
+    handDistDest[argument1] = 3
+    handDirDest[argument1] = (150*meleeSwing[argument1])
+    handHeightDest[argument1] = 0
+    itemRotDest[argument1] = (-15*meleeSwing[argument1])
+    itemZRotDest[argument1] = -150
+    animDelay[argument1] = .3
+    moveTimer = .3
+    canMove = false
+    
+    charge[argument1] = 2
+    if queuedAnim[argument1] = 1
+    {
+        queuedAnim[argument1] = 2
+    }
+    sweetSpot = true
+    perfectHitSheen(argument1)
+    break
+    
+    case 4:
+    handDistDest[argument1] = 4
+    handDirDest[argument1] = (150*meleeSwing[argument1])
+    handHeightDest[argument1] = 4
+    itemRotDest[argument1] = (-15*meleeSwing[argument1])
+    itemZRotDest[argument1] = -165
+    animDelay[argument1] = 1*s
+    moveTimer = .1*s
+    canMove = false
+    
+    sweetSpot = false
+    break
+    
+    case 5:
+    meleeAttack(argument1)
+    break
+}
+
+
+
+#define weaponChopUp
+s = 1/(handItem[argument1].meleeRateMult[queuedAnim[argument1]]*handItem[argument1].meleeRate*(1+((greatWeapon*handItem[argument1].gwRateMult)-greatWeapon)))
+
+meleeSwing[argument1] = -hFacing
+
+switch(argument0)
+{
+    case 0:
+    handDistDest[argument1] = 2
+    handDirDest[argument1] = (165*meleeSwing[argument1])
+    handHeightDest[argument1] = -4
+    itemRotDest[argument1] = (-15*meleeSwing[argument1])
+    itemZRotDest[argument1] = -105
+    animDelay[argument1] = .01*s
+    break
+
+    case 1:
+    handDistDest[argument1] = 8
+    handDirDest[argument1] = (15*meleeSwing[argument1])
+    handHeightDest[argument1] = -2
+    itemRotDest[argument1] = (0*meleeSwing[argument1])
+    itemZRotDest[argument1] = -45
+    animDelay[argument1] = .02*s
+    break
+    
+    case 2:
+    handDistDest[argument1] = 16
+    handDirDest[argument1] = (0*meleeSwing[argument1])
+    handHeightDest[argument1] = 4
+    itemRotDest[argument1] = (0*meleeSwing[argument1])
+    itemZRotDest[argument1] = 0
+    animDelay[argument1] = .02*s
+    break
+    
+    case 3:
+    //HIT
+    hspd = 0
+    vspd = 0
+    meleeHit(argument1,queuedAnim[argument1])
+    
+    handDistDest[argument1] = 16
+    handDirDest[argument1] = (0*meleeSwing[argument1])
+    handHeightDest[argument1] = 8
+    itemRotDest[argument1] = (0*meleeSwing[argument1])
+    itemZRotDest[argument1] = 45
+    animDelay[argument1] = .1*s
+    break
+    
+    case 4:
+    handDistDest[argument1] = 12
+    handDirDest[argument1] = (0*meleeSwing[argument1])
+    handHeightDest[argument1] = 8
+    itemRotDest[argument1] = (0*meleeSwing[argument1])
+    itemZRotDest[argument1] = 45
+    animDelay[argument1] = .1*s
+    break
+    
+    case 5:
+    handDistDest[argument1] = 8
+    handDirDest[argument1] = (0*meleeSwing[argument1])
+    handHeightDest[argument1] = 6
+    itemRotDest[argument1] = (0*meleeSwing[argument1])
+    itemZRotDest[argument1] = 15
+    animDelay[argument1] = .3
+    sweetSpot = true
+    perfectHitSheen(argument1)
+    break
+    
+    case 6:
+    handDistDest[argument1] = 6
+    handDirDest[argument1] = (0*meleeSwing[argument1])
+    handHeightDest[argument1] = 4
+    itemRotDest[argument1] = (0*meleeSwing[argument1])
+    itemZRotDest[argument1] = -15
     animDelay[argument1] = .2*s
     sweetSpot = false
     break

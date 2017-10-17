@@ -324,6 +324,9 @@ switch(argument0)
     itemRotDest[argument1] = (45*meleeSwing[argument1])
     itemZRotDest[argument1] = 45
     animDelay[argument1] = .1*s
+    animationStart(humanoidOverswing,0)    
+    moveTimer = .1*s
+    canMove = false
     break
 
     case 1:
@@ -333,6 +336,8 @@ switch(argument0)
     itemRotDest[argument1] = (15*meleeSwing[argument1])
     itemZRotDest[argument1] = 90
     animDelay[argument1] = .3*s
+    moveTimer = .3*s
+    canMove = false
     break
 
     case 2:
@@ -342,6 +347,8 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 135
     animDelay[argument1] = .3*s
+    moveTimer = .3*s
+    canMove = false
     break
     
     case 3:
@@ -351,6 +358,8 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 150
     animDelay[argument1] = .3
+    moveTimer = .3
+    canMove = false
     
     charge[argument1] = 2
     if queuedAnim[argument1] = 1
@@ -368,6 +377,8 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 165
     animDelay[argument1] = 1*s
+    moveTimer = .1*s
+    canMove = false
     
     sweetSpot = false
     break
