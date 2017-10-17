@@ -60,7 +60,7 @@ switch(argument0)
     animHold[4] = throwHold         //Special 2 hold
     animHold[5] = throwHold         //Special 1 hold
     
-    for(i = 1; i < 7; i++)
+    for(i = 1; i < 8; i++)
     {
         meleeType[i] = 1
         meleeAttackMask[i] = spr_slash
@@ -72,6 +72,8 @@ switch(argument0)
         meleeSlowMult[i] = 1
         meleeSizeMult[i] = 1
         meleeCostMult[i] = 1
+        meleePuntMult[i] = 1
+        meleeImpactTypeMult[i] = 0
         meleePenMod[i] = 0
     }
     break

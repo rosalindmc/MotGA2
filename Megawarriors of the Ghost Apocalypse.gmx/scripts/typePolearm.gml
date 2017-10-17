@@ -73,6 +73,7 @@ switch(argument0)
         meleeCostMult[i] = 1
         meleePuntMult[i] = 1
         meleeImpactTypeMult[i] = 0
+        meleePenMod[i] = 0
     }
     
     meleePenMod[2] = 25
@@ -230,5 +231,14 @@ switch(argument0)
     meleeImpactTypeMult[4] = 2
     meleePenMod[4] = 0
     meleeType[4] = dmgType.rend  
+    
+    anim[6] = weaponPull    //Special 2h
+    animHold[4] = weaponStabHold    //Special 2 hold
+    meleePowMult[6] = .1
+    meleeLungeMult[6] = 0
+    meleeAttackMask[6] = spr_stab
+    meleeImpactTypeMult[6] = 1
+    meleeImpactMult[6] = -1.5
+    meleeSizeMult[6] = -.7
     break
 }

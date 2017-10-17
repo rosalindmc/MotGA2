@@ -74,6 +74,7 @@ switch(argument0)
         meleeCostMult[i] = 1
         meleePuntMult[i] = 1
         meleeImpactTypeMult[i] = 0
+        meleePenMod[i] = 0
     }
     
     meleePenMod[2] = 25
