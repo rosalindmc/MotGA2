@@ -119,6 +119,8 @@ switch(argument0)
     holdPoint = 0
     gwPoint = 4
     weight = 6
+    
+    force2h = true
                      
     //Weapon Stats
     meleePow = 1.3
@@ -175,6 +177,7 @@ switch(argument0)
     throwLunge = 1
     throwSpeed = 25
     throwCost = 1
+    
     break
 }
 

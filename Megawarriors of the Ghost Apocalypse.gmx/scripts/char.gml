@@ -177,6 +177,8 @@ fumble = false
 perfectTimeMod = .5
 perfectTimeDmgMod = 0.1
 kick = 0
+memory[1] = noone
+memory[2] = noone
 
 sticking = noone        //person you are sticking
 stuck = noone           //person sticking you

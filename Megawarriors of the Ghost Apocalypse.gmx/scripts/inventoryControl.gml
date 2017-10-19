@@ -190,14 +190,45 @@ if(!global.padOn){
         for(i = handItemSlot[1]+1; i < inventorySize+1; i++)
         {
             if i < inventorySize
-            {
+            {   
+                if (memory[2] != noone || greatWeapon){
+                    switchItem(memory[2],2)
+                    memory[2] = noone
+                    switchItem(-1,1)
+                }    
+        
                 if inventory[i] != noone
                 {
+                    if (inventory[i].force2h){
+                    memory[2] = handItemSlot[2]
                     switchItem(i,1)
-                    break
+                    switchItem(i,2)
+                    greatWeapon = true
+                    }
+                    else if (inventory[i].force1h && handItemSlot[1] == inventory[i]){
+                        switchItem(i,1)
+                        memory[2] = handItemSlot[2]
+                        switchItem(-1,1)
+                    }
+                    else{
+                        switchItem(i,1)
+                    }
+                break
+                }
+                
+                
+            }
+            if instance_exists(handItem[1]){
+                if (handItem[1].force2h){
+                    switchItem(-1,2)
+                    if (memory[2] != noone){
+                        switchItem(memory[2],2)
+                        memory[2] = noone
+                    }
                 }
             }
             switchItem(-1,1)
+            
         }
     }
     
@@ -209,13 +240,38 @@ if(!global.padOn){
             {
                 if inventory[i] != noone
                 {
-                    switchItem(i,2)
+                    if (memory[1] != noone || greatWeapon){
+                        switchItem(memory[1],1)
+                        memory[1] = noone
+                        switchItem(-1,2)
+                    }
+                    
+                    if (inventory[i].force2h){
+                        memory[1] = handItemSlot[1]
+                        switchItem(i,1)
+                        switchItem(i,2)
+                        greatWeapon = true
+                    }
+                    else if (inventory[i].force1h && handItemSlot[1] == inventory[i]){
+                    }
+                    else{
+                        switchItem(i,2)
+                    }
                     break
+                }
+            }
+            if instance_exists(handItem[2]){
+                if (handItem[1].force2h){
+                    switchItem(-1,1)
+                    if (memory[1] != noone){
+                        switchItem(memory[1],1)
+                        memory[1] = noone
+                    }
                 }
             }
             switchItem(-1,2)
         }
-    }
+    }   
 }
 
 else{
@@ -253,7 +309,7 @@ else{
 }
 
 #define switchItem
-//argument0 is which function you're using, argument1 is which limb you're using
+//argument0 is which function you're using (-1 switch to nothing, 1 right, 2 left), argument1 is which limb you're using
 
 if charge[1] = 0 and charge[2] = 0 && canInv
 {
@@ -269,7 +325,7 @@ if charge[1] = 0 and charge[2] = 0 && canInv
             handItem[argument1].hand = 3-argument1
         }
     }
-    if argument0 != -1
+    if argument0 != -1 && argument0 != -4
     {
         //Switch to new item
         handItem[argument1] = inventory[argument0]
@@ -279,6 +335,8 @@ if charge[1] = 0 and charge[2] = 0 && canInv
         {
             handItemSlot[argument1] = argument0
             inventory[argument0].hand = argument1
+            
+
         }
         else
         {
