@@ -26,7 +26,7 @@ if clashing = true
     handDistDest[argument1] = 5+(2*clamp(-1,1,interactProgress-clashingWith.interactProgress))
     handDirDest[argument1] = (30+(-30*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
     handHeightDest[argument1] = 4
-    itemRotDest[argument1] = (-15)//+(60*clamp(-1,1,interactProgress-clashingWith.interactProgress)))*meleeSwing[argument1]
+    itemRotDest[argument1] = (-15)
     itemZRotDest[argument1] = 45+(-45*clamp(-1,1,interactProgress-clashingWith.interactProgress))
     
     if instance_exists(handItem[argument1])
@@ -37,6 +37,24 @@ if clashing = true
     }
     animSpeed[argument1] = 5
 }
+
+if sticking != noone
+{
+    handDistDest[argument1] = 5+(-5*clamp(-1,1,interactProgress-1))
+    handDirDest[argument1] = 0
+    handHeightDest[argument1] = (-5*clamp(-1,1,interactProgress-1))
+    itemRotDest[argument1] = 0
+    itemZRotDest[argument1] = 15+(15*clamp(-1,1,interactProgress-1))
+    
+    if instance_exists(handItem[argument1])
+    {
+        ix = (sticking.x)
+        iy = (sticking.y)
+        createParticle(ix,iy,handItem[argument1].z,3,partBlood,point_direction(x,y,ix,iy)+180)
+    }
+    animSpeed[argument1] = 1
+}
+
 
 //Adjust for the current idle anim
 if handItem[argument1] = noone or (argument1 = 2 and greatWeapon = true)

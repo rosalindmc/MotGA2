@@ -1,5 +1,6 @@
 #define hitChar
 t = argument0
+//Add failsafes for attacker dieing before hit collider connects
 
 //Damage
 p = (dmg)*(min(1-((t.armour-(pen))/100),1))
@@ -22,11 +23,23 @@ if visNumbers = true
 impactChar(t,impact,point_direction(originX,originY,t.x,t.y),puntMult,owner,impactType)
 
 //Apply Bleed
-if dmgType = dmgType.rend and irandom(5) < p
+if dmgType = dmgType.rend and irandom(8) < p
 {
-    applyStatus(t,bleed,.5,3,owner,true)
+    applyStatus(t,bleed,.2,5,owner,true)
 }
-
+//Apply Vulnerable
+if dmgType = dmgType.impact and irandom(8) < p
+{
+    applyStatus(t,vulnerable,.5,5,owner,true)
+}
+//Apply Stuck
+if dmgType = dmgType.pierce and irandom(8) < p
+{
+    with(owner)
+    {
+        stickTarget(argument0)
+    }
+}
 
 //Dif damage types might have dif particles later
 if image_index = spr_slash
@@ -176,6 +189,19 @@ if t.clashing = true
     {
         endClash()
     }
+}
+
+if t.sticking != noone
+{
+    with(t)
+    {
+        endStick()
+    }
+}
+
+if t.stuck != noone
+{
+    t.stuck = noone
 }
 
 #define killChar

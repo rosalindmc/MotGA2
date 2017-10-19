@@ -103,7 +103,7 @@ if keyboard_check_pressed(ord('I')){
 global.xpTimer = max(0,global.xpTimer-(1/global.frameRate))
 
 //Zoom Control
-if global.pc.clashing = true
+if global.pc.clashing = true or global.pc.sticking != noone or global.pc.stuck != noone
 {
     global.camZoomTo = min(2+global.pc.interactProgress,4)
 }
@@ -382,6 +382,16 @@ if global.pc.clashing = true
     draw_rectangle(ix+24,iy,ix+(24*clamp(-1,1,global.pc.interactProgress-global.pc.clashingWith.interactProgress)),5+iy,false)
     draw_sprite(spr_bigBox,0,ix-25,iy)
 }
+else if global.pc.sticking != noone or global.pc.stuck != noone 
+{
+    ix = round(global.camZoom*(view_wview*.5))
+    iy = round(global.camZoom*(view_hview*.75))
+    draw_set_colour(c_white)
+    draw_rectangle(ix-25,iy,ix+(24*clamp(-1,1,global.pc.interactProgress-1)),5+iy,false)    
+    draw_set_colour(c_red)
+    draw_rectangle(ix+24,iy,ix+(24*clamp(-1,1,global.pc.interactProgress-1)),5+iy,false)
+    draw_sprite(spr_bigBox,0,ix-25,iy)
+}
 
 //Draw Cursor
 if(!global.padOn){
@@ -393,10 +403,10 @@ if(!global.padOn){
 }
 else{
     draw_sprite(spr_reticle,0,global.camZoom*(global.pc.targetX-view_xview),global.camZoom*(global.pc.targetY-8-view_yview))
-    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8-kick),1,1,0,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8+kick),1,1,90,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8+kick),1,1,180,c_white,1)
-    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8-kick),1,1,270,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8-kick-view_yview),1,1,0,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8+kick-view_yview),1,1,90,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8+kick-view_yview),1,1,180,c_white,1)
+    draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8-kick-view_yview),1,1,270,c_white,1)
 }
    
 //HUD stuff

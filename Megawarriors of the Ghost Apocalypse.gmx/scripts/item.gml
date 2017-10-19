@@ -64,6 +64,7 @@ dangerous = false
 thrower = noone
 sweetSpot = false
 collide = false
+stuckIn = noone
 
 weaponEssentials(0)
 
@@ -138,7 +139,10 @@ if z >= wz or hand != 0
         itemSurf = surface_create(60,60)
     }
     draw_sprite_ext(sprite_index,image_index,x,y,abs(lengthdir_x(1,zAngle))*(.5+(zM*.5))*image_xscale,(.75+(zM*.25))*image_yscale,image_angle,c_black,.3)
-    draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)     
+    if stuckIn = noone
+    {
+        draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)     
+    }
     
     if global.surfX2 != 0
     {

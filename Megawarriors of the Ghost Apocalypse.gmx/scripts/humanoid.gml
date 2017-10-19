@@ -493,6 +493,12 @@ else
     }
 }
 
+if clashing = true
+{
+    bodyRot = ((-30*hFacing*clamp(-1,1,interactProgress-clashingWith.interactProgress)))
+}
+
+
 #define humanoidSneakWalk
 animSpeed[argument1] = max(abs(moving),1)
 xAdj = 0

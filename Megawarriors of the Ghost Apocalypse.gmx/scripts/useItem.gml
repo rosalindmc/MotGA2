@@ -3,28 +3,11 @@
 //Run the second use script if right clicking w/ two hands
 //Input argument1 to script for press vs release
 
-if clashing = true  //Clash Button Mash
+if clashing = true or sticking != noone or stuck != noone //Clash Button Mash
 {
     if argument1 = 0
     {
-        //Add progress
-        interactProgress += .2*(weight/clashingWith.weight)
-        animDelay[1] = 0.01
-        animDelay[2] = 0.01
-        
-        //Win Clash
-        if interactProgress >= clashingWith.interactProgress+1
-        {
-            if handItem[argument0] != noone
-            { 
-                charge[min(argument0,2-greatWeapon)] = 2
-                queuedAnim[min(argument0,2-greatWeapon)] = 5
-                meleeAttack(min(argument0,2-greatWeapon))
-            }
-            stam = stamMax
-            clashingWith.stability = 0
-            endClash()
-        }
+        interactKeyMash(argument0)
     }
 }
 else
@@ -274,3 +257,56 @@ case 1:
     handItemSlot[argument0] = -1
 break;
 }
+#define interactKeyMash
+if clashing = true
+{
+    //Add progress
+    interactProgress += .2*(weight/clashingWith.weight)
+    animDelay[1] = 0.01
+    animDelay[2] = 0.01
+    
+    //Win Clash
+    if interactProgress >= clashingWith.interactProgress+1
+    {
+        if handItem[argument0] != noone
+        { 
+            charge[min(argument0,2-greatWeapon)] = 2
+            queuedAnim[min(argument0,2-greatWeapon)] = 5
+            meleeAttack(min(argument0,2-greatWeapon))
+        }
+        stam = stamMax
+        clashingWith.stability = 0
+        endClash()
+    }
+}
+else if sticking != noone 
+{
+    //Add progress
+    interactProgress += .2*(weight/sticking.weight)
+    animDelay[1] = 0.01
+    animDelay[2] = 0.01
+    
+    //Win Clash
+    if interactProgress >= 2
+    {
+        applyStatus(sticking,bleed,.5,6,id,true)
+        endStick()    
+    }
+}
+else if stuck != noone
+{
+    //Add progress
+    interactProgress += .2*(weight/stuck.weight)
+    animDelay[1] = 0.01
+    animDelay[2] = 0.01
+    
+    //Win Clash
+    if interactProgress >= 2
+    {
+        with(stuck)
+        {
+            endStick()
+        }
+    }
+}
+

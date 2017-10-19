@@ -9,6 +9,8 @@ if inventoryKey = true
     }
     else
     {
+        targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + (gamepad_axis_value(0, gp_axislh) * 3 * metre);
+        targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + (gamepad_axis_value(0, gp_axislv) * 3 * metre);
         var p = point_direction(x, y, targetX, targetY)
     }
     

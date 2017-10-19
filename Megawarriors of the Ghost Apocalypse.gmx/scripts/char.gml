@@ -178,6 +178,9 @@ perfectTimeMod = .5
 perfectTimeDmgMod = 0.1
 kick = 0
 
+sticking = noone        //person you are sticking
+stuck = noone           //person sticking you
+stuckWithItem = ds_list_create()
 clashing = false
 clashingWith = noone
 grappling = false
@@ -317,7 +320,7 @@ if alive = true
         tS = 0
     }
     
-    if grappled = false and clashing = false
+    if grappled = false and clashing = false and sticking = noone and stuck = noone
     {        
         if(id == global.pc){
             if(global.pc.autoTarget == noone){
@@ -459,7 +462,8 @@ else
 }
 
 //Grappled
-if (grappled = true){
+if (grappled = true)
+{
     if instance_exists(grappler)
     {
         facing = grappler.facing+180
@@ -472,6 +476,33 @@ if (grappled = true){
             vspd = grappler.handY[2]+round(grappler.y)-(grappler.charSurfSize*.5)+lengthdir_y(max(metre,handDist[2]),grappler.facing+grappler.handDir[2])-y+z
         }
         z = (grappler.charSurfSize*.75)-round(grappler.bodyY+grappler.handHeight[2]+grappler.z)
+    }
+}
+
+if (sticking != noone)
+{
+    if instance_exists(sticking)
+    {
+        facing = point_direction(x,y,sticking.x,sticking.y)
+    }
+    else
+    {
+        endStick()
+    }
+}
+
+if (stuck != noone)
+{
+    if instance_exists(stuck)
+    {
+        facing = point_direction(x,y,stuck.x,stuck.y)
+        hspd = 0
+        vspd = 0
+    }
+    else
+    {   
+        stuck = noone
+        moveTimer += .1
     }
 }
 
@@ -520,8 +551,23 @@ if player = true
     draw_ellipse(round(x-5),round(y-2)-floorID.wz,round(x+3),round(y+2)-floorID.wz,false)   
 }
 
+
+//Draw things stuck in you (behind)
+//for(i = 0; i < ds_list_size(stuckWithItem); i++)
+//{
+//    draw_surface_part(stuckWithItem.itemSurf,0,0,60,60,round(stuckWithItem.x-30),round(stuckWithItem.y-30-stuckWithItem.z),)
+//    draw_surface_ext(itemSurf,round(x-30),round(y-30-z)
+//}
+
+
 //Draw Surface
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)
+
+//Draw things stuck in you (infront)
+//for(i = 0; i < ds_list_size(stuckWithItem); i++)
+//{
+    
+//}
 
 if global.liveSurf = true
 {
@@ -698,3 +744,48 @@ if instance_exists(clashingWith)
 moveTimer += .1
 clashing = false 
 clashingWith = noone
+#define stickTarget
+//script for sticking a target, argument 0 is the person being stuck
+if !argument0.grappling && !argument0.grappled and argument0.sticking = noone and argument0.stuck = noone and sticking = noone and stuck = noone 
+{
+    i = instance_create(x,y,obj_text)
+    i.t = 'Stuck!'
+    
+    sticking = argument0
+    
+    facing = point_direction(x,y,argument0.x,argument0.y)
+    interactProgress = 0
+    canMove = false
+    moveTimer = 0
+    sweetSpot = false
+    fumble = false
+    hspd = lengthdir_x(8,facing)
+    vspd = lengthdir_y(8,facing)
+    
+    animationReset(1)
+    animationReset(2)  
+    
+    argument0.stuck = id
+    argument0.facing = point_direction(argument0.x,argument0.y,x,y)
+    argument0.interactProgress = 0
+    argument0.canMove = false
+    argument0.moveTimer = 0
+    argument0.sweetSpot = false
+    argument0.fumble = false
+    
+    with(argument0)
+    {
+        animationReset(1)
+        animationReset(2)    
+    }
+}
+
+#define endStick
+if instance_exists(sticking)
+{
+    clashingWith.moveTimer += .1
+    clashingWith.stuck = noone
+}
+
+moveTimer += .1
+sticking = noone

@@ -1,6 +1,7 @@
 #define playerControl
 //Move Control
-if(!global.padOn){
+if(!global.padOn)
+{
     upKey = keyboard_check(global.upKey)
     leftKey = keyboard_check(global.leftKey)
     downKey = keyboard_check(global.downKey)
@@ -22,9 +23,8 @@ if(!global.padOn){
     sneakKey = keyboard_check_pressed(global.sneakKey)
     inventoryKey = keyboard_check(global.inventoryKey)
 }
-
-else{
-
+else
+{
     if(gamepad_axis_value(0, gp_axislv) < 0){
         upKey = 1;
     }
@@ -68,7 +68,8 @@ else{
     dodgeKey = gamepad_button_check(0, gp_face1);
     reloadKey = keyboard_check_pressed(global.reloadKey)
     //throw has to be seperated for each hand
-    throwKey = gamepad_button_check(0, gp_shoulderlb)
+    altAttackKey = gamepad_button_check(0, gp_shoulderlb) 
+    throwKey = gamepad_button_check(0, gp_stickr) 
     sneakKey = gamepad_button_check(0, gp_stickl);
     inventoryKey = gamepad_button_check(0, gp_face4);
 }
@@ -143,17 +144,9 @@ else{
         {
             ctrlFacing = point_direction(0,0,hspd,vspd)
         }
-        
-        if inventoryKey = true
-        {
-            targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + (gamepad_axis_value(0, gp_axislh) * 3 * metre);
-            targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + (gamepad_axis_value(0, gp_axislv) * 3 * metre);
-        }
-        else
-        {
-            targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + lengthdir_x(metre*abs(moving)/10, ctrlFacing);
-            targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + lengthdir_y(metre*abs(moving)/10, ctrlFacing);
-        }
+
+        targetX = x + (gamepad_axis_value(0, gp_axisrh) * 3 * metre) + lengthdir_x(metre*abs(moving)/10, ctrlFacing);
+        targetY = y + (gamepad_axis_value(0, gp_axisrv) * 3 * metre) + lengthdir_y(metre*abs(moving)/10, ctrlFacing);
         //R3 selects an autolock target
         if(gamepad_button_check(0, gp_shoulderrb)){
             selectAutoTarget();
