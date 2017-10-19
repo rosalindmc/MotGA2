@@ -282,15 +282,22 @@ if clashing = true
 else if sticking != noone 
 {
     //Add progress
-    interactProgress += .2*(weight/sticking.weight)
+    interactProgress += .4*(weight/sticking.weight)
     animDelay[1] = 0.01
     animDelay[2] = 0.01
     
     //Win Clash
     if interactProgress >= 2
     {
+        damageChar(sticking,2,dmgType.rend,true,id)
         applyStatus(sticking,bleed,.5,6,id,true)
         endStick()    
+        
+        hspd = lengthdir_x(8,facing+180)
+        vspd = lengthdir_y(8,facing+180)
+        canMove = false
+        moveTimer = .2
+        animationStart(humanoidFlinchBackward,0)
     }
 }
 else if stuck != noone

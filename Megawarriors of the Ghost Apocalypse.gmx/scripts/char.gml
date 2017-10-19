@@ -783,8 +783,8 @@ if !argument0.grappling && !argument0.grappled and argument0.sticking = noone an
 #define endStick
 if instance_exists(sticking)
 {
-    clashingWith.moveTimer += .1
-    clashingWith.stuck = noone
+    sticking.moveTimer += .1
+    sticking.stuck = noone
 }
 
 moveTimer += .1
