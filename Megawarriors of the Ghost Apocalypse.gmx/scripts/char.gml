@@ -178,11 +178,13 @@ perfectTimeMod = .5
 perfectTimeDmgMod = 0.1
 kick = 0
 
-sticking = noone        //person you are sticking
-stuck = noone           //person sticking you
-stuckWithItem = ds_list_create()
+sticking = 0                        //The hand you are using to hold a sticking weapon
+stuck = ds_list_create()            //The weapons sticking you that are held
+stuckWithItem = ds_list_create()    //Unheld stuck items
+
 clashing = false
 clashingWith = noone
+
 grappling = false
 grappled = false
 grappler = noone        //person grappling you
@@ -216,9 +218,6 @@ sEffect = ds_list_create()
 ctrlFacing = 0
 
 team = 0
-
-
-
 
 #define charSetup
 //Vitals
@@ -320,7 +319,7 @@ if alive = true
         tS = 0
     }
     
-    if grappled = false and clashing = false and sticking = noone and stuck = noone
+    if grappled = false and clashing = false and sticking = 0 and ds_list_size(stuck) = 0
     {        
         if(id == global.pc){
             if(global.pc.autoTarget == noone){
@@ -345,8 +344,6 @@ stamVis += (stam-stamVis)/(global.frameRate*.2)
 moveStep()
 isoDepth(0)
 
-
-
 #define charEndstep
 //Animate
 animEndStep(0)
@@ -360,13 +357,13 @@ if canMove = true and alive = true
     {
         if sneak = false
         {
-        animIndex[0] = humanoidWalk
+            animIndex[0] = humanoidWalk
         }
         else
         {
-        animIndex[0] = humanoidSneakWalk
+            animIndex[0] = humanoidSneakWalk
         }
-        animSpeed[0] = max(abs(moving),1)
+            animSpeed[0] = max(abs(moving),1)
         if animStep[0] > 4
         {
             animStep[0] = 1
@@ -376,17 +373,17 @@ if canMove = true and alive = true
     {
         if sneak = false
         {
-        if animIndex[0] != humanoidIdle
-        {
-            animationStart(humanoidIdle,0)
-        }
+            if animIndex[0] != humanoidIdle
+            {
+                animationStart(humanoidIdle,0)
+            }
         }
         else
         {
-        if animIndex[0] != humanoidSneakIdle
-        {
-            animationStart(humanoidSneakIdle,0)
-        }
+            if animIndex[0] != humanoidSneakIdle
+            {
+                animationStart(humanoidSneakIdle,0)
+            }
         }
     }
 }
@@ -479,30 +476,42 @@ if (grappled = true)
     }
 }
 
-if (sticking != noone)
+if (sticking != 0)
 {
-    if instance_exists(sticking)
+    if sticking = 3
     {
-        facing = point_direction(x,y,sticking.x,sticking.y)
+        if instance_exists(handItem[1])
+        {
+            i = handItem[1]
+        }
     }
-    else
+    else if instance_exists(handItem[sticking])
     {
-        endStick()
+        i = handItem[sticking]
+    }
+    ix = i.stuckIn.x
+    iy = i.stuckIn.y
+    
+    facing = point_direction(x,y,ix,iy)
+    
+    if point_distance(x,y,ix,iy) > i.stuckDist+5
+    {
+        hspd = lengthdir_x(-1,facing)
+        vspd = lengthdir_y(-1,facing)
+    }
+    else if point_distance(x,y,ix,iy) < i.stuckDist-5   
+    {
+        hspd = lengthdir_x(1,facing)
+        vspd = lengthdir_y(1,facing)        
     }
 }
 
-if (stuck != noone)
+if alive = true
 {
-    if instance_exists(stuck)
+    if ds_list_size(stuck) > 0
     {
-        facing = point_direction(x,y,stuck.x,stuck.y)
         hspd = 0
         vspd = 0
-    }
-    else
-    {   
-        stuck = noone
-        moveTimer += .1
     }
 }
 
@@ -533,6 +542,17 @@ if (clashing = true)
 //Clear the drawing surface
 surface_free(charSurf)
 ds_list_destroy(sEffect)
+ds_list_destroy(stuck)
+ds_list_destroy(stuckWithItem)
+
+with(obj_item)
+{
+    if stuckIn = other
+    {
+        stuckIn = noone
+    }
+}
+
 
 #define charDraw
 //Draw Character
@@ -564,10 +584,14 @@ if player = true
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)
 
 //Draw things stuck in you (infront)
-//for(i = 0; i < ds_list_size(stuckWithItem); i++)
-//{
-    
-//}
+if alive = true
+{
+    for(i = 0; i < ds_list_size(stuckWithItem); i++)
+    {
+        ii = ds_list_find_value(stuckWithItem,i)
+        draw_surface(ii.itemSurf,round(ii.x-30),round(ii.y-30-ii.z)) 
+    }
+}
 
 if global.liveSurf = true
 {
@@ -744,48 +768,3 @@ if instance_exists(clashingWith)
 moveTimer += .1
 clashing = false 
 clashingWith = noone
-#define stickTarget
-//script for sticking a target, argument 0 is the person being stuck
-if !argument0.grappling && !argument0.grappled and argument0.sticking = noone and argument0.stuck = noone and sticking = noone and stuck = noone 
-{
-    i = instance_create(x,y,obj_text)
-    i.t = 'Stuck!'
-    
-    sticking = argument0
-    
-    facing = point_direction(x,y,argument0.x,argument0.y)
-    interactProgress = 0
-    canMove = false
-    moveTimer = 0
-    sweetSpot = false
-    fumble = false
-    hspd = lengthdir_x(8,facing)
-    vspd = lengthdir_y(8,facing)
-    
-    animationReset(1)
-    animationReset(2)  
-    
-    argument0.stuck = id
-    argument0.facing = point_direction(argument0.x,argument0.y,x,y)
-    argument0.interactProgress = 0
-    argument0.canMove = false
-    argument0.moveTimer = 0
-    argument0.sweetSpot = false
-    argument0.fumble = false
-    
-    with(argument0)
-    {
-        animationReset(1)
-        animationReset(2)    
-    }
-}
-
-#define endStick
-if instance_exists(sticking)
-{
-    sticking.moveTimer += .1
-    sticking.stuck = noone
-}
-
-moveTimer += .1
-sticking = noone

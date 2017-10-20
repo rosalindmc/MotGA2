@@ -38,7 +38,7 @@ if clashing = true
     animSpeed[argument1] = 5
 }
 
-if sticking != noone
+if sticking != 0
 {
     handDistDest[argument1] = 5+(-5*clamp(-1,1,interactProgress-1))
     handDirDest[argument1] = 0
@@ -48,11 +48,19 @@ if sticking != noone
     
     if instance_exists(handItem[argument1])
     {
-        ix = (sticking.x)
-        iy = (sticking.y)
-        createParticle(ix,iy,handItem[argument1].z,3,partBlood,point_direction(x,y,ix,iy)+180)
+        if sticking = 3
+        {
+            ix = (handItem[1].stuckIn.x)
+            iy = (handItem[1].stuckIn.y)
+        }
+        else
+        {
+            ix = (handItem[sticking].stuckIn.x)
+            iy = (handItem[sticking].stuckIn.y)
+        }
+        createParticle(ix,iy,handItem[argument1].z,5,partBlood,point_direction(x,y,ix,iy)+180)
     }
-    animSpeed[argument1] = 1
+    animSpeed[argument1] = .01
 }
 
 

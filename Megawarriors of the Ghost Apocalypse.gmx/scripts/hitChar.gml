@@ -23,7 +23,7 @@ if visNumbers = true
 impactChar(t,impact,point_direction(originX,originY,t.x,t.y),puntMult,owner,impactType)
 
 //Apply Bleed
-if dmgType = dmgType.rend and irandom(8) < p
+if dmgType = dmgType.rend and irandom(6) < p
 {
     applyStatus(t,bleed,.2,5,owner,true)
 }
@@ -33,11 +33,17 @@ if dmgType = dmgType.impact and irandom(8) < p
     applyStatus(t,vulnerable,.5,5,owner,true)
 }
 //Apply Stuck
-if dmgType = dmgType.pierce and irandom(8) < p
+if dmgType = dmgType.pierce and irandom(10) < p
 {
-    with(owner)
+    if itemOwner != noone
     {
-        stickTarget(argument0)
+        if !argument0.grappling && !argument0.grappled and itemOwner.stuckIn = noone
+        {
+            with(itemOwner)
+            {   
+                stickTarget(argument0)
+            }
+        }
     }
 }
 
@@ -191,17 +197,13 @@ if t.clashing = true
     }
 }
 
-if t.sticking != noone
+//Sticking Fix
+if t.sticking != 0
 {
     with(t)
     {
-        endStick()
+        abandonStick()
     }
-}
-
-if t.stuck != noone
-{
-    t.stuck = noone
 }
 
 #define killChar

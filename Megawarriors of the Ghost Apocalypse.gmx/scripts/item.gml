@@ -64,6 +64,9 @@ dangerous = false
 thrower = noone
 sweetSpot = false
 collide = false
+
+stuckDist = metre
+stuckDir = 0
 stuckIn = noone
 
 weaponEssentials(0)
@@ -96,6 +99,14 @@ if owner != noone
             isoDepth(0)
         }
     }
+}
+else if stuckIn != noone
+{
+    image_angle = round((stuckIn.facing/15)*15)+stuckDir
+    x = lengthdir_x(stuckDist,image_angle+180)
+    y = lengthdir_y(stuckDist,image_angle+180)
+    image_index = 0
+    isoDepth(0)
 }
 else
 {
@@ -167,3 +178,129 @@ if z >= wz or hand != 0
 
 #define itemDestroy
 surface_free(itemSurf)
+#define stickTarget
+//script for sticking a target, argument 0 is the person being stuck
+//if the owner = noone than noone is carrying the item sticking you and it jsut gets stuck in your body
+
+i = instance_create(x,y,obj_text)
+i.t = 'Stuck!'
+
+stuckIn = argument0
+stuckDir = image_angle-argument0.facing
+ds_list_add(argument0.stuckWithItem,id)
+
+//If this item is held, force the holder to face their target.  When a char (as opposed to an item is sticking someone)
+if owner != noone
+{
+    stickChar(argument0,owner)       
+}
+
+#define stickChar
+//Entering a stuck state with another character object, run by the stuck item
+
+//arg0 is stuck by arg1
+with(argument1)
+{
+    sticking = other.hand
+    facing = point_direction(x,y,argument0.x,argument0.y)
+    interactProgress = 0
+    sweetSpot = false
+    fumble = false
+    
+    if other.hand != 3
+    {
+        animationReset(other.hand)
+    }
+    else
+    {
+        animationReset(1)
+        animationReset(2)
+    }
+}
+
+ds_list_add(argument0.stuck,id)
+argument0.animSpeed[0] = 0
+argument0.facing = point_direction(argument0.x,argument0.y,x,y)
+argument0.interactProgress = 0
+argument0.canMove = false
+argument0.moveTimer = 0
+argument0.sweetSpot = false
+argument0.fumble = false
+
+with(argument0)
+{
+    animationReset(1)
+    animationReset(2)    
+}
+
+stuckDist = point_distance(argument0.x,argument0.y,argument1.x,argument1.y)
+
+#define unstickSelf
+//Run by char, Clear the stuck list and free up the stickers
+for(i = 0; i < ds_list_size(stuck); i++)
+{
+    ii = ds_list_find_value(stuck,i)
+    ii.stuckIn = noone
+    ii.owner.sticking = 0
+    ds_list_delete(stuckWithItem,ds_list_find_index(stuckWithItem,ii))
+}
+    
+ds_list_empty(stuck)
+moveTimer += .1
+animSpeed[0] = 1
+
+#define unstickOther
+//Run by char, Stop sticking someone else
+if sticking = 3
+{
+    ds_list_delete(handItem[1].stuckIn.stuck,ds_list_find_index(handItem[1].stuckIn.stuck,id))
+    ds_list_delete(handItem[1].stuckIn.stuckWithItem,ds_list_find_index(handItem[1].stuckIn.stuckWithItem,id))
+    
+    if ds_list_size(handItem[1].stuckIn.stuck) = 0
+    {
+        handItem[1].stuckIn.moveTimer += .1
+        handItem[1].stuckIn.animSpeed[0] = 1
+        handItem[1].stuckIn.stuckIn = noone
+    }
+}
+else
+{
+    ds_list_delete(handItem[sticking].stuckIn.stuck,ds_list_find_index(handItem[sticking].stuckIn.stuck,id))
+    ds_list_delete(handItem[sticking].stuckIn.stuckWithItem,ds_list_find_index(handItem[sticking].stuckIn.stuckWithItem,id))
+    
+    if ds_list_size(handItem[sticking].stuckIn.stuck) = 0
+    {
+        handItem[sticking].stuckIn.moveTimer += .1
+        handItem[sticking].stuckIn.animSpeed[0] = 1
+        handItem[sticking].stuckIn.stuckIn = noone
+    }
+}
+
+sticking = 0
+
+#define abandonStick
+//ran by char, abandon your current stuck item
+if sticking = 3
+{
+    ds_list_delete(handItem[1].stuckIn.stuck,ds_list_find_index(handItem[1].stuckIn.stuck,id))
+    
+    if ds_list_size(handItem[1].stuckIn.stuck) = 0
+    {
+        handItem[1].stuckIn.moveTimer += .1
+        handItem[1].stuckIn.animSpeed[0] = 1
+    }
+    dropItem(1)
+}
+else
+{
+    ds_list_delete(handItem[sticking].stuckIn.stuck,ds_list_find_index(handItem[sticking].stuckIn.stuck,id))
+    
+    if ds_list_size(handItem[sticking].stuckIn.stuck) = 0
+    {
+        handItem[sticking].stuckIn.moveTimer += .1
+        handItem[sticking].stuckIn.animSpeed[0] = 1
+    }
+    dropItem(sticking)
+}
+
+sticking = 0

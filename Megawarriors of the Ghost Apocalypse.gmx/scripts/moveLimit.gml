@@ -21,7 +21,7 @@ if z = floorZ
     }
 }
 
-if ((!player) and alive = false) and abs(hspd) < 1 and abs(vspd) < 1 and z = floorZ and animIndex[0] != humanoid(6)
+if ((!player) and alive = false) and abs(hspd) < 1 and abs(vspd) < 1 and z = floorZ and animIndex[0] != humanoid(6) and ds_list_size(stuck) > 0 
 {
     corpseSpawn()
     instance_destroy()

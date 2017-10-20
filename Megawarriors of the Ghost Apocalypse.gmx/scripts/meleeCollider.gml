@@ -17,6 +17,9 @@ puntMult = 1
 impactType = 0
 canProvokeClash = false
 
+owner = noone
+itemOwner = noone
+
 #define meleeColliderDraw
 draw_sprite_ext(sprite_index,image_index,round(x),round(y-z),image_xscale,image_yscale,image_angle,c_white,image_alpha)
 

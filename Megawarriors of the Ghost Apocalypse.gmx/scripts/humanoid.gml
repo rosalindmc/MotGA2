@@ -860,8 +860,8 @@ switch(argument0)
     case 0:
     hipsImage = 10
     hipsRot = 30*hFacing
-    bodyRot = 30*hFacing
-    hairRot = 90*hFacing
+    bodyRot = -30*hFacing
+    hairRot = 45*hFacing
     
     bounce = 1
     bounceTimer = .2
@@ -875,7 +875,7 @@ switch(argument0)
     case 1:
     hipsRot = 15*hFacing
     bodyRot = 15*hFacing
-    hairRot = 45*hFacing
+    hairRot = 90*hFacing
 
     animDelay[argument1] = .1
     break

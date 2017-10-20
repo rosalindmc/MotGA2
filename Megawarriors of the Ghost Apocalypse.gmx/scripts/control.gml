@@ -103,13 +103,13 @@ if keyboard_check_pressed(ord('I')){
 global.xpTimer = max(0,global.xpTimer-(1/global.frameRate))
 
 //Zoom Control
-if global.pc.clashing = true or global.pc.sticking != noone or global.pc.stuck != noone
+if global.pc.clashing = true or global.pc.sticking != 0 or ds_list_size(global.pc.stuck) > 0
 {
     global.camZoomTo = min(2+global.pc.interactProgress,4)
 }
 else if global.pc.grappling = true or global.pc.grappled = true
 {
-    global.camZoomTo = 4
+    global.camZoomTo = 2
 }
 else if global.pc.lastStand = true
 {
@@ -382,7 +382,7 @@ if global.pc.clashing = true
     draw_rectangle(ix+24,iy,ix+(24*clamp(-1,1,global.pc.interactProgress-global.pc.clashingWith.interactProgress)),5+iy,false)
     draw_sprite(spr_bigBox,0,ix-25,iy)
 }
-else if global.pc.sticking != noone or global.pc.stuck != noone 
+else if global.pc.sticking != 0 or ds_list_size(global.pc.stuck) > 0
 {
     ix = round(global.camZoom*(view_wview*.5))
     iy = round(global.camZoom*(view_hview*.75))

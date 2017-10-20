@@ -3,15 +3,20 @@
 //Run the second use script if right clicking w/ two hands
 //Input argument1 to script for press vs release
 
-if clashing = true or sticking != noone or stuck != noone //Clash Button Mash
+if argument1 = 0
 {
-    if argument1 = 0
+    if clashing = true or ds_list_size(stuck) > 0
     {
         interactKeyMash(argument0)
+        exit;
+    }
+    if sticking != 0 and (argument0 = sticking or sticking = 3) 
+    {
+        interactKeyMash(argument0)
+        exit;
     }
 }
-else
-{
+
 if argument1 = 0    //Start an action based on context
 {
     if argument0 = 2 and grappling = true
@@ -48,7 +53,7 @@ else
         }
     }
 }
-}
+
 
 #define melee
 switch(argument1)
@@ -200,6 +205,7 @@ with(handItem[argument0])
 {    
     i = instance_create(owner.x+lengthdir_x((length/2)+owner.itemHoldAdjust[argument0]+owner.handDist[argument0]+holdPoint,owner.facing),owner.y+lengthdir_y((length/2)+owner.itemHoldAdjust[argument0]+owner.handDist[argument0]+holdPoint,owner.facing),obj_meleeCollider)
     i.owner = owner
+    i.itemOwner = id
     i.originX = owner.x
     i.originY = owner.y
     i.dist = (length/2)+owner.handDist[argument0]+holdPoint+owner.itemHoldAdjust[argument0]
@@ -249,7 +255,8 @@ case 1:
     life = min(life+3,lifeMax);
     
 //Destroy Potion
-    with(handItem[argument0]){
+    with(handItem[argument0])
+    {
         instance_destroy();
     }
     handItem[argument0] = noone;
@@ -257,6 +264,7 @@ case 1:
     handItemSlot[argument0] = -1
 break;
 }
+
 #define interactKeyMash
 if clashing = true
 {
@@ -279,41 +287,45 @@ if clashing = true
         endClash()
     }
 }
-else if sticking != noone 
+else if sticking != 0 and (sticking = argument0 or sticking = 3)
 {
     //Add progress
-    interactProgress += .4*(weight/sticking.weight)
+    interactProgress += 2*(weight/handItem[argument0].stuckIn.weight)
     animDelay[1] = 0.01
     animDelay[2] = 0.01
     
-    //Win Clash
+    //Unstick
     if interactProgress >= 2
     {
-        damageChar(sticking,2,dmgType.rend,true,id)
-        applyStatus(sticking,bleed,.5,6,id,true)
-        endStick()    
+        if instance_exists(sticking)
+        {
+            if handItem[argument0].stuckIn.alive = true
+            {
+                damageChar(handItem[argument0].stuckIn,2,dmgType.rend,true,id)
+                applyStatus(handItem[argument0].stuckIn,bleed,.5,6,id,true)
+            }
+        }
+        unstickOther()
         
-        hspd = lengthdir_x(8,facing+180)
-        vspd = lengthdir_y(8,facing+180)
+        hspd = lengthdir_x(4,facing+180)
+        vspd = lengthdir_y(4,facing+180)
         canMove = false
         moveTimer = .2
         animationStart(humanoidFlinchBackward,0)
     }
 }
-else if stuck != noone
+else if ds_list_size(stuck) > 0
 {
     //Add progress
-    interactProgress += .2*(weight/stuck.weight)
+    interactProgress += .2      //Maybe make it total all the weights of all the weapons stuck in you?
+
     animDelay[1] = 0.01
     animDelay[2] = 0.01
     
     //Win Clash
     if interactProgress >= 2
     {
-        with(stuck)
-        {
-            endStick()
-        }
+        unstickSelf()
     }
 }
 

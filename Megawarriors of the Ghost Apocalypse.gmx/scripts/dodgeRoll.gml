@@ -40,4 +40,9 @@ sweetSpot = false
 fumble = false
 
 canMove = false
+
+if sticking != 0
+{
+    abandonStick()
+}
 }

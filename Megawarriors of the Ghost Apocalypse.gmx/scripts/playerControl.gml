@@ -84,7 +84,7 @@ if clashing = false
 }
 
 //Dodge Control
-if (dodgeKey = true and canMove = true and stam >= 1 and (moving != 0))
+if (dodgeKey = true and canMove = true and stam >= 0 and (moving != 0))
 {
     dodgeRoll(point_direction(0,0,hspd,vspd))  
 }

@@ -6,7 +6,7 @@ for(i = 0; i < argument0.inventorySize; i++)
     if argument0.inventory[i] = noone
     {
         owner.hand = 0
-        if argument0.handItem[1] = noone
+        if argument0.handItem[1] = noone or owner.stuckIn != noone
         {
             owner.hand = 1
             argument0.handItemSlot[1] = i
@@ -15,6 +15,11 @@ for(i = 0; i < argument0.inventorySize; i++)
         
         argument0.inventory[i] = owner
         owner.owner = argument0
+        
+        if owner.stuckIn != noone
+        {
+            stickChar(owner.stuckIn,argument0)
+        }
         instance_destroy()
         break
     }
