@@ -103,6 +103,10 @@ case 2:
             attackPattern = attackDodgeStep
             hasDodged = true
         }
+        else if (actionTargetId.stuck != noone || actionTargetId.lastStand == true || actionTargetId.canMove != true){
+            attackPattern = attackPowerAttack
+            lastAttack = global.timer
+        }
         else if (point_distance(x,y,actionTargetId.x,actionTargetId.y) < 4*metre){
             var moveT = moveTCalc()
             moveT = moveT/2
@@ -247,20 +251,21 @@ case 0:
     var tempDist = 10*metre
     with(obj_char){
         if(team != other.team){
+            
+            if (point_distance(other.x,other.y,x,y)<tempDist){
+                other.actionTargetId = id
+                tempDist = point_distance(other.x,other.y,x,y)
+            }
+            
             if(other.actionTargetId != noone && point_distance(x,y,other.actionTargetId.x,other.actionTargetId.y) < 5*metre && other.stam == other.stamMax && other.staggered != true){
+                other.actionTargetId = id
                 //pathFind to the spot and check if you can get there
                 return 1;
             }
-            else if (point_distance(other.x,other.y,x,y)<tempDist){
-                other.actionTargetId = id
-                tempDist = point_distance(other.x,other.y,x,y)
-                return 0;
-            }
-            else{        
-                return 0;           
-            }
+            
         }
     }
+    return 0;
     break;
     
 case 1:
@@ -299,6 +304,14 @@ case 2:
         attackPattern =  choose(attackCombo,attackPowerAttack)
         lastAttack = global.timer
     }
+    else if (actionTargetId.stuck != noone){
+        attackPattern = attackPowerAttack
+        lastAttack = global.timer
+    }
+    else if (actionTargetId.lastStand == true || actionTargetId.canMove != true){
+        attackPattern = attackCombo
+        lastAttack = global.timer
+    }
     else if(global.timer >= (lastAttack+10)%30){
         attackPattern =  attackBasic
         lastAttack = global.timer
@@ -320,20 +333,17 @@ case 0:
     var tempDist = 10*metre
     with(obj_char){
         if(team != other.team){
+            if (point_distance(other.x,other.y,x,y)<tempDist){
+                other.actionTargetId = id
+                tempDist = point_distance(other.x,other.y,x,y)
+            }
             if(other.actionTargetId != noone && point_distance(x,y,other.actionTargetId.x,other.actionTargetId.y) < 5*metre && other.stam == other.stamMax && other.staggered != true){
                 //pathFind to the spot and check if you can get there
                 return 1;
             }
-            else if (point_distance(other.x,other.y,x,y)<tempDist){
-                other.actionTargetId = id
-                tempDist = point_distance(other.x,other.y,x,y)
-                return 0;
-            }
-            else{        
-                return 0;           
-            }
         }
     }
+    return 0;
     break;
     
 case 1:
@@ -365,6 +375,14 @@ case 2:
                 /*|| actionTargetId.staggered*/){
                 
         attackPattern =  choose(attackCombo,attackPowerAttack)
+        lastAttack = global.timer
+    }
+    else if (actionTargetId.lastStand == true || actionTargetId.canMove != true){
+        attackPattern = attackCombo
+        lastAttack = global.timer
+    }
+    else if (actionTargetId.stuck != noone ){
+        attackPattern = attackPowerAttack
         lastAttack = global.timer
     }
     else if(global.timer >= (lastAttack+10)%30){
@@ -505,7 +523,7 @@ case 0:
                     }
                     return 0;
                 }
-                else{
+                else if (instance_exists(leader)){
                     other.leader = leader
                     leader.subordinate[array_length_1d(leader.subordinate)] = other
                     return 0;
@@ -598,7 +616,6 @@ case 2:
         
         var tempX = actionTargetId.x - x
         var tempY = actionTargetId.y - y
-        var tempHold
         
         tempX = tempX/point_distance(x,y,actionTargetId.x,actionTargetId.y)
         tempY = tempY/point_distance(x,y,actionTargetId.x,actionTargetId.y)
