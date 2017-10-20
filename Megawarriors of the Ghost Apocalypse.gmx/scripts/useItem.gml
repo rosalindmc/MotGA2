@@ -328,4 +328,3 @@ else if ds_list_size(stuck) > 0
         unstickSelf()
     }
 }
-
