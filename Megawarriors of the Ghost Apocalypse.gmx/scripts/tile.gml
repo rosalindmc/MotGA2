@@ -41,9 +41,16 @@ image_index = irandom(5)
 #define tileDraw
 if isWater = true
 {
-    //draw_sprite_part(spr_tile,image_index,0,0,16,16+(z*wSBorder),x-8,y-8-z)
-    //draw_sprite_part(sprite_index,image_index+floor(global.timer*5),0,0,16,16+(wz*wSBorder),x-8,y-8-wz)
-    
+    draw_sprite_part(sprite_index,image_index+floor(global.timer*5),0,0,32,24+(wz*wSBorder),x-16,y-16-wz)
+}
+else
+{
+    draw_sprite_part_ext(sprite_index,image_index,l,t,w,h,x-18+l,y-18+t-z,1,1,c_white,1)
+}
+
+#define tileDrawDoodads
+if isWater = true
+{
     if wNBorder = true
     {
         draw_sprite(spr_shore,image_index,x,y-6)
@@ -65,18 +72,7 @@ if isWater = true
         draw_sprite_ext(spr_edge,image_index,x,y+8,1,1,0,c_white,image_alpha)
     }
 }
-else
-{
-    draw_sprite_part_ext(sprite_index,image_index,l,t,w,h,x-18+l,y-18+t-z,1,1,c_white,1)
-    //if point_in_rectangle(mouse_x,mouse_y,x-8,y-8,x+8,y+8)
-    //{
-    //    draw_sprite_part_ext(sprite_index,image_index,l,t,w,h,x-18+l,y-18+t-z,1,1,c_white,image_alpha)
-    //    draw_rectangle(x+l-18,y+t-18,x-18+w,y+h-18,true)
-    //}
-}
-
-#define tileDrawDoodads
-if(numAdditDood>0)
+else if(numAdditDood>0)
 {
     for(var i = 0; i < numAdditDood; i++)
     {

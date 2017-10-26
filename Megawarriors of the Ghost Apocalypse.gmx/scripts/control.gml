@@ -197,16 +197,6 @@ if global.liveSurf = true
         
         surface_free(global.reflectSurf)
     }
-    
-    //Create Reflect Surface
-    global.reflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
-    surface_set_target(global.reflectSurf) 
-    
-    //Draw sky
-    draw_clear_alpha(make_colour_rgb(150,240,255),0)
-    draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview*.75)-global.liveSurfY1)
-    draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview/2)-global.liveSurfY1)
-    surface_reset_target()
 }
 
 #define controlDraw
@@ -262,6 +252,19 @@ if global.surfX2 != 0
         {
             global.liveSurf = false
         }
+    }
+    
+    if global.liveSurf = true
+    {
+        //Create Reflect Surface
+        global.reflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
+        surface_set_target(global.reflectSurf) 
+        
+        //Draw sky
+        draw_clear_alpha(make_colour_rgb(150,240,255),0)
+        draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview*.75)-global.liveSurfY1)
+        draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview/2)-global.liveSurfY1)
+        surface_reset_target()
     }
 }
 

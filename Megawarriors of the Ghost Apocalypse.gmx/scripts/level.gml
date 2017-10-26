@@ -224,6 +224,7 @@ with(obj_tile)
         if isPath = true
         {
             sprite_index = spr_bridge
+            depth = 6
             z = -4
         }
     }
