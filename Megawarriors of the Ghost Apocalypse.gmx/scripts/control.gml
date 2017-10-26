@@ -182,6 +182,34 @@ if (global.timer > 600){
 
 
 #define controlDrawbegin
+if global.liveSurf = true
+{
+    if surface_exists(global.reflectSurf)
+    {    
+        global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
+            
+        shader_set(shd_ripple)
+        shader_set_uniform_f(uTime,((current_time/1000))) 
+        draw_set_alpha(.75)
+        draw_surface(global.reflectSurf,global.liveSurfX1,global.liveSurfY1)
+        draw_set_alpha(1)
+        shader_reset()
+        
+        surface_free(global.reflectSurf)
+    }
+    
+    //Create Reflect Surface
+    global.reflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
+    surface_set_target(global.reflectSurf) 
+    
+    //Draw sky
+    draw_clear_alpha(make_colour_rgb(150,240,255),0)
+    draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview*.75)-global.liveSurfY1)
+    draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview/2)-global.liveSurfY1)
+    surface_reset_target()
+}
+
+#define controlDraw
 //Decals
 if surface_exists(global.decalSurf )
 {
@@ -195,6 +223,7 @@ else
     surface_reset_target()
 }
 
+#define controlDrawReflectControl
 //Water Reflections
 if global.surfX2 != 0
 {
@@ -234,33 +263,6 @@ if global.surfX2 != 0
             global.liveSurf = false
         }
     }
-    
-    if global.liveSurf = true
-    {
-        if surface_exists(global.reflectSurf)
-        {    
-            global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
-                
-            shader_set(shd_ripple)
-            shader_set_uniform_f(uTime,((current_time/1000))) 
-            draw_set_alpha(.5)
-            draw_surface(global.reflectSurf,global.liveSurfX1,global.liveSurfY1)
-            draw_set_alpha(1)
-            shader_reset()
-            
-            surface_free(global.reflectSurf)  
-        }
-        
-        //Create Reflect Surface
-        global.reflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
-        surface_set_target(global.reflectSurf)  
-        
-        //Draw sky
-        draw_clear_alpha(make_colour_rgb(150,240,255),0)
-        draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview*.75)-global.liveSurfY1)
-        draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview/2)-global.liveSurfY1)
-        surface_reset_target()
-    }
 }
 
     
@@ -269,8 +271,6 @@ draw_sprite(spr_backdrop,0,
 view_xview[]+(view_wview[]/2)+(480*(.5-(x/room_width))),
 view_yview[]+(view_hview[]/2)+(270*(.5-(y/room_height))))
 
-
-#define controlDraw
 
 #define controlDrawHUD
 //Draw Interact Tooltip
@@ -551,6 +551,4 @@ global.inventoryKey = vk_tab
 
 #define controlDestroy
 surface_free(global.reflectSurf)
-surface_free(global.blockSurf)
-surface_free(global.maskSurf)
-surface_free(global.finalReflectSurf)
+surface_free(global.decalSurf)

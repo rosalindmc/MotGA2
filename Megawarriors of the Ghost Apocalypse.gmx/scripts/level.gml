@@ -158,6 +158,57 @@ with(obj_tile)
     global.currLevel.pathTiles[global.currLevel.numPathTiles] = id
     global.currLevel.numPathTiles += 1
     }
+     
+    //Check adjacency water borders
+    if gridY > 0
+    {
+        if other.floorLayout[gridX,gridY-1].isWater = false
+        {
+            wNBorder = true
+        }
+        else
+        {
+            t += 11
+            h -= 11
+        }
+    }
+
+    if gridY < other.sizeY-1
+    {
+        if other.floorLayout[gridX,gridY+1].isWater = false
+        {
+            wSBorder = true
+        }
+        else
+        {
+            h -= 11
+        }
+    }
+    
+    if gridX > 0
+    {
+        if other.floorLayout[gridX-1,gridY].isWater = false
+        {
+            wWBorder = true
+        }
+        else
+        {
+            l += 11
+            w -= 11
+        }
+    }
+    
+    if gridX < other.sizeX-1
+    {
+        if other.floorLayout[gridX+1,gridY].isWater = false
+        {
+            wEBorder = true
+        }
+        else
+        {
+            w -= 11
+        }
+    }
 }
     
 
@@ -175,40 +226,6 @@ with(obj_tile)
             sprite_index = spr_bridge
             z = -4
         }
-        
-        //Check adjacency
-        if gridY > 0
-        {
-            if other.floorLayout[gridX,gridY-1].isWater = false
-            {
-            wNBorder = true
-            }
-        }
-
-        if gridY < other.sizeY-1
-        {
-            if other.floorLayout[gridX,gridY+1].isWater = false
-            {
-            wSBorder = true
-            }
-        }
-        
-        if gridX > 0
-        {
-            if other.floorLayout[gridX-1,gridY].isWater = false
-            {
-            wWBorder = true
-            }
-        }
-        
-        if gridX < other.sizeX-1
-        {
-            if other.floorLayout[gridX+1,gridY].isWater = false
-            {
-            wEBorder = true
-            }
-        }        
-        
     }
     else if (isPath = true)
     {

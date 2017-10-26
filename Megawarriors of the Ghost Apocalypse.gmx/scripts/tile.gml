@@ -20,6 +20,11 @@ wNBorder = false
 wEBorder = false
 wSBorder = false
 wWBorder = false
+l = 0
+t = 0   
+w = 36
+h = 36 
+
 
 numAdditDood = 0
 additDoodSpr[0] = spr_none
@@ -36,8 +41,8 @@ image_index = irandom(5)
 #define tileDraw
 if isWater = true
 {
-    draw_sprite_part(spr_tile,image_index,0,0,16,16+(z*wSBorder),x-8,y-8-z)
-    draw_sprite_part(sprite_index,image_index+floor(global.timer*5),0,0,16,16+(wz*wSBorder),x-8,y-8-wz)
+    //draw_sprite_part(spr_tile,image_index,0,0,16,16+(z*wSBorder),x-8,y-8-z)
+    //draw_sprite_part(sprite_index,image_index+floor(global.timer*5),0,0,16,16+(wz*wSBorder),x-8,y-8-wz)
     
     if wNBorder = true
     {
@@ -62,11 +67,13 @@ if isWater = true
 }
 else
 {
-    //draw_sprite(spr_tile,image_index,x,y-z)
-    draw_sprite_ext(sprite_index,image_index,x+xScatter,y+yScatter-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
+    draw_sprite_part_ext(sprite_index,image_index,l,t,w,h,x-18+l,y-18+t-z,1,1,c_white,1)
+    //if point_in_rectangle(mouse_x,mouse_y,x-8,y-8,x+8,y+8)
+    //{
+    //    draw_sprite_part_ext(sprite_index,image_index,l,t,w,h,x-18+l,y-18+t-z,1,1,c_white,image_alpha)
+    //    draw_rectangle(x+l-18,y+t-18,x-18+w,y+h-18,true)
+    //}
 }
-
-
 
 #define tileDrawDoodads
 if(numAdditDood>0)
