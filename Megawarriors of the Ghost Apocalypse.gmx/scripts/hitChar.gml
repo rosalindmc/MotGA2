@@ -43,12 +43,12 @@ if dmgType = dmgType.pierce and irandom(10) < p
         if (instance_exists(itemOwner)){
             with(itemOwner)
             {
-                stickTarget(t)
+                stickTarget(other.t)
             }
         }
         else{
             with (noone){
-                stickTarget(argument0)
+                stickTarget(other.t)
             }
         }
     }

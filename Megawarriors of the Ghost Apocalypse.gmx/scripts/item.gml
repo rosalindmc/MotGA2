@@ -241,7 +241,9 @@ for(i = 0; i < ds_list_size(stuck); i++)
 {
     ii = ds_list_find_value(stuck,i)
     ii.stuckIn = noone
-    ii.owner.sticking = 0
+    if (instance_exists(ii.owner)){
+        ii.owner.sticking = 0
+    }
     ds_list_delete(stuckWithItem,ds_list_find_index(stuckWithItem,ii))
 }
     
