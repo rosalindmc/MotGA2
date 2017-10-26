@@ -187,6 +187,7 @@ i.t = 'Stuck!'
 
 stuckIn = argument0
 stuckDir = image_angle-argument0.facing
+stuckDist = min(length/2,point_distance(x,y,argument0.x,argument0.y))
 ds_list_add(argument0.stuckWithItem,id)
 
 //If this item is held, force the holder to face their target.  When a char (as opposed to an item is sticking someone)
@@ -233,7 +234,7 @@ with(argument0)
     animationReset(2)    
 }
 
-stuckDist = point_distance(argument0.x,argument0.y,argument1.x,argument1.y)
+stuckDist = min(length/2,point_distance(x,y,argument0.x,argument0.y))
 
 #define unstickSelf
 //Run by char, Clear the stuck list and free up the stickers
