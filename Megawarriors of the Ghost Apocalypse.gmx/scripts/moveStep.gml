@@ -210,6 +210,7 @@ if collide = true
     
     i = instance_create(x+lengthdir_x(metre,point_direction(0,0,hspd,vspd)),y+lengthdir_y(metre,point_direction(0,0,hspd,vspd)),obj_meleeCollider)
     i.owner = thrower
+    i.itemOwner = id
     i.originX = x
     i.originY = y
     i.dist = 0
