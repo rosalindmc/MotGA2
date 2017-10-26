@@ -88,7 +88,4 @@ if (!instance_exists(actionTargetId) ||
      point_distance(x,y,actionTargetId.x,actionTargetId.y) < agroRange*metre ||
      actionTargetId.floorID.sprite_index == spr_grass){
      actionTargetId = noone
-     if(sticking > 0){
-        attackPattern = attackDodgeStep
-     }
 }
