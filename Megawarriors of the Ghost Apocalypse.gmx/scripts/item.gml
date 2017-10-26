@@ -80,6 +80,10 @@ if owner != noone
         if hand != 0
         {
             image_angle = (round(owner.facing/15)*15)+owner.itemRot[hand]
+            if stuckIn != noone
+            {
+                stuckDir += median(-45/global.frameRate,45/global.frameRate,angle_difference(image_angle-stuckIn.facing,stuckDir))
+            }
             if abs(angle_difference(90,image_angle)) < 90
             {
                 zAngle = ((owner.itemZRot[hand]))*(angle_difference(90,image_angle)/90)
@@ -98,17 +102,6 @@ if owner != noone
             image_index = 0
             isoDepth(0)
         }
-    }
-}
-else if stuckIn != noone
-{
-    if instance_exists(stuckIn)
-    {
-        image_angle = round((stuckIn.facing/15)*15)+stuckDir
-        x = stuckIn.x+lengthdir_x(stuckDist,image_angle+180)
-        y = stuckIn.y+lengthdir_y(stuckDist,image_angle+180)
-        image_index = 0
-        isoDepth(0)
     }
 }
 else
@@ -134,6 +127,20 @@ else
     moveStepObject()
     isoDepth(10)
 }
+
+
+if stuckIn != noone
+{
+    if instance_exists(stuckIn)
+    {
+        image_angle = round((stuckIn.facing/15)*15)+stuckDir
+        x = stuckIn.x+lengthdir_x(stuckDist,image_angle+180)
+        y = stuckIn.y+lengthdir_y(stuckDist,image_angle+180)
+        image_index = 0
+        isoDepth(0)
+    }
+}
+
 
 #define itemDraw
 if owner = noone or hand != 0
@@ -234,7 +241,7 @@ with(argument0)
     animationReset(2)    
 }
 
-stuckDist = min(length/2,point_distance(x,y,argument0.x,argument0.y))
+stuckDist = min(length*.75,point_distance(x,y,argument0.x,argument0.y))
 
 #define unstickSelf
 //Run by char, Clear the stuck list and free up the stickers
