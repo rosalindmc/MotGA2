@@ -16,9 +16,11 @@ for(i = 0; i < argument0.inventorySize; i++)
         argument0.inventory[i] = owner
         owner.owner = argument0
         
-        if owner.stuckIn != noone
+        if owner.stuckIn != noone && instance_exists(owner.stuckIn)
         {
-            stickChar(owner.stuckIn,argument0)
+            with (owner){
+                stickChar(stuckIn,argument0)
+            }
         }
         instance_destroy()
         break

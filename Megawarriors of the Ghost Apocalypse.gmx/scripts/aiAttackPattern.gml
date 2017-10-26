@@ -88,8 +88,10 @@ switch(argument0)
     break
     
     case 1:
-        targetX = actionTargetId.x
-        targetY = actionTargetId.y
+        if instance_exists(actionTargetId){
+            targetX = actionTargetId.x
+            targetY = actionTargetId.y
+        }
         attackDelay = 0.55
     break
     
