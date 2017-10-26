@@ -253,13 +253,19 @@ animSpeed[0] = 1
 
 #define unstickOther
 //Run by char, Stop sticking someone else
+
 if sticking = 3
 {
+    //show_message (ds_list_size(handItem[1].stuckIn.stuck))
+    
     ds_list_delete(handItem[1].stuckIn.stuck,ds_list_find_index(handItem[1].stuckIn.stuck,id))
     ds_list_delete(handItem[1].stuckIn.stuckWithItem,ds_list_find_index(handItem[1].stuckIn.stuckWithItem,id))
     
+    //show_message (ds_list_size(handItem[1].stuckIn.stuck))
+    
     if ds_list_size(handItem[1].stuckIn.stuck) = 0
     {
+        ds_list_clear(handItem[sticking].stuckIn.stuck)
         handItem[1].stuckIn.moveTimer += .1
         handItem[1].stuckIn.animSpeed[0] = 1
     }
@@ -269,11 +275,16 @@ if sticking = 3
 }
 else
 {
+    //show_message (ds_list_size(handItem[sticking].stuckIn.stuck))
+    
     ds_list_delete(handItem[sticking].stuckIn.stuck,ds_list_find_index(handItem[sticking].stuckIn.stuck,id))
     ds_list_delete(handItem[sticking].stuckIn.stuckWithItem,ds_list_find_index(handItem[sticking].stuckIn.stuckWithItem,id))
     
+    //show_message (ds_list_size(handItem[sticking].stuckIn.stuck))
+    
     if ds_list_size(handItem[sticking].stuckIn.stuck) = 0
     {
+        ds_list_clear(handItem[sticking].stuckIn.stuck)
         handItem[sticking].stuckIn.moveTimer += .1
         handItem[sticking].stuckIn.animSpeed[0] = 1
     }
@@ -290,6 +301,7 @@ else
         animationReset(2)        
     }
 }
+
 
 #define abandonStick
 //ran by char, abandon your current stuck item

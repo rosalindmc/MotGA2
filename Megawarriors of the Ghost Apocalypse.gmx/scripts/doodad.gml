@@ -184,6 +184,10 @@ with(i){
         other.grappleTarg.grappler = noone
     }
     
+    sticking = other.sticking
+    stuck = other.stuck
+    stuckWithItem = other.stuckWithItem
+    
     
     /*
     ii = instance_create(x,y,obj_interactable)
@@ -196,3 +200,8 @@ with(i){
 
 
 //Create some sort of pilfer interactable
+
+#define corpseDespawn
+ds_list_destroy(stuck)
+ds_list_destroy(stuckWithItem)
+
