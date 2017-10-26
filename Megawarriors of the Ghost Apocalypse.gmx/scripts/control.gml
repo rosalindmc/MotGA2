@@ -237,63 +237,31 @@ if global.surfX2 != 0
     
     if global.liveSurf = true
     {
-        //Reflect Surface
         if surface_exists(global.reflectSurf)
-        {
-                surface_free(global.reflectSurf)
-        }
-        global.reflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
-        surface_set_target(global.reflectSurf)
+        {    
+            global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
+                
+            shader_set(shd_ripple)
+            shader_set_uniform_f(uTime,((current_time/1000))) 
+            draw_set_alpha(.5)
+            draw_surface(global.reflectSurf,global.liveSurfX1,global.liveSurfY1)
+            draw_set_alpha(1)
+            shader_reset()
             
+            surface_free(global.reflectSurf)  
+        }
+        
+        //Create Reflect Surface
+        global.reflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
+        surface_set_target(global.reflectSurf)  
+        
         //Draw sky
         draw_clear_alpha(make_colour_rgb(150,240,255),0)
         draw_sprite(spr_sun,0,view_xview+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview*.75)-global.liveSurfY1)
         draw_sprite_tiled(spr_clouds,0,view_xview+current_time/25+(view_wview/2)-global.liveSurfX1,view_yview+(view_hview/2)-global.liveSurfY1)
         surface_reset_target()
-        
-        //Block Surface
-        if surface_exists(global.blockSurf)
-        {
-            surface_free(global.blockSurf)
-        }
-        global.blockSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)
-        surface_set_target(global.blockSurf)
-        draw_clear_alpha(c_white,0)
-        surface_reset_target()
-        
-        //Mask Surface
-        //The Mask Surface is baked and needs to only ever be drawn here.  Objects that seldom ever move should draw to mask surf
-        if !surface_exists(global.maskSurf)
-        {
-            global.maskSurf = surface_create(global.surfX2-global.surfX1,global.surfY2-global.surfY1)
-            
-            surface_set_target(global.maskSurf)
-            draw_clear_alpha(c_white,1)
-            with(obj_tile)
-            {
-                if isWater = true
-                {
-                    draw_set_blend_mode(bm_subtract)
-                    draw_sprite(spr_tile,0,x-global.surfX1,y-wz-global.surfY1)
-                    if wSBorder = true
-                    {
-                        draw_set_blend_mode(bm_add)
-                        draw_sprite(spr_tile,0,x-global.surfX1,y+metre-global.surfY1)
-                    }
-                }
-            }
-            draw_set_blend_mode(bm_add)
-            with(obj_terrain)
-            {
-                draw_sprite_ext(sprite_index,image_index,x-global.surfX1,y-global.surfY1,image_xscale,image_yscale,image_angle,c_white,image_alpha)
-            } 
-            surface_reset_target()
-            draw_set_blend_mode(bm_normal)
-        }
     }
 }
-
-
 
     
 /*Draw Backdrops
@@ -303,44 +271,6 @@ view_yview[]+(view_hview[]/2)+(270*(.5-(y/room_height))))
 
 
 #define controlDraw
-//Combine the surfaces    
-if global.liveSurf = true
-{
-    if surface_exists(global.reflectSurf)
-    {
-        surface_free(global.finalReflectSurf)
-        global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
-        
-        shader_set(shd_ripple)
-        shader_set_uniform_f(uTime,((current_time/1000)-(global.liveSurfY1/6.2831))) 
-        surface_set_target(global.finalReflectSurf)
-        draw_clear_alpha(make_colour_rgb(150,240,255),0)
-        draw_surface(global.reflectSurf,0,0)
-        shader_reset()
-        
-        draw_set_colour_write_enable(false,false,false,true)
-        draw_set_blend_mode(bm_subtract)
-        if surface_exists(global.maskSurf)
-        {
-            draw_surface(global.maskSurf,global.surfX1-global.liveSurfX1,global.surfY1-global.liveSurfY1)
-        }
-        
-        if surface_exists(global.blockSurf)
-        {
-            draw_surface(global.blockSurf,0,0)   
-        }
-        draw_set_blend_mode(bm_normal)
-        draw_set_colour_write_enable(true,true,true,true)
-        
-        surface_reset_target()
-
-        draw_set_alpha(.5)
-        draw_surface(global.finalReflectSurf,global.liveSurfX1,global.liveSurfY1)
-        draw_set_alpha(1)
-        
-        //draw_rectangle(global.liveSurfX1,global.liveSurfY1,global.liveSurfX2,global.liveSurfY2,true)
-    }
-}
 
 #define controlDrawHUD
 //Draw Interact Tooltip

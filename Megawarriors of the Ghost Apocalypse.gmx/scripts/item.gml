@@ -102,11 +102,14 @@ if owner != noone
 }
 else if stuckIn != noone
 {
-    image_angle = round((stuckIn.facing/15)*15)+stuckDir
-    x = lengthdir_x(stuckDist,image_angle+180)
-    y = lengthdir_y(stuckDist,image_angle+180)
-    image_index = 0
-    isoDepth(0)
+    if instance_exists(stuckIn)
+    {
+        image_angle = round((stuckIn.facing/15)*15)+stuckDir
+        x = stuckIn.x+lengthdir_x(stuckDist,image_angle+180)
+        y = stuckIn.y+lengthdir_y(stuckDist,image_angle+180)
+        image_index = 0
+        isoDepth(0)
+    }
 }
 else
 {
@@ -135,36 +138,34 @@ else
 #define itemDraw
 if owner = noone or hand != 0
 {
-if z >= wz or hand != 0
-{
-    if surface_exists(itemSurf)  
-    {        
-        surface_set_target(itemSurf)
-        draw_clear_alpha(c_white,0)
-            
-        draw_sprite_ext(sprite_index,image_index,30,30,(.5+(zM*.5))*image_xscale,(.75+(zM*.25))*image_yscale,image_angle+zAngle,c_white,1)  
-        surface_reset_target()
-    }
-    else
+    if z >= wz or hand != 0
     {
-        itemSurf = surface_create(60,60)
-    }
-    draw_sprite_ext(sprite_index,image_index,x,y,abs(lengthdir_x(1,zAngle))*(.5+(zM*.5))*image_xscale,(.75+(zM*.25))*image_yscale,image_angle,c_black,.3)
-    if stuckIn = noone
-    {
-        draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)     
-    }
-    
-    if global.surfX2 != 0
-    {
-        //Draw Block
-        if surface_exists(global.blockSurf)
-        {
-            surface_set_target(global.blockSurf)
-            draw_surface(itemSurf,round(x)-30-global.liveSurfX1,round(y-z)-30-global.liveSurfY1)      
+        if surface_exists(itemSurf)  
+        {        
+            surface_set_target(itemSurf)
+            draw_clear_alpha(c_white,0)
+                
+            draw_sprite_ext(sprite_index,image_index,30,30,(.5+(zM*.5))*image_xscale,(.75+(zM*.25))*image_yscale,image_angle+zAngle,c_white,1)  
             surface_reset_target()
         }
+        else
+        {
+            itemSurf = surface_create(60,60)
+        }
+        draw_sprite_ext(sprite_index,image_index,x,y,abs(lengthdir_x(1,zAngle))*(.5+(zM*.5))*image_xscale,(.75+(zM*.25))*image_yscale,image_angle,c_black,.3)
         
+        if stuckIn = noone
+        {
+            draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)     
+        }
+    }
+}
+
+#define itemDrawReflection
+if global.liveSurf = true
+{
+    if surface_exists(itemSurf)  
+    {
         //Draw Reflection
         if surface_exists(global.reflectSurf)
         {
@@ -173,8 +174,7 @@ if z >= wz or hand != 0
             surface_reset_target()
         }
     }
-}
-}
+} 
 
 #define itemDestroy
 surface_free(itemSurf)
@@ -245,7 +245,7 @@ for(i = 0; i < ds_list_size(stuck); i++)
     ds_list_delete(stuckWithItem,ds_list_find_index(stuckWithItem,ii))
 }
     
-ds_list_empty(stuck)
+ds_list_clear(stuck)
 moveTimer += .1
 animSpeed[0] = 1
 
@@ -260,8 +260,10 @@ if sticking = 3
     {
         handItem[1].stuckIn.moveTimer += .1
         handItem[1].stuckIn.animSpeed[0] = 1
-        handItem[1].stuckIn.stuckIn = noone
     }
+    handItem[1].stuckIn = noone
+    sticking = 0
+    animationReset(1)
 }
 else
 {
@@ -272,14 +274,25 @@ else
     {
         handItem[sticking].stuckIn.moveTimer += .1
         handItem[sticking].stuckIn.animSpeed[0] = 1
-        handItem[sticking].stuckIn.stuckIn = noone
+    }
+    handItem[sticking].stuckIn = noone
+    
+    if sticking = 1
+    {
+        sticking = 0
+        animationReset(1)
+    }
+    else
+    {
+        sticking = 0
+        animationReset(2)        
     }
 }
 
-sticking = 0
-
 #define abandonStick
 //ran by char, abandon your current stuck item
+//Fix
+
 if sticking = 3
 {
     ds_list_delete(handItem[1].stuckIn.stuck,ds_list_find_index(handItem[1].stuckIn.stuck,id))
@@ -290,6 +303,7 @@ if sticking = 3
         handItem[1].stuckIn.animSpeed[0] = 1
     }
     dropItem(1)
+    animationReset(1)
 }
 else
 {
@@ -301,6 +315,7 @@ else
         handItem[sticking].stuckIn.animSpeed[0] = 1
     }
     dropItem(sticking)
+    animationReset(sticking)
 }
 
 sticking = 0

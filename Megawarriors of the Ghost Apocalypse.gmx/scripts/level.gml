@@ -138,7 +138,7 @@ for (i = 0; i< array_length_1d(global.currNode.pois);i++){
             for(i = 0; i < array_length_1d(mobsArr) / 4; i++){
                 var place = i*4;
                 //createFurniture(objType, statHolderScript, gridX, gridY)
-                    //CURRENTLY IN DOODAD
+                //CURRENTLY IN DOODAD
                 createChar((gridX + mobsArr[place]) * metre, (gridY + mobsArr[place+1]) * metre,
                                  mobsArr[place+2], mobsArr[place+3]);
             }
@@ -166,7 +166,7 @@ with(obj_tile)
     if isRiver = true
     {
         sprite_index = spr_water
-        depth = -3
+        depth = 5
         wz = -2
         z = -8
         
@@ -215,9 +215,7 @@ with(obj_tile)
         sprite_index = spr_road
         xScatter = choose(0,0,0,-1,1)
         yScatter = choose(0,0,0,-1,1)
-        image_xscale = choose(-1.5,1.5)
-        image_yscale = choose(-1.5,1.5)
-        image_angle = random(360)
+        image_xscale = choose(-1,1)
         depth = -1
                 
         if irandom(20) = 20
@@ -238,32 +236,22 @@ with(obj_tile)
             sprite_index = spr_grass
             xScatter = choose(0,0,0,-1,1)
             yScatter = choose(0,0,0,-1,1)
-            image_xscale = choose(-1.5,1.5)
-            image_yscale = choose(-1.5,1.5)
-            image_angle = random(360)
+            image_xscale = choose(-1,1)
             depth = -2
             
             if irandom(2) = 0 and weight = 3
             {
-                additDoodSpr[numAdditDood] = spr_blueGrass;
-                additDoodImg[numAdditDood] = 1
-                additDoodX[numAdditDood] = irandom(8)-4;
-                additDoodY[numAdditDood] = irandom(8)-4;
-                
-                numAdditDood++;
+                repeat(3+irandom(4))
+                {
+                    additDoodSpr[numAdditDood] = spr_blueGrass;
+                    additDoodImg[numAdditDood] = irandom(4)
+                    additDoodX[numAdditDood] = irandom(8)-4;
+                    additDoodY[numAdditDood] = irandom(2)-4+numAdditDood;
+                    additDoodFlip[numAdditDood] = choose(-1,1)
+                    
+                    numAdditDood++;
+                }
             }
-        }
-        else if weight = 2
-        {
-            if irandom(2) = 0
-            {
-                additDoodSpr[numAdditDood] = spr_blueGrass;
-                additDoodImg[numAdditDood] = 0
-                additDoodX[numAdditDood] = irandom(8)-4;
-                additDoodY[numAdditDood] = irandom(8)-4;
-                
-                numAdditDood++;
-            }    
         }
         
         if weight = 4
@@ -284,8 +272,7 @@ with(obj_tile)
                     i.canReflect = false
                 }
             }
-        }
-        
+        }        
     }
 }  
 

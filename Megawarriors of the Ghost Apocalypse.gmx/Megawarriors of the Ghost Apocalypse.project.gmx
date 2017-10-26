@@ -150,6 +150,7 @@
       <sprite>sprites\spr_blood</sprite>
       <sprite>sprites\spr_spark</sprite>
       <sprite>sprites\spr_sheen</sprite>
+      <sprite>sprites\spr_powerUp</sprite>
       <sprite>sprites\spr_bloodSplat</sprite>
       <sprite>sprites\spr_bloodWater</sprite>
       <sprite>sprites\spr_waterSplat</sprite>

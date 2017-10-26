@@ -58,7 +58,7 @@ if sticking != 0
             ix = (handItem[sticking].stuckIn.x)
             iy = (handItem[sticking].stuckIn.y)
         }
-        createParticle(ix,iy,handItem[argument1].z,5,partBlood,point_direction(x,y,ix,iy)+180)
+        createParticle(ix,iy,handItem[argument1].z,25,partBlood,point_direction(x,y,ix,iy)+180)
     }
     animSpeed[argument1] = .01
 }

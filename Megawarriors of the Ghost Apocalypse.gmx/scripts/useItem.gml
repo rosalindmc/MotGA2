@@ -290,7 +290,7 @@ if clashing = true
 else if sticking != 0 and (sticking = argument0 or sticking = 3)
 {
     //Add progress
-    interactProgress += 2*(weight/handItem[argument0].stuckIn.weight)
+    interactProgress += 2*(weight/handItem[argument0].weight)
     animDelay[1] = 0.01
     animDelay[2] = 0.01
     

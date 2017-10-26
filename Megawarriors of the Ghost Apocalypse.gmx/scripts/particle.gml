@@ -90,7 +90,15 @@ if reflectOnly = false
     draw_sprite_ext(sprite_index,image_index,x,y-z,image_xscale,image_yscale,image_angle,col1,image_alpha)
     draw_sprite_ext(spr2,img2,x,y-z,image_xscale,image_yscale,image_angle,col2,image_alpha)
 }
-else
+
+
+#define particleDestroy
+if onDeath != -4
+{
+    script_execute(onDeath)
+}
+#define particleDrawReflection
+if reflectOnly = true
 {
     if surface_exists(global.reflectSurf)
     {
@@ -98,10 +106,4 @@ else
         draw_sprite_ext(sprite_index,image_index,x-global.liveSurfX1,y-global.liveSurfY1-z,image_xscale,image_yscale,image_angle,c_white,image_alpha)
         surface_reset_target()
     }    
-}
-
-#define particleDestroy
-if onDeath != -4
-{
-    script_execute(onDeath)
 }

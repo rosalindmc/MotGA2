@@ -53,11 +53,11 @@ break
 switch(argument0)
 {
 case 0:     //Apply Effect
-tickLength1 = 1
+tickLength1 = .5
 owner.moveMult -= .25
 owner.stamRegen -= 2
 owner.stability = owner.stabilityMax
-owner.physicalResist -= 2
+owner.physicalResist -= 1
 draw = false
 break
 case 1:     //Primary Tick Effect
@@ -75,7 +75,7 @@ break
 case 3:     //Destroy Effect
 owner.moveMult += .25
 owner.stamRegen += 2
-owner.physicalResist += 2
+owner.physicalResist += 1
 break
 case 4:     //Draw Event
 break

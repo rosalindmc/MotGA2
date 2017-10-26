@@ -26,12 +26,12 @@ additDoodSpr[0] = spr_none
 additDoodImg[0] = 0
 additDoodX[0] = 0
 additDoodY[0] = 0
-
+additDoodFlip[0] = 1
 
 critPath = false
 
 image_speed = 0
-image_index = irandom(40)
+image_index = irandom(5)
 
 #define tileDraw
 if isWater = true
@@ -69,8 +69,10 @@ else
 
 
 #define tileDrawDoodads
-if(numAdditDood>0){
-    for(var i = 0; i < numAdditDood; i++){
-        draw_sprite(additDoodSpr[i],additDoodImg[i],x+additDoodX[i],y+additDoodY[i]);
+if(numAdditDood>0)
+{
+    for(var i = 0; i < numAdditDood; i++)
+    {
+        draw_sprite_ext(additDoodSpr[i],additDoodImg[i],x+additDoodX[i],y+additDoodY[i],additDoodFlip[i],1,0,c_white,1);
     }
 }

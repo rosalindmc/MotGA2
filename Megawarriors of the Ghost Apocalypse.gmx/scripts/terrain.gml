@@ -21,6 +21,7 @@ for(i = 0; i < global.currLevel.numWaterTiles; i++)
 #define terrainDraw
 draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha)
 
+#define terrainDrawReflect
 if global.liveSurf = true and canReflect = true
 {    
     //Draw Reflection

@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>16</width>
-  <height>2</height>
+  <height>8</height>
   <frames>
     <frame index="0">images\spr_wave_0.png</frame>
     <frame index="1">images\spr_wave_1.png</frame>

@@ -33,6 +33,7 @@ return(i);
 animType = humanoid
 animUpdate = true
 alive = true
+corpse = false
 shadowSprite = spr_shadow
 
 //Temp Run animType Initialize (move to a create char script later so this can be adjusted)
@@ -193,7 +194,6 @@ grappler = noone        //person grappling you
 grappleTarg = noone     //person you are grappling
 
 lastStand = false
-
 
 interactProgress = 0
 
@@ -586,32 +586,60 @@ if player = true
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)
 
 //Draw things stuck in you (infront)
-if alive = true
+if corpse = false
 {
     for(i = 0; i < ds_list_size(stuckWithItem); i++)
     {
         ii = ds_list_find_value(stuckWithItem,i)
-        draw_surface(ii.itemSurf,round(ii.x-30),round(ii.y-30-ii.z)) 
-    }
-}
-
-if global.liveSurf = true
-{
-    //Draw Block
-    if surface_exists(global.blockSurf)
-    {
-        surface_set_target(global.blockSurf)
-        draw_surface(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y-(charSurfSize*.75))-global.liveSurfY1-z)   
-        draw_sprite(shadowSprite,0,round(x)-global.liveSurfX1,round(y)-global.liveSurfY1)     
-        surface_reset_target()
-    }
-    
-    //Draw Reflection
-    if surface_exists(global.reflectSurf)
-    {
-        surface_set_target(global.reflectSurf)
-        draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y+(charSurfSize*.75))-global.liveSurfY1+z,1,-1,0,c_white,1)
-        surface_reset_target()
+        if abs(angle_difference(point_direction(ii.x,ii.y,x,y),30)) < 30        //Down Left
+        {
+            l = 0
+            t = 0   
+            w = 60-max(0,x-(ii.x-30))
+            h = 60  
+            draw_text(x,y-50,1)  
+        }
+        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),90)) < 30   //Down
+        {
+            l = 0
+            t = max(0,y-(ii.y-30-ii.z))
+            w = 60
+            h = 60-t            
+            draw_text(x,y-50,2)
+        }
+        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),150)) < 30  //Down Right
+        {
+            l = max(0,x-(ii.x-30))
+            t = 0
+            w = 60-l
+            h = 60    
+            draw_text(x,y-50,3)
+        }
+        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),210)) < 30  //Up Right
+        {
+            l = 0
+            t = 0   
+            w = 60-max(0,x-(ii.x-30))
+            h = 60  
+            draw_text(x,y-50,4)  
+        }
+        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),270)) < 30  //Up
+        {
+            l = 0
+            t = 0
+            w = 60
+            h = 60-max(0,y-(ii.y-30-ii.z)) 
+            draw_text(x,y-50,5)           
+        }
+        else                                                                    //Up Left
+        {
+            l = max(0,x-(ii.x-30))
+            t = 0
+            w = 60-l
+            h = 60
+            draw_text(x,y-50,6)
+        }
+        draw_surface_part(ii.itemSurf,l,t,w,h,round(ii.x-30),round(ii.y-30-ii.z)) 
     }
 }
 
@@ -624,6 +652,18 @@ draw_set_colour(c_white)
 draw_rectangle(round(x)-4,round(y)-16,round(x)+4,round(y),false)
 draw_text(round(x),round(y)+20,global.frameRate)
 draw_text(round(x),round(y)+30,moving*global.frameRate/metre)
+
+#define charDrawReflection
+if global.liveSurf = true
+{    
+    //Draw Reflection
+    if surface_exists(global.reflectSurf)
+    {
+        surface_set_target(global.reflectSurf)
+        draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y+(charSurfSize*.75))-global.liveSurfY1+z,1,-1,0,c_white,1)
+        surface_reset_target()
+    }
+}
 
 #define charDrawEnd
 if(alive){smallHealthBar()}

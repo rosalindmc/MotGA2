@@ -31,6 +31,7 @@ if animDelay[argument0] <= 0
 
 #define animationReset
 animStep[argument0] = 0
+animSpeed[argument0] = 1
 
 switch(argument0)
 {
