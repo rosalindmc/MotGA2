@@ -35,7 +35,8 @@ if dmgType = dmgType.impact and irandom(8) < p
 //Apply Stuck
 if dmgType = dmgType.pierce and irandom(10) < p
 {
-    if (instance_exists(itemOwner)){
+    if (instance_exists(itemOwner))
+    {
         if !argument0.grappling && !argument0.grappled and itemOwner.stuckIn = noone
         {
             with(itemOwner)
