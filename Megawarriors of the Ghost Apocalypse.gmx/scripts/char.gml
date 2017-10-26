@@ -498,13 +498,13 @@ if (sticking != 0)
     
     if point_distance(x,y,ix,iy) > i.stuckDist+5
     {
-        hspd = lengthdir_x(-1,facing)
-        vspd = lengthdir_y(-1,facing)
+        hspd += lengthdir_x(50/global.frameRate,facing)
+        vspd += lengthdir_y(50/global.frameRate,facing)
     }
     else if point_distance(x,y,ix,iy) < i.stuckDist-5   
     {
-        hspd = lengthdir_x(1,facing)
-        vspd = lengthdir_y(1,facing)        
+        hspd += lengthdir_x(-50/global.frameRate,facing)
+        vspd += lengthdir_y(-50/global.frameRate,facing)        
     }
 }
 
@@ -575,12 +575,58 @@ if player = true
 
 
 //Draw things stuck in you (behind)
-//for(i = 0; i < ds_list_size(stuckWithItem); i++)
-//{
-//    draw_surface_part(stuckWithItem.itemSurf,0,0,60,60,round(stuckWithItem.x-30),round(stuckWithItem.y-30-stuckWithItem.z),)
-//    draw_surface_ext(itemSurf,round(x-30),round(y-30-z)
-//}
-
+if corpse = false
+{
+    for(i = 0; i < ds_list_size(stuckWithItem); i++)
+    {
+        ii = ds_list_find_value(stuckWithItem,i)
+        if abs(angle_difference(point_direction(x,y,ii.x,ii.y),30)) < 30        //Down Left
+        {
+            l = max(0,x-(ii.x-30))
+            t = 0   
+            w = 60-l
+            h = 60  
+        }
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),90)) < 30   //Down
+        {
+            l = 0
+            t = 0
+            w = 60
+            h = 60-max(0,y-(ii.y-30-ii.z))         
+        }
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),150)) < 30  //Down Right
+        {
+            l = 0
+            t = 0
+            w = 60-max(0,x-(ii.x-30))
+            h = 60    
+        }
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),210)) < 30  //Up Right
+        {
+            l = max(0,x-(ii.x-30))
+            t = 0   
+            w = 60-l
+            h = 60  
+        }
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),270)) < 30  //Up
+        {
+            l = 0
+            t = max(0,y-(ii.y-30-ii.z))   
+            w = 60
+            h = 60-t    
+        }
+        else                                                                    //Up Left
+        {
+            l = 0
+            t = 0
+            w = 60-max(0,x-(ii.x-30))
+            h = 60
+        }
+        draw_surface_part(ii.itemSurf,l,t,w,h,round(ii.x-30)+l,round(ii.y-30-ii.z)+t) 
+        draw_set_colour(c_red)
+        draw_rectangle(round(ii.x-30)+l,round(ii.y-30-ii.z)+t,round(ii.x-30)+l+w,round(ii.y-30-ii.z)+t+h,true)
+    }
+}
 
 //Draw Surface
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)
@@ -591,45 +637,40 @@ if corpse = false
     for(i = 0; i < ds_list_size(stuckWithItem); i++)
     {
         ii = ds_list_find_value(stuckWithItem,i)
-        if abs(angle_difference(point_direction(ii.x,ii.y,x,y),30)) < 30        //Down Left
+        if abs(angle_difference(point_direction(x,y,ii.x,ii.y),30)) < 30        //Down Left
         {
             l = 0
             t = 0   
             w = 60-max(0,x-(ii.x-30))
             h = 60  
-            draw_text(x,y-50,1)  
         }
-        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),90)) < 30   //Down
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),90)) < 30   //Down
         {
             l = 0
             t = max(0,y-(ii.y-30-ii.z))
             w = 60
             h = 60-t            
-            draw_text(x,y-50,2)
         }
-        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),150)) < 30  //Down Right
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),150)) < 30  //Down Right
         {
             l = max(0,x-(ii.x-30))
             t = 0
             w = 60-l
             h = 60    
-            draw_text(x,y-50,3)
         }
-        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),210)) < 30  //Up Right
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),210)) < 30  //Up Right
         {
             l = 0
             t = 0   
             w = 60-max(0,x-(ii.x-30))
             h = 60  
-            draw_text(x,y-50,4)  
         }
-        else if abs(angle_difference(point_direction(ii.x,ii.y,x,y),270)) < 30  //Up
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),270)) < 30  //Up
         {
             l = 0
             t = 0
             w = 60
-            h = 60-max(0,y-(ii.y-30-ii.z)) 
-            draw_text(x,y-50,5)           
+            h = 60-max(0,y-(ii.y-30-ii.z))       
         }
         else                                                                    //Up Left
         {
@@ -637,9 +678,10 @@ if corpse = false
             t = 0
             w = 60-l
             h = 60
-            draw_text(x,y-50,6)
         }
-        draw_surface_part(ii.itemSurf,l,t,w,h,round(ii.x-30),round(ii.y-30-ii.z)) 
+        draw_surface_part(ii.itemSurf,l,t,w,h,round(ii.x-30)+l,round(ii.y-30-ii.z)+t) 
+        draw_set_colour(c_green)
+        draw_rectangle(round(ii.x-30)+l,round(ii.y-30-ii.z)+t,round(ii.x-30)+l+w,round(ii.y-30-ii.z)+t+h,true)
     }
 }
 
@@ -657,7 +699,7 @@ draw_text(round(x),round(y)+30,moving*global.frameRate/metre)
 if global.liveSurf = true
 {    
     //Draw Reflection
-    if surface_exists(global.reflectSurf)
+    if surface_exists(global.reflectSurf) and surface_exists(charSurf)
     {
         surface_set_target(global.reflectSurf)
         draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-global.liveSurfX1,round(y+(charSurfSize*.75))-global.liveSurfY1+z,1,-1,0,c_white,1)
