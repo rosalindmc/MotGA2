@@ -299,7 +299,7 @@ else if sticking != 0 and (sticking = argument0 or sticking = 3)
     {
         if instance_exists(sticking)
         {
-            if handItem[argument0].stuckIn.alive = true && !handItem[argument0].stuckin = id
+            if handItem[argument0].stuckIn.alive = true && !handItem[argument0].stuckIn = id
             {
                 damageChar(handItem[argument0].stuckIn,2,dmgType.rend,true,id)
                 applyStatus(handItem[argument0].stuckIn,bleed,.5,6,id,true)
