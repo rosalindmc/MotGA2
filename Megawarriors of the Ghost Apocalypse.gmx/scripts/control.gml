@@ -186,6 +186,7 @@ if global.liveSurf = true
 {
     if surface_exists(global.reflectSurf)
     {    
+        surface_free(global.finalReflectSurf)
         global.finalReflectSurf = surface_create(global.liveSurfX2-global.liveSurfX1,global.liveSurfY2-global.liveSurfY1)     
             
         shader_set(shd_ripple)
@@ -215,16 +216,18 @@ else
 
 #define controlDrawReflectControl
 //Water Reflections
+
 if global.surfX2 != 0
 {
     if global.timer%.1 <= 1/global.frameRate
     {
+
         //Calculate the new liveSurfX and liveSurfY
         global.liveSurfX1 = max(view_xview,global.surfX1)
         global.liveSurfX2 = min(view_xview+view_wview,global.surfX2)
         global.liveSurfY1 = max(view_yview,global.surfY1)   
         global.liveSurfY2 = min(view_yview+view_hview+metre,global.surfY2)
-        
+
         /* OPTIMIZE REFLECTIONS EVENTUALLY
         global.liveSurfX1 = view_xview+view_wview
         global.liveSurfX2 = view_xview
@@ -243,7 +246,7 @@ if global.surfX2 != 0
             }
         }
         */
-    
+ 
         if global.liveSurfX1 < global.liveSurfX2 and global.liveSurfY1 < global.liveSurfY2
         {
             global.liveSurf = true
@@ -253,7 +256,8 @@ if global.surfX2 != 0
             global.liveSurf = false
         }
     }
-    
+ 
+
     if global.liveSurf = true
     {
         //Create Reflect Surface
@@ -273,7 +277,7 @@ if global.surfX2 != 0
 draw_sprite(spr_backdrop,0,
 view_xview[]+(view_wview[]/2)+(480*(.5-(x/room_width))),
 view_yview[]+(view_hview[]/2)+(270*(.5-(y/room_height))))
-
+*/
 
 #define controlDrawHUD
 //Draw Interact Tooltip

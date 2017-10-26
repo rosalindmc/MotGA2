@@ -93,7 +93,7 @@ return 1;
 #define alert
 with(obj_char){
     if(!player && irandom(2)>1){
-        actionTargetId = global.pc;
+        //actionTargetId = global.pc;
     }
 }
 
