@@ -346,7 +346,7 @@ else{
     draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8+kick-view_yview),1,1,180,c_white,1)
     draw_sprite_ext(spr_reticle2,0,global.camZoom*(global.pc.targetX-kick-view_xview),global.camZoom*(global.pc.targetY-8-kick-view_yview),1,1,270,c_white,1)
 }
-draw_line(global.camZoom*(global.pc.x-view_xview),global.camZoom*(global.pc.y-view_yview),global.camZoom*(global.pc.targetX-view_xview),global.camZoom*(global.pc.targetY-8-view_yview))
+//draw_line(global.camZoom*(global.pc.x-view_xview),global.camZoom*(global.pc.y-view_yview),global.camZoom*(global.pc.targetX-view_xview),global.camZoom*(global.pc.targetY-8-view_yview))
    
 //HUD stuff
     //Draw Health        
