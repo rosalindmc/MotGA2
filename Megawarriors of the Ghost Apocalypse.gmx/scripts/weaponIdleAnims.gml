@@ -40,7 +40,6 @@ if clashing = true
 
 if sticking != 0
 {
-    handDistDest[argument1] = 5+(-5*clamp(-1,1,interactProgress-1))
     handDirDest[argument1] = 0
     handHeightDest[argument1] = (-5*clamp(-1,1,interactProgress-1))
     itemRotDest[argument1] = 0
@@ -52,11 +51,13 @@ if sticking != 0
         {
             ix = (handItem[1].stuckIn.x)
             iy = (handItem[1].stuckIn.y)
+            handDistDest[argument1] = handItem[1].stuckDist+(-5*clamp(-1,1,interactProgress-1))-5-handItem[1].holdPoint
         }
         else
         {
             ix = (handItem[sticking].stuckIn.x)
             iy = (handItem[sticking].stuckIn.y)
+            handDistDest[argument1] = handItem[sticking].stuckDist+(-5*clamp(-1,1,interactProgress-1))-5-handItem[sticking].holdPoint
         }
         createParticle(ix,iy,handItem[argument1].z,25,partBlood,point_direction(x,y,ix,iy)+180)
     }

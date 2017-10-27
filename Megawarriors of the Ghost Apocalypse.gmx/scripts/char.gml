@@ -581,53 +581,51 @@ if corpse = false
     for(i = 0; i < ds_list_size(stuckWithItem); i++)
     {
         ii = ds_list_find_value(stuckWithItem,i)
-        if abs(angle_difference(point_direction(x,y,ii.x,ii.y),30)) < 30        //Down Left
+        if abs(angle_difference(point_direction(x,y,ii.x,ii.y),30)) <= 30        //Down Left
         {
-            l = max(0,x-(ii.x-30))
+            l = median(0,60,x-(ii.x-30))
             t = 0   
             w = 60-l
             h = 60  
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),90)) < 30   //Down
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),90)) <= 30   //Down
         {
             l = 0
             t = 0
             w = 60
-            h = 60-max(0,y-(ii.y-30-ii.z))         
+            h = median(0,60,y-(ii.y-30))   
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),150)) < 30  //Down Right
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),150)) <= 30  //Down Right !!
         {
             l = 0
             t = 0
-            w = 60-max(0,(ii.x+30)-x)
+            w = median(0,60,x-(ii.x-30)) 
             h = 60    
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),210)) < 30  //Up Right
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),210)) <= 30  //Up Right
         {
-            l = max(0,(ii.x+30)-x)
+            l = median(0,60,x-(ii.x-30)) 
             t = 0   
             w = 60-l
             h = 60  
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),270)) < 30  //Up
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),270)) <= 30  //Up !!
         {
             l = 0
-            t = max(0,y-(ii.y-30-ii.z))   
+            t = 0  
             w = 60
-            h = 60-t    
+            h = median(0,60,y-(ii.y-30))   
         }
-        else                                                                    //Up Left
+        else                                                                    //Up Left !!
         {
             l = 0
             t = 0
-            w = 60-max(0,x-(ii.x-30))
+            w = median(0,60,x-(ii.x-30))
             h = 60
         }
         if w >= 1 and h >= 1
         {
             draw_surface_part(ii.itemSurf,l,t,w,h,round(ii.x-30)+l,round(ii.y-30-ii.z)+t) 
-            draw_set_colour(c_red)
-            draw_rectangle(round(ii.x-30)+l,round(ii.y-30-ii.z)+t,round(ii.x-30)+l+w,round(ii.y-30-ii.z)+t+h,true)
         }
     }
 }
@@ -641,44 +639,44 @@ if corpse = false
     for(i = 0; i < ds_list_size(stuckWithItem); i++)
     {
         ii = ds_list_find_value(stuckWithItem,i)
-        if abs(angle_difference(point_direction(x,y,ii.x,ii.y),30)) < 30        //Down Left
+        if abs(angle_difference(point_direction(x,y,ii.x,ii.y),30)) <= 30        //Down Left FIX
         {
             l = 0
             t = 0   
-            w = 60-max(0,x-(ii.x-30))
+            w = median(0,60,x-(ii.x-30)) 
             h = 60  
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),90)) < 30   //Down
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),90)) <= 30   //Down !!
         {
             l = 0
-            t = max(0,y-(ii.y-30-ii.z))
+            t = median(0,60,y-(ii.y-30))
             w = 60
             h = 60-t            
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),150)) < 30  //Down Right
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),150)) <= 30  //Down Right
         {
-            l = max(0,(ii.x+30)-x)
+            l = median(0,60,x-(ii.x-30)) 
             t = 0
             w = 60-l
             h = 60    
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),210)) < 30  //Up Right
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),210)) <= 30  //Up Right !!
         {
             l = 0
             t = 0   
-            w = 60-max(0,(ii.x+30)-x)
+            w = median(0,60,x-(ii.x-30))
             h = 60  
         }
-        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),270)) < 30  //Up
+        else if abs(angle_difference(point_direction(x,y,ii.x,ii.y),270)) <= 30  //Up !!
         {
             l = 0
-            t = 0
+            t = median(0,60,y-(ii.y-30))
             w = 60
-            h = 60-max(0,y-(ii.y-30-ii.z))       
+            h = 60-t       
         }
-        else                                                                    //Up Left
+        else                                                                    //Up Left !!
         {
-            l = max(0,x-(ii.x-30))
+            l = max(0,x-(ii.x-30)) 
             t = 0
             w = 60-l
             h = 60
@@ -686,8 +684,6 @@ if corpse = false
         if w >= 1 and h >= 1
         {
             draw_surface_part(ii.itemSurf,l,t,w,h,round(ii.x-30)+l,round(ii.y-30-ii.z)+t) 
-            draw_set_colour(c_green)
-            draw_rectangle(round(ii.x-30)+l,round(ii.y-30-ii.z)+t,round(ii.x-30)+l+w,round(ii.y-30-ii.z)+t+h,true)
         }
     }
 }
