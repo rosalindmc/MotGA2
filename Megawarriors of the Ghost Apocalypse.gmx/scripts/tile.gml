@@ -41,7 +41,7 @@ image_index = irandom(5)
 #define tileDraw
 if isWater = true
 {
-    draw_sprite(sprite_index,image_index+floor(global.timer*5),x-16,y-16-wz)
+    draw_sprite(sprite_index,image_index+floor(global.timer*5),x,y-wz)
 }
 else
 {
@@ -72,7 +72,7 @@ if isWater = true
         draw_sprite_ext(spr_edge,image_index,x,y+8,1,1,0,c_white,image_alpha)
     }
 }
-else if(numAdditDood>0)
+else if (numAdditDood>0)
 {
     for(var i = 0; i < numAdditDood; i++)
     {

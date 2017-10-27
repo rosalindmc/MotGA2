@@ -90,4 +90,3 @@ if(argument0 = global.pc){
 #define pilferCorpse
 
 #define exitMap
-

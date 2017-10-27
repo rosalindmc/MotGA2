@@ -209,7 +209,7 @@ with(obj_tile)
             w -= 11
         }
     }
-    
+        
     if isRiver = true
     {
         sprite_index = spr_water
@@ -224,32 +224,18 @@ with(obj_tile)
             z = -4
         }
     }
-    else if (isPath = true)
+    else if (isPath = true) and irandom(5) > 0
     {
         sprite_index = spr_road
-        xScatter = choose(0,0,0,-1,1)
-        yScatter = choose(0,0,0,-1,1)
-        image_xscale = choose(-1,1)
-        depth = -1
-                
-        if irandom(20) = 20
-        {
-            additDoodSpr[numAdditDood] = spr_bones;
-            additDoodImg[numAdditDood] = irandom(4);
-            additDoodX[numAdditDood] = irandom(4)-2;
-            additDoodY[numAdditDood] = irandom(4)-2;
-            
-            numAdditDood++;
-        }
+        depth = 1
     }
     else if isRiver = false
     {
-        sprite_index = spr_tile   
+        sprite_index = spr_tile
+           
         if weight >= 3
         {
             sprite_index = spr_grass
-            xScatter = choose(0,0,0,-1,1)
-            yScatter = choose(0,0,0,-1,1)
             image_xscale = choose(-1,1)
             depth = -2
             
@@ -263,7 +249,7 @@ with(obj_tile)
                     additDoodY[numAdditDood] = irandom(2)-4+numAdditDood;
                     additDoodFlip[numAdditDood] = choose(-1,1)
                     
-                    numAdditDood++;
+                    numAdditDood++
                 }
             }
         }
@@ -286,6 +272,16 @@ with(obj_tile)
                     i.canReflect = false
                 }
             }
+        }
+        else if irandom(20) = 20
+        {
+            additDoodSpr[numAdditDood] = spr_bones;
+            additDoodImg[numAdditDood] = irandom(4);
+            additDoodX[numAdditDood] = irandom(4)-2;
+            additDoodY[numAdditDood] = irandom(4)-2;
+            additDoodFlip[numAdditDood] = choose(-1,1)
+            
+            numAdditDood++
         }        
     }
 }
