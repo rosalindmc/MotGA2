@@ -95,6 +95,7 @@ itemRotDest[1] = 0
 itemZRot[1] = 0
 itemZRotDest[1] = 0
 itemSprite[1] = spr_sword
+itemSpriteIndex[1] = 0
 itemFlip[1] = 1
 itemHoldAdjust[1] = 0
 
@@ -110,6 +111,7 @@ itemRotDest[2] = 0
 itemZRot[2] = 0
 itemZRotDest[2] = 0
 itemSprite[2] = spr_sword
+itemSpriteIndex[2] = 0
 itemFlip[2] = 1
 itemHoldAdjust[2] = 0
 

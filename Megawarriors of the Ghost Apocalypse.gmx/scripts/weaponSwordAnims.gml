@@ -183,6 +183,8 @@ switch(argument0)
     itemZRotDest[argument1] = 15
     animDelay[argument1] = .3
     
+    itemSpriteIndex[argument1] = 3
+    
     charge[argument1] = 2
     if queuedAnim[argument1] = 1
     {
@@ -200,6 +202,7 @@ switch(argument0)
     itemRotDest[argument1] = (240*meleeSwing[argument1])
     itemZRotDest[argument1] = 15
     animDelay[argument1] = 1*s
+    itemSpriteIndex[argument1] = 0
     
     sweetSpot = false
     break
@@ -231,6 +234,7 @@ switch(argument0)
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (150*meleeSwing[argument1])
     itemZRotDest[argument1] = 10
+    itemSpriteIndex[argument1] = 3
     animDelay[argument1] = .3*s
     break
 
@@ -240,6 +244,7 @@ switch(argument0)
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (180*meleeSwing[argument1])
     itemZRotDest[argument1] = 15
+    itemSpriteIndex[argument1] = 0
     animDelay[argument1] = .3*s
     
     if greatWeapon = true
@@ -254,6 +259,7 @@ switch(argument0)
     handHeightDest[argument1] = 1
     itemRotDest[argument1] = (45*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
+    itemSpriteIndex[argument1] = 1
     animDelay[argument1] = .3
     bodyTwist = 0
     
@@ -273,7 +279,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = -5
     animDelay[argument1] = 1*s
-    
+    itemSpriteIndex[argument1] = 0
     sweetSpot = false
     break
     
@@ -295,6 +301,7 @@ switch(argument0)
     handHeightDest[argument1] = 4
     itemRotDest[argument1] = (120*meleeSwing[argument1])
     itemZRotDest[argument1] = 5
+    itemSpriteIndex[argument1] = 3
     animDelay[argument1] = .1*s
     break
 
@@ -305,6 +312,7 @@ switch(argument0)
     itemRotDest[argument1] = (150*meleeSwing[argument1])
     itemZRotDest[argument1] = 10
     animDelay[argument1] = .3*s
+    itemSpriteIndex[argument1] = 4
     break
 
     case 2:
@@ -329,6 +337,7 @@ switch(argument0)
     itemZRotDest[argument1] = 60
     animDelay[argument1] = .3
     bodyTwist = 0
+    itemSpriteIndex[argument1] = 3
     
     animationStart(humanoidOverswing,0)
     moveTimer = .3
@@ -459,6 +468,9 @@ switch(argument0)
     itemRotDest[argument1] = (120*meleeSwing[argument1])
     itemZRotDest[argument1] = 10
     animDelay[argument1] = .01*s
+    
+    itemSpriteIndex[argument1] = 3
+    
     if greatWeapon = true
     {
         bodyTwist = 0
@@ -472,6 +484,8 @@ switch(argument0)
     itemRotDest[argument1] = (60*meleeSwing[argument1])
     itemZRotDest[argument1] = 5
     animDelay[argument1] = .02*s
+    
+    itemSpriteIndex[argument1] = 4
     break
     
     case 2:
@@ -493,6 +507,8 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = -5
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 0
     break
     
     case 4:
@@ -547,6 +563,9 @@ switch(argument0)
     itemRotDest[argument1] = (120*meleeSwing[argument1])
     itemZRotDest[argument1] = 10
     animDelay[argument1] = .01*s
+    
+    itemSpriteIndex[argument1] = 1
+    
     if greatWeapon = true
     {
         bodyTwist = 0
@@ -560,6 +579,8 @@ switch(argument0)
     itemRotDest[argument1] = (60*meleeSwing[argument1])
     itemZRotDest[argument1] = 5
     animDelay[argument1] = .02*s
+    
+    itemSpriteIndex[argument1] = 2
     break
     
     case 2:
@@ -581,6 +602,8 @@ switch(argument0)
     itemRotDest[argument1] = (-20*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 5
     break
     
     case 4:
@@ -590,6 +613,8 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 0
     
     if greatWeapon = true
     {
@@ -712,6 +737,9 @@ switch(argument0)
     itemRotDest[argument1] = (180*meleeSwing[argument1])
     itemZRotDest[argument1] = -45
     animDelay[argument1] = .01*s
+    
+    itemSpriteIndex[argument1] = 1
+    
     if greatWeapon = true
     {
         bodyTwist = 0
@@ -725,6 +753,8 @@ switch(argument0)
     itemRotDest[argument1] = (90*meleeSwing[argument1])
     itemZRotDest[argument1] = -15
     animDelay[argument1] = .02*s
+    
+    itemSpriteIndex[argument1] = 2
     break
     
     case 2:
@@ -746,6 +776,8 @@ switch(argument0)
     itemRotDest[argument1] = (-20*meleeSwing[argument1])
     itemZRotDest[argument1] = 30
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 5
     break
     
     case 4:
@@ -755,6 +787,8 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 30
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 0
     
     if greatWeapon = true
     {
@@ -816,6 +850,7 @@ switch(argument0)
     itemRotDest[argument1] = (60*meleeSwing[argument1])
     itemZRotDest[argument1] = 5
     animDelay[argument1] = .02*s
+    itemSpriteIndex[argument1] = 1
     break
     
     case 2:
@@ -825,6 +860,7 @@ switch(argument0)
     itemRotDest[argument1] = (10*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
     animDelay[argument1] = .02*s
+    itemSpriteIndex[argument1] = 2
     break
     
     case 3:
@@ -837,6 +873,8 @@ switch(argument0)
     itemRotDest[argument1] = (-20*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 5
     break
     
     case 4:
@@ -851,6 +889,8 @@ switch(argument0)
     {
         bodyTwist = -meleeSwing[argument1]
     }
+    
+    itemSpriteIndex[argument1] = 0
     break
     
     case 5:
@@ -974,6 +1014,8 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = -105
     animDelay[argument1] = .01*s
+    
+    itemSpriteIndex[argument1] = 1
     break
 
     case 1:
@@ -983,6 +1025,8 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = -45
     animDelay[argument1] = .02*s
+    
+    itemSpriteIndex[argument1] = 2
     break
     
     case 2:
@@ -1006,6 +1050,8 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 45
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 5
     break
     
     case 4:
@@ -1015,6 +1061,8 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 45
     animDelay[argument1] = .1*s
+    
+    itemSpriteIndex[argument1] = 0
     break
     
     case 5:

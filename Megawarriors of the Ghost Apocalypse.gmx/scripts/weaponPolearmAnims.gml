@@ -70,6 +70,7 @@ switch(argument0)
     itemRotDest[argument1] = (-15*meleeSwing[argument1])
     itemZRotDest[argument1] = 25
     animDelay[argument1] = .01*s
+    itemSpriteIndex[argument1] = 1
     break
 
     case 1:
@@ -79,6 +80,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 25
     animDelay[argument1] = .02*s
+    itemSpriteIndex[argument1] = 3
     break
     
     case 2:
@@ -88,6 +90,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 25
     animDelay[argument1] = .02*s
+    itemSpriteIndex[argument1] = 0
     break
     
     case 3:
@@ -100,6 +103,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 25
     animDelay[argument1] = .1*s
+    itemSpriteIndex[argument1] = 5
     break
     
     case 4:
@@ -109,6 +113,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 25
     animDelay[argument1] = .1*s
+    itemSpriteIndex[argument1] = 0
     break
     
     case 5:
@@ -164,6 +169,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 0
     animDelay[argument1] = .02*s
+    itemSpriteIndex[argument1] = 1
     break
     
     case 2:
@@ -173,6 +179,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = -5
     animDelay[argument1] = .02*s
+    itemSpriteIndex[argument1] = 2
     break
     
     case 3:
@@ -185,6 +192,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = -5
     animDelay[argument1] = .1*s
+    itemSpriteIndex[argument1] = 5
     break
     
     case 4:
@@ -194,6 +202,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = -5
     animDelay[argument1] = .1*s
+    itemSpriteIndex[argument1] = 0
     break
     
     case 5:
@@ -322,6 +331,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 15
     animDelay[argument1] = .1*s
+    itemSpriteIndex[argument1] = 5
     break
     
     case 4:
@@ -331,6 +341,7 @@ switch(argument0)
     itemRotDest[argument1] = (0*meleeSwing[argument1])
     itemZRotDest[argument1] = 5
     animDelay[argument1] = .1*s
+    itemSpriteIndex[argument1] = 3
     break
     
     case 5:
@@ -342,6 +353,7 @@ switch(argument0)
     animDelay[argument1] = .3
     sweetSpot = true
     perfectHitSheen(argument1)
+    itemSpriteIndex[argument1] = 0
     break
     
     case 6:

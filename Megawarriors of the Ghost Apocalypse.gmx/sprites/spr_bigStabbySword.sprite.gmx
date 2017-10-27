@@ -8,7 +8,7 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>24</bbox_right>
+  <bbox_right>34</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>4</bbox_bottom>
   <HTile>0</HTile>
@@ -17,9 +17,14 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>25</width>
+  <width>35</width>
   <height>5</height>
   <frames>
     <frame index="0">images\spr_bigStabbySword_0.png</frame>
+    <frame index="1">images\spr_bigStabbySword_1.png</frame>
+    <frame index="2">images\spr_bigStabbySword_2.png</frame>
+    <frame index="3">images\spr_bigStabbySword_3.png</frame>
+    <frame index="4">images\spr_bigStabbySword_4.png</frame>
+    <frame index="5">images\spr_bigStabbySword_5.png</frame>
   </frames>
 </sprite>

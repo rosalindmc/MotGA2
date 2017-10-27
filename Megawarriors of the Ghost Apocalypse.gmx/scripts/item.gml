@@ -69,6 +69,8 @@ stuckDist = metre
 stuckDir = 0
 stuckIn = noone
 
+image_speed = 0
+
 weaponEssentials(0)
 
 #define itemStep
@@ -95,7 +97,7 @@ if owner != noone
             x = owner.x+lengthdir_x(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_x(holdPoint+owner.itemHoldAdjust[hand],image_angle+zAngle)
             z = (owner.charSurfSize*.75)-round(owner.bodyY-owner.handHeight[hand])+owner.z
             y = owner.y+lengthdir_y(owner.handDist[hand], (round(owner.facing/15)*15)+owner.handDir[hand])+lengthdir_y(holdPoint+owner.itemHoldAdjust[hand],image_angle+zAngle)
-            image_index = 0
+            image_index = owner.itemSpriteIndex[hand]
             isoDepth(0)
         }
     }

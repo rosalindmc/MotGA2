@@ -5,6 +5,7 @@ strike[argument1] = 0
 charge[argument1] = 0
 animDelay[argument1] = .1
 animSpeed[argument1] = 1
+itemSpriteIndex[argument1] = 0
 
 if greatWeapon = false
 {
