@@ -93,7 +93,7 @@
             }
         }
     }
-    
+        
     var j = 0
     
     for(i = 0; i < array_length_1d(critLength)-1; i++){
@@ -209,11 +209,7 @@ with(obj_tile)
             w -= 11
         }
     }
-}
     
-
-with(obj_tile)
-{
     if isRiver = true
     {
         sprite_index = spr_water
@@ -292,7 +288,16 @@ with(obj_tile)
             }
         }        
     }
-}  
+}
+
+with (obj_poi){
+    if (entrance = true){
+        ii = instance_create(gridX*metre+8,gridY*metre+8,obj_interactable)
+        ii.owner = other.floorLayout[gridX,gridY]
+        ii.name = 'Exit Map'
+        ii.useType = exitMap
+    }
+}
 
 
 #define roadMaker
