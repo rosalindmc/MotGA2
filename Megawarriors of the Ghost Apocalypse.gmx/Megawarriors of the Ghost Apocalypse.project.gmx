@@ -293,6 +293,7 @@
       <scripts name="Object Scripts">
         <script>scripts\landingPage.gml</script>
         <script>scripts\viewManager.gml</script>
+        <script>scripts\levelAdvancePage.gml</script>
       </scripts>
     </scripts>
   </scripts>
