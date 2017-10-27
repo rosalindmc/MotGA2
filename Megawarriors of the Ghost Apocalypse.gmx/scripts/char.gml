@@ -480,6 +480,8 @@ if (grappled = true)
 
 if (sticking != 0)
 {
+    i = 0
+    
     if sticking = 3
     {
         if instance_exists(handItem[1])
@@ -489,22 +491,29 @@ if (sticking != 0)
     }
     else if instance_exists(handItem[sticking])
     {
-        i = handItem[sticking]
+        if instance_exists(handItem[sticking])
+        {
+            i = handItem[sticking]
+        }
     }
-    ix = i.stuckIn.x
-    iy = i.stuckIn.y
     
-    facing = point_direction(x,y,ix,iy)
-    
-    if point_distance(x,y,ix,iy) > i.stuckDist+10
+    if i != 0
     {
-        hspd += lengthdir_x(50/global.frameRate,facing)
-        vspd += lengthdir_y(50/global.frameRate,facing)
-    }
-    else if point_distance(x,y,ix,iy) < i.stuckDist-5   
-    {
-        hspd += lengthdir_x(-50/global.frameRate,facing)
-        vspd += lengthdir_y(-50/global.frameRate,facing)        
+        ix = i.stuckIn.x
+        iy = i.stuckIn.y
+        
+        facing = point_direction(x,y,ix,iy)
+        
+        if point_distance(x,y,ix,iy) > i.stuckDist+10
+        {
+            hspd += lengthdir_x(50/global.frameRate,facing)
+            vspd += lengthdir_y(50/global.frameRate,facing)
+        }
+        else if point_distance(x,y,ix,iy) < i.stuckDist-5   
+        {
+            hspd += lengthdir_x(-50/global.frameRate,facing)
+            vspd += lengthdir_y(-50/global.frameRate,facing)        
+        }
     }
 }
 

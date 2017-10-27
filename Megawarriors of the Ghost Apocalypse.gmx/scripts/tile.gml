@@ -41,7 +41,7 @@ image_index = irandom(5)
 #define tileDraw
 if isWater = true
 {
-    draw_sprite_part(sprite_index,image_index+floor(global.timer*5),0,0,32,24+(wz*wSBorder),x-16,y-16-wz)
+    draw_sprite(sprite_index,image_index+floor(global.timer*5),x-16,y-16-wz)
 }
 else
 {
