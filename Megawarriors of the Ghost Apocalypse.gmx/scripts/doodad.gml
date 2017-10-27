@@ -204,4 +204,3 @@ with(i){
 #define corpseDespawn
 ds_list_destroy(stuck)
 ds_list_destroy(stuckWithItem)
-

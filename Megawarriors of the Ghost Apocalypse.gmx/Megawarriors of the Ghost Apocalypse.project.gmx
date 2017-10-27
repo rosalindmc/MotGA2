@@ -45,9 +45,9 @@
       <sprite>sprites\spr_edge</sprite>
       <sprite>sprites\spr_wave</sprite>
       <sprite>sprites\spr_water</sprite>
-      <sprite>sprites\spr_tile</sprite>
-      <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_road</sprite>
+      <sprite>sprites\spr_bridge</sprite>
+      <sprite>sprites\spr_tile</sprite>
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_bush</sprite>
