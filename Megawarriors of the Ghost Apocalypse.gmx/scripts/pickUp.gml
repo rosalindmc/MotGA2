@@ -91,3 +91,25 @@ if(argument0 = global.pc){
 
 #define exitMap
 
+with obj_item{
+    if instance_exists(owner){
+        if !owner.player{
+            instance_destroy()
+        }
+        else{
+            //instance_deactivate_object(id)
+        }
+    }
+    else{
+        instance_destroy()
+    }
+}
+with obj_char{
+    if !player{
+        instance_destroy()
+    }
+    //instance_deactivate_object(id)
+}
+
+levelAdvance()
+    

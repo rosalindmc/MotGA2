@@ -102,8 +102,8 @@
         }
     }
     
-    global.pc.x = critLength[j].start.gridX*16+8
-    global.pc.y = critLength[j].start.gridY*16+8
+    global.pc.x = critLength[j].start.gridX*metre+8
+    global.pc.y = critLength[j].start.gridY*metre+8
     critLength[j].start.critPath = false
     
     for(i = 0; i < array_length_1d(critLength)-1; i++){

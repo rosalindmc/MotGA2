@@ -58,7 +58,7 @@ for(i = 0; i <= global.numNodes; i++){
 
 }
 
-global.currNode = nodeArray[1]
+global.currNode = nodeArray[global.currNodeIndex]
 
 ds_list_destroy(biomeList);
 ds_list_destroy(qualiList);
