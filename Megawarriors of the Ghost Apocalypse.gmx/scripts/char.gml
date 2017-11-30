@@ -642,6 +642,10 @@ if corpse = false
 }
 
 //Draw Surface
+draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z-1,1,1,0,c_black,1)
+draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z+1,1,1,0,c_black,1)
+draw_surface_ext(charSurf,round(x-(charSurfSize*.5))-1,round(y-(charSurfSize*.75))-z,1,1,0,c_black,1)
+draw_surface_ext(charSurf,round(x-(charSurfSize*.5))+1,round(y-(charSurfSize*.75))-z,1,1,0,c_black,1)
 draw_surface_ext(charSurf,round(x-(charSurfSize*.5)),round(y-(charSurfSize*.75))-z,1,1,0,c_white,1)
 
 //Draw things stuck in you (infront)

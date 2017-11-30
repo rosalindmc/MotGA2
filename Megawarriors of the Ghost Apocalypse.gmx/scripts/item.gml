@@ -161,6 +161,10 @@ if owner = noone or hand != 0
         
         if stuckIn = noone
         {
+            draw_surface_ext(itemSurf,round(x-30),round(y-30-z)-1,1,1,0,c_black,1)     
+            draw_surface_ext(itemSurf,round(x-30),round(y-30-z)+1,1,1,0,c_black,1)     
+            draw_surface_ext(itemSurf,round(x-30)-1,round(y-30-z),1,1,0,c_black,1)     
+            draw_surface_ext(itemSurf,round(x-30)+1,round(y-30-z),1,1,0,c_black,1)     
             draw_surface_ext(itemSurf,round(x-30),round(y-30-z),1,1,0,c_white,1)     
         }
     }

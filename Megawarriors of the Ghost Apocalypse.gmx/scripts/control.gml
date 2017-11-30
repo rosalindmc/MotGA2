@@ -4,7 +4,7 @@
 #define controlInitialize
 //Essentials
 randomize()
-global.frameRate = 40
+global.frameRate = 30
 room_speed = global.frameRate
 global.timeMult = 1
 enumerators();
